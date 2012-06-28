@@ -11,6 +11,9 @@ type Page struct {
         Body []byte
 }
 
+const lenPath = len("/view/")
+
+
 func (p *Page) save() error {
 	filename := p.Title + ".txt"
 	return ioutil.WriteFile(filename, p.Body, 0600)
@@ -24,8 +27,6 @@ func loadPage(title string) (*Page, error) {
 	}
 	return &Page{Title: title, Body: body}, nil
 }
-
-const lenPath = len("/view/")
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[lenPath:]
