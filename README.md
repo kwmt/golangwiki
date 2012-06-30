@@ -2,9 +2,7 @@
 golangwiki
 ==========
 
-http://golang.org/ を（むちゃくちゃな日本語ですが）翻訳
+http://golang.org/ を（むちゃくちゃな日本語ですが）翻訳の際に出てきた(試した)コードです。
 
-
-自分のブログ（ http://androg.seesaa.net/ ）に書くHTMLソースです。
-日本語むちゃくちゃなので、だれかpull reequestしてください。
-
+翻訳はwikiに書いてます。
+https://github.com/kwmt/golangwiki/wiki
