@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"regexp"
 	"errors"
+	"fmt"
 )
 
 type Page struct {
@@ -36,6 +37,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 	p, err := loadPage(title)
 	if err != nil {
 		http.Redirect(w, r, "/edit/"+title, http.StatusFound)
+		fmt.Println(w)
 		return
 	}
 	renderTemplate(w, "view", p)
