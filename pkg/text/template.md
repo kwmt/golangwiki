@@ -108,13 +108,11 @@ if err != nil { panic(err) }
 {{"output" | printf "%s" | printf "%q"}}
     長い連鎖
 {{with "output"}}{{printf "%q" .}}{{end}}
-    A with action using dot.
-    ドットを使ってwithアクション
+    ドットを使ったwithアクション
 {{with $x := "output" | printf "%q"}}{{$x}}{{end}}
     変数を定義して使ったwithアクション
 {{with $x := "output"}}{{printf "%q" $x}}{{end}}
-    A with action that uses the variable in another action.
-    他のアクションの中で変数を使うwithアクション
+    他のアクションの中で変数を使ったwithアクション
 {{with $x := "output"}}{{$x | printf "%q"}}{{end}}
     上と同じだが、パイプラインを使用
 </pre>
