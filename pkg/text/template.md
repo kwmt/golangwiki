@@ -89,8 +89,32 @@ if err != nil { panic(err) }
     パイプラインの値が空だったら、ドットは影響を受けずT0が実行されます。
     空でなければ、ドットはパイプラインの値にセットされ、T1が実行されます。
 </pre>
-<h2 id=""></h2>
-<pre class="go">
-</pre>
+<h2 id="Examples">Examples</h2>
 <p>
+    ここでは、1行テンプレートのいくつかの例を見てみます。パイプラインと変数のデモです。
+    結果はすべて、ダブルクオーテーションがついた"output"です。
 </p>
+<pre>
+{{"\"output\""}}
+    文字列定数
+{{`"output"`}}
+    A raw string constant 生文字列定数
+{{printf "%q" "output"}}
+    関数を呼びます
+{{"output" | printf "%q"}}
+    最後の引数は前のコマンドからきて関数をコールします
+{{"put" | printf "%s%s" "out" | printf "%q"}}
+    もっと凝った関数コール
+{{"output" | printf "%s" | printf "%q"}}
+    長い連鎖
+{{with "output"}}{{printf "%q" .}}{{end}}
+    A with action using dot.
+    ドットを使ってwithアクション
+{{with $x := "output" | printf "%q"}}{{$x}}{{end}}
+    変数を定義して使ったwithアクション
+{{with $x := "output"}}{{printf "%q" $x}}{{end}}
+    A with action that uses the variable in another action.
+    他のアクションの中で変数を使うwithアクション
+{{with $x := "output"}}{{$x | printf "%q"}}{{end}}
+    上と同じだが、パイプラインを使用
+</pre>
