@@ -89,6 +89,119 @@ if err != nil { panic(err) }
     パイプラインの値が空だったら、ドットは影響を受けずT0が実行されます。
     空でなければ、ドットはパイプラインの値にセットされ、T1が実行されます。
 </pre>
+<h2 id="Arguments">Arguments</h2>
+<p>
+引数は、以下のいずれかで表現されるシンプルな値です。
+</p>
+<pre>
+- A boolean, string, character, integer, floating-point, imaginary
+  or complex constant in Go syntax. These behave like Go's untyped
+  constants, although raw strings may not span newlines.
+  Goの文法での真偽値、文字列、文字、整数、浮動小数点、虚数、複素数。
+  raw文字列は改行をまたがることはできませんが、
+  これらは、Goの型を持たない定数のように動作します。
+- 文字は '.' (ピリオド):
+    .
+  The result is the value of dot.
+  この結果はドットの値です。
+- 変数名は
+    $piOver2
+  あるいは
+    $
+  のような$記号を前に置いた英数字の文字列です。
+  The result is the value of the variable.
+  Variables are described below.
+- The name of a field of the data, which must be a struct, preceded
+  by a period, such as
+  構造体であるはずのデータのフィールド名は、
+    .Field
+  のように、ドットが前に置かれます。
+  The result is the value of the field. Field invocations may be
+  chained:
+  フィールドをつなげることで、フィールドのフィールドをよびだせます:
+    .Field1.Field2
+  Fields can also be evaluated on variables, including chaining:
+  変数からフィールドを評価することもできます:
+    $x.Field1.Field2
+- The name of a key of the data, which must be a map, preceded
+  by a period, such as
+    .Key
+  マップデータのキーは
+    .Key
+  のようにピリオドを前に置きます。
+  The result is the map element value indexed by the key.
+  結果は、そのキーに対応した要素の値となります。
+  Key invocations may be chained and combined with fields to any
+  depth:
+    .Field1.Key1.Field2.Key2
+  このように連結することもできます:
+    .Field1.Key1.Field2.Key2
+  Although the key must be an alphanumeric identifier, unlike with
+  field names they do not need to start with an upper case letter.
+  キーは一意でなければなりませんが、フィールドとは違って大文字から始める必要はありません。
+  Keys can also be evaluated on variables, including chaining:
+    $x.key1.key2
+- The name of a niladic method of the data, preceded by a period,
+  such as
+    .Method
+  引数を持たないメソッド
+    .Method
+  The result is the value of invoking the method with dot as the
+  receiver, dot.Method().
+  レシーバーのようにドットを使ってメソッドを呼び出した結果です。
+   Such a method must have one return value (of
+  any type) or two return values, the second of which is an error.
+  そのようなメソッドは、1つの戻り値あるいは2つの戻り値(2つ目はerror)をもつ必要があります。
+  If it has two and the returned error is non-nil, execution terminates
+  and an error is returned to the caller as the value of Execute.
+  もし2つの戻り値を持って、errorがnilでなかったら、
+  実行は中止し、実行の値として呼び出し元へエラーが返ってきます。
+  Method invocations may be chained and combined with fields and keys
+  to any depth:
+  メソッドはフィールドとキーを組み合わせて連鎖して呼び出すことができます。
+    .Field1.Key1.Method1.Field2.Key2.Method2
+  Methods can also be evaluated on variables, including chaining:
+    $x.Method1.Field
+- The name of a niladic function, such as
+    fun
+  funのように引数をもたない関数です。
+  The result is the value of invoking the function, fun().
+  結果は関数fun()を呼び出した値です。
+  The return
+  types and values behave as in methods.
+  返ってくる型と値は、メソッドのように振る舞います。
+  Functions and function
+  names are described below.
+  関数と関数名については以下に記述します。
+</pre>
+<p>
+    引数はどんな型も評価するかもしれません。
+    もし引数がポインタなら、実装は自動的に必要なときに元になる肩を指します。
+    If an evaluation yields a function value, such as a function-valued field of a struct,
+    the function is not invoked automatically,
+    but it can be used as a truth value for an if action and the like.
+    To invoke it, use the call function, defined below.
+</p>
+<p>
+A pipeline is a possibly chained sequence of "commands".
+A command is a simple value (argument) or a function or method call, possibly with multiple arguments:
+</p>
+<pre>
+Argument
+    The result is the value of evaluating the argument.
+.Method [Argument...]
+    The method can be alone or the last element of a chain but,
+    unlike methods in the middle of a chain, it can take arguments.
+    The result is the value of calling the method with the
+    arguments:
+        dot.Method(Argument1, etc.)
+functionName [Argument...]
+    The result is the value of calling the function associated
+    with the name:
+        function(Argument1, etc.)
+    Functions and function names are described below.
+</pre>
+
 <h2 id="Examples">Examples</h2>
 <p>
     ここでは、1行テンプレートのいくつかの例を見てみます。パイプラインと変数のデモです。
