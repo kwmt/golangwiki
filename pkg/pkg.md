@@ -455,7 +455,8 @@
             <tr>
             <td class="name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="encoding/xml/">xml</a></td>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td style="width: auto">Package xml implements a simple XML 1.0 parser that understands XML name spaces.</td>
+            <td style="width: auto">Package xml implements a simple XML 1.0 parser that understands XML name spaces.
+            xmlパッケージは、XML名前空間をし解釈できるXML1.0のパーサを実装しています。</td>
             </tr>
 
 
