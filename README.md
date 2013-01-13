@@ -5,6 +5,8 @@ golangwiki
 http://golang.org/ を（むちゃくちゃな日本語ですが）翻訳
 
 doc:ドキュメント訳
+
+
 src:ドキュメントに出てくるコードor試したコード
 
 ## Learning Go
