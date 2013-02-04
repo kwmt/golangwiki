@@ -229,3 +229,78 @@ functionName [Argument...]
 {{with $x := "output"}}{{$x | printf "%q"}}{{end}}
     上と同じだが、パイプラインを使用
 </pre>
+
+<h3 id="hdr-Functions">Functions</h3>
+<p>
+During execution functions are found in two function maps: first in the
+template, then in the global function map. By default, no functions are defined
+in the template but the Funcs method can be used to add them.
+
+実行関数が２つの関数マップで見つかっている間、このテンプレートの最初の関数はグローバル関数マップです。
+デフォルトでは、テンプレートでは関数は定義されていませんが、Funcsメソッドを追加することができます。
+
+</p>
+<p>
+事前に定義されたグローバル関数は以下のとおりに名前付けされています。
+</p>
+<pre>and
+    Returns the boolean AND of its arguments by returning the
+    first empty argument or the last argument, that is,
+    "and x y" behaves as "if x then y else x". All the
+    arguments are evaluated.
+    "and x y"は"if x then y else x"のように振舞います。
+call
+    Returns the result of calling the first argument, which
+    must be a function, with the remaining arguments as parameters.
+    最初の関数であるはずの引数をコールした結果を返します。
+    Thus 'call .X.Y 1 2' is, in Go notation, dot.X.Y(1, 2) where
+    Y is a func-valued field, map entry, or the like.
+    "call .X.Y 1 2"はGo記法では dot.X.Y(1, 2)と書き、
+    Yは関数フィールドかマップエントリーです。
+
+    The first argument must be the result of an evaluation
+    that yields a value of function type (as distinct from
+    a predefined function such as print). The function must
+    return either one or two result values, the second of which
+    is of type error. If the arguments don't match the function
+    or the returned error value is non-nil, execution stops.
+html
+    Returns the escaped HTML equivalent of the textual
+    representation of its arguments.
+    テキストで表された引数をエスケープしたHTMLを返します。
+index
+    Returns the result of indexing its first argument by the
+    following arguments. Thus 'index x 1 2 3' is, in Go syntax,
+    x[1][2][3]. Each indexed item must be a map, slice, or array.
+    一番目の引数の次の引数を添え字とした結果を消します。
+    "index x 1 2 3"はGoでは x[1][2][3]となります。
+    indexを使うアイテムは、マップかスライスか配列出なければなりません。
+js
+    Returns the escaped JavaScript equivalent of the textual
+    representation of its arguments.
+    テキストで表された引数をエスケープしたJavaScriptを返します。
+len
+    Returns the integer length of its argument.
+    引数の長さ（整数）を返します。
+not
+    Returns the boolean negation of its single argument.
+    一つの引数の否定の真偽値を返します。
+or
+    Returns the boolean OR of its arguments by returning the
+    first non-empty argument or the last argument, that is,
+    'or x y' behaves as 'if x then x else y'. All the
+    arguments are evaluated.
+    "or x y"は"if x then x else y"のように振舞います。
+print
+    An alias for fmt.Sprint
+    fmt.Sprintのエイリアス
+printf
+    An alias for fmt.Sprintf
+    fmt.Sprintfのエイリアス
+println
+    An alias for fmt.Sprintln
+    fmt.Sprintlnのエイリアス
+urlquery
+    Returns the escaped value of the textual representation of
+    its arguments in a form suitable for embedding in a URL query.
+</pre>
