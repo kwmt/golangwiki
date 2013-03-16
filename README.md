@@ -2,7 +2,7 @@
 golangwiki
 ==========
 
-http://golang.org/ を（むちゃくちゃな日本語ですが）翻訳
+http://golang.org/ を翻訳中
 
 doc:ドキュメント訳
 
@@ -12,7 +12,7 @@ src:ドキュメントに出てくるコードor試したコード
 ## Learning Go
 title | 原文 | 翻訳
 ------|-----|-----
-Effective Go | [原文](http://golang.org/doc/effective_go.html) | [翻訳](https://github.com/kwmt/golangwiki/blob/master/doc/Documents/GoArticles/LearningGo/EffectiveGo.md)  
+Effective Go | [原文](http://golang.org/doc/effective_go.html) | [翻訳](https://github.com/kwmt/golangwiki/blob/master/doc/Documents/GoArticles/LearningGo/EffectiveGo.md)
 
 
 ## Codewalks
@@ -23,4 +23,4 @@ Writing Web Applications | [原文](http://golang.org/doc/articles/wiki/) | [翻
 ## Language
 title | 原文 | 翻訳
 ------|-----|-----
-Go Slices: usage and internals | [原文](http://golang.org/doc/articles/slices_usage_and_internals.html) | [翻訳](https://github.com/kwmt/golangwiki/blob/master/doc/Documents/GoArticles/Language/GoSlices.md)  
+Go Slices: usage and internals | [原文](http://golang.org/doc/articles/slices_usage_and_internals.html) | [翻訳](https://github.com/kwmt/golangwiki/blob/master/doc/Documents/GoArticles/Language/GoSlices.md)
