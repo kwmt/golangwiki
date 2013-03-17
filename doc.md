@@ -36,7 +36,7 @@ libraries.
 
 <h2 id="learning">Learning Go</h2>
 
-<img class="gopher" src="/doc/gopher/doc.png"/>
+<img class="gopher" src="http://golang.org/doc/gopher/doc.png"/>
 
 <h3 id="go_tour"><a href="http://tour.golang.org/">A Tour of Go</a></h3>
 <p>
