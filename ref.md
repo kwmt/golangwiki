@@ -29,7 +29,7 @@ Goツールのドキュメントです。
 公式のGo言語仕様です。
 </p>
 
-<h3 id="appengine"><a href="https://developers.google.com/appengine/docs/go/">App Engine Go ランタイムドキュメント</a></h3>
+<h3 id="appengine"><a href="https://developers.google.com/appengine/docs/go">App Engine Go ランタイムドキュメント</a></h3>
 <p>
 <a href="https://developers.google.com/appengine/">Google App Engine</a>のGoランタイムのドキュメントです。
 </p>
@@ -44,7 +44,7 @@ Goツールのドキュメントです。
 <p>
 これらのパッケージはGoプロジェクトの一部でしたが、メインプロジェクトから外されました。
 Goコアより緩い<a href="/doc/go1compat.md">互換性</a>で開発されています。
-これらは、"<code><a href="/cmd/go/#Download_and_install_packages_and_dependencies">go get</a></code>"でインストールできます。
+これらは、"<code><a href="/cmd/go.md#Download_and_install_packages_and_dependencies">go get</a></code>"でインストールできます。
 </p>
 
 <ul>
@@ -66,7 +66,7 @@ Goコアより緩い<a href="/doc/go1compat.md">互換性</a>で開発されて�
 </ul>
 
 <p>
-See the <a href="/doc/#articles">documentation page</a> for more articles.
+See the <a href="/doc.md#articles">documentation page</a> for more articles.
 </p>
 
 </div>
