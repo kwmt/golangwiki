@@ -54,7 +54,7 @@ How to use the <a href="/cmd/go/">go command</a> to fetch, build, and install
 packages, commands, and run tests.
 </p>
 
-<h3 id="effective_go">Effective Go | <a href="http://golang.org/doc/effective_go.html">[原文]</a> | <a href="https://github.com/kwmt/golangwiki/blob/master/doc/Documents/GoArticles/LearningGo/EffectiveGo.md">[翻訳]</a>    </h3>
+<h3 id="effective_go">Effective Go | <a href="http://golang.org/doc/effective_go.html">[原文]</a> | <a href="https://github.com/kwmt/golangwiki/blob/master/doc/effective_go.md">[翻訳]</a>    </h3>
 <p>
 A document that gives tips for writing clear, idiomatic Go code.
 A must read for any new Go programmer. It augments the tour and
@@ -105,7 +105,7 @@ Guided tours of Go programs.
 <li><a href="/doc/codewalk/functions">First-Class Functions in Go</a></li>
 <li><a href="/doc/codewalk/markov">Generating arbitrary text: a Markov chain algorithm</a></li>
 <li><a href="/doc/codewalk/sharemem">Share Memory by Communicating</a></li>
-<li>Writing Web Applications | <a href="http://golang.org/doc/articles/wiki/">[原文]</a> | <a href="https://github.com/kwmt/golangwiki/blob/master/doc/Documents/GoArticles/CodeWalks/WritingWebApplications.md">[翻訳]</a> - シンプルなウェブアプリケーションを構築する</li>
+<li>Writing Web Applications | <a href="http://golang.org/doc/articles/wiki/">[原文]</a> | <a href="https://github.com/kwmt/golangwiki/blob/master/doc/articles/wiki.md">[翻訳]</a> - シンプルなウェブアプリケーションを構築する</li>
 </ul>
 
 <h4>Language</h4>
@@ -114,7 +114,7 @@ Guided tours of Go programs.
 <li><a href="/doc/articles/gos_declaration_syntax.html">Go's Declaration Syntax</a></li>
 <li><a href="/doc/articles/defer_panic_recover.html">Defer, Panic, and Recover</a></li>
 <li><a href="/doc/articles/concurrency_patterns.html">Go Concurrency Patterns: Timing out, moving on</a></li>
-<li>Go Slices: usage and internals | <a href="http://golang.org/doc/articles/slices_usage_and_internals.html">[原文]</a> | <a href="https://github.com/kwmt/golangwiki/blob/master/doc/Documents/GoArticles/Language/GoSlices.md">[翻訳]</a>
+<li>Go Slices: usage and internals | <a href="http://golang.org/doc/articles/slices_usage_and_internals.html">[原文]</a> | <a href="https://github.com/kwmt/golangwiki/blob/master/doc/articles/slices_usage_and_internals.md">[翻訳]</a>
 <li><a href="http://blog.golang.org/2011/05/gif-decoder-exercise-in-go-interfaces.html">A GIF decoder: an exercise in Go interfaces</a></li>
 <li><a href="/doc/articles/error_handling.html">Error Handling and Go</a></li>
 </ul>
