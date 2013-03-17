@@ -60,7 +60,7 @@ Goコアより緩い<a href="/doc/go1compat.md">互換性</a>で開発されて�
 <li><a href="/doc/articles/c_go_cgo.html">C? Go? Cgo!</a> - <a href="/cmd/cgo.md">cgo</a>を使って、Cのコードとリンクする</li>
 <li><a href="/doc/gdb.md">GDBを使ってGoコードをデバッグする</a></li>
 <li><a href="/doc/articles/defer_panic_recover.html">Defer, Panic, Recover</a></li>
-<li><a href="/doc/articles/slices_usage_and_internals.html">Goスライス: 使い方と内部構造</a></li>
+Go スライス: 使い方と内部構造 | <a href="http://golang.org/doc/articles/slices_usage_and_internals.html">[原文]</a> | <a href="https://github.com/kwmt/golangwiki/blob/master/doc/articles/slices_usage_and_internals.md">[翻訳]</a></li>
 <li><a href="/doc/articles/godoc_documenting_go_code.html">Godoc: Goコードをドキュメント化する</a> - <a href="/cmd/godoc.md">godoc</a>で良いドキュメントを書く.</li>
 <li><a href="http://blog.golang.org/2011/06/profiling-go-programs.html">Goプログラムをプロファイルする</a></li>
 </ul>

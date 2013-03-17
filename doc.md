@@ -114,7 +114,7 @@ Guided tours of Go programs.
 <li><a href="/doc/articles/gos_declaration_syntax.html">Go's Declaration Syntax</a></li>
 <li><a href="/doc/articles/defer_panic_recover.html">Defer, Panic, and Recover</a></li>
 <li><a href="/doc/articles/concurrency_patterns.html">Go Concurrency Patterns: Timing out, moving on</a></li>
-<li>Go Slices: usage and internals | <a href="http://golang.org/doc/articles/slices_usage_and_internals.html">[原文]</a> | <a href="https://github.com/kwmt/golangwiki/blob/master/doc/articles/slices_usage_and_internals.md">[翻訳]</a>
+<li>Go スライス: 使い方と内部構造 | <a href="http://golang.org/doc/articles/slices_usage_and_internals.html">[原文]</a> | <a href="https://github.com/kwmt/golangwiki/blob/master/doc/articles/slices_usage_and_internals.md">[翻訳]</a></li>
 <li><a href="http://blog.golang.org/2011/05/gif-decoder-exercise-in-go-interfaces.html">A GIF decoder: an exercise in Go interfaces</a></li>
 <li><a href="/doc/articles/error_handling.html">Error Handling and Go</a></li>
 </ul>
