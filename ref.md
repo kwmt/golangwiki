@@ -14,7 +14,7 @@
 
 <div>
 
-<h3 id="pkg"><a href="/pkg/pkg.md">パッケージドキュメント</a></h3>
+<h3 id="pkg"><a href="/pkg.md">パッケージドキュメント</a></h3>
 <p>
 Goの標準ライブラリのドキュメントです。
 </p>
