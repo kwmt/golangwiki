@@ -309,6 +309,7 @@ urlquery
 <div id="example_Template_glob">
 <span class="text"><a href="../../../src/pkg/text/template/exampletemplate_glob.go">Example (Glob)</a></span>
 <p> ディレクトリにあるテンプレート郡をロードするデモです。</p>
+</div>
 
 
 <h3 id="ParseFiles">func <a href="http://golang.org/src/pkg/text/template/helper.go?s=970:1025#L22">ParseFiles</a></h3>
