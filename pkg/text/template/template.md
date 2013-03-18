@@ -306,7 +306,7 @@ urlquery
 </pre>
 
 
-<span id="example_Template_glob" class="text"><a href="../../../src/pkg/text/template/exampletemplate_glob.go">Example (Glob)</a></span>
+<span class="text"><a id="example_Template_glob" href="../../../src/pkg/text/template/exampletemplate_glob.go">Example (Glob)</a></span>
 <p> ディレクトリにあるテンプレート郡をロードするデモです。</p>
 
 
