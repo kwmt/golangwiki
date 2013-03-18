@@ -1057,7 +1057,7 @@
 
 
         <tr>
-        <td class="name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="pkg/text/template/">template</a></td>
+        <td class="name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="pkg/text/template/template.md">template</a></td>
         <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td style="width: auto">Package template implements data-driven templates for generating textual output.</td>
         </tr>
