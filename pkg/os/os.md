@@ -12,7 +12,7 @@ Exitは、与えられたステータスコードで、現在のプログラム�
 <p>
 Getenvは指定したキーの環境変数の値を取得します。
 変数が存在しない場合、空の値を返します。
-</p
+</p>
 <h2 id="TempDir">func <a href="http://golang.org/src/pkg/os/file_unix.go?s=8657:8678#L287">TempDir</a></h2>
 <pre>func TempDir() string</pre>
 <p>
