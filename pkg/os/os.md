@@ -7,6 +7,18 @@ Exitは、与えられたステータスコードで、現在のプログラム�
 慣習的にコード0は成功を表し、0でないコードはエラーを表します。
 </p>
 
+<h2 id="Getenv">func <a href="http://golang.org/src/pkg/os/env.go?s=2363:2393#L69">Getenv</a></h2>
+<pre>func Getenv(key string) string</pre>
+<p>
+Getenvは指定したキーの環境変数の値を取得します。
+変数が存在しない場合、空の値を返します。
+</p
+<h2 id="TempDir">func <a href="http://golang.org/src/pkg/os/file_unix.go?s=8657:8678#L287">TempDir</a></h2>
+<pre>func TempDir() string</pre>
+<p>
+TempDirは、一時ファイル用に使用するデフォルトのディレクトリを返します。
+</p>
+
 <h2 id="OpenFile">func OpenFile</h2>
 <pre class="go">
 func OpenFile(name string, flag int, perm FileMode) (file *File, err error)
