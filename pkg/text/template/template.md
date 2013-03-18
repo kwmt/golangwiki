@@ -304,3 +304,29 @@ urlquery
     Returns the escaped value of the textual representation of
     its arguments in a form suitable for embedding in a URL query.
 </pre>
+
+
+<div id="example_Template_glob">
+<span class="text"><a href="src/pkg/text/template/exampletemplate_glob.go">Example (Glob)</a></span>
+<p> ディレクトリにあるテンプレート郡をロードするデモです。</p>
+
+
+<h3 id="ParseFiles">func <a href="http://golang.org/src/pkg/text/template/helper.go?s=970:1025#L22">ParseFiles</a></h3>
+<pre class="go">func ParseFiles(filenames ...string) (*Template, error)</pre>
+<p>
+ParseFilesは新しいテンプレートを作成し、指定した名前のファイルからテンプレート定義を解析します。
+戻り値のtemplateは、最初のファイルの(ベース)名前と(パースした)内容を格納します。
+それらは、少なくとも1つファイルを指定する必要があります。
+エラーが発生したら、解析を止め、nilの*Templateを返します。
+</p>
+
+<h3 id="ParsrGlob">func <a href="http://golang.org/src/pkg/text/template/helper.go?s=2861:2910#L75">ParseGlob</a></h3>
+<pre class="go">
+func ParseGlob(patter string) (*Template, error)
+</pre>
+<p>
+ParseGlobはパターンで識別されたファイルから、新しいTemplateを作成し、テンプレート定義を解析します。
+パターンは、少なくとも１つのファイルとマッチングしている必要があります。
+戻り値のtemplateは、パターンにマッチした最初のファイルの(ベース)名前と(パースした)内容を格納します。
+ParseGlobは、パターンにマッチしたファイルリストをもったParseFilesと同じです。
+</p>
