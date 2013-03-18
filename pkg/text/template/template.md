@@ -310,6 +310,23 @@ urlquery
 <p> ディレクトリにあるテンプレート郡をロードするデモです。</p>
 
 
+<h3 id="Must">func <a href="../../../src/pkg/text/template/helper.go?s=576:619#L11">Must</a></h3>
+<pre>func Must(t *Template, err error) *Template</pre>
+<p>
+Mustは、 (*Template, error)を返す関数をラップし、errorがnilだったらpanicするヘルパー関数です。
+下記のように、変数を初期化するのに使用します。
+</p>
+<pre>
+var t = template.Must(template.New(&#34;name&#34;).Parse(&#34;text&#34;))
+</pre>
+
+<h3 id="New">func <a href="../../../src/pkg/text/template/template.go?s=892:923#L25">New</a></h3>
+<pre>func New(name string) *Template</pre>
+<p>
+New allocates a new template with the given name.
+Newは、与えられた名前で、新しく1つのテンプレートを割り当てます
+</p>
+
 <h3 id="ParseFiles">func <a href="http://golang.org/src/pkg/text/template/helper.go?s=970:1025#L22">ParseFiles</a></h3>
 <pre class="go">func ParseFiles(filenames ...string) (*Template, error)</pre>
 <p>
