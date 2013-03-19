@@ -7,24 +7,22 @@ HTMLを生成するには、html/templateパッケージを参照ください。
 それは、このパッケージと同じインターフェースを持ちますが、ある攻撃に対してセキュアなHTMLを自動的に生成します。
 </p>
 <p>
-templateはデータ構造に適用することで実行されます。
-このtemplateの記法は、実行をコントールし値を表示するには、データ構造の要素（一般には構造体のフィールドかマップのキー）を参照します。
-
-Execution of the template walks the structure and sets the cursor, represented by a period '.' and called "dot",
-to the value at the current location in the structure as execution proceeds.
-templateの実行で、その構造を解析しピリオドやドットとよばれる'.'で表されるカーソルをセットし、実行の手続きとして構造にある現在の場所へ
+テンプレートはそれらをデータ構造へ適用することで実行されます。
+このtemplateの記法は、実行を制御し表示される値を得るには、データ構造の要素（一般には構造体のフィールドかマップのキー）を参照します。
+テンプレートの実行は、構造を解析し、カーソルをセットします。
+カーソルは、ピリオドやドットとよばれる'.'によって表現されます。
 </p>
 <p>
-templateに対する入力テキストは、どんなフォーマットにでもあうUTF-8エンコードされたテキストです。
+テンプレートの入力テキストは、どんなフォーマットにでもあうUTF-8エンコードされたテキストです。
 データを評価したり、構造を制御したりする"アクション(Actions)"は、"{{"と"}}"で区切られます。
 アクション外のすべてのテキストは、出力は変更されず、コピーされます。
-アクションなコメントできますが、改行をまたぐことができません。
+アクションはコメントできますが、改行をまたぐことができません。
 </p>
 <p>
-一度構造化されたテンプレートは並列に安全に実行されるかもしれません。
+一度構造化されたテンプレートは並列に安全に実行されるはずです。
 </p>
 <p>
-簡単な例ですが、"17 items are made of wool"を表示します。
+ここで"17 items are made of wool"を表示させる簡単な例を見てみましょう。
 </p>
 <pre>
 type Inventory struct {
@@ -66,9 +64,8 @@ if err != nil { panic(err) }
     パイプラインの値は、配列・スライス・マップのいずれかでなければなりません。
     もしその値の長さがゼロなら、何も出力しません。
     ゼロでなければ、ドットは配列・スライス・マップの連続した要素をセットし、T1が実行されます。
-    If the value is a map and the
-    keys are of basic type with a defined order ("comparable"), the
-    elements will be visited in sorted key order.
+    もしその値がマップで、keys are of basic type with a defined order ("comparable") ならば、
+    その要素はソートされたキーの順番でアクセスされるでしょう。
 
 {{range パイプライン}} T1 {{else}} T0 {{end}}
     パイプラインの値は、配列・スライス・マップのいずれかでなければなりません。
@@ -94,112 +91,85 @@ if err != nil { panic(err) }
 引数は、以下のいずれかで表現されるシンプルな値です。
 </p>
 <pre>
-- A boolean, string, character, integer, floating-point, imaginary
-  or complex constant in Go syntax. These behave like Go's untyped
-  constants, although raw strings may not span newlines.
-  Goの文法での真偽値、文字列、文字、整数、浮動小数点、虚数、複素数。
-  raw文字列は改行をまたがることはできませんが、
-  これらは、Goの型を持たない定数のように動作します。
-- 文字は '.' (ピリオド):
+- Goの文法での真偽値、文字列、文字、整数、浮動小数点、虚数、複素数。
+  これらは、Goの型無し定数のように動作します。生の文字列は改行をまたがることはできません。
+  
+- 文字 '.' (ピリオド):
     .
-  The result is the value of dot.
   この結果はドットの値です。
 - 変数名は
     $piOver2
   あるいは
     $
-  のような$記号を前に置いた英数字の文字列です。
-  The result is the value of the variable.
-  Variables are described below.
-- The name of a field of the data, which must be a struct, preceded
-  by a period, such as
-  構造体であるはずのデータのフィールド名は、
+  のような$記号を前に置いた英数字の文字列（空文字も可能）です。
+  結果はその変数の値です。
+  変数については以下で説明します。
+- 構造体データのフィールド名は、
     .Field
   のように、ドットが前に置かれます。
-  The result is the value of the field. Field invocations may be
-  chained:
+  結果はフィールドの値です。
   フィールドをつなげることで、フィールドのフィールドをよびだせます:
     .Field1.Field2
-  Fields can also be evaluated on variables, including chaining:
-  変数からフィールドを評価することもできます:
+  フィールドは変数に対して評価することもできます:
     $x.Field1.Field2
-- The name of a key of the data, which must be a map, preceded
-  by a period, such as
-    .Key
-  マップデータのキーは
+- マップデータのキー名は
     .Key
   のようにピリオドを前に置きます。
-  The result is the map element value indexed by the key.
   結果は、そのキーに対応した要素の値となります。
-  Key invocations may be chained and combined with fields to any
-  depth:
-    .Field1.Key1.Field2.Key2
-  このように連結することもできます:
+  キーの呼び出しはこのように連結することもできます:
     .Field1.Key1.Field2.Key2
   Although the key must be an alphanumeric identifier, unlike with
   field names they do not need to start with an upper case letter.
-  キーは一意でなければなりませんが、フィールドとは違って大文字から始める必要はありません。
-  Keys can also be evaluated on variables, including chaining:
+  キーは英数字で一意でなければなりませんが、フィールドとは違って大文字から始める必要はありません。
+  キーは次のように変数に対して評価することもできます。
     $x.key1.key2
 - The name of a niladic method of the data, preceded by a period,
   such as
     .Method
-  引数を持たないメソッド
+  データの引数を持たないメソッド名は
     .Method
+  のようにピリオドを前に置きます。
   The result is the value of invoking the method with dot as the
   receiver, dot.Method().
-  レシーバーのようにドットを使ってメソッドを呼び出した結果です。
-   Such a method must have one return value (of
-  any type) or two return values, the second of which is an error.
+  結果は、レシーバーのように(dot.Method())ドットを使ってメソッドを呼び出した値です。
   そのようなメソッドは、1つの戻り値あるいは2つの戻り値(2つ目はerror)をもつ必要があります。
-  If it has two and the returned error is non-nil, execution terminates
-  and an error is returned to the caller as the value of Execute.
   もし2つの戻り値を持って、errorがnilでなかったら、
   実行は中止し、実行の値として呼び出し元へエラーが返ってきます。
-  Method invocations may be chained and combined with fields and keys
-  to any depth:
-  メソッドはフィールドとキーを組み合わせて連鎖して呼び出すことができます。
+  メソッド呼び出しはフィールドとキーを組み合わせて連鎖して呼び出すことができます。
     .Field1.Key1.Method1.Field2.Key2.Method2
-  Methods can also be evaluated on variables, including chaining:
+  メソッドは次のように変数に対して評価することもできます。
     $x.Method1.Field
-- The name of a niladic function, such as
+- 次のように引数をもたない関数名です。
     fun
-  funのように引数をもたない関数です。
-  The result is the value of invoking the function, fun().
   結果は関数fun()を呼び出した値です。
-  The return
-  types and values behave as in methods.
   返ってくる型と値は、メソッドのように振る舞います。
-  Functions and function
-  names are described below.
   関数と関数名については以下に記述します。
 </pre>
 <p>
     引数はどんな型も評価するかもしれません。
-    もし引数がポインタなら、実装は自動的に必要なときに元になる肩を指します。
+    もし引数がポインタなら、実装は自動的に必要なときに元になる型を指します。
     If an evaluation yields a function value, such as a function-valued field of a struct,
     the function is not invoked automatically,
+    その関数は自動的に呼ばれませんが、
     but it can be used as a truth value for an if action and the like.
-    To invoke it, use the call function, defined below.
+    それを呼び出すには、以下で定義されるcall関数を使用します。
 </p>
 <p>
-A pipeline is a possibly chained sequence of "commands".
-A command is a simple value (argument) or a function or method call, possibly with multiple arguments:
+パイプラインは、コマンドを連結することが可能です。
+コマンドは、簡単な値や関数やメソッド呼び出し、複数の引数をもつことが可能です。
 </p>
 <pre>
 Argument
-    The result is the value of evaluating the argument.
+    結果は、この引数の評価の値になります。
 .Method [Argument...]
-    The method can be alone or the last element of a chain but,
-    unlike methods in the middle of a chain, it can take arguments.
-    The result is the value of calling the method with the
-    arguments:
+    このメソッドは、単独でもいいし連結の最後の要素で構いませんが、
+    連消した途中のメソッドはダメで、複数の引数を取ることができます。
+    結果は、その引数を使ってコールしたメソッドの値です:
         dot.Method(Argument1, etc.)
 functionName [Argument...]
-    The result is the value of calling the function associated
-    with the name:
+    結果は、名前に関連した関数をコールした値です:
         function(Argument1, etc.)
-    Functions and function names are described below.
+    関数と関数名は以下で説明します。
 </pre>
 
 <h2 id="Examples">Examples</h2>
@@ -235,27 +205,20 @@ functionName [Argument...]
 During execution functions are found in two function maps: first in the
 template, then in the global function map. By default, no functions are defined
 in the template but the Funcs method can be used to add them.
-
-実行関数が２つの関数マップで見つかっている間、このテンプレートの最初の関数はグローバル関数マップです。
-デフォルトでは、テンプレートでは関数は定義されていませんが、Funcsメソッドを追加することができます。
-
 </p>
 <p>
 事前に定義されたグローバル関数は以下のとおりに名前付けされています。
 </p>
-<pre>and
+<pre>
+and
     Returns the boolean AND of its arguments by returning the
     first empty argument or the last argument, that is,
     "and x y" behaves as "if x then y else x". All the
     arguments are evaluated.
     "and x y"は"if x then y else x"のように振舞います。
 call
-    Returns the result of calling the first argument, which
-    must be a function, with the remaining arguments as parameters.
-    最初の関数であるはずの引数をコールした結果を返します。
-    Thus 'call .X.Y 1 2' is, in Go notation, dot.X.Y(1, 2) where
-    Y is a func-valued field, map entry, or the like.
-    "call .X.Y 1 2"はGo記法では dot.X.Y(1, 2)と書き、
+    最初の引数をコールした結果を返します。この時引数は関数です。残り引数はパラメータとして使用します。
+    Goでは"call .X.Y 1 2"はdot.X.Y(1, 2)と書き、
     Yは関数フィールドかマップエントリーです。
 
     The first argument must be the result of an evaluation
@@ -265,46 +228,75 @@ call
     is of type error. If the arguments don't match the function
     or the returned error value is non-nil, execution stops.
 html
-    Returns the escaped HTML equivalent of the textual
-    representation of its arguments.
     テキストで表された引数をエスケープしたHTMLを返します。
 index
-    Returns the result of indexing its first argument by the
-    following arguments. Thus 'index x 1 2 3' is, in Go syntax,
-    x[1][2][3]. Each indexed item must be a map, slice, or array.
     一番目の引数の次の引数を添え字とした結果を消します。
     "index x 1 2 3"はGoでは x[1][2][3]となります。
     indexを使うアイテムは、マップかスライスか配列出なければなりません。
 js
-    Returns the escaped JavaScript equivalent of the textual
-    representation of its arguments.
     テキストで表された引数をエスケープしたJavaScriptを返します。
 len
-    Returns the integer length of its argument.
     引数の長さ（整数）を返します。
 not
-    Returns the boolean negation of its single argument.
     一つの引数の否定の真偽値を返します。
 or
     Returns the boolean OR of its arguments by returning the
-    first non-empty argument or the last argument, that is,
-    'or x y' behaves as 'if x then x else y'. All the
-    arguments are evaluated.
+    first non-empty argument or the last argument, 
     "or x y"は"if x then x else y"のように振舞います。
+    All the arguments are evaluated.
 print
-    An alias for fmt.Sprint
     fmt.Sprintのエイリアス
 printf
-    An alias for fmt.Sprintf
     fmt.Sprintfのエイリアス
 println
-    An alias for fmt.Sprintln
     fmt.Sprintlnのエイリアス
 urlquery
     Returns the escaped value of the textual representation of
     its arguments in a form suitable for embedding in a URL query.
 </pre>
 
+<h3 id="hdr-Pipelines">Pipelines</h3>
+<p>
+パイプラインは、パイプラインキャラクタ'|'があるコマンドの列を分けることで"連結"されます。
+連結されたパイプラインでは、各コマンドの結果は、次のコマンドの引数として渡されます。
+パイプラインでの最後のコマンドの出力はそのパイプラインの値です。  
+</p>
+<p>
+コマンドの出力は、1つの値か2つの値のどちらかになり、2番めの出力は、型errorを持ちます。
+もし2番めの値が存在し、nilでなかった場合は実行が終了し、エラーはExecuteの呼び出し元に返されます。
+</p>
+
+<h3 id="hdr-Variables">Variables</h3>
+<p>
+アクション内のパイプラインでは、結果を取得する変数を初期化することができます。
+初期化は次の文法となります。
+</p>
+<pre>
+$variable := pipeline
+</pre>
+<p>
+ただし、$variableは変数の名前です。変数を宣言するアクションは何も出力しません。
+</p>
+<p>
+"range"アクションで変数を初期化する場合、変数は繰り返しの連続した要素にセットされます。
+また、"range"はカンマで区切って2つの変数宣言します:
+</p>
+<pre>
+range $index, $element := pipeline
+</pre>
+<p>
+この場合、$indexと$elementは、それぞれ、配列/スライスのインデックスまたはマップのキーと要素の
+連続した値がセットされています。
+もし1つの変数だけなら、要素が割り当てられます。これは、Goのrangeとは反対になります。
+</p>
+<p>
+変数のスコープは、制御構造("if","with",あるいは"range")で宣言されてから"end"アクションまで、または、もしこのような制御構造がない場合はテンプレートの終わりまで有効です。
+テンプレートの呼び出しでは、その呼び出しのポイントから変数を受け取りません。
+</p>
+<p>
+When execution begins, $ is set to the data argument passed to Execute, that is,
+to the starting value of dot.
+</p>
 
 <span class="text"><a id="example_Template_glob" href="../../../src/pkg/text/template/exampletemplate_glob.go">Example (Glob)</a></span>
 <p> ディレクトリにあるテンプレート郡をロードするデモです。</p>
