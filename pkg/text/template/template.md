@@ -323,7 +323,6 @@ var t = template.Must(template.New(&#34;name&#34;).Parse(&#34;text&#34;))
 <h3 id="New">func <a href="../../../src/pkg/text/template/template.go?s=892:923#L25">New</a></h3>
 <pre>func New(name string) *Template</pre>
 <p>
-New allocates a new template with the given name.
 Newは、与えられた名前で、新しく1つのテンプレートを割り当てます
 </p>
 
