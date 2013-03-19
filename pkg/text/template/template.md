@@ -172,6 +172,50 @@ functionName [Argument...]
     関数と関数名は以下で説明します。
 </pre>
 
+<h3 id="hdr-Pipelines">Pipelines</h3>
+<p>
+パイプラインは、パイプラインキャラクタ'|'があるコマンドの列を分けることで"連結"されます。
+連結されたパイプラインでは、各コマンドの結果は、次のコマンドの引数として渡されます。
+パイプラインでの最後のコマンドの出力はそのパイプラインの値です。  
+</p>
+<p>
+コマンドの出力は、1つの値か2つの値のどちらかになり、2番めの出力は、型errorを持ちます。
+もし2番めの値が存在し、nilでなかった場合は実行が終了し、エラーはExecuteの呼び出し元に返されます。
+</p>
+
+<h3 id="hdr-Variables">Variables</h3>
+<p>
+アクション内のパイプラインでは、結果を取得する変数を初期化することができます。
+初期化は次の文法となります。
+</p>
+<pre>
+$variable := pipeline
+</pre>
+<p>
+ただし、$variableは変数の名前です。変数を宣言するアクションは何も出力しません。
+</p>
+<p>
+"range"アクションで変数を初期化する場合、変数は繰り返しの連続した要素にセットされます。
+また、"range"はカンマで区切って2つの変数宣言します:
+</p>
+<pre>
+range $index, $element := pipeline
+</pre>
+<p>
+この場合、$indexと$elementは、それぞれ、配列/スライスのインデックスまたはマップのキーと要素の
+連続した値がセットされています。
+もし1つの変数だけなら、要素が割り当てられます。これは、Goのrangeとは反対になります。
+</p>
+<p>
+変数のスコープは、制御構造("if","with",あるいは"range")で宣言されてから"end"アクションまで、または、もしこのような制御構造がない場合はテンプレートの終わりまで有効です。
+テンプレートの呼び出しでは、その呼び出しのポイントから変数を受け取りません。
+</p>
+<p>
+When execution begins, $ is set to the data argument passed to Execute, that is,
+to the starting value of dot.
+</p>
+
+
 <h2 id="Examples">Examples</h2>
 <p>
     ここでは、1行テンプレートのいくつかの例を見てみます。パイプラインと変数のデモです。
@@ -254,49 +298,6 @@ urlquery
     Returns the escaped value of the textual representation of
     its arguments in a form suitable for embedding in a URL query.
 </pre>
-
-<h3 id="hdr-Pipelines">Pipelines</h3>
-<p>
-パイプラインは、パイプラインキャラクタ'|'があるコマンドの列を分けることで"連結"されます。
-連結されたパイプラインでは、各コマンドの結果は、次のコマンドの引数として渡されます。
-パイプラインでの最後のコマンドの出力はそのパイプラインの値です。  
-</p>
-<p>
-コマンドの出力は、1つの値か2つの値のどちらかになり、2番めの出力は、型errorを持ちます。
-もし2番めの値が存在し、nilでなかった場合は実行が終了し、エラーはExecuteの呼び出し元に返されます。
-</p>
-
-<h3 id="hdr-Variables">Variables</h3>
-<p>
-アクション内のパイプラインでは、結果を取得する変数を初期化することができます。
-初期化は次の文法となります。
-</p>
-<pre>
-$variable := pipeline
-</pre>
-<p>
-ただし、$variableは変数の名前です。変数を宣言するアクションは何も出力しません。
-</p>
-<p>
-"range"アクションで変数を初期化する場合、変数は繰り返しの連続した要素にセットされます。
-また、"range"はカンマで区切って2つの変数宣言します:
-</p>
-<pre>
-range $index, $element := pipeline
-</pre>
-<p>
-この場合、$indexと$elementは、それぞれ、配列/スライスのインデックスまたはマップのキーと要素の
-連続した値がセットされています。
-もし1つの変数だけなら、要素が割り当てられます。これは、Goのrangeとは反対になります。
-</p>
-<p>
-変数のスコープは、制御構造("if","with",あるいは"range")で宣言されてから"end"アクションまで、または、もしこのような制御構造がない場合はテンプレートの終わりまで有効です。
-テンプレートの呼び出しでは、その呼び出しのポイントから変数を受け取りません。
-</p>
-<p>
-When execution begins, $ is set to the data argument passed to Execute, that is,
-to the starting value of dot.
-</p>
 
 <span class="text"><a id="example_Template_glob" href="../../../src/pkg/text/template/exampletemplate_glob.go">Example (Glob)</a></span>
 <p> ディレクトリにあるテンプレート郡をロードするデモです。</p>
