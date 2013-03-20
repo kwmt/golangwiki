@@ -299,7 +299,7 @@ urlquery
     its arguments in a form suitable for embedding in a URL query.
 </pre>
 
-<span class="text"><a id="example_Template_glob" href="../../../src/pkg/text/template/exampletemplate_glob.go">Example</a></span>
+<span class="text"><a id="example_Template_glob" href="../../../src/pkg/text/template/exampletemplate.go">Example</a></span>
 
 <span class="text"><a id="example_Template_func" href="../../../src/pkg/text/template/exampletemplate_func.go">Example (Func)</a></span>
 <p> 
