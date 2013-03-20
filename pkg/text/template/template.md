@@ -299,6 +299,14 @@ urlquery
     its arguments in a form suitable for embedding in a URL query.
 </pre>
 
+<h2 id="FuncMap">type <a href="http://golang.org/src/pkg/text/template/funcs.go?s=612:647#L13">FuncMap</a></h2>
+<pre>type FuncMap map[string]interface{}</pre>
+<p>
+FuncMapは型mapで、名前から関数へのマッピングを定義します。
+関数には、1つの値を返すか、2つの値を返す必要があります。2つを返す方の2つ目は型errorとなります。
+もし2つ目のerrorが実行中nilでなかったら、実行を中断し、Executeはerrorを返します。
+</p>
+
 <h2 id="Template">type <a href="http://golang.org/src/pkg/text/template/template.go?s=740:837#L16">Template</a></h2>
 <pre>
 type Template struct {
