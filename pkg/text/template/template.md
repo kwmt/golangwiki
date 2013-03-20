@@ -378,3 +378,11 @@ ParseGlobはパターンで識別されたファイルから、新しいTemplate
 戻り値のtemplateは、パターンにマッチした最初のファイルの(ベース)名前と(パースした)内容を格納します。
 ParseGlobは、パターンにマッチしたファイルリストをもったParseFilesと同じです。
 </p>
+
+
+<h3 id="Template.ExecuteTemplate">func (*Template) <a href="http://golang.org/src/pkg/text/template/exec.go?s=2276:2361#L85">ExecuteTemplate</a></h3>
+        <pre>func (t *Template) ExecuteTemplate(wr io.Writer, name string, data interface{}) error</pre>
+        <p>
+  ExecuteTemplate applies the template associated with t that has the given name
+  to the specified data object and writes the output to wr.
+</p>
