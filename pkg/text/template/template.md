@@ -299,8 +299,27 @@ urlquery
     its arguments in a form suitable for embedding in a URL query.
 </pre>
 
+<span class="text"><a id="example_Template_glob" href="../../../src/pkg/text/template/exampletemplate_glob.go">Example</a></span>
+
+<span class="text"><a id="example_Template_func" href="../../../src/pkg/text/template/exampletemplate_func.go">Example (Func)</a></span>
+<p> 
+この例は、テンプレートテキストを処理するための、カスタム関数のデモです。
+strings.Title関数を組み込みます。そしてそれをMake Title Text Look Goodのように出力するために使用します。
+</p>
+
 <span class="text"><a id="example_Template_glob" href="../../../src/pkg/text/template/exampletemplate_glob.go">Example (Glob)</a></span>
 <p> ディレクトリにあるテンプレート郡をロードするデモです。</p>
+
+<span class="text"><a id="example_Template_helpers" href="../../../src/pkg/text/template/exampletemplate_helpers.go">Example (Helpers)</a></span>
+<p> 
+この例は、いくつかのテンプレートを共有し、それらを違う文脈・コンテキスト使う方法の1つをデモします。
+変わった形では、存在するテンプレート郡に渡すことで私たちは複数のドライバテンプレートを追加します。
+</p>
+
+<span class="text"><a id="example_Template_share" href="../../../src/pkg/text/template/exampletemplate_share.go">Example (Share)</a></span>
+<p>
+この例は、ヘルパーテンプレートを使ってドライバテンプレートグループの使い方をデモします。
+</p>
 
 
 <h3 id="Must">func <a href="../../../src/pkg/text/template/helper.go?s=576:619#L11">Must</a></h3>
