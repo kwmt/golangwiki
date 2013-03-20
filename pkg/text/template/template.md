@@ -299,6 +299,19 @@ urlquery
     its arguments in a form suitable for embedding in a URL query.
 </pre>
 
+<h2 id="Template">type <a href="http://golang.org/src/pkg/text/template/template.go?s=740:837#L16">Template</a></h2>
+<pre>
+type Template struct {
+*parse.Tree
+<span class="comment">// フィルタあるいはエクスポートされないフィールドを含んでいます。</span>
+}
+</pre>
+<p>
+Templateはパースされたテンプレートを表します。*parse.Treeフィールドは、
+html/templateで使うためだけにエクスポートされています。
+他の全てのクライアントでエクスポートされないように取り扱われます。
+</p>
+
 <span class="text"><a id="example_Template_glob" href="../../../src/pkg/text/template/exampletemplate.go">Example</a></span>
 
 <span class="text"><a id="example_Template_func" href="../../../src/pkg/text/template/exampletemplate_func.go">Example (Func)</a></span>
