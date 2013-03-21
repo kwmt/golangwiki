@@ -41,9 +41,9 @@ func main() {
 	// まず、テンポラリディレクトリを作成し、テンプレート定義ファイルを準備します。
 	// 普通は、テンプレートファイルをあるディレクトリに作って置いていると思いますが、ここでは作成します。
 	dir := createTestDir([]templateFile{
-		// T1.tmpl defines a template, T1 that invokes T2.
+		// T1.tmplはT2を呼び出すT1のテンプレートを定義します。
 		{"T1.tmpl", `{{define "T1"}}T1 invokes T2: ({{template "T2"}}){{end}}`},
-		// T2.tmpl defines a template T2.
+		// T2.tmplはテンプレートT2を定義します。
 		{"T2.tmpl", `{{define "T2"}}This is T2{{end}}`},
 	})
 	// テストが終わったら削除します。
