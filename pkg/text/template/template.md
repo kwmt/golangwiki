@@ -342,7 +342,6 @@ strings.Title関数を組み込みます。そしてそれをMake Title Text Loo
 この例は、ヘルパーテンプレートを使ってドライバテンプレートグループの使い方をデモします。
 </p>
 
-
 <h3 id="Must">func <a href="../../../src/pkg/text/template/helper.go?s=576:619#L11">Must</a></h3>
 <pre>func Must(t *Template, err error) *Template</pre>
 <p>
@@ -379,10 +378,128 @@ ParseGlobはパターンで識別されたファイルから、新しいTemplate
 ParseGlobは、パターンにマッチしたファイルリストをもったParseFilesと同じです。
 </p>
 
+<h3 id="Template.AddParseTree">func (*Template) <a href="http://golang.org/src/pkg/text/template/template.go?s=2842:2923#L97">AddParseTree</a></h3>
+<pre>func (t *Template) AddParseTree(name string, tree *parse.Tree) (*Template, error)</pre>
+<p>
+AddParseTreeは、nameとparse treeを持った新しいテンプレートを作成し、tに関連付けます。
+</p>
+     
+<h3 id="Template.Clone">func (*Template) <a href="http://golang.org/src/pkg/text/template/template.go?s=2072:2117#L64">Clone</a></h3>
+<pre>func (t *Template) Clone() (*Template, error)</pre>
+<p>
+Cloneは、テンプレートの複製を返します。
+The actual representation is not copied, but the name space of
+associated templates is, so further calls to Parse in the copy will add
+templates to the copy but not to the original. 
+Cloneは共通テンプレートを準備するのに使うことができ、
+クローンを作った後異なったもの追加することで他のテンプレートに対して異なる定義を使います。
+</p>
+
+
+<h3 id="Template.Delims">func (*Template) <a href="http://golang.org/src/pkg/text/template/template.go?s=3706:3761#L123">Delims</a></h3>
+<pre>func (t *Template) Delims(left, right string) *Template</pre>
+<p>
+Delimsは、指定した文字列への区切り文字を設定します。
+Parse,ParseFiles,ParseGlobのコールで使用されます。
+ネストされたテンプレート定義は設定を受け継ぎします。
+空の区切り文字は、デフォルトの{{や}}に対応しています。
+戻り値はテンプレートなので、呼び出しは繋げることができます。
+</p>
+ 
+<h3 id="Template.Execute">func (*Template) <a href="http://golang.org/src/pkg/text/template/exec.go?s=2630:2700#L95">Execute</a></h3>
+<pre>func (t *Template) Execute(wr io.Writer, data interface{}) (err error)</pre>
+<p>
+Executeは、パースされたテンプレートを指定したdataオブジェクトに割り当て、wrへ出力します。
+</p>
 
 <h3 id="Template.ExecuteTemplate">func (*Template) <a href="http://golang.org/src/pkg/text/template/exec.go?s=2276:2361#L85">ExecuteTemplate</a></h3>
-        <pre>func (t *Template) ExecuteTemplate(wr io.Writer, name string, data interface{}) error</pre>
-        <p>
-  ExecuteTemplate applies the template associated with t that has the given name
-  to the specified data object and writes the output to wr.
+<pre>func (t *Template) ExecuteTemplate(wr io.Writer, name string, data interface{}) error</pre>
+<p>
+ExecuteTemplateは、与えられたnameを持ったtに関連したテンプレートを指定したdataオブジェクトに割り当て、wrへ出力します。
 </p>
+
+<h3 id="Template.Funcs">func (*Template) <a href="http://golang.org/src/pkg/text/template/template.go?s=4101:4152#L133">Funcs</a></h3>
+<pre>func (t *Template) Funcs(funcMap FuncMap) *Template</pre>
+<p>
+Funcsは引数mapの要素をテンプレートの関数マップへ追加します。
+そのマップの値が、適切な型を返す関数でなければ、panicになります。
+しかしながら、マップの要素を上書きすることは正当です。
+戻り値はテンプレートなので、呼び出しは繋げることができます。
+</p>
+
+
+<h3 id="Template.Lookup">func (*Template) <a href="http://golang.org/src/pkg/text/template/template.go?s=4366:4414#L142">Lookup</a></h3>
+<pre>func (t *Template) Lookup(name string) *Template</pre>
+<p>
+Lookupはtに関連する与えられたnameを持つテンプレートを返します。
+もしnameのテンプレートがなければ、nilを返します。
+</p>
+
+<h3 id="Template.Name">func (*Template) <a href="http://golang.org/src/pkg/text/template/template.go?s=1007:1039#L32">Name</a></h3>
+<pre>func (t *Template) Name() string</pre>
+<p>
+Nameはテンプレートの名前を返します。
+</p>
+        
+<h3 id="Template.New">func (*Template) <a href="http://golang.org/src/pkg/text/template/template.go?s=1262:1307#L39">New</a></h3>
+<pre>func (t *Template) New(name string) *Template</pre>
+<p>
+Newは与えたnameと同じ区切り文字で新しくテンプレートを割り当てます。
+テンプレートは{{テンプレート}}アクションで別のものを呼び出すことができます。
+</p>
+  
+<h3 id="Template.Parse">func (*Template) <a href="http://golang.org/src/pkg/text/template/template.go?s=5016:5072#L156">Parse</a></h3>
+<pre>func (t *Template) Parse(text string) (*Template, error)</pre>
+<p>
+Parseはテンプレートの文字を解析します。
+ネストされたテンプレート定義はトップレベルテンプレートtに関連づけられます。
+Parseは、tに関連したテンプレート定義を解析するために、複数回コールされるかもしれません。
+It is an error if a resulting template is non-empty (contains content other than template
+definitions) and would replace a non-empty template with the same name.
+(In multiple calls to Parse with the same receiver template, only one call
+can contain text other than space, comments, and template definitions.)
+</p>
+
+<h3 id="Template.ParseFiles">func (*Template) <a href="http://golang.org/src/pkg/text/template/helper.go?s=1279:1348#L29">ParseFiles</a></h3>
+<pre>func (t *Template) ParseFiles(filenames ...string) (*Template, error)</pre>
+<p>
+ParseFileはファイルを解析し、結果のテンプレートをtに関連づけます。
+もしエラーが起こったら、パースをストップし、戻り値のテンプレートはnilになります。
+それらは少なくともひとつのファイルになければなりません。
+</p>
+
+<h3 id="Template.ParseGlob">func (*Template) <a href="http://golang.org/src/pkg/text/template/helper.go?s=3262:3325#L84">ParseGlob</a></h3>
+<pre>func (t *Template) ParseGlob(pattern string) (*Template, error)</pre>
+<p>
+ParseGlobはパターンで識別されたファイルから、テンプレート定義を解析し、結果のテンプレートをtに関連付けます。 パターンは、filepath.Globで処理され、少なくとも１つのファイルとマッチングしている必要があります。 ParseGlobは、パターンにマッチしたファイルリストをもったParseFilesと同じです。
+</p>
+
+<h3 id="Template.Templates">func (*Template) <a href="http://golang.org/src/pkg/text/template/template.go?s=3188:3230#L109">Templates</a></h3>
+<pre>func (t *Template) Templates() []*Template</pre>
+<p>
+Templatesはt自身を含むtに関連したテンプレートのスライスを返します。
+</p>
+
+<h2 id="pkg-subdirectories">Subdirectories</h2>
+  
+<table class="dir">
+<tr>
+<th>Name</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th style="text-align: left; width: auto">Synopsis</th>
+</tr>
+
+<tr>
+<td><a href="..">..</a></td>
+</tr>
+
+
+
+<tr>
+<td class="name"><a href="parse/">parse</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td style="width: auto">Package parse builds parse trees for templates as defined by text/template and html/template.</td>
+</tr>
+
+
+</table>
