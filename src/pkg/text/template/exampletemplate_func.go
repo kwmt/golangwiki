@@ -10,7 +10,7 @@ import (
 // この例は、テンプレートテキストを処理するための、カスタム関数のデモです。
 // strings.Title関数を組み込みます。そしてそれをMake Title Text Look Goodのように出力するために使用します。
 func main() {
-	// まず、私たちはFuncMapを作ります。それは関数を登録します。
+	// まず、FuncMapでカスタム関数名と処理したい関数を登録します。
 	funcMap := template.FuncMap{
 		// "title"はテンプレートでコールされる関数名となります。
 		"title": strings.Title,
