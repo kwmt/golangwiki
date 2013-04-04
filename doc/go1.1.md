@@ -247,6 +247,9 @@ fmt.Println(i)
 <p>Portable code intending 32-bit sign extension (yielding <code>-1</code> on all systems)
 would instead say:
 </p>
+<p>
+32bitの符号拡張する（すべてのシステム上で-1が得られる）移植可能なコードは、以下のように表現します。
+</p>
 
 <pre>
 i := int(int32(x))
