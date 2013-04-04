@@ -255,6 +255,37 @@ would instead say:
 i := int(int32(x))
 </pre>
 
+<h3 id="heap">Heap size on 64-bit architectures
+64bitアーキテクチャ上のヒープサイズ</h3>
+
+<p>
+On 64-bit architectures only, the maximum heap size has been enlarged substantially,
+from a few gigabytes to several tens of gigabytes.
+(The exact details depend on the system and may change.)
+</p>
+<p>
+64bitアーキテクチャ上だけでは、最大のヒープサイズは、
+2,3GBから数十GBへ十分に大きくしてきました。
+(詳細はシステムに依存し変更するかもしれません)
+</p>	
+
+<p>
+On 32-bit architectures, the heap size has not changed.
+</p>
+<p>
+32bitアーキテクチャでは、ヒープサイズは変更していません。
+</p>
+
+<p>
+<em>Updating</em>:
+This change should have no effect on existing programs beyond allowing them
+to run with larger heaps.
+</p>
+<p>
+この変更は既存のプログラムに影響はないはずです。
+より大きいヒープで実行できます。
+</p>
+
 <h3 id="unicode">Unicode</h3>
 
 <p>
