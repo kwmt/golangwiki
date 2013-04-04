@@ -212,7 +212,13 @@ now make
 Among other things, this enables the allocation of slices with
 more than 2 billion elements on 64-bit platforms.
 </p>
-
+<p>
+言語は、<code>int</code>型と<code>uint</code>型が32bitか64bitかどうかを選択することができます。
+以前のGo実装は、すべてのシステム上で32bitの<code>int</code>型と<code>uint</code>型を作った。
+gcとgccgoの実装は、 AMD64/x86-64のような64bitプラットフォームでは64bitの
+<code>int</code>型と<code>uint</code>型になります。
+これは、64bitプラットフォーム上で20億以上の要素をもつスライスを割り当てることｄができます。
+</p>
 <p>
 <em>Updating</em>:
 Most programs will be unaffected by this change.
@@ -223,7 +229,15 @@ However, programs that contain implicit assumptions
 that <code>int</code> is only 32 bits may change behavior.
 For example, this code prints a positive number on 64-bit systems and
 a negative one on 32-bit systems:
-
+</p>
+<p>
+ほとんどのプログラムではこの変更は影響はないでしょう。
+なぜなら、Goは、明示的な数値の型の間で暗黙的な変換を許容しないからです。
+この変更によってプログラムがコンパイルを中止することはないでしょう。
+しかしならが、<code>int</code>が32bitだけという過程を含むプログラムは、
+ 挙動が変更になるかもしれません。
+ 例えば、下記コードは64bit上では整数を出力し、32bit上では−1を出力します。
+</p>
 <pre>
 x := ^uint32(0) // x is 0xffffffff
 i := int(x)     // i is -1 on 32-bit systems, 0xffffffff on 64-bit
