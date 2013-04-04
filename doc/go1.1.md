@@ -156,9 +156,33 @@ Such code can be identified by <code>go vet</code>.
 
 </p>
 
-<h2 id="impl">Changes to the implementations and tools</h2>
+<h2 id="impl">Changes to the implementations and tools
+実装とツールの変更点</h2>
 
-<h3 id="gc_flag">Command-line flag parsing</h3>
+
+<h3 id="gccgo">Status of gccgo</h3>
+
+<p>
+The GCC release schedule does not coincide with the Go release schedule, so some skew is inevitable in
+<code>gccgo</code>'s releases.
+The 4.8.0 version of GCC shipped in March, 2013 and includes a nearly-Go 1.1 version of <code>gccgo</code>.
+Its library is a little behind the release, but the biggest difference is that method values are not implemented.
+Sometime around May 2013, we expect 4.8.1 of GCC to ship with a <code>gccgo</code>
+providing a complete Go 1.1 implementaiton.
+</p>
+<p>
+GCCのリリーススケジュールは、Goのリリーススケジュールと一致するとは限りませんので、
+いくつかの歪みは避けれません。
+GCCのバージョン4.8.0は2013年3月に送り出しました。
+<code>gccgo</code>のGo1.1のバージョンに近いです。
+そのライブラリはリリースがすこし遅れますが、
+大きな変更は、method valuesが実行されないことです。
+2013年5月頃には、Go1.1の完全なGoの実施を提供する
+<code>gccgo</code>送り出すGCCの4.8.1を期待しています。
+</p>
+
+<h3 id="gc_flag">Command-line flag parsing
+コマンドラインフラグのパース</h3>
 
 <p>
 In the gc tool chain, the compilers and linkers now use the
@@ -168,6 +192,13 @@ the tool directly.
 For example,
 <code>go tool 6c -Fw -Dfoo</code> must now be written
 <code>go tool 6c -F -w -D foo</code>. 
+</p>
+<p>
+gcツールチェーンでは、コンパイラとリンカは、
+Goのflagパッケージとしてのルールをパースする同じコマンドラインフラグを使用します。
+伝統的なUNIXフラグパースからの新しい試みです。
+これは、ツールを直接呼んでいるスクリプトに影響するかもしれません。
+例えば<code>go tool 6c -Fw -Dfoo</code> は、<code>go tool 6c -F -w -D foo</code>と書かれなければなりません。
 </p>
 
 <h3 id="int">Size of int on 64-bit platforms</h3>
