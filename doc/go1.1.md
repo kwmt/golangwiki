@@ -531,32 +531,51 @@ this sense, "<code>go run</code>" replaces "<code>go run *.go</code>".
 <code>go run</code>" は"<code>go run *.go</code>を置き換えています。
 </p>
 
-<h3 id="platforms">Additional platforms</h3>
+<h3 id="platforms">追加プラットフォーム</h3>
 
 <p>
 The Go 1.1 tool chain adds experimental support for <code>freebsd/arm</code>,
 <code>netbsd/386</code>, <code>netbsd/amd64</code>, <code>netbsd/arm</code>, 
 <code>openbsd/386</code> and <code>openbsd/amd64</code> platforms.
 </p>
-
+<p>
+Go 1.1 ツールチェーンは、下記プラットフォームを実験的なサポートを追加した。
+ <code>freebsd/arm</code>,
+<code>netbsd/386</code>, <code>netbsd/amd64</code>, <code>netbsd/arm</code>, 
+<code>openbsd/386</code>,<code>openbsd/amd64</code> 
+</p>
 <p>
 An ARMv6 or later processor is required for <code>freebsd/arm</code> or
 <code>netbsd/arm</code>.
+</p>
+<p>
+ARMv6あるいはそれ移行のプロセッサは<code>freebsd/arm</code> or
+<code>netbsd/arm</code>が必要とされます。
 </p>
 
 <p>
 Go 1.1 adds experimental support for <code>cgo</code> on <code>linux/arm</code>.
 </p>
+<p>
+Go 1.1は <code>linux/arm</code>上の<code>cgo</code>を実験的にサポートします。
+</p>
 
-<h3 id="crosscompile">Cross compilation</h3>
+<h3 id="crosscompile">クロスコンパイル</h3>
 
 <p>
 When cross-compiling, the <code>go</code> tool will disable <code>cgo</code>
 support by default.
 </p>
+<p>
+クロスコンパイルするとき、<code>go</code>ツールはデフォルトでは
+<code>cgo</code>をサポートしなくなります。
+</p>
 
 <p>
 To explicitly enable <code>cgo</code>, set <code>CGO_ENABLED=1</code>.
+</p>
+<p>
+<code>cgo</code>を明確に可能にするには、<code>CGO_ENABLED=1</code>を設定します。
 </p>
 <h2 id="performance">Performance</h2>
 
