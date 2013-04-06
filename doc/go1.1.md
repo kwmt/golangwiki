@@ -587,6 +587,14 @@ much more, but occasionally less or even non-existent.
 There are too many small performance-driven tweaks through the tools and libraries
 to list them all here, but the following major changes are worth noting:
 </p>
+<p>
+Go 1.1のgcツールでコンパイルしたコードのパフォーマンスは、
+ほとんどのプログラムにたいして目に見えてよくなっているはずです。
+Go 1.0からの標準的な改善は、約30%から40%、ときおりそれ以上によくなると思われますが、
+ときおり、改善がすくないか、改善されないこともあります。
+ツールやライブラリを通して、多くの小さなパフォーマンスを手動とした調整がありますが、
+注目に値する主な変更点は以下のとおりです。
+</p>
 
 <ul>
 <li>The gc compilers generate better code in many cases, most noticeably for
@@ -605,6 +613,21 @@ on 32-bit architectures.</li>
 context switches are required on network operations.</li>
 </ul>
 
+
+<ul>
+<li>gcコンパイラは、多くのケースでよりよいコードを生成します。
+32bit intelアーキテクチャの浮動小数点に対しては、もっとも顕著です。</li>
+<li>gcコンパイラは、内部で<a href="/pkg/builtin/#append"><code>append</code>
+やインターフェースの変換のようなランタイムの作業を含む多くのことをしています。</li>
+<li>メモリフットプリントとCPU時間の大幅な削減で、Goのマップの新しい実装があります。</li>
+<li>ガベージコレクタは、複数のCPU上で動作するプログラムのための待ち時間を減らすことができ、
+より多く並列化されています。</li>
+<li>ガベージコレクタもより的確です。
+少しの量のCPU時間のコストがかかりますが、
+特に32bitアーキテクチャ上で、ヒープサイズを著しく減らすことができます。</li>
+<li>ランタイムとネットワークライブラリの緊密な結合により
+より少ないコンテキストの切り替えは、ネットワーク運用上必要とされます。</li>
+</ul>
 <h2 id="library">Changes to the standard library</h2>
 
 <h3 id="bufio_scanner">bufio.Scanner</h3>
