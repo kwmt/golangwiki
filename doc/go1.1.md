@@ -508,12 +508,56 @@ to convert the code to Go 1.0 first.
 通常は<code>go fix</code>として実行する
 <a href="http://tip.golang.org/cmd/fix/"><code>fix</code></a>コマンドは、
 Go1以前からGo1APIを使ったコードをアップデートする修正を適用しません。
+</p>
 <p>
 Go 1以前のコードを Go 1.1へアップデートするには、Go1.0のツールチェーンを使い、
 まずコードをGo1.0へ変換します。
 </p>
+
+<h3 id="gorun">go runコマンドの変更</h3>
+
+<p>
+The <code>go run</code> command now runs all files in the current working
+directory if no file arguments are listed. Also, the <code>go run</code>
+command now returns an error if test files are provided on the command line. In
+this sense, "<code>go run</code>" replaces "<code>go run *.go</code>".
+</p>
+<p>
+<code>go run</code>コマンドは、
+ファイルの引数がなければ、カレントワーキングディレクトリにあるすべてのファイルを実行します。
+<code>go run</code>コマンドは、
+テストファイルがコマンドラインで提供されていれば、エラーを返します。
+この意味では
+<code>go run</code>" は"<code>go run *.go</code>を置き換えています。
 </p>
 
+<h3 id="platforms">Additional platforms</h3>
+
+<p>
+The Go 1.1 tool chain adds experimental support for <code>freebsd/arm</code>,
+<code>netbsd/386</code>, <code>netbsd/amd64</code>, <code>netbsd/arm</code>, 
+<code>openbsd/386</code> and <code>openbsd/amd64</code> platforms.
+</p>
+
+<p>
+An ARMv6 or later processor is required for <code>freebsd/arm</code> or
+<code>netbsd/arm</code>.
+</p>
+
+<p>
+Go 1.1 adds experimental support for <code>cgo</code> on <code>linux/arm</code>.
+</p>
+
+<h3 id="crosscompile">Cross compilation</h3>
+
+<p>
+When cross-compiling, the <code>go</code> tool will disable <code>cgo</code>
+support by default.
+</p>
+
+<p>
+To explicitly enable <code>cgo</code>, set <code>CGO_ENABLED=1</code>.
+</p>
 <h2 id="performance">Performance</h2>
 
 <p>
