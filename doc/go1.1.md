@@ -495,7 +495,7 @@ Run <code>go help test</code> for more information.
 詳細は、<code>go help test</code>を実行してください。
 </p>
 
-<h3 id="gofix">Changes to the go fix command</h3>
+<h3 id="gofix">go fixコマンドの変更</h3>
 
 <p>
 The <a href="/cmd/fix/"><code>fix</code></a> command, usually run as
@@ -503,6 +503,15 @@ The <a href="/cmd/fix/"><code>fix</code></a> command, usually run as
 before Go 1 to use Go 1 APIs.
 To update pre-Go 1 code to Go 1.1, use a Go 1.0 tool chain
 to convert the code to Go 1.0 first.
+</p>
+<p>
+通常は<code>go fix</code>として実行する
+<a href="http://tip.golang.org/cmd/fix/"><code>fix</code></a>コマンドは、
+Go1以前からGo1APIを使ったコードをアップデートする修正を適用しません。
+<p>
+Go 1以前のコードを Go 1.1へアップデートするには、Go1.0のツールチェーンを使い、
+まずコードをGo1.0へ変換します。
+</p>
 </p>
 
 <h2 id="performance">Performance</h2>
