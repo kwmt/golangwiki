@@ -390,7 +390,7 @@ match the Go function prototypes they implement.
  Goの関数プロトタイプと一致することをチェックします。
 </p>
 
-<h3 id="gocmd">Changes to the go command</h3>
+<h3 id="gocmd">goコマンドの変更</h3>
 
 <p>
 The <a href="/cmd/go/"><code>go</code></a> command has acquired several
@@ -450,12 +450,17 @@ warning: GOPATH set to GOROOT (/home/User/go) has no effect
 package code.google.com/p/foo/quxx: cannot download, $GOPATH must not be set to $GOROOT. For more details see: go help gopath
 </pre>
 
-<h3 id="gotest">Changes to the go test command</h3>
+<h3 id="gotest">go testコマンドの変更</h3>
 
 <p>
 The <code>go test</code> command no longer deletes the binary when run with profiling enabled,
 to make it easier to analyze the profile.
 The implementation sets the <code>-c</code> flag automatically, so after running,
+</p>
+<p>
+<code>go test</code>コマンドは、有効なプロファイルと一緒に実行するとき、
+バイナリを削除しません。これは、プロファイルの解析を簡単にするためです。
+実施するには、テストを実行後<code>-c</code> フラグを自動的にセットされます。
 </p>
 
 <pre>
@@ -465,7 +470,10 @@ $ go test -cpuprofile cpuprof.out mypackage
 <p>
 the file <code>mypackage.test</code> will be left in the directory where <code>go test</code> was run.
 </p>
-
+<p>
+<code>mypackage.test</code> は、<code>go test</code> が実行された
+ディレクトリに残ったままとなっているでしょう。
+</p>
 <p>
 The <code>go test</code> command can now generate profiling information
 that reports where goroutines are blocked, that is,
@@ -477,6 +485,14 @@ enabled with the
 option of
 <code>go test</code>.
 Run <code>go help test</code> for more information.
+</p>
+<p>
+<code>go test</code> コマンドは、
+ゴルーチンがどこでブロックされるかなどのレポートするプロファイリング情報を生成することができます。
+ブロックは、チャネル通信のようなイベントを機能停止する傾向にある場所です。
+その情報は、<code>go test</code>オプションの<code>-blockprofile</code>
+を使って<em>blocking profile</em>として表されます。
+詳細は、<code>go help test</code>を実行してください。
 </p>
 
 <h3 id="gofix">Changes to the go fix command</h3>
