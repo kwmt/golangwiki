@@ -341,6 +341,31 @@ Programs that depend on the old behavior should be modified to avoid the issue.
 The byte-order-mark change is strictly backward-compatible.
 </p>
 
+
+<h3 id="race">Race detector</h3>
+
+<p>
+A major addition to the tools is a <em>race detector</em>, a way to find
+bugs in programs caused by problems like concurrent changes to the same variable.
+This new facility is built into the <code>go</code> tool.
+For now, it is only available on Linux, Mac OS X, and Windows systems with
+64-bit x86 processors.
+To enable it, set the <code>-race</code> flag when building or testing your program 
+(for instance, <code>go test -race</code>).
+The race detector is documented in <a href="/doc/articles/race_detector.html">a separate article</a>.
+</p>
+<p>
+ツールの主な追加は、<em>race detector</em>です。
+これは、同じ変数を同時に変更するような問題で引き起こされる
+プログラムのバグを見つける１つの方法です。
+この新しい機能は、<code>go</code> ツールに組み込まれています。
+今のところ、64bit x86プロセッサを持つLinux,Max OX X, Windows上で動きます。
+これを可能にするには、プログラムをビルドするときやテストするときに、
+<code>-race</code> フラグをセットします。
+(例： <code>go test -race</code>)
+このrace detectorのドキュメントは<a href="/doc/articles/race_detector.html">別の記事</a>にあります。
+
+</p>
 <h3 id="gc_asm">The gc assemblers</h3>
 
 <p>
