@@ -374,11 +374,20 @@ the arrangement of function arguments on the stack has changed in the gc tool ch
 Functions written in assembly will need to be revised at least
 to adjust frame pointer offsets.
 </p>
-
+<p>
+<a href="#int"><code>int</code></a>型の64bitへの変更といくつかの変更に伴い、
+スタック上の関数の引数の配列は、gcツールチェーンに変更されました。
+アセンブラで書かれた関数は、フレームポインタのオフセットを調整するために、
+少なくとも改訂する必要があります。
+</p>
 <p>
 <em>Updating</em>:
 The <code>go vet</code> command now checks that functions implemented in assembly
 match the Go function prototypes they implement.
+</p>
+<p>
+ <code>go vet</code>コマンドは、アセンラブラで実装された関数が、
+ Goの関数プロトタイプと一致することをチェックします。
 </p>
 
 <h3 id="gocmd">Changes to the go command</h3>
@@ -387,10 +396,20 @@ match the Go function prototypes they implement.
 The <a href="/cmd/go/"><code>go</code></a> command has acquired several
 changes intended to improve the experience for new Go users.
 </p>
+<p>
+<a href="/cmd/go/"><code>go</code></a>コマンドは、
+新しいGoユーザーの体験を改善するための変更をしています。
+</p>
 
 <p>
 First, when compiling, testing, or running Go code, the <code>go</code> command will now give more detailed error messages,
 including a list of paths searched, when a package cannot be located.
+</p>
+<p>
+一つ目に、Goのコードをコンパイル、テストあるいは実行するときに、
+<code>go</code>コマンドは、
+あるパッケージが配置されていなかったら、検索したパスのリストを含む
+より詳細なエラーメッセージを与えてくれるでしょう。
 </p>
 
 <pre>
@@ -406,7 +425,12 @@ as the default destination when downloading package source.
 To use the <code>go get</code>
 command, a valid <code>$GOPATH</code> is now required.
 </p>
-
+<p>
+2番めに、<code>go get</code>コマンドは、
+パッケージのソースをダウンロードするときに、
+もはやデフォルトのインストール先として<code>$GOROOT</code>を許可しません。
+<code>go get</code>コマンドを使うためには、有効な<code>$GOPATH</code>が必要になります。
+</p>
 <pre>
 $ GOPATH= go get code.google.com/p/foo/quxx
 package code.google.com/p/foo/quxx: cannot download, $GOPATH not set. For more details see: go help gopath 
@@ -416,7 +440,10 @@ package code.google.com/p/foo/quxx: cannot download, $GOPATH not set. For more d
 Finally, as a result of the previous change, the <code>go get</code> command will also fail
 when <code>$GOPATH</code> and <code>$GOROOT</code> are set to the same value. 
 </p>
-
+<p>
+最後に、先ほどの変更の結果として、<code>$GOPATH</code> と<code>$GOROOT</code>
+に同じ値がセットされるとき、<code>go get</code>コマンドは失敗します。
+</p>
 <pre>
 $ GOPATH=$GOROOT go get code.google.com/p/foo/quxx
 warning: GOPATH set to GOROOT (/home/User/go) has no effect
