@@ -1190,6 +1190,11 @@ Go パーサー<a href="/pkg/go/ast/#Node"><code>Node</code></a>を
 The undocumented and only partially implemented "noescape" feature of the
 <a href="/pkg/html/template/"><code>html/template</code></a>
 package has been removed; programs that depend on it will break.
+
+<a href="/pkg/html/template/"><code>html/template</code></a>パッケージの
+ドキュメントされておらず、部分的にしか実装されていない"noescape"機能は削除されました。
+これに依存するプログラムは壊れます。
+
 </li>
 
 <li>
