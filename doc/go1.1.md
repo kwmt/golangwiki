@@ -1138,6 +1138,12 @@ and a method on
 <a href="/pkg/encoding/xml/#Encoder"><code>Encoder</code></a>,
 <a href="/pkg/encoding/xml/#Encoder.Indent"><code>Indent</code></a>,
 to specify indented output.
+
+<a href="/pkg/encoding/xml/"><code>encoding/xml</code></a> パッケージ
+はエスケープされたXML出力を書き出す<a href="/pkg/encoding/xml/#EscapeText"><code>EscapeText</code></a>
+と
+<a href="/pkg/encoding/xml/#Encoder"><code>Encoder</code></a>に対するインデントを指定する
+<a href="/pkg/encoding/xml/#Encoder.Indent"><code>Indent</code></a>メソッドを追加しました。
 </li>
 
 <li>
