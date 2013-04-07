@@ -1276,6 +1276,13 @@ has a new method for its
 <a href="/pkg/mime/multipart/#Writer"><code>Writer</code></a>,
 <a href="/pkg/mime/multipart/#Writer.SetBoundary"><code>SetBoundary</code></a>,
 to define the boundary separator used to package the output.
+
+<a href="/pkg/mime/multipart/"><code>mime/multipart</code></a> パッケージは
+<a href="/pkg/mime/multipart/#Writer"><code>Writer</code></a>,
+に対する新しいメソッド
+<a href="/pkg/mime/multipart/#Writer.SetBoundary"><code>SetBoundary</code></a>
+を追加しました。
+出力をパッケージ化するために使われる境界の区切り文字を定義します。
 </li>
 
 <li>
