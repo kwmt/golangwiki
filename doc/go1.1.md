@@ -1219,6 +1219,9 @@ The <a href="/pkg/io/"><code>io</code></a> パッケージは
 <li>
 The <a href="/pkg/log/syslog/"><code>log/syslog</code></a> package now provides better support
 for OS-specific logging features.
+
+<a href="/pkg/log/syslog/"><code>log/syslog</code></a> パッケージ
+は、OS固有のログの特徴のよりよいサポートを提供します。
 </li>
 
 <li>
