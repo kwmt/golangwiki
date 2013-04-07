@@ -875,6 +875,19 @@ and
 that can be used to remove precision from a time before passing it to
 external storage.
 </p>
+<p>
+FreeBSD, Linux, NetBSD, OS X, OpenBSD上では
+以前のバージョンの<a href="/pkg/time/"><code>time</code></a>パッケージは、
+マイクロ秒の精度の時間を返していました。
+これらのシステム上でのGo 1.1の実装は、ナノ秒の精度の時間を返すようになります。
+マイクロ秒の精度で外部形式への書き込み、
+元の値に戻ることを期待し、それを読み戻すプログラムは、精度のロスによる影響を受けます。
+<a href="/pkg/time/#Time"><code>Time</code></a>の新しい２つのメソッド
+<a href="/pkg/time/#Time.Round"><code>Round</code></a>
+と
+<a href="/pkg/time/#Time.Truncate"><code>Truncate</code></a>
+は、外部ストレージに渡す前に、時間から精度を削除するために使用することができます。
+</p>
 
 <p>
 The new method
@@ -889,7 +902,12 @@ type has a new method
 <a href="/pkg/time/#Timer.Reset"><code>Reset</code></a>
 that modifies the timer to expire after a specified duration.
 </p>
-
+<p>
+<a href="/pkg/time/#Timer"><code>Timer</code></a>型は
+新しいメソッド
+<a href="/pkg/time/#Timer.Reset"><code>Reset</code></a>
+を持っています。これは指定した期間後に有効期限が切れるようにタイマーを変更します。
+</p>
 <p>
 Finally, the new function
 <a href="/pkg/time/#ParseInLocation"><code>ParseInLocation</code></a>
@@ -899,11 +917,26 @@ but parses the time in the context of a location (time zone), ignoring
 time zone information in the parsed string.
 This function addresses a common source of confusion in the time API.
 </p>
-
+<p>
+最後に新しい関数
+<a href="/pkg/time/#ParseInLocation"><code>ParseInLocation</code></a>
+は既存の
+<a href="/pkg/time/#Parse"><code>Parse</code></a>に似ています。
+ロケーション（タイムゾーン）のコンテキスト内で時間をパースします。
+パースされた文字列内のタイムゾーン情報は無視します。
+この関数は、time APIの共通の混乱の原因に対処しています。
+</p>
 <p>
 <em>Updating</em>:
 Code that needs to read and write times using an external format with
 lower precision should be modified to use the new methods.
+</p>
+
+<p>
+<em>Updating</em>:
+低い精度での外部フォーマットを使って時間を読んだり書いたりする必要があるコードは、
+新しいメソッドを使って修正すべきです。
+</p>
 
 <h3 id="exp_old">Exp and old subtrees moved to go.exp and go.text subrepositories</h3>
 
