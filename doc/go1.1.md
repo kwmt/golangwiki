@@ -1052,6 +1052,11 @@ that flushes its underlying <code>flate.Writer</code>.
 <li>
 The <a href="/pkg/crypto/hmac/"><code>crypto/hmac</code></a> package has a new function,
 <a href="/pkg/crypto/hmac/#Equal"><code>Equal</code></a>, to compare two MACs.
+
+The <a href="/pkg/crypto/hmac/"><code>crypto/hmac</code></a> パッケージは
+2つのMACを比較する
+<a href="/pkg/crypto/hmac/#Equal"><code>Equal</code></a>
+を追加しました。
 </li>
 
 <li>
