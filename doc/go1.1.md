@@ -1065,6 +1065,15 @@ now supports PEM blocks (see
 <a href="/pkg/crypto/x509/#DecryptPEMBlock"><code>DecryptPEMBlock</code></a> for instance),
 and a new function
 <a href="/pkg/crypto/x509/#ParseECPrivateKey"><code>ParseECPrivateKey</code></a> to parse elliptic curve private keys.
+
+The <a href="/pkg/crypto/x509/"><code>crypto/x509</code></a> パッケージは
+PEM形式のブロックをサポートしました。
+ (例えば、
+<a href="/pkg/crypto/x509/#DecryptPEMBlock"><code>DecryptPEMBlock</code></a>
+を見て下さい。 ),
+それと、楕円曲線暗号のプライベートキーを解析する
+<a href="/pkg/crypto/x509/#ParseECPrivateKey"><code>ParseECPrivateKey</code></a> .
+をサポートしました。
 </li>
 
 <li>
