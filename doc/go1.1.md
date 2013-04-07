@@ -1066,7 +1066,7 @@ now supports PEM blocks (see
 and a new function
 <a href="/pkg/crypto/x509/#ParseECPrivateKey"><code>ParseECPrivateKey</code></a> to parse elliptic curve private keys.
 
-The <a href="/pkg/crypto/x509/"><code>crypto/x509</code></a> パッケージは
+<a href="/pkg/crypto/x509/"><code>crypto/x509</code></a> パッケージは
 PEM形式のブロックをサポートしました。
  (例えば、
 <a href="/pkg/crypto/x509/#DecryptPEMBlock"><code>DecryptPEMBlock</code></a>
@@ -1083,6 +1083,12 @@ has a new
 method for its
 <a href="/pkg/database/sql/#DB"><code>DB</code></a>
 type that tests the health of the connection.
+
+<a href="/pkg/database/sql/"><code>database/sql</code></a> パッケージは
+型<a href="/pkg/database/sql/#DB"><code>DB</code></a>に対して
+<a href="/pkg/database/sql/#DB.Ping"><code>Ping</code></a>
+メソッドを追加しました。
+これは、接続の状態をテストします。
 </li>
 
 <li>
@@ -1092,6 +1098,12 @@ has a new
 interface that a
 <a href="/pkg/database/sql/driver/#Conn"><code>Conn</code></a>
 may implement to improve performance.
+
+<a href="/pkg/database/sql/driver/"><code>database/sql/driver</code></a> パッケージは
+<a href="/pkg/database/sql/driver/#Queryer"><code>Queryer</code></a>
+インターフェースを追加しました。
+<a href="/pkg/database/sql/driver/#Conn"><code>Conn</code></a>
+がパフォーマンスを改善するための実装となるかもしれません。
 </li>
 
 <li>
