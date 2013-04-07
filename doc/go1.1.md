@@ -1200,6 +1200,9 @@ package has been removed; programs that depend on it will break.
 <li>
 The <a href="/pkg/image/jpeg/"><code>image/jpeg</code></a> package now
 reads progressive JPEG files and handles a few more subsampling configurations.
+
+<a href="/pkg/image/jpeg/"><code>image/jpeg</code></a> パッケージは
+プログレッシブJPEGファイルを読み込んで、さらにいくつかのサブサンプリング構成を処理できるようになります。
 </li>
 
 <li>
