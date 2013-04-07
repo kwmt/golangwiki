@@ -992,6 +992,10 @@ Unicode APIと他のテキストに関するパッケージが開発されます
 The following list summarizes a number of minor changes to the library, mostly additions.
 See the relevant package documentation for more information about each change.
 </p>
+<p>
+以下のリストは、ライブラリへのマイナーチェンジ、おもに追加を要約したものです。
+各変更についての詳細な情報は、関連するパッケージのドキュメントを見て下さい。
+</p>
 
 <ul>
 <li> 
@@ -1009,6 +1013,33 @@ Finally, the
 <a href="/pkg/strings/#Reader.WriteTo"><code>WriteTo</code></a> method
 so it implements the 
 <a href="/pkg/io/#WriterTo"><code>io.WriterTo</code></a> interface.
+
+The <a href="/pkg/bytes/"><code>bytes</code></a> パッケージは２つの関数を追加しました。
+わかりきったプロパティを持つ
+<a href="/pkg/bytes/#TrimPrefix"><code>TrimPrefix</code></a>
+と
+<a href="/pkg/bytes/#TrimSuffix"><code>TrimSuffix</code></a>
+です。
+
+また、<a href="/pkg/bytes/#Buffer"><code>Buffer</code></a> 型は
+新しいメソッド
+<a href="/pkg/bytes/#Buffer.Grow"><code>Grow</code></a> 
+を追加しました。
+これはそのバッファ内のメモリの割り当てを拡張します。
+最後に、
+<a href="/pkg/bytes/#Reader"><code>Reader</code></a> 型は
+<a href="/pkg/strings/#Reader.WriteTo"><code>WriteTo</code></a> メソッドを追加しました。
+ですので、<a href="/pkg/bytes/#Reader"><code>Reader</code></a> 型は
+<a href="/pkg/io/#WriterTo"><code>io.WriterTo</code></a> インターフェースを実装しています。
+
+</li>
+
+<li>
+The <a href="/pkg/compress/gzip/"><code>compress/gzip</code></a> package has
+a new <a href="/pkg/compress/gzip/#Writer.Flush"><code>Flush</code></a>
+method for its
+<a href="/pkg/compress/gzip/#Writer"><code>Writer</code></a>
+type that flushes its underlying <code>flate.Writer</code>.
 </li>
 
 <li>
@@ -1046,7 +1077,7 @@ may implement to improve performance.
 The <a href="/pkg/encoding/json/"><code>encoding/json</code></a> package's
 <a href="/pkg/encoding/json/#Decoder"><code>Decoder</code></a>
 has a new method
-<a href="/pkg/encoding/json/#Decoder.Reader"><code>Reader</code></a>
+<a href="/pkg/encoding/json/#Decoder.Buffered"><code>Buffered</code></a>
 to provide access to the remaining data in its buffer,
 as well as a new method
 <a href="/pkg/encoding/json/#Decoder.UseNumber"><code>UseNumber</code></a>
@@ -1093,12 +1124,17 @@ to format arbitrary Go source code.
 
 <li>
 The undocumented and only partially implemented "noescape" feature of the
-<a href="/pkg/html/template/">html/template</a>
+<a href="/pkg/html/template/"><code>html/template</code></a>
 package has been removed; programs that depend on it will break.
 </li>
 
 <li>
-The <a href="/pkg/io/">io</a> package now exports the
+The <a href="/pkg/image/jpeg/"><code>image/jpeg</code></a> package now
+reads progressive JPEG files and handles a few more subsampling configurations.
+</li>
+
+<li>
+The <a href="/pkg/io/"><code>io</code></a> package now exports the
 <a href="/pkg/io/#ByteWriter"><code>io.ByteWriter</code></a> interface to capture the common
 functionality of writing a byte at a time.
 </li>
@@ -1141,32 +1177,63 @@ to define the boundary separator used to package the output.
 <li>
 The
 <a href="/pkg/net/"><code>net</code></a> package's
-<a href="/pkg/net/#ListenUnixgram"><code>net/ListenUnixgram</code></a>
+<a href="/pkg/net/#ListenUnixgram"><code>ListenUnixgram</code></a>
 function has changed return types: it now returns a
-<a href="/pkg/net/#UnixConn"><code>net/UnixConn</code></a>
+<a href="/pkg/net/#UnixConn"><code>UnixConn</code></a>
 rather than a
-<a href="/pkg/net/#UDPConn"><code>net/UDPConn</code></a>, which was
+<a href="/pkg/net/#UDPConn"><code>UDPConn</code></a>, which was
 clearly a mistake in Go 1.0.
 Since this API change fixes a bug, it is permitted by the Go 1 compatibility rules.
 </li>
 
-<li> TODO:
-<code>net</code>: LookupNS, IPConn.ReadMsgIP, IPConn.WriteMsgIP, UDPConn.ReadMsgUDP, UDPConn.WriteMsgUDP, UnixConn.CloseRead, UnixConn.CloseWrite
+<li>
+The <a href="/pkg/net/"><code>net</code></a> package includes a new type,
+<a href="/pkg/net/#Dialer"><code>Dialer</code></a>, to supply options to
+<a href="/pkg/net/#Dialer.Dial"><code>Dial</code></a>.
 </li>
 
 <li>
-The <a href="/pkg/net/"><code>net</code></a> package includes a new function,
-<a href="/pkg/net/#DialOpt"><code>DialOpt</code></a>, to supply options to
-<a href="/pkg/net/#Dial"><code>Dial</code></a>.
-Each option is represented by a new
-<a href="/pkg/net/#DialOption"><code>DialOption</code></a> interface.
-The new functions
-<a href="/pkg/net/#Deadline"><code>Deadline</code></a>,
-<a href="/pkg/net/#Timeout"><code>Timeout</code></a>,
-<a href="/pkg/net/#Network"><code>Network</code></a>, and
-<a href="/pkg/net/#LocalAddress"><code>LocalAddress</code></a> return a <code>DialOption</code>.
+The <a href="/pkg/net/"><code>net</code></a> package adds support for
+link-local IPv6 addresses with zone qualifiers, such as <code>fe80::1%lo0</code>.
+The address structures <a href="/pkg/net/#IPAddr"><code>IPAddr</code></a>,
+<a href="/pkg/net/#UDPAddr"><code>UDPAddr</code></a>, and
+<a href="/pkg/net/#TCPAddr"><code>TCPAddr</code></a>
+record the zone in a new field, and functions that expect string forms of these addresses, such as
+<a href="/pkg/net/#Dial"><code>Dial</code></a>,
+<a href="/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
+<a href="/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>, and
+<a href="/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>,
+now accept the zone-qualified form.
 </li>
 
+<li>
+The <a href="/pkg/net/"><code>net</code></a> package adds
+<a href="/pkg/net/#LookupNS"><code>LookupNS</code></a> to its suite of resolving functions.
+<code>LookupNS</code> returns the <a href="/pkg/net/#NS">NS records</a> for a host name.
+</li>
+
+<li>
+The <a href="/pkg/net/"><code>net</code></a> package adds protocol-specific 
+packet reading and writing methods to
+<a href="/pkg/net/#IPConn"><code>IPConn</code></a>
+(<a href="/pkg/net/#IPConn.ReadMsgIP"><code>ReadMsgIP</code></a>
+and <a href="/pkg/net/#IPConn.WriteMsgIP"><code>WriteMsgIP</code></a>) and 
+<a href="/pkg/net/#UDPConn"><code>UDPConn</code></a>
+(<a href="/pkg/net/#UDPConn.ReadMsgUDP"><code>ReadMsgUDP</code></a> and
+<a href="/pkg/net/#UDPConn.WriteMsgUDP"><code>WriteMsgUDP</code></a>).
+These are specialized versions of <a href="/pkg/net/#PacketConn"><code>PacketConn</code></a>'s
+<code>ReadFrom</code> and <code>WriteTo</code> methods that provide access to out-of-band data associated
+with the packets.
+ </li>
+ 
+ <li>
+The <a href="/pkg/net/"><code>net</code></a> package adds methods to
+<a href="/pkg/net/#UnixConn"><code>UnixConn</code></a> to allow closing half of the connection 
+(<a href="/pkg/net/#UnixConn.CloseRead"><code>CloseRead</code></a> and
+<a href="/pkg/net/#UnixConn.CloseWrite"><code>CloseWrite</code></a>),
+matching the existing methods of <a href="/pkg/net/#TCPConn"><code>TCPConn</code></a>.
+</li>
+ 
 <li>
 The <a href="/pkg/net/http/"><code>net/http</code></a> package includes several new additions.
 <a href="/pkg/net/http/#ParseTime"><code>ParseTime</code></a> parses a time string, trying
@@ -1181,21 +1248,28 @@ The <code>ServeMux</code> type now has a
 <code>Handler</code> without executing it.
 The <code>Transport</code> can now cancel an in-flight request with
 <a href="/pkg/net/http/#Transport.CancelRequest"><code>CancelRequest</code></a>.
-Finally, the Transport is now more aggresive at closing TCP connections when
+Finally, the Transport is now more aggressive at closing TCP connections when
 a <a href="/pkg/net/http/#Response"><code>Response.Body</code></a> is closed before
 being fully consumed.
 </li>
 
 <li>
-The new <a href="/pkg/net/http/cookiejar/">net/http/cookiejar</a> package provides the basics for managing HTTP cookies.
+The new <a href="/pkg/net/http/cookiejar/"><code>net/http/cookiejar</code></a> package provides the basics for managing HTTP cookies.
 </li>
 
-<li> TODO: 
-<code>net/mail</code>: ParseAddress, ParseAddressList
+<li>
+The <a href="/pkg/net/mail/"><code>net/mail</code></a> package has two new functions,
+<a href="/pkg/net/mail/#ParseAddress"><code>ParseAddress</code></a> and
+<a href="/pkg/net/mail/#ParseAddressList"><code>ParseAddressList</code></a>,
+to parse RFC 5322-formatted mail addresses into
+<a href="/pkg/net/mail/#Address"><code>Address</code></a> structures.
 </li>
 
-<li> TODO: 
-<code>net/smtp</code>: Client.Hello
+<li>
+The <a href="/pkg/net/smtp/"><code>net/smtp</code></a> package's
+<a href="/pkg/net/smtp/#Client"><code>Client</code></a> type has a new method,
+<a href="/pkg/net/smtp/#Client.Hello"><code>Hello</code></a>,
+which transmits a <code>HELO</code> or <code>EHLO</code> message to the server.
 </li>
 
 <li>
@@ -1207,12 +1281,13 @@ which do ASCII-only trimming of leading and trailing spaces.
 </li>
 
 <li>
-The new method <a href="/pkg/os/#FileMode.IsRegular"><code>os.FileMode.IsRegular</code> </a> makes it easy to ask if a file is a plain file.
+The new method <a href="/pkg/os/#FileMode.IsRegular"><code>os.FileMode.IsRegular</code></a> makes it easy to ask if a file is a plain file.
 </li>
 
 <li>
-The <a href="/pkg/image/jpeg/"><code>image/jpeg</code></a> package now
-reads progressive JPEG files and handles a few more subsampling configurations.
+The <a href="/pkg/os/signal/"><code>os/signal</code></a> package has a new function,
+<a href="/pkg/os/signal/#Stop"><code>Stop</code></a>, which stops the package delivering
+any further signals to the channel.
 </li>
 
 <li>
@@ -1250,7 +1325,7 @@ The <a href="/pkg/strings/"><code>strings</code></a> package has two new functio
 <a href="/pkg/strings/#TrimPrefix"><code>TrimPrefix</code></a>
 and
 <a href="/pkg/strings/#TrimSuffix"><code>TrimSuffix</code></a>
-with self-evident properties, and the the new method
+with self-evident properties, and the new method
 <a href="/pkg/strings/#Reader.WriteTo"><code>Reader.WriteTo</code></a> so the
 <a href="/pkg/strings/#Reader"><code>Reader</code></a>
 type now implements the
@@ -1263,8 +1338,11 @@ The <a href="/pkg/syscall/"><code>syscall</code></a> package has received many u
 
 <li>
 The <a href="/pkg/testing/"><code>testing</code></a> package now automates the generation of allocation
-statistics in benchmarks using the new
-<a href="/pkg/testing/#AllocsPerRun"><code>AllocsPerRun</code></a> function and the
+statistics in tests and benchmarks using the new
+<a href="/pkg/testing/#AllocsPerRun"><code>AllocsPerRun</code></a> function. And the
+<a href="/pkg/testing/#B.ReportAllocs"><code>ReportAllocs</code></a>
+method on <a href="/pkg/testing/#B"><code>testing.B</code></a> will enable printing of
+memory allocation statistics for the calling benchmark. It also introduces the
 <a href="/pkg/testing/#BenchmarkResult.AllocsPerOp"><code>AllocsPerOp</code></a> method of
 <a href="/pkg/testing/#BenchmarkResult"><code>BenchmarkResult</code></a>.
 There is also a new
@@ -1282,7 +1360,6 @@ In the <a href="/pkg/text/template/"><code>text/template</code></a>
 and
 <a href="/pkg/html/template/"><code>html/template</code></a> packages,
 templates can now use parentheses to group the elements of pipelines, simplifying the construction of complex pipelines.
-TODO: Link to example.
 Also, as part of the new parser, the
 <a href="/pkg/text/template/parse/#Node"><code>Node</code></a> interface got two new methods to provide
 better error reporting.
@@ -1296,12 +1373,12 @@ packages and there are safeguards to guarantee that.
 </li>
 
 <li>
-In the <a href="/pkg/unicode/utf8/"><code>unicode/utf8</code></a> package,
-the new function <a href="/pkg/unicode/utf8/#ValidRune"><code>ValidRune</code></a> reports whether the rune is a valid Unicode code point.
-To be valid, a rune must be in range and not be a surrogate half.
+The implementation of the <a href="/pkg/unicode/"><code>unicode</code></a> package has been updated to Unicode version 6.2.0.
 </li>
 
 <li>
-The implementation of the <a href="/pkg/unicode/"><code>unicode</code></a> package has been updated to Unicode version 6.2.0.
+In the <a href="/pkg/unicode/utf8/"><code>unicode/utf8</code></a> package,
+the new function <a href="/pkg/unicode/utf8/#ValidRune"><code>ValidRune</code></a> reports whether the rune is a valid Unicode code point.
+To be valid, a rune must be in range and not be a surrogate half.
 </li>
 </ul>
