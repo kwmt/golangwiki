@@ -938,7 +938,9 @@ lower precision should be modified to use the new methods.
 新しいメソッドを使って修正すべきです。
 </p>
 
-<h3 id="exp_old">Exp and old subtrees moved to go.exp and go.text subrepositories</h3>
+<h3 id="exp_old">Exp and old subtrees moved to go.exp and go.text subrepositories
+Expと古いサブツリーはgo.exp と go.text のサブリポジトリに移動しました
+</h3>
 
 <p>
 To make it easier for binary distributions to access them if desired, the <code>exp</code>
@@ -947,7 +949,14 @@ have been moved to the new <code>go.exp</code> subrepository at
 <code>code.google.com/p/go.exp</code>. To access the <code>ssa</code> package,
 for example, run
 </p>
-
+<p>
+バイナリディストリビューションに含まれない<code>exp</code>と<code>old</code> ソースのサブツリーに
+アクセスすること希望する場合、
+バイナリディストリビューションに対してそれらにアクセスするには、
+<code>code.google.com/p/go.exp</code>にある
+新しい<code>go.exp</code> サブリポジトリに移動しました。
+例えば、 <code>ssa</code>パッケージにアクセスするには、
+</p>
 <pre>
 $ go get code.google.com/p/go.exp/ssa
 </pre>
@@ -955,17 +964,28 @@ $ go get code.google.com/p/go.exp/ssa
 <p>
 and then in Go source,
 </p>
+<p>
+を実行して、それからGoのソースで
+</p>
 
 <pre>
 import "code.google.com/p/go.exp/ssa"
 </pre>
+<p>
+を記入します。
+</p>
 
 <p>
 The old package <code>exp/norm</code> has also been moved, but to a new repository
 <code>go.text</code>, where the Unicode APIs and other text-related packages will
 be developed.
 </p>
+<p>
+古いパッケージ<code>exp/norm</code>も移動しましたが、
+<code>go.text</code>への移動です。
+Unicode APIと他のテキストに関するパッケージが開発されます。
 
+</p>
 <h3 id="minor_library_changes">Minor changes to the library</h3>
 
 <p>
