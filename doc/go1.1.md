@@ -781,6 +781,10 @@ should be revised to use field tags.
 <p>
 The <a href="/pkg/reflect/"><code>reflect</code></a> package has several significant additions.
 </p>
+<p>
+<a href="http://tip.golang.org/pkg/reflect/"><code>reflect</code></a>パッケージは
+いくつか重要な追加があります。
+</p>
 
 <p>
 It is now possible to run a "select" statement using
@@ -789,6 +793,13 @@ the <code>reflect</code> package; see the description of
 and
 <a href="/pkg/reflect/#SelectCase"><code>SelectCase</code></a>
 for details.
+</p>
+<p>
+<code>reflect</code> パッケージを使って"select" ステートメントを実行することができるようになります。
+詳細は、
+<a href="/pkg/reflect/#Select"><code>Select</code></a>と
+<a href="/pkg/reflect/#SelectCase"><code>SelectCase</code></a>
+の説明を見て下さい。
 </p>
 
 <p>
@@ -801,7 +812,14 @@ on a
 <a href="/pkg/reflect/#Value"><code>Value</code></a>
 (or test for its possibility).
 </p>
-
+<p>
+新しいメソッド
+<a href="/pkg/reflect/#Value.Convert"><code>Value.Convert</code></a>
+(あるいは
+<a href="/pkg/reflect/#Type"><code>Type.ConvertibleTo</code></a>)
+は、<a href="/pkg/reflect/#Value"><code>Value</code></a>上で変換や
+型アサーション（またはその可能性のためのテスト）を実行するための機能を提供します。
+</p>
 <p>
 The new function
 <a href="/pkg/reflect/#MakeFunc"><code>MakeFunc</code></a>
@@ -809,6 +827,13 @@ creates a wrapper function to make it easier to call a function with existing
 <a href="/pkg/reflect/#Value"><code>Values</code></a>,
 doing the standard Go conversions among the arguments, for instance
 to pass an actual <code>int</code> to a formal <code>interface{}</code>.
+</p>
+<p>
+新しい関数<a href="/pkg/reflect/#MakeFunc"><code>MakeFunc</code></a>は
+存在する<a href="/pkg/reflect/#Value"><code>Values</code></a>を持つ関数をコールしやすくするための
+ラッパー関数を作ります。
+引数間で標準のGoの変換をします。
+例えば、実際の<code>int</code>を表面的な<code>interface{}</code>へ渡します。
 </p>
 
 <p>
@@ -822,7 +847,16 @@ construct new
 from existing types, for example to construct a the type <code>[]T</code> given
 only <code>T</code>.
 </p>
-
+<p>
+最後に、新しい関数
+<a href="/pkg/reflect/#ChanOf"><code>ChanOf</code></a>,
+<a href="/pkg/reflect/#MapOf"><code>MapOf</code></a>,
+<a href="/pkg/reflect/#SliceOf"><code>SliceOf</code></a>
+は、既存の型から新しい
+<a href="/pkg/reflect/#Type"><code>Types</code></a>
+を構築します。
+例えば、<code>T</code>を与えた時、型<code>[]T</code>を構築します。
+</p>
 
 <h3 id="time">time</h3>
 <p>
