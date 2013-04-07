@@ -702,6 +702,17 @@ The same is true of the other protocol-specific resolvers <a href="/pkg/net/#Res
 <a href="/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>, and
 <a href="/pkg/net/#ResolveUnixAddr"><code>ResolveUnixAddr</code></a>.
 </p>
+<p>
+<a href="http://tip.golang.org/pkg/net/"><code>net</code></a>パッケージ内のプロトコル固有のレゾルバは、
+ネットワーク名が渡されることについて以前はゆるかった。
+ドキュメントにはっきりあるけれど、<a href="http://tip.golang.org/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>
+の有効なネットワークは<code>"tcp"</code>,<code>"tcp4"</code>,<code>"tcp6"</code>
+です。Go 1.0の実装は、任意の文字を受け入れていました。
+Go 1.1の実装は、ネットワークがそれらの文字の１つになかったら、エラーを返します。
+同じなのは、プロトコル固定のレゾルバ<a href="http://tip.golang.org/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
+、<a href="http://tip.golang.org/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>、
+<a href="http://tip.golang.org/pkg/net/#ResolveUnixAddr"><code>ResolveUnixAddr</code></a>です。
+</p>
 
 <p>
 The previous implementation of
@@ -718,7 +729,53 @@ and
 <a href="/pkg/net/#UnixConn.WriteTo"><code>WriteTo</code></a>
 methods.
 </p>
+<p>
+前の<a href="http://tip.golang.org/pkg/net/#ListenUnixgram"><code>ListenUnixgram</code></a>の実装は
+コネクションエンドポイントの表現として<a href="http://tip.golang.org/pkg/net/#UDPConn"><code>UDPConn</code></a> 
+を返していました。
+Go 1.1の実装では、代わりに
+<a href="http://tip.golang.org/pkg/net/#UnixConn.ReadFrom"><code>ReadFrom</code></a>と
+<a href="http://tip.golang.org/pkg/net/#UnixConn.WriteTo"><code>WriteTo</code></a>メソッドを使って
+読み込んだり書き込んだりできる
+<a href="http://tip.golang.org/pkg/net/#UnixConn"><code>UnixConn</code></a>を返します。
+</p>
 
+<p>
+The data structures
+<a href="http://tip.golang.org/pkg/net/#IPAddr"><code>IPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#TCPAddr"><code>TCPAddr</code></a>, and
+<a href="http://tip.golang.org/pkg/net/#UDPAddr"><code>UDPAddr</code></a>
+add a new string field called <code>Zone</code>.
+Code using untagged composite literals (e.g. <code>net.TCPAddr{ip, port}</code>)
+instead of tagged literals (<code>net.TCPAddr{IP: ip, Port: port}</code>)
+will break due to the new field.
+The Go 1 compatibility rules allow this change: client code must use tagged literals to avoid such breakages.
+</p>
+<p>
+データ構造の
+<a href="http://tip.golang.org/pkg/net/#IPAddr"><code>IPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#TCPAddr"><code>TCPAddr</code></a>, 
+<a href="http://tip.golang.org/pkg/net/#UDPAddr"><code>UDPAddr</code></a>
+には、<code>Zone</code>と呼ぶ新しいstringフィールドを追加しています。
+タグをつけたリテラル(例えば、<code>net.TCPAddr{IP: ip, Port: port}</code>)の代わりに
+タグを付けていないリテラル(<code>net.TCPAddr{ip, port}</code>)を使っているコードは
+新しいフィールドを追加したため、壊れます。
+Go 1の互換性ルールはこの変化を許します。
+クライアントコードは、このような破損を避けるためにタグをつけたリテラルを使わなければなりません。
+</p>
+<p>
+<em>Updating</em>:
+To correct breakage caused by the new struct field,
+<code>go fix</code> will rewrite code to add tags for these types.
+More generally, <code>go vet</code> will identify composite literals that
+should be revised to use field tags.
+</p>
+<p>
+<em>Updating</em>:
+新しい構造体フィールドが原因による破損箇所を訂正することは、
+<code>go fix</code> がそららの型にタグを追加して書きなおしてくれます。
+より一般には、<code>go vet</code> は、フィールドタグを使うように修正すべき複合リテラルか確認します。
+</p>
 <h3 id="reflect">reflect</h3>
 
 <p>
