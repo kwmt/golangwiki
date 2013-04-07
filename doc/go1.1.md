@@ -1295,6 +1295,17 @@ rather than a
 <a href="/pkg/net/#UDPConn"><code>UDPConn</code></a>, which was
 clearly a mistake in Go 1.0.
 Since this API change fixes a bug, it is permitted by the Go 1 compatibility rules.
+
+<a href="/pkg/net/"><code>net</code></a> パッケージの
+<a href="/pkg/net/#ListenUnixgram"><code>ListenUnixgram</code></a>
+関数は型を返すように変更しました。
+<a href="/pkg/net/#UDPConn"><code>UDPConn</code></a>
+ではなく、
+<a href="/pkg/net/#UnixConn"><code>UnixConn</code></a>
+を返します。
+これはGo1.0では明らかに間違いでした。
+このAPIの修正はバグですので、
+Go1互換性のルールによって許されています。
 </li>
 
 <li>
