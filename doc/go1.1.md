@@ -1312,6 +1312,13 @@ Go1互換性のルールによって許されています。
 The <a href="/pkg/net/"><code>net</code></a> package includes a new type,
 <a href="/pkg/net/#Dialer"><code>Dialer</code></a>, to supply options to
 <a href="/pkg/net/#Dialer.Dial"><code>Dial</code></a>.
+
+<a href="/pkg/net/"><code>net</code></a> パッケージに
+新しい型
+<a href="/pkg/net/#Dialer"><code>Dialer</code></a>
+を追加しました。
+<a href="/pkg/net/#Dialer.Dial"><code>Dial</code></a>
+するオプションを提供するためです。
 </li>
 
 <li>
