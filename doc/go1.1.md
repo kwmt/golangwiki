@@ -1244,6 +1244,30 @@ can do the same with <code>float64</code> using
 <a href="/pkg/math/big/#Rat.Float64"><code>Float64</code></a>
 and
 <a href="/pkg/math/big/#Rat.SetFloat64"><code>SetFloat64</code></a>.
+
+<a href="/pkg/math/big/"><code>math/big</code></a> パッケージの
+<a href="/pkg/math/big/#Int"><code>Int</code></a> 型は
+JSON形式から変換するメソッド
+<a href="/pkg/math/big/#Int.MarshalJSON"><code>MarshalJSON</code></a>
+と
+<a href="/pkg/math/big/#Int.UnmarshalJSON"><code>UnmarshalJSON</code></a>
+を追加しました。
+
+また、
+<a href="/pkg/math/big/#Int"><code>Int</code></a>
+は
+<a href="/pkg/math/big/#Int.Uint64"><code>Uint64</code></a>
+と
+<a href="/pkg/math/big/#Int.SetUint64"><code>SetUint64</code></a>
+を使って、
+<code>uint64</code>へ直接変換できます。
+
+<a href="/pkg/math/big/#Rat"><code>Rat</code></a>
+は
+<a href="/pkg/math/big/#Rat.Float64"><code>Float64</code></a>
+と
+<a href="/pkg/math/big/#Rat.SetFloat64"><code>SetFloat64</code></a>.
+を使って、<code>float64</code>と同じことができます。
 </li>
 
 <li>
