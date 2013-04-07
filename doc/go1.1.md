@@ -628,7 +628,7 @@ context switches are required on network operations.</li>
 <li>ランタイムとネットワークライブラリの緊密な結合により
 より少ないコンテキストの切り替えは、ネットワーク運用上必要とされます。</li>
 </ul>
-<h2 id="library">Changes to the standard library</h2>
+<h2 id="library">標準ライブラリの変更</h2>
 
 <h3 id="bufio_scanner">bufio.Scanner</h3>
 
@@ -650,11 +650,24 @@ input such as pathologically long lines, and having a simple
 default: line-oriented input, with each line stripped of its terminator.
 Here is code to reproduce the input a line at a time:
 </p>
-
+<p>
+<a href="http://tip.golang.org/pkg/bufio/"><code>bufio</code></a>パッケージでテキストインプットをスキャンする
+様々な手順,
+<a href="http://tip.golang.org/pkg/bufio/#Reader.ReadBytes"><code>ReadBytes</code></a>,
+<a href="http://tip.golang.org/pkg/bufio/#Reader.ReadString"><code>ReadString</code></a>
+特に
+<a href="http://tip.golang.org/pkg/bufio/#Reader.ReadLine"><code>ReadLine</code></a>,
+は、シンプルな目的に対して使うのが無駄に複雑です。
+Go 1.1では新しい型<a href="http://tip.golang.org/pkg/bufio/#Scanner"><code>Scanner</code></a>
+が追加されました。それは、線やスペースで区切られた一連の単語のようなインプットを読み取りやすくします。
+異常に長い行のような不確かなインプットのスキャンを終えることによって問題を単純化します。
+その終止符から取り除いた各行といっしょに行の方向づけされたインプットをもっています。
+これは、一度に1行のインプットを再現するためのコードです。
+</p>
 <pre>
 scanner := bufio.NewScanner(os.Stdin)
 for scanner.Scan() {
-    fmt.Println(scanner.Text()) // Println will add back the final '\n'
+    fmt.Println(scanner.Text()) // Println は最後に'\n'を追加します。
 }
 if err := scanner.Err(); err != nil {
     fmt.Fprintln(os.Stderr, "reading standard input:", err)
@@ -666,6 +679,12 @@ Scanning behavior can be adjusted through a function to control subdividing the 
 (see the documentation for <a href="/pkg/bufio/#SplitFunc"><code>SplitFunc</code></a>),
 but for tough problems or the need to continue past errors, the older interface
 may still be required.
+</p>
+<p>
+スキャンする動作は、インプットを分割制御する関数を通して調整されます
+(<a href="/pkg/bufio/#SplitFunc"><code>SplitFunc</code></a>のドキュメントを見て下さい)。
+しかし、頑固な問題や過去のエラーを継続するする必要があるため、
+古いインターフェースはまだ必要かもしれません。	
 </p>
 
 <h3 id="net">net</h3>
