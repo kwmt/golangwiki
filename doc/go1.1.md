@@ -1158,6 +1158,12 @@ the parser now keeps better track of stylized annotations such as <code>TODO(joe
 throughout the code,
 information that the <a href="/cmd/godoc/"><code>godoc</code></a>
 command can filter or present according to the value of the <code>-notes</code> flag.
+
+<a href="/pkg/go/doc/"><code>go/doc</code></a>パッケージ内の
+the parser now keeps better track of stylized annotations such as <code>TODO(joe)</code>
+コード全体にわたって<code>TODO(joe)</code>のような形式化されたアノテーションを良くします。
+<a href="/cmd/godoc/"><code>godoc</code></a>
+コマンドは <code>-notes</code> フラグの値によってフィルタや表現することができます.
 </li>
 
 <li>
