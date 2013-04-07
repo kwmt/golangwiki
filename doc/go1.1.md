@@ -1117,6 +1117,16 @@ as well as a new method
 to unmarshal a value into the new type
 <a href="/pkg/encoding/json/#Number"><code>Number</code></a>,
 a string, rather than a float64.
+
+<a href="/pkg/encoding/json/"><code>encoding/json</code></a> パッケージの
+<a href="/pkg/encoding/json/#Decoder"><code>Decoder</code></a>は
+<a href="/pkg/encoding/json/#Decoder.Buffered"><code>Buffered</code></a>
+メソッドを追加しました。そのバッファ内に残っているデータへのアクセスを提供します。
+同様に、値を新しい型
+<a href="/pkg/encoding/json/#Number"><code>Number</code></a>(float64ではなくstring)
+へ変換(unmarshal)する
+<a href="/pkg/encoding/json/#Decoder.UseNumber"><code>UseNumber</code></a>
+を追加しました。
 </li>
 
 <li>
