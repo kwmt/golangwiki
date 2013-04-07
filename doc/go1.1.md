@@ -1333,6 +1333,29 @@ record the zone in a new field, and functions that expect string forms of these 
 <a href="/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>, and
 <a href="/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>,
 now accept the zone-qualified form.
+
+<a href="/pkg/net/"><code>net</code></a> パッケージは
+ゾーン修飾子を使用して<code>fe80::1%lo0</code>のような
+リンクローカルIPv6アドレスのサポートが追加されます。
+
+アドレスの構造<a href="/pkg/net/#IPAddr"><code>IPAddr</code></a>,
+<a href="/pkg/net/#UDPAddr"><code>UDPAddr</code></a>
+<a href="/pkg/net/#TCPAddr"><code>TCPAddr</code></a>
+が、新しいフィールドのzoneを記録します。
+functions that expect string forms of these addresses, such as
+<a href="/pkg/net/#Dial"><code>Dial</code></a>,
+<a href="/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
+<a href="/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>, and
+<a href="/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>,
+now accept the zone-qualified form.
+
+
+このような
+<a href="/pkg/net/#Dial"><code>Dial</code></a>,
+<a href="/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
+<a href="/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>,
+<a href="/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>,
+として、これらのアドレスの文字列形式を期待する関数は、今ではゾーン修飾形式を受け入れます。
 </li>
 
 <li>
