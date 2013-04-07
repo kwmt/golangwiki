@@ -1175,6 +1175,15 @@ It has two functions,
 and
 <a href="/pkg/go/format/#Source"><code>Source</code></a>
 to format arbitrary Go source code.
+
+新しいパッケージ<a href="/pkg/go/format/"><code>go/format</code></a>
+は、<code>gofmt</code>のフォーマットするという特性にアクセスするための
+プログラムの便利な方法を提供します。
+このパッケージは２つの関数があります。
+Go パーサー<a href="/pkg/go/ast/#Node"><code>Node</code></a>を
+フォーマットする<a href="/pkg/go/format/#Node"><code>Node</code></a>関数と
+任意のGo ソースコードをフォーマットする
+<a href="/pkg/go/format/#Source"><code>Source</code></a>関数です。
 </li>
 
 <li>
