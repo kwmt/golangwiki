@@ -1147,9 +1147,9 @@ to specify indented output.
 </li>
 
 <li>
-In the <a href="/pkg/go/ast/"><code>go/ast</code></a> package, a
-new type <a href="/pkg/go/ast/#CommentMap"><code>CommentMap</code></a>
-and associated methods makes it easier to extract and process comments in Go programs.
+<a href="/pkg/go/ast/"><code>go/ast</code></a> パッケージ内の
+ <a href="/pkg/go/ast/#CommentMap"><code>CommentMap</code></a>メソッドと
+ 関連したメソッドは、Goプログラムにあるコメントを抽出と処理しやすくなります。
 </li>
 
 <li>
