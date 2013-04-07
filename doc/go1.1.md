@@ -1209,6 +1209,11 @@ reads progressive JPEG files and handles a few more subsampling configurations.
 The <a href="/pkg/io/"><code>io</code></a> package now exports the
 <a href="/pkg/io/#ByteWriter"><code>io.ByteWriter</code></a> interface to capture the common
 functionality of writing a byte at a time.
+
+The <a href="/pkg/io/"><code>io</code></a> パッケージは
+ 一度に書き込む共通の機能を取り込むために
+ <a href="/pkg/io/#ByteWriter"><code>io.ByteWriter</code></a>
+インターフェースをエクスポートするようになりました。
 </li>
 
 <li>
