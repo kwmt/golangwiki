@@ -1040,6 +1040,13 @@ a new <a href="/pkg/compress/gzip/#Writer.Flush"><code>Flush</code></a>
 method for its
 <a href="/pkg/compress/gzip/#Writer"><code>Writer</code></a>
 type that flushes its underlying <code>flate.Writer</code>.
+
+<a href="/pkg/compress/gzip/"><code>compress/gzip</code></a> パッケージは
+<a href="/pkg/compress/gzip/#Writer"><code>Writer</code></a>型に対して
+新しく
+ <a href="/pkg/compress/gzip/#Writer.Flush"><code>Flush</code></a>
+メソッドを追加しました。
+that flushes its underlying <code>flate.Writer</code>.
 </li>
 
 <li>
