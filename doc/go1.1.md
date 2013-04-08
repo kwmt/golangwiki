@@ -1384,6 +1384,21 @@ and <a href="/pkg/net/#IPConn.WriteMsgIP"><code>WriteMsgIP</code></a>) and
 These are specialized versions of <a href="/pkg/net/#PacketConn"><code>PacketConn</code></a>'s
 <code>ReadFrom</code> and <code>WriteTo</code> methods that provide access to out-of-band data associated
 with the packets.
+
+<a href="/pkg/net/"><code>net</code></a>パッケージ
+は読み書きできるメソッドを持ったプロトコル特有のパケットを追加しました。
+<a href="/pkg/net/#IPConn"><code>IPConn</code></a>
+(<a href="/pkg/net/#IPConn.ReadMsgIP"><code>ReadMsgIP</code></a>
+、 <a href="/pkg/net/#IPConn.WriteMsgIP"><code>WriteMsgIP</code></a>)
+と 
+<a href="/pkg/net/#UDPConn"><code>UDPConn</code></a>
+(<a href="/pkg/net/#UDPConn.ReadMsgUDP"><code>ReadMsgUDP</code></a> 、
+<a href="/pkg/net/#UDPConn.WriteMsgUDP"><code>WriteMsgUDP</code></a>)
+です。
+これらはパケットと関連する帯域外のデータへのアクセスを提供する
+<a href="/pkg/net/#PacketConn"><code>PacketConn</code></a>
+<code>ReadFrom</code> and <code>WriteTo</code> メソッドのバージョンを
+特殊化したものです。
  </li>
  
  <li>
