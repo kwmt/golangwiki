@@ -1362,6 +1362,14 @@ now accept the zone-qualified form.
 The <a href="/pkg/net/"><code>net</code></a> package adds
 <a href="/pkg/net/#LookupNS"><code>LookupNS</code></a> to its suite of resolving functions.
 <code>LookupNS</code> returns the <a href="/pkg/net/#NS">NS records</a> for a host name.
+
+The <a href="/pkg/net/"><code>net</code></a> パッケージは
+<a href="/pkg/net/#LookupNS"><code>LookupNS</code></a>
+を追加しました。
+<code>LookupNS</code>はホスト名に対する
+<a href="/pkg/net/#NS">NS records</a>を返します。
+
+
 </li>
 
 <li>
