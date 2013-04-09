@@ -1464,7 +1464,8 @@ Transportは、TCP接続を閉じることにより積極的になりました�
 </li>
 
 <li>
-The new <a href="/pkg/net/http/cookiejar/"><code>net/http/cookiejar</code></a> package provides the basics for managing HTTP cookies.
+新しい<a href="/pkg/net/http/cookiejar/"><code>net/http/cookiejar</code></a> 
+パッケージは、HTTPクッキーを管理する基本的なもの提供します。
 </li>
 
 <li>
