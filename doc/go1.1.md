@@ -1508,7 +1508,8 @@ The <a href="/pkg/net/textproto/"><code>net/textproto</code></a> パッケージ
 </li>
 
 <li>
-The new method <a href="/pkg/os/#FileMode.IsRegular"><code>os.FileMode.IsRegular</code></a> makes it easy to ask if a file is a plain file.
+新しいメソッド<a href="/pkg/os/#FileMode.IsRegular"><code>os.FileMode.IsRegular</code></a> 
+は、ファイルがプレーンファイルかどうか確認することが簡単になります。
 </li>
 
 <li>
