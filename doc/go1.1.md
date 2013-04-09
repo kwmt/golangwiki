@@ -1526,6 +1526,13 @@ now supports Unix-original leftmost-longest matches through the
 method, while
 <a href="/pkg/regexp/#Regexp.Split"><code>Regexp.Split</code></a> slices
 strings into pieces based on separators defined by the regular expression.
+
+<a href="/pkg/regexp/"><code>regexp</code></a> パッケージは
+<a href="/pkg/regexp/#Regexp.Longest"><code>Regexp.Longest</code></a>
+メソッドを通じて、Unix系オリジナルの最左最長一致をサポートしています。
+
+同時に、<a href="/pkg/regexp/#Regexp.Split"><code>Regexp.Split</code></a>
+は正規表現で定義された区切り文字に基づいた部分に文字列をスライスします。
 </li>
 
 <li>
