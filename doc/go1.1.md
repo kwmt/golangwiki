@@ -1407,6 +1407,14 @@ The <a href="/pkg/net/"><code>net</code></a> package adds methods to
 (<a href="/pkg/net/#UnixConn.CloseRead"><code>CloseRead</code></a> and
 <a href="/pkg/net/#UnixConn.CloseWrite"><code>CloseWrite</code></a>),
 matching the existing methods of <a href="/pkg/net/#TCPConn"><code>TCPConn</code></a>.
+
+<a href="/pkg/net/"><code>net</code></a> パッケージは 
+<a href="/pkg/net/#TCPConn"><code>TCPConn</code></a>の既存のメソッドに合わせて、
+<a href="/pkg/net/#UnixConn"><code>UnixConn</code></a> 
+の接続の半分を閉じれるように、メソッド
+(<a href="/pkg/net/#UnixConn.CloseRead"><code>CloseRead</code></a> と
+<a href="/pkg/net/#UnixConn.CloseWrite"><code>CloseWrite</code></a>)
+を追加しました。
 </li>
  
 <li>
