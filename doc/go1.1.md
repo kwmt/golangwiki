@@ -1434,6 +1434,33 @@ The <code>Transport</code> can now cancel an in-flight request with
 Finally, the Transport is now more aggressive at closing TCP connections when
 a <a href="/pkg/net/http/#Response"><code>Response.Body</code></a> is closed before
 being fully consumed.
+
+<a href="/pkg/net/http/"><code>net/http</code></a> 
+パッケージは、新しくいくつか追加しました。
+<a href="/pkg/net/http/#ParseTime"><code>ParseTime</code></a>
+は、いくつかの共通のHTTPタイムフォーマットにしようと、時間文字列をパースします。
+<a href="/pkg/net/http/#Request"><code>Request</code></a> の
+<a href="/pkg/net/http/#Request.PostFormValue">PostFormValue</a> メソッドは
+<a href="/pkg/net/http/#Request.FormValue"><code>FormValue</code></a>
+に似ていますが、URLパラメータを無視します。
+
+<a href="/pkg/net/http/#CloseNotifier"><code>CloseNotifier</code></a>
+インターフェースは、クライアントが切断した時に検知するための
+サーバハンドラに対する仕組みを提供します。
+
+<code>ServeMux</code> 型はそれを実行せずにパスの
+<code>Handler</code>にアクセスするための、
+<a href="/pkg/net/http/#ServeMux.Handler"><code>Handler</code></a> メソッド
+ を追加しました。
+
+<code>Transport</code> can now cancel an in-flight request with
+<a href="/pkg/net/http/#Transport.CancelRequest"><code>CancelRequest</code></a>
+でin-flightリクエストをキャンセルできるようになりました。
+
+最後に、
+<a href="/pkg/net/http/#Response"><code>Response.Body</code></a>
+が完全に使い終わる前にを閉じられるとき、
+Transportは、TCP接続を閉じることにより積極的になりました。
 </li>
 
 <li>
