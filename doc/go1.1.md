@@ -1474,6 +1474,15 @@ The <a href="/pkg/net/mail/"><code>net/mail</code></a> package has two new funct
 <a href="/pkg/net/mail/#ParseAddressList"><code>ParseAddressList</code></a>,
 to parse RFC 5322-formatted mail addresses into
 <a href="/pkg/net/mail/#Address"><code>Address</code></a> structures.
+
+<a href="/pkg/net/mail/"><code>net/mail</code></a> 
+パッケージは、
+RFC 5322形式のメールアドレスを解析し、
+<a href="/pkg/net/mail/#Address"><code>Address</code></a>
+構造体へ格納する2つの関数
+<a href="/pkg/net/mail/#ParseAddress"><code>ParseAddress</code></a>と
+<a href="/pkg/net/mail/#ParseAddressList"><code>ParseAddressList</code></a>
+を追加しました。
 </li>
 
 <li>
