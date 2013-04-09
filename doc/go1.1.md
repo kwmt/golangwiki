@@ -1499,11 +1499,12 @@ which transmits a <code>HELO</code> or <code>EHLO</code> message to the server.
 </li>
 
 <li>
-The <a href="/pkg/net/textproto/"><code>net/textproto</code></a> package
-has two new functions,
-<a href="/pkg/net/textproto/#TrimBytes"><code>TrimBytes</code></a> and
-<a href="/pkg/net/textproto/#TrimString"><code>TrimString</code></a>,
-which do ASCII-only trimming of leading and trailing spaces.
+The <a href="/pkg/net/textproto/"><code>net/textproto</code></a> パッケージは
+２つの新しい関数
+<a href="/pkg/net/textproto/#TrimBytes"><code>TrimBytes</code></a> と
+<a href="/pkg/net/textproto/#TrimString"><code>TrimString</code></a>
+を追加しました。
+これは、ASCIIだけ先頭と末尾のスペースのトリミングを行います。
 </li>
 
 <li>
