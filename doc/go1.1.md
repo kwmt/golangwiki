@@ -1513,9 +1513,10 @@ The <a href="/pkg/net/textproto/"><code>net/textproto</code></a> パッケージ
 </li>
 
 <li>
-The <a href="/pkg/os/signal/"><code>os/signal</code></a> package has a new function,
-<a href="/pkg/os/signal/#Stop"><code>Stop</code></a>, which stops the package delivering
-any further signals to the channel.
+The <a href="/pkg/os/signal/"><code>os/signal</code></a> パッケージは新しい関数
+<a href="/pkg/os/signal/#Stop"><code>Stop</code></a>
+を追加しました。
+これは、チャネルに信号を与えて続けているパッケージを止めます。
 </li>
 
 <li>
