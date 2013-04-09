@@ -1490,6 +1490,12 @@ The <a href="/pkg/net/smtp/"><code>net/smtp</code></a> package's
 <a href="/pkg/net/smtp/#Client"><code>Client</code></a> type has a new method,
 <a href="/pkg/net/smtp/#Client.Hello"><code>Hello</code></a>,
 which transmits a <code>HELO</code> or <code>EHLO</code> message to the server.
+
+<a href="/pkg/net/smtp/"><code>net/smtp</code></a> パッケージの
+<a href="/pkg/net/smtp/#Client"><code>Client</code></a> 型は 
+新しいメソッド
+<a href="/pkg/net/smtp/#Client.Hello"><code>Hello</code></a>を追加しました。
+それは<code>HELO</code> または <code>EHLO</code> メッセージをサーバに送ります。
 </li>
 
 <li>
