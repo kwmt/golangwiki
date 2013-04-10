@@ -1570,6 +1570,16 @@ The <a href="/pkg/sort/"><code>sort</code></a> package has a new function,
 Wrapping the argument of a call to 
 <a href="/pkg/sort/#Sort"><code>sort.Sort</code></a>
 with a call to <code>Reverse</code> causes the sort order to be reversed.
+
+<a href="/pkg/sort/"><code>sort</code></a> パッケージは新しい関数
+<a href="/pkg/sort/#Reverse"><code>Reverse</code></a>
+を追加しました。
+Wrapping the argument of a call to 
+<a href="/pkg/sort/#Sort"><code>sort.Sort</code></a>
+with a call to <code>Reverse</code> causes the sort order to be reversed.
+ <code>Reverse</code>を呼んで、それを
+<a href="/pkg/sort/#Sort"><code>sort.Sort</code></a>
+の引数にラップすることで、順番を逆順に並べ替えます。
 </li>
 
 <li>
