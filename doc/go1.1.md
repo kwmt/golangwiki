@@ -11,25 +11,24 @@ These point releases fixed known bugs but made no non-critical changes to the im
 </p>
 
 <p>
-この新しいリリースGo 1.1は<a href="http://golang.org/doc/go1compat.html">互換性の約束</a>をキープしていまが、
-数個の重要な言語変化を追加して(もちろん、後方互換)、ライブラリの変更(これも互換性あり)、
-コンパイラ、ライブラリ、ランタイムの実装上の主要な仕事が含まれています。
-焦点は、性能にあります。
+この新しいリリースGo 1.1は<a href="http://golang.org/doc/go1compat.html">互換性の約束</a>を守っていますが、
+数個の重要な仕様を追加して(もちろん、後方互換)、多くのライブラリの変更(これも互換性あり)、
+コンパイラ、ライブラリ、ランタイムの実装上の主要な変更が含まれています。
+焦点は、パフォーマンスにあります。
 ベンチマークは最善の方法ではありませんが、
 多くのテストプログラムが劇的にスピードアップするのを見ることは重要です。
-私たちは、これらのGoの組み込みや再コンパイルをアップデートすることで、
-多くのユーザーのプログラムが改善されると信じています。
+私たちは、多くのユーザーのプログラムが、
+Go1.1をインストールして再コンパイルして更新することで
+改善がみれることを信じています。
 </p>
 
 <p>
 このドキュメントは、Go1とGo1.1の変更点を要約しています。
-Very little if any code will need modification to run with Go 1.1,
-although a couple of rare error cases surface with this release
-and need to be addressed if they arise.
+Go 1.1で実行するために変更が必要なコードが少しあります。
+このリリースでレアなエラーケースですが、エラーが発生したら対応する必要があります。
 以下に詳細を示します。
-特に<a href="#int">64-bit 整数</a> と 
-<a href="#unicode_literals">Unicodeリテラル</a>
-の議論があります。
+特に<a href="#int">64-bit 整数</a> と <a href="#unicode_literals">Unicodeリテラル</a>
+の議論を見て下さい。
 </p>
 
 <h2 id="language">Changes to the language</h2>
