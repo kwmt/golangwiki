@@ -1592,6 +1592,21 @@ with self-evident properties, and the new method
 <a href="/pkg/strings/#Reader"><code>Reader</code></a>
 type now implements the
 <a href="/pkg/io/#WriterTo"><code>io.WriterTo</code></a> interface.
+
+
+<a href="/pkg/strings/"><code>strings</code></a> パッケージは２つの関数
+<a href="/pkg/strings/#TrimPrefix"><code>TrimPrefix</code></a>
+と
+self-evidentプロパティを持つ
+<a href="/pkg/strings/#TrimSuffix"><code>TrimSuffix</code></a>
+を追加し、１つのメソッド
+<a href="/pkg/strings/#Reader.WriteTo"><code>Reader.WriteTo</code></a> 
+を追加しました。
+したがって、<a href="/pkg/strings/#Reader"><code>Reader</code></a>
+型は
+<a href="/pkg/io/#WriterTo"><code>io.WriterTo</code></a> 
+インターフェースを実装することになりました。
+
 </li>
 
 <li>
