@@ -1,7 +1,7 @@
 <h2 id="introduction">Introduction to Go 1.1</h2>
 
 <p>
-2012年３月の<a href="/doc/go1.html">Go version 1</a>のリリースは、
+2012年３月の<a href="http://tip.golang.org/doc/go1.html">Go version 1</a>のリリースは、
 Go言語とライブラリの安定版の新しい区切りとなりました。
 その安定性は、世界中のGoユーザーのコミュニティとシステムを育ててきました。
 それ以来、1.0.1,1.0.2,1.0.3をリリースしました。
@@ -69,7 +69,7 @@ stringとruneリテラルの定義は、代用の半分をUnicodeの集合を除
 <p>
 Go1.1は<a href="http://tip.golang.org/ref/spec#Method_values">method values</a>を実装しています。
 それらは特定のレシーバの値に結び付けられる関数です。
-例えば、<a href="/pkg/bufio/#Writer"><code>Writer</code></a>の値<code>w</code>が与えられ、
+例えば、<a href="http://tip.golang.org/pkg/bufio/#Writer"><code>Writer</code></a>の値<code>w</code>が与えられ、
 式<code>w.Write</code>のmethod value は、常に<code>w</code>に対して書き込む関数です。
 それは<code>w</code>に関して閉じている関数リテラルと同じことです。
 </p>
@@ -113,7 +113,7 @@ Go1.1以前は、値を返す関数は、明示的な"return"か、
 <p>
 In Go 1.1, the rule about final "return" statements is more permissive.
 It introduces the concept of a
-<a href="/ref/spec/#Terminating_statements"><em>terminating statement</em></a>,
+<a href="http://tip.golang.org/ref/spec/#Terminating_statements"><em>terminating statement</em></a>,
 a statement that is guaranteed to be the last one a function executes.
 Examples include 
 "for" loops with no condition and "if-else"
@@ -223,7 +223,7 @@ gcとgccgoの実装は、 AMD64/x86-64のような64bitプラットフォーム�
 <em>Updating</em>:
 Most programs will be unaffected by this change.
 Because Go does not allow implicit conversions between distinct
-<a href="/ref/spec/#Numeric_types">numeric types</a>,
+<a href="http://tip.golang.org/ref/spec/#Numeric_types">numeric types</a>,
 no programs will stop compiling due to this change.
 However, programs that contain implicit assumptions
 that <code>int</code> is only 32 bits may change behavior.
@@ -298,7 +298,7 @@ a surrogate half is illegal as a rune value, when encoded as UTF-8, or when
 encoded in isolation as UTF-16.
 When encountered, for example in converting from a rune to UTF-8, it is
 treated as an encoding error and will yield the replacement rune,
-<a href="/pkg/unicode/utf8/#RuneError"><code>utf8.RuneError</code></a>,
+<a href="http://tip.golang.org/pkg/unicode/utf8/#RuneError"><code>utf8.RuneError</code></a>,
 U+FFFD.
 </p>
 
@@ -352,7 +352,7 @@ For now, it is only available on Linux, Mac OS X, and Windows systems with
 64-bit x86 processors.
 To enable it, set the <code>-race</code> flag when building or testing your program 
 (for instance, <code>go test -race</code>).
-The race detector is documented in <a href="/doc/articles/race_detector.html">a separate article</a>.
+The race detector is documented in <a href="http://tip.golang.org/doc/articles/race_detector.html">a separate article</a>.
 </p>
 <p>
 ツールの主な追加は、<em>race detector</em>です。
@@ -363,7 +363,7 @@ The race detector is documented in <a href="/doc/articles/race_detector.html">a 
 これを可能にするには、プログラムをビルドするときやテストするときに、
 <code>-race</code> フラグをセットします。
 (例： <code>go test -race</code>)
-このrace detectorのドキュメントは<a href="/doc/articles/race_detector.html">別の記事</a>にあります。
+このrace detectorのドキュメントは<a href="http://tip.golang.org/doc/articles/race_detector.html">別の記事</a>にあります。
 
 </p>
 <h3 id="gc_asm">The gc assemblers</h3>
@@ -393,11 +393,11 @@ match the Go function prototypes they implement.
 <h3 id="gocmd">goコマンドの変更</h3>
 
 <p>
-The <a href="/cmd/go/"><code>go</code></a> command has acquired several
+The <a href="http://tip.golang.org/cmd/go/"><code>go</code></a> command has acquired several
 changes intended to improve the experience for new Go users.
 </p>
 <p>
-<a href="/cmd/go/"><code>go</code></a>コマンドは、
+<a href="http://tip.golang.org/cmd/go/"><code>go</code></a>コマンドは、
 新しいGoユーザーの体験を改善するための変更をしています。
 </p>
 
@@ -498,7 +498,7 @@ Run <code>go help test</code> for more information.
 <h3 id="gofix">go fixコマンドの変更</h3>
 
 <p>
-The <a href="/cmd/fix/"><code>fix</code></a> command, usually run as
+The <a href="http://tip.golang.org/cmd/fix/"><code>fix</code></a> command, usually run as
 <code>go fix</code>, no longer applies fixes to update code from
 before Go 1 to use Go 1 APIs.
 To update pre-Go 1 code to Go 1.1, use a Go 1.0 tool chain
@@ -600,7 +600,7 @@ Go 1.0からの標準的な改善は、約30%から40%、ときおりそれ以�
 <li>The gc compilers generate better code in many cases, most noticeably for
 floating point on the 32-bit Intel architecture.</li>
 <li>The gc compilers do more in-lining, including for some operations
-in the run-time such as <a href="/pkg/builtin/#append"><code>append</code></a>
+in the run-time such as <a href="http://tip.golang.org/pkg/builtin/#append"><code>append</code></a>
 and interface conversions.</li>
 <li>There is a new implementation of Go maps with significant reduction in
 memory footprint and CPU time.</li>
@@ -617,7 +617,7 @@ context switches are required on network operations.</li>
 <ul>
 <li>gcコンパイラは、多くのケースでよりよいコードを生成します。
 32bit intelアーキテクチャの浮動小数点に対しては、もっとも顕著です。</li>
-<li>gcコンパイラは、内部で<a href="/pkg/builtin/#append"><code>append</code>
+<li>gcコンパイラは、内部で<a href="http://tip.golang.org/pkg/builtin/#append"><code>append</code>
 やインターフェースの変換のようなランタイムの作業を含む多くのことをしています。</li>
 <li>メモリフットプリントとCPU時間の大幅な削減で、Goのマップの新しい実装があります。</li>
 <li>ガベージコレクタは、複数のCPU上で動作するプログラムのための待ち時間を減らすことができ、
@@ -634,15 +634,15 @@ context switches are required on network operations.</li>
 
 <p>
 The various routines to scan textual input in the
-<a href="/pkg/bufio/"><code>bufio</code></a>
+<a href="http://tip.golang.org/pkg/bufio/"><code>bufio</code></a>
 package,
-<a href="/pkg/bufio/#Reader.ReadBytes"><code>ReadBytes</code></a>,
-<a href="/pkg/bufio/#Reader.ReadString"><code>ReadString</code></a>
+<a href="http://tip.golang.org/pkg/bufio/#Reader.ReadBytes"><code>ReadBytes</code></a>,
+<a href="http://tip.golang.org/pkg/bufio/#Reader.ReadString"><code>ReadString</code></a>
 and particularly
-<a href="/pkg/bufio/#Reader.ReadLine"><code>ReadLine</code></a>,
+<a href="http://tip.golang.org/pkg/bufio/#Reader.ReadLine"><code>ReadLine</code></a>,
 are needlessly complex to use for simple purposes.
 In Go 1.1, a new type,
-<a href="/pkg/bufio/#Scanner"><code>Scanner</code></a>,
+<a href="http://tip.golang.org/pkg/bufio/#Scanner"><code>Scanner</code></a>,
 has been added to make it easier to do simple tasks such as
 read the input as a sequence of lines or space-delimited words.
 It simplifies the problem by terminating the scan on problematic
@@ -676,13 +676,13 @@ if err := scanner.Err(); err != nil {
 
 <p>
 Scanning behavior can be adjusted through a function to control subdividing the input
-(see the documentation for <a href="/pkg/bufio/#SplitFunc"><code>SplitFunc</code></a>),
+(see the documentation for <a href="http://tip.golang.org/pkg/bufio/#SplitFunc"><code>SplitFunc</code></a>),
 but for tough problems or the need to continue past errors, the older interface
 may still be required.
 </p>
 <p>
 スキャンする動作は、インプットを分割制御する関数を通して調整されます
-(<a href="/pkg/bufio/#SplitFunc"><code>SplitFunc</code></a>のドキュメントを見て下さい)。
+(<a href="http://tip.golang.org/pkg/bufio/#SplitFunc"><code>SplitFunc</code></a>のドキュメントを見て下さい)。
 しかし、頑固な問題や過去のエラーを継続するする必要があるため、
 古いインターフェースはまだ必要かもしれません。	
 </p>
@@ -690,17 +690,17 @@ may still be required.
 <h3 id="net">net</h3>
 
 <p>
-The protocol-specific resolvers in the <a href="/pkg/net/"><code>net</code></a> package were formerly
+The protocol-specific resolvers in the <a href="http://tip.golang.org/pkg/net/"><code>net</code></a> package were formerly
 lax about the network name passed in.
 Although the documentation was clear
 that the only valid networks for
-<a href="/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>
+<a href="http://tip.golang.org/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>
 are <code>"tcp"</code>,
 <code>"tcp4"</code>, and <code>"tcp6"</code>, the Go 1.0 implementation silently accepted any string.
 The Go 1.1 implementation returns an error if the network is not one of those strings.
-The same is true of the other protocol-specific resolvers <a href="/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
-<a href="/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>, and
-<a href="/pkg/net/#ResolveUnixAddr"><code>ResolveUnixAddr</code></a>.
+The same is true of the other protocol-specific resolvers <a href="http://tip.golang.org/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>, and
+<a href="http://tip.golang.org/pkg/net/#ResolveUnixAddr"><code>ResolveUnixAddr</code></a>.
 </p>
 <p>
 <a href="http://tip.golang.org/pkg/net/"><code>net</code></a>パッケージ内のプロトコル固有のレゾルバは、
@@ -716,17 +716,17 @@ Go 1.1の実装は、ネットワークがそれらの文字の１つになか�
 
 <p>
 The previous implementation of
-<a href="/pkg/net/#ListenUnixgram"><code>ListenUnixgram</code></a>
+<a href="http://tip.golang.org/pkg/net/#ListenUnixgram"><code>ListenUnixgram</code></a>
 returned a
-<a href="/pkg/net/#UDPConn"><code>UDPConn</code></a> as
+<a href="http://tip.golang.org/pkg/net/#UDPConn"><code>UDPConn</code></a> as
 a representation of the connection endpoint.
 The Go 1.1 implementation instead returns a
-<a href="/pkg/net/#UnixConn"><code>UnixConn</code></a>
+<a href="http://tip.golang.org/pkg/net/#UnixConn"><code>UnixConn</code></a>
 to allow reading and writing
 with its
-<a href="/pkg/net/#UnixConn.ReadFrom"><code>ReadFrom</code></a>
+<a href="http://tip.golang.org/pkg/net/#UnixConn.ReadFrom"><code>ReadFrom</code></a>
 and 
-<a href="/pkg/net/#UnixConn.WriteTo"><code>WriteTo</code></a>
+<a href="http://tip.golang.org/pkg/net/#UnixConn.WriteTo"><code>WriteTo</code></a>
 methods.
 </p>
 <p>
@@ -779,7 +779,7 @@ should be revised to use field tags.
 <h3 id="reflect">reflect</h3>
 
 <p>
-The <a href="/pkg/reflect/"><code>reflect</code></a> package has several significant additions.
+The <a href="http://tip.golang.org/pkg/reflect/"><code>reflect</code></a> package has several significant additions.
 </p>
 <p>
 <a href="http://tip.golang.org/pkg/reflect/"><code>reflect</code></a>パッケージは
@@ -789,48 +789,48 @@ The <a href="/pkg/reflect/"><code>reflect</code></a> package has several signifi
 <p>
 It is now possible to run a "select" statement using
 the <code>reflect</code> package; see the description of
-<a href="/pkg/reflect/#Select"><code>Select</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#Select"><code>Select</code></a>
 and
-<a href="/pkg/reflect/#SelectCase"><code>SelectCase</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#SelectCase"><code>SelectCase</code></a>
 for details.
 </p>
 <p>
 <code>reflect</code> パッケージを使って"select" ステートメントを実行することができるようになります。
 詳細は、
-<a href="/pkg/reflect/#Select"><code>Select</code></a>と
-<a href="/pkg/reflect/#SelectCase"><code>SelectCase</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#Select"><code>Select</code></a>と
+<a href="http://tip.golang.org/pkg/reflect/#SelectCase"><code>SelectCase</code></a>
 の説明を見て下さい。
 </p>
 
 <p>
 The new method
-<a href="/pkg/reflect/#Value.Convert"><code>Value.Convert</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#Value.Convert"><code>Value.Convert</code></a>
 (or
-<a href="/pkg/reflect/#Type"><code>Type.ConvertibleTo</code></a>)
+<a href="http://tip.golang.org/pkg/reflect/#Type"><code>Type.ConvertibleTo</code></a>)
 provides functionality to execute a Go conversion or type assertion operation
 on a
-<a href="/pkg/reflect/#Value"><code>Value</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#Value"><code>Value</code></a>
 (or test for its possibility).
 </p>
 <p>
 新しいメソッド
-<a href="/pkg/reflect/#Value.Convert"><code>Value.Convert</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#Value.Convert"><code>Value.Convert</code></a>
 (あるいは
-<a href="/pkg/reflect/#Type"><code>Type.ConvertibleTo</code></a>)
-は、<a href="/pkg/reflect/#Value"><code>Value</code></a>上で変換や
+<a href="http://tip.golang.org/pkg/reflect/#Type"><code>Type.ConvertibleTo</code></a>)
+は、<a href="http://tip.golang.org/pkg/reflect/#Value"><code>Value</code></a>上で変換や
 型アサーション（またはその可能性のためのテスト）を実行するための機能を提供します。
 </p>
 <p>
 The new function
-<a href="/pkg/reflect/#MakeFunc"><code>MakeFunc</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#MakeFunc"><code>MakeFunc</code></a>
 creates a wrapper function to make it easier to call a function with existing
-<a href="/pkg/reflect/#Value"><code>Values</code></a>,
+<a href="http://tip.golang.org/pkg/reflect/#Value"><code>Values</code></a>,
 doing the standard Go conversions among the arguments, for instance
 to pass an actual <code>int</code> to a formal <code>interface{}</code>.
 </p>
 <p>
-新しい関数<a href="/pkg/reflect/#MakeFunc"><code>MakeFunc</code></a>は
-存在する<a href="/pkg/reflect/#Value"><code>Values</code></a>を持つ関数をコールしやすくするための
+新しい関数<a href="http://tip.golang.org/pkg/reflect/#MakeFunc"><code>MakeFunc</code></a>は
+存在する<a href="http://tip.golang.org/pkg/reflect/#Value"><code>Values</code></a>を持つ関数をコールしやすくするための
 ラッパー関数を作ります。
 引数間で標準のGoの変換をします。
 例えば、実際の<code>int</code>を表面的な<code>interface{}</code>へ渡します。
@@ -838,22 +838,22 @@ to pass an actual <code>int</code> to a formal <code>interface{}</code>.
 
 <p>
 Finally, the new functions
-<a href="/pkg/reflect/#ChanOf"><code>ChanOf</code></a>,
-<a href="/pkg/reflect/#MapOf"><code>MapOf</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#ChanOf"><code>ChanOf</code></a>,
+<a href="http://tip.golang.org/pkg/reflect/#MapOf"><code>MapOf</code></a>
 and
-<a href="/pkg/reflect/#SliceOf"><code>SliceOf</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#SliceOf"><code>SliceOf</code></a>
 construct new
-<a href="/pkg/reflect/#Type"><code>Types</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#Type"><code>Types</code></a>
 from existing types, for example to construct a the type <code>[]T</code> given
 only <code>T</code>.
 </p>
 <p>
 最後に、新しい関数
-<a href="/pkg/reflect/#ChanOf"><code>ChanOf</code></a>,
-<a href="/pkg/reflect/#MapOf"><code>MapOf</code></a>,
-<a href="/pkg/reflect/#SliceOf"><code>SliceOf</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#ChanOf"><code>ChanOf</code></a>,
+<a href="http://tip.golang.org/pkg/reflect/#MapOf"><code>MapOf</code></a>,
+<a href="http://tip.golang.org/pkg/reflect/#SliceOf"><code>SliceOf</code></a>
 は、既存の型から新しい
-<a href="/pkg/reflect/#Type"><code>Types</code></a>
+<a href="http://tip.golang.org/pkg/reflect/#Type"><code>Types</code></a>
 を構築します。
 例えば、<code>T</code>を与えた時、型<code>[]T</code>を構築します。
 </p>
@@ -861,67 +861,67 @@ only <code>T</code>.
 <h3 id="time">time</h3>
 <p>
 On FreeBSD, Linux, NetBSD, OS X and OpenBSD, previous versions of the
-<a href="/pkg/time/"><code>time</code></a> package
+<a href="http://tip.golang.org/pkg/time/"><code>time</code></a> package
 returned times with microsecond precision.
 The Go 1.1 implementation on these
 systems now returns times with nanosecond precision.
 Programs that write to an external format with microsecond precision
 and read it back, expecting to recover the original value, will be affected
 by the loss of precision.
-There are two new methods of <a href="/pkg/time/#Time"><code>Time</code></a>,
-<a href="/pkg/time/#Time.Round"><code>Round</code></a>
+There are two new methods of <a href="http://tip.golang.org/pkg/time/#Time"><code>Time</code></a>,
+<a href="http://tip.golang.org/pkg/time/#Time.Round"><code>Round</code></a>
 and
-<a href="/pkg/time/#Time.Truncate"><code>Truncate</code></a>,
+<a href="http://tip.golang.org/pkg/time/#Time.Truncate"><code>Truncate</code></a>,
 that can be used to remove precision from a time before passing it to
 external storage.
 </p>
 <p>
 FreeBSD, Linux, NetBSD, OS X, OpenBSD上では
-以前のバージョンの<a href="/pkg/time/"><code>time</code></a>パッケージは、
+以前のバージョンの<a href="http://tip.golang.org/pkg/time/"><code>time</code></a>パッケージは、
 マイクロ秒の精度の時間を返していました。
 これらのシステム上でのGo 1.1の実装は、ナノ秒の精度の時間を返すようになります。
 マイクロ秒の精度で外部形式への書き込み、
 元の値に戻ることを期待し、それを読み戻すプログラムは、精度のロスによる影響を受けます。
-<a href="/pkg/time/#Time"><code>Time</code></a>の新しい２つのメソッド
-<a href="/pkg/time/#Time.Round"><code>Round</code></a>
+<a href="http://tip.golang.org/pkg/time/#Time"><code>Time</code></a>の新しい２つのメソッド
+<a href="http://tip.golang.org/pkg/time/#Time.Round"><code>Round</code></a>
 と
-<a href="/pkg/time/#Time.Truncate"><code>Truncate</code></a>
+<a href="http://tip.golang.org/pkg/time/#Time.Truncate"><code>Truncate</code></a>
 は、外部ストレージに渡す前に、時間から精度を削除するために使用することができます。
 </p>
 
 <p>
 The new method
-<a href="/pkg/time/#Time.YearDay"><code>YearDay</code></a>
+<a href="http://tip.golang.org/pkg/time/#Time.YearDay"><code>YearDay</code></a>
 returns the one-indexed integral day number of the year specified by the time value.
 </p>
 
 <p>
 The
-<a href="/pkg/time/#Timer"><code>Timer</code></a>
+<a href="http://tip.golang.org/pkg/time/#Timer"><code>Timer</code></a>
 type has a new method
-<a href="/pkg/time/#Timer.Reset"><code>Reset</code></a>
+<a href="http://tip.golang.org/pkg/time/#Timer.Reset"><code>Reset</code></a>
 that modifies the timer to expire after a specified duration.
 </p>
 <p>
-<a href="/pkg/time/#Timer"><code>Timer</code></a>型は
+<a href="http://tip.golang.org/pkg/time/#Timer"><code>Timer</code></a>型は
 新しいメソッド
-<a href="/pkg/time/#Timer.Reset"><code>Reset</code></a>
+<a href="http://tip.golang.org/pkg/time/#Timer.Reset"><code>Reset</code></a>
 を持っています。これは指定した期間後に有効期限が切れるようにタイマーを変更します。
 </p>
 <p>
 Finally, the new function
-<a href="/pkg/time/#ParseInLocation"><code>ParseInLocation</code></a>
+<a href="http://tip.golang.org/pkg/time/#ParseInLocation"><code>ParseInLocation</code></a>
 is like the existing
-<a href="/pkg/time/#Parse"><code>Parse</code></a>
+<a href="http://tip.golang.org/pkg/time/#Parse"><code>Parse</code></a>
 but parses the time in the context of a location (time zone), ignoring
 time zone information in the parsed string.
 This function addresses a common source of confusion in the time API.
 </p>
 <p>
 最後に新しい関数
-<a href="/pkg/time/#ParseInLocation"><code>ParseInLocation</code></a>
+<a href="http://tip.golang.org/pkg/time/#ParseInLocation"><code>ParseInLocation</code></a>
 は既存の
-<a href="/pkg/time/#Parse"><code>Parse</code></a>に似ています。
+<a href="http://tip.golang.org/pkg/time/#Parse"><code>Parse</code></a>に似ています。
 ロケーション（タイムゾーン）のコンテキスト内で時間をパースします。
 パースされた文字列内のタイムゾーン情報は無視します。
 この関数は、time APIの共通の混乱の原因に対処しています。
@@ -999,309 +999,309 @@ See the relevant package documentation for more information about each change.
 
 <ul>
 <li> 
-The <a href="/pkg/bytes/"><code>bytes</code></a> package has two new functions,
-<a href="/pkg/bytes/#TrimPrefix"><code>TrimPrefix</code></a>
+The <a href="http://tip.golang.org/pkg/bytes/"><code>bytes</code></a> package has two new functions,
+<a href="http://tip.golang.org/pkg/bytes/#TrimPrefix"><code>TrimPrefix</code></a>
 and
-<a href="/pkg/bytes/#TrimSuffix"><code>TrimSuffix</code></a>,
+<a href="http://tip.golang.org/pkg/bytes/#TrimSuffix"><code>TrimSuffix</code></a>,
 with self-evident properties.
-Also, the <a href="/pkg/bytes/#Buffer"><code>Buffer</code></a> type
+Also, the <a href="http://tip.golang.org/pkg/bytes/#Buffer"><code>Buffer</code></a> type
 has a new method
-<a href="/pkg/bytes/#Buffer.Grow"><code>Grow</code></a> that
+<a href="http://tip.golang.org/pkg/bytes/#Buffer.Grow"><code>Grow</code></a> that
 provides some control over memory allocation inside the buffer.
 Finally, the
-<a href="/pkg/bytes/#Reader"><code>Reader</code></a> type now has a
-<a href="/pkg/strings/#Reader.WriteTo"><code>WriteTo</code></a> method
+<a href="http://tip.golang.org/pkg/bytes/#Reader"><code>Reader</code></a> type now has a
+<a href="http://tip.golang.org/pkg/strings/#Reader.WriteTo"><code>WriteTo</code></a> method
 so it implements the 
-<a href="/pkg/io/#WriterTo"><code>io.WriterTo</code></a> interface.
+<a href="http://tip.golang.org/pkg/io/#WriterTo"><code>io.WriterTo</code></a> interface.
 
-The <a href="/pkg/bytes/"><code>bytes</code></a> パッケージは２つの関数を追加しました。
+The <a href="http://tip.golang.org/pkg/bytes/"><code>bytes</code></a> パッケージは２つの関数を追加しました。
 わかりきったプロパティを持つ
-<a href="/pkg/bytes/#TrimPrefix"><code>TrimPrefix</code></a>
+<a href="http://tip.golang.org/pkg/bytes/#TrimPrefix"><code>TrimPrefix</code></a>
 と
-<a href="/pkg/bytes/#TrimSuffix"><code>TrimSuffix</code></a>
+<a href="http://tip.golang.org/pkg/bytes/#TrimSuffix"><code>TrimSuffix</code></a>
 です。
 
-また、<a href="/pkg/bytes/#Buffer"><code>Buffer</code></a> 型は
+また、<a href="http://tip.golang.org/pkg/bytes/#Buffer"><code>Buffer</code></a> 型は
 新しいメソッド
-<a href="/pkg/bytes/#Buffer.Grow"><code>Grow</code></a> 
+<a href="http://tip.golang.org/pkg/bytes/#Buffer.Grow"><code>Grow</code></a> 
 を追加しました。
 これはそのバッファ内のメモリの割り当てを拡張します。
 最後に、
-<a href="/pkg/bytes/#Reader"><code>Reader</code></a> 型は
-<a href="/pkg/strings/#Reader.WriteTo"><code>WriteTo</code></a> メソッドを追加しました。
-ですので、<a href="/pkg/bytes/#Reader"><code>Reader</code></a> 型は
-<a href="/pkg/io/#WriterTo"><code>io.WriterTo</code></a> インターフェースを実装しています。
+<a href="http://tip.golang.org/pkg/bytes/#Reader"><code>Reader</code></a> 型は
+<a href="http://tip.golang.org/pkg/strings/#Reader.WriteTo"><code>WriteTo</code></a> メソッドを追加しました。
+ですので、<a href="http://tip.golang.org/pkg/bytes/#Reader"><code>Reader</code></a> 型は
+<a href="http://tip.golang.org/pkg/io/#WriterTo"><code>io.WriterTo</code></a> インターフェースを実装しています。
 
 </li>
 
 <li>
-The <a href="/pkg/compress/gzip/"><code>compress/gzip</code></a> package has
-a new <a href="/pkg/compress/gzip/#Writer.Flush"><code>Flush</code></a>
+The <a href="http://tip.golang.org/pkg/compress/gzip/"><code>compress/gzip</code></a> package has
+a new <a href="http://tip.golang.org/pkg/compress/gzip/#Writer.Flush"><code>Flush</code></a>
 method for its
-<a href="/pkg/compress/gzip/#Writer"><code>Writer</code></a>
+<a href="http://tip.golang.org/pkg/compress/gzip/#Writer"><code>Writer</code></a>
 type that flushes its underlying <code>flate.Writer</code>.
 
-<a href="/pkg/compress/gzip/"><code>compress/gzip</code></a> パッケージは
-<a href="/pkg/compress/gzip/#Writer"><code>Writer</code></a>型に対して
+<a href="http://tip.golang.org/pkg/compress/gzip/"><code>compress/gzip</code></a> パッケージは
+<a href="http://tip.golang.org/pkg/compress/gzip/#Writer"><code>Writer</code></a>型に対して
 新しく
- <a href="/pkg/compress/gzip/#Writer.Flush"><code>Flush</code></a>
+ <a href="http://tip.golang.org/pkg/compress/gzip/#Writer.Flush"><code>Flush</code></a>
 メソッドを追加しました。
 that flushes its underlying <code>flate.Writer</code>.
 </li>
 
 <li>
-The <a href="/pkg/crypto/hmac/"><code>crypto/hmac</code></a> package has a new function,
-<a href="/pkg/crypto/hmac/#Equal"><code>Equal</code></a>, to compare two MACs.
+The <a href="http://tip.golang.org/pkg/crypto/hmac/"><code>crypto/hmac</code></a> package has a new function,
+<a href="http://tip.golang.org/pkg/crypto/hmac/#Equal"><code>Equal</code></a>, to compare two MACs.
 
-The <a href="/pkg/crypto/hmac/"><code>crypto/hmac</code></a> パッケージは
+The <a href="http://tip.golang.org/pkg/crypto/hmac/"><code>crypto/hmac</code></a> パッケージは
 2つのMACを比較する
-<a href="/pkg/crypto/hmac/#Equal"><code>Equal</code></a>
+<a href="http://tip.golang.org/pkg/crypto/hmac/#Equal"><code>Equal</code></a>
 を追加しました。
 </li>
 
 <li>
-The <a href="/pkg/crypto/x509/"><code>crypto/x509</code></a> package
+The <a href="http://tip.golang.org/pkg/crypto/x509/"><code>crypto/x509</code></a> package
 now supports PEM blocks (see
-<a href="/pkg/crypto/x509/#DecryptPEMBlock"><code>DecryptPEMBlock</code></a> for instance),
+<a href="http://tip.golang.org/pkg/crypto/x509/#DecryptPEMBlock"><code>DecryptPEMBlock</code></a> for instance),
 and a new function
-<a href="/pkg/crypto/x509/#ParseECPrivateKey"><code>ParseECPrivateKey</code></a> to parse elliptic curve private keys.
+<a href="http://tip.golang.org/pkg/crypto/x509/#ParseECPrivateKey"><code>ParseECPrivateKey</code></a> to parse elliptic curve private keys.
 
-<a href="/pkg/crypto/x509/"><code>crypto/x509</code></a> パッケージは
+<a href="http://tip.golang.org/pkg/crypto/x509/"><code>crypto/x509</code></a> パッケージは
 PEM形式のブロックをサポートしました。
  (例えば、
-<a href="/pkg/crypto/x509/#DecryptPEMBlock"><code>DecryptPEMBlock</code></a>
+<a href="http://tip.golang.org/pkg/crypto/x509/#DecryptPEMBlock"><code>DecryptPEMBlock</code></a>
 を見て下さい。 ),
 それと、楕円曲線暗号のプライベートキーを解析する
-<a href="/pkg/crypto/x509/#ParseECPrivateKey"><code>ParseECPrivateKey</code></a> .
+<a href="http://tip.golang.org/pkg/crypto/x509/#ParseECPrivateKey"><code>ParseECPrivateKey</code></a> .
 をサポートしました。
 </li>
 
 <li>
-The <a href="/pkg/database/sql/"><code>database/sql</code></a> package
+The <a href="http://tip.golang.org/pkg/database/sql/"><code>database/sql</code></a> package
 has a new 
-<a href="/pkg/database/sql/#DB.Ping"><code>Ping</code></a>
+<a href="http://tip.golang.org/pkg/database/sql/#DB.Ping"><code>Ping</code></a>
 method for its
-<a href="/pkg/database/sql/#DB"><code>DB</code></a>
+<a href="http://tip.golang.org/pkg/database/sql/#DB"><code>DB</code></a>
 type that tests the health of the connection.
 
-<a href="/pkg/database/sql/"><code>database/sql</code></a> パッケージは
-型<a href="/pkg/database/sql/#DB"><code>DB</code></a>に対して
-<a href="/pkg/database/sql/#DB.Ping"><code>Ping</code></a>
+<a href="http://tip.golang.org/pkg/database/sql/"><code>database/sql</code></a> パッケージは
+型<a href="http://tip.golang.org/pkg/database/sql/#DB"><code>DB</code></a>に対して
+<a href="http://tip.golang.org/pkg/database/sql/#DB.Ping"><code>Ping</code></a>
 メソッドを追加しました。
 これは、接続の状態をテストします。
 </li>
 
 <li>
-The <a href="/pkg/database/sql/driver/"><code>database/sql/driver</code></a> package
+The <a href="http://tip.golang.org/pkg/database/sql/driver/"><code>database/sql/driver</code></a> package
 has a new
-<a href="/pkg/database/sql/driver/#Queryer"><code>Queryer</code></a>
+<a href="http://tip.golang.org/pkg/database/sql/driver/#Queryer"><code>Queryer</code></a>
 interface that a
-<a href="/pkg/database/sql/driver/#Conn"><code>Conn</code></a>
+<a href="http://tip.golang.org/pkg/database/sql/driver/#Conn"><code>Conn</code></a>
 may implement to improve performance.
 
-<a href="/pkg/database/sql/driver/"><code>database/sql/driver</code></a> パッケージは
-<a href="/pkg/database/sql/driver/#Queryer"><code>Queryer</code></a>
+<a href="http://tip.golang.org/pkg/database/sql/driver/"><code>database/sql/driver</code></a> パッケージは
+<a href="http://tip.golang.org/pkg/database/sql/driver/#Queryer"><code>Queryer</code></a>
 インターフェースを追加しました。
-<a href="/pkg/database/sql/driver/#Conn"><code>Conn</code></a>
+<a href="http://tip.golang.org/pkg/database/sql/driver/#Conn"><code>Conn</code></a>
 がパフォーマンスを改善するための実装となるかもしれません。
 </li>
 
 <li>
-The <a href="/pkg/encoding/json/"><code>encoding/json</code></a> package's
-<a href="/pkg/encoding/json/#Decoder"><code>Decoder</code></a>
+The <a href="http://tip.golang.org/pkg/encoding/json/"><code>encoding/json</code></a> package's
+<a href="http://tip.golang.org/pkg/encoding/json/#Decoder"><code>Decoder</code></a>
 has a new method
-<a href="/pkg/encoding/json/#Decoder.Buffered"><code>Buffered</code></a>
+<a href="http://tip.golang.org/pkg/encoding/json/#Decoder.Buffered"><code>Buffered</code></a>
 to provide access to the remaining data in its buffer,
 as well as a new method
-<a href="/pkg/encoding/json/#Decoder.UseNumber"><code>UseNumber</code></a>
+<a href="http://tip.golang.org/pkg/encoding/json/#Decoder.UseNumber"><code>UseNumber</code></a>
 to unmarshal a value into the new type
-<a href="/pkg/encoding/json/#Number"><code>Number</code></a>,
+<a href="http://tip.golang.org/pkg/encoding/json/#Number"><code>Number</code></a>,
 a string, rather than a float64.
 
-<a href="/pkg/encoding/json/"><code>encoding/json</code></a> パッケージの
-<a href="/pkg/encoding/json/#Decoder"><code>Decoder</code></a>は
-<a href="/pkg/encoding/json/#Decoder.Buffered"><code>Buffered</code></a>
+<a href="http://tip.golang.org/pkg/encoding/json/"><code>encoding/json</code></a> パッケージの
+<a href="http://tip.golang.org/pkg/encoding/json/#Decoder"><code>Decoder</code></a>は
+<a href="http://tip.golang.org/pkg/encoding/json/#Decoder.Buffered"><code>Buffered</code></a>
 メソッドを追加しました。そのバッファ内に残っているデータへのアクセスを提供します。
 同様に、値を新しい型
-<a href="/pkg/encoding/json/#Number"><code>Number</code></a>(float64ではなくstring)
+<a href="http://tip.golang.org/pkg/encoding/json/#Number"><code>Number</code></a>(float64ではなくstring)
 へ変換(unmarshal)する
-<a href="/pkg/encoding/json/#Decoder.UseNumber"><code>UseNumber</code></a>
+<a href="http://tip.golang.org/pkg/encoding/json/#Decoder.UseNumber"><code>UseNumber</code></a>
 を追加しました。
 </li>
 
 <li>
-The <a href="/pkg/encoding/xml/"><code>encoding/xml</code></a> package
+The <a href="http://tip.golang.org/pkg/encoding/xml/"><code>encoding/xml</code></a> package
 has a new function,
-<a href="/pkg/encoding/xml/#EscapeText"><code>EscapeText</code></a>,
+<a href="http://tip.golang.org/pkg/encoding/xml/#EscapeText"><code>EscapeText</code></a>,
 which writes escaped XML output,
 and a method on
-<a href="/pkg/encoding/xml/#Encoder"><code>Encoder</code></a>,
-<a href="/pkg/encoding/xml/#Encoder.Indent"><code>Indent</code></a>,
+<a href="http://tip.golang.org/pkg/encoding/xml/#Encoder"><code>Encoder</code></a>,
+<a href="http://tip.golang.org/pkg/encoding/xml/#Encoder.Indent"><code>Indent</code></a>,
 to specify indented output.
 
-<a href="/pkg/encoding/xml/"><code>encoding/xml</code></a> パッケージ
-はエスケープされたXML出力を書き出す<a href="/pkg/encoding/xml/#EscapeText"><code>EscapeText</code></a>
+<a href="http://tip.golang.org/pkg/encoding/xml/"><code>encoding/xml</code></a> パッケージ
+はエスケープされたXML出力を書き出す<a href="http://tip.golang.org/pkg/encoding/xml/#EscapeText"><code>EscapeText</code></a>
 と
-<a href="/pkg/encoding/xml/#Encoder"><code>Encoder</code></a>に対するインデントを指定する
-<a href="/pkg/encoding/xml/#Encoder.Indent"><code>Indent</code></a>メソッドを追加しました。
+<a href="http://tip.golang.org/pkg/encoding/xml/#Encoder"><code>Encoder</code></a>に対するインデントを指定する
+<a href="http://tip.golang.org/pkg/encoding/xml/#Encoder.Indent"><code>Indent</code></a>メソッドを追加しました。
 </li>
 
 <li>
-<a href="/pkg/go/ast/"><code>go/ast</code></a> パッケージ内の
- <a href="/pkg/go/ast/#CommentMap"><code>CommentMap</code></a>メソッドと
+<a href="http://tip.golang.org/pkg/go/ast/"><code>go/ast</code></a> パッケージ内の
+ <a href="http://tip.golang.org/pkg/go/ast/#CommentMap"><code>CommentMap</code></a>メソッドと
  関連したメソッドは、Goプログラムにあるコメントを抽出と処理しやすくなります。
 </li>
 
 <li>
-In the <a href="/pkg/go/doc/"><code>go/doc</code></a> package,
+In the <a href="http://tip.golang.org/pkg/go/doc/"><code>go/doc</code></a> package,
 the parser now keeps better track of stylized annotations such as <code>TODO(joe)</code>
 throughout the code,
-information that the <a href="/cmd/godoc/"><code>godoc</code></a>
+information that the <a href="http://tip.golang.org/cmd/godoc/"><code>godoc</code></a>
 command can filter or present according to the value of the <code>-notes</code> flag.
 
-<a href="/pkg/go/doc/"><code>go/doc</code></a>パッケージ内の
+<a href="http://tip.golang.org/pkg/go/doc/"><code>go/doc</code></a>パッケージ内の
 the parser now keeps better track of stylized annotations such as <code>TODO(joe)</code>
 コード全体にわたって<code>TODO(joe)</code>のような形式化されたアノテーションを良くします。
-<a href="/cmd/godoc/"><code>godoc</code></a>
+<a href="http://tip.golang.org/cmd/godoc/"><code>godoc</code></a>
 コマンドは <code>-notes</code> フラグの値によってフィルタや表現することができます.
 </li>
 
 <li>
-A new package, <a href="/pkg/go/format/"><code>go/format</code></a>, provides
+A new package, <a href="http://tip.golang.org/pkg/go/format/"><code>go/format</code></a>, provides
 a convenient way for a program to access the formatting capabilities of <code>gofmt</code>.
 It has two functions,
-<a href="/pkg/go/format/#Node"><code>Node</code></a> to format a Go parser
-<a href="/pkg/go/ast/#Node"><code>Node</code></a>,
+<a href="http://tip.golang.org/pkg/go/format/#Node"><code>Node</code></a> to format a Go parser
+<a href="http://tip.golang.org/pkg/go/ast/#Node"><code>Node</code></a>,
 and
-<a href="/pkg/go/format/#Source"><code>Source</code></a>
+<a href="http://tip.golang.org/pkg/go/format/#Source"><code>Source</code></a>
 to format arbitrary Go source code.
 
-新しいパッケージ<a href="/pkg/go/format/"><code>go/format</code></a>
+新しいパッケージ<a href="http://tip.golang.org/pkg/go/format/"><code>go/format</code></a>
 は、<code>gofmt</code>のフォーマットするという特性にアクセスするための
 プログラムの便利な方法を提供します。
 このパッケージは２つの関数があります。
-Go パーサー<a href="/pkg/go/ast/#Node"><code>Node</code></a>を
-フォーマットする<a href="/pkg/go/format/#Node"><code>Node</code></a>関数と
+Go パーサー<a href="http://tip.golang.org/pkg/go/ast/#Node"><code>Node</code></a>を
+フォーマットする<a href="http://tip.golang.org/pkg/go/format/#Node"><code>Node</code></a>関数と
 任意のGo ソースコードをフォーマットする
-<a href="/pkg/go/format/#Source"><code>Source</code></a>関数です。
+<a href="http://tip.golang.org/pkg/go/format/#Source"><code>Source</code></a>関数です。
 </li>
 
 <li>
 The undocumented and only partially implemented "noescape" feature of the
-<a href="/pkg/html/template/"><code>html/template</code></a>
+<a href="http://tip.golang.org/pkg/html/template/"><code>html/template</code></a>
 package has been removed; programs that depend on it will break.
 
-<a href="/pkg/html/template/"><code>html/template</code></a>パッケージの
+<a href="http://tip.golang.org/pkg/html/template/"><code>html/template</code></a>パッケージの
 ドキュメントされておらず、部分的にしか実装されていない"noescape"機能は削除されました。
 これに依存するプログラムは壊れます。
 
 </li>
 
 <li>
-The <a href="/pkg/image/jpeg/"><code>image/jpeg</code></a> package now
+The <a href="http://tip.golang.org/pkg/image/jpeg/"><code>image/jpeg</code></a> package now
 reads progressive JPEG files and handles a few more subsampling configurations.
 
-<a href="/pkg/image/jpeg/"><code>image/jpeg</code></a> パッケージは
+<a href="http://tip.golang.org/pkg/image/jpeg/"><code>image/jpeg</code></a> パッケージは
 プログレッシブJPEGファイルを読み込んで、さらにいくつかのサブサンプリング構成を処理できるようになります。
 </li>
 
 <li>
-The <a href="/pkg/io/"><code>io</code></a> package now exports the
-<a href="/pkg/io/#ByteWriter"><code>io.ByteWriter</code></a> interface to capture the common
+The <a href="http://tip.golang.org/pkg/io/"><code>io</code></a> package now exports the
+<a href="http://tip.golang.org/pkg/io/#ByteWriter"><code>io.ByteWriter</code></a> interface to capture the common
 functionality of writing a byte at a time.
 
-The <a href="/pkg/io/"><code>io</code></a> パッケージは
+The <a href="http://tip.golang.org/pkg/io/"><code>io</code></a> パッケージは
  一度に書き込む共通の機能を取り込むために
- <a href="/pkg/io/#ByteWriter"><code>io.ByteWriter</code></a>
+ <a href="http://tip.golang.org/pkg/io/#ByteWriter"><code>io.ByteWriter</code></a>
 インターフェースをエクスポートするようになりました。
 </li>
 
 <li>
-The <a href="/pkg/log/syslog/"><code>log/syslog</code></a> package now provides better support
+The <a href="http://tip.golang.org/pkg/log/syslog/"><code>log/syslog</code></a> package now provides better support
 for OS-specific logging features.
 
-<a href="/pkg/log/syslog/"><code>log/syslog</code></a> パッケージ
+<a href="http://tip.golang.org/pkg/log/syslog/"><code>log/syslog</code></a> パッケージ
 は、OS固有のログの特徴のよりよいサポートを提供します。
 </li>
 
 <li>
-The <a href="/pkg/math/big/"><code>math/big</code></a> package's
-<a href="/pkg/math/big/#Int"><code>Int</code></a> type now has
+The <a href="http://tip.golang.org/pkg/math/big/"><code>math/big</code></a> package's
+<a href="http://tip.golang.org/pkg/math/big/#Int"><code>Int</code></a> type now has
 now has methods
-<a href="/pkg/math/big/#Int.MarshalJSON"><code>MarshalJSON</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Int.MarshalJSON"><code>MarshalJSON</code></a>
 and
-<a href="/pkg/math/big/#Int.UnmarshalJSON"><code>UnmarshalJSON</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Int.UnmarshalJSON"><code>UnmarshalJSON</code></a>
 to convert to and from a JSON representation.
 Also,
-<a href="/pkg/math/big/#Int"><code>Int</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Int"><code>Int</code></a>
 can now convert directly to and from a <code>uint64</code> using
-<a href="/pkg/math/big/#Int.Uint64"><code>Uint64</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Int.Uint64"><code>Uint64</code></a>
 and
-<a href="/pkg/math/big/#Int.SetUint64"><code>SetUint64</code></a>,
+<a href="http://tip.golang.org/pkg/math/big/#Int.SetUint64"><code>SetUint64</code></a>,
 while
-<a href="/pkg/math/big/#Rat"><code>Rat</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Rat"><code>Rat</code></a>
 can do the same with <code>float64</code> using
-<a href="/pkg/math/big/#Rat.Float64"><code>Float64</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Rat.Float64"><code>Float64</code></a>
 and
-<a href="/pkg/math/big/#Rat.SetFloat64"><code>SetFloat64</code></a>.
+<a href="http://tip.golang.org/pkg/math/big/#Rat.SetFloat64"><code>SetFloat64</code></a>.
 
-<a href="/pkg/math/big/"><code>math/big</code></a> パッケージの
-<a href="/pkg/math/big/#Int"><code>Int</code></a> 型は
+<a href="http://tip.golang.org/pkg/math/big/"><code>math/big</code></a> パッケージの
+<a href="http://tip.golang.org/pkg/math/big/#Int"><code>Int</code></a> 型は
 JSON形式から変換するメソッド
-<a href="/pkg/math/big/#Int.MarshalJSON"><code>MarshalJSON</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Int.MarshalJSON"><code>MarshalJSON</code></a>
 と
-<a href="/pkg/math/big/#Int.UnmarshalJSON"><code>UnmarshalJSON</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Int.UnmarshalJSON"><code>UnmarshalJSON</code></a>
 を追加しました。
 
 また、
-<a href="/pkg/math/big/#Int"><code>Int</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Int"><code>Int</code></a>
 は
-<a href="/pkg/math/big/#Int.Uint64"><code>Uint64</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Int.Uint64"><code>Uint64</code></a>
 と
-<a href="/pkg/math/big/#Int.SetUint64"><code>SetUint64</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Int.SetUint64"><code>SetUint64</code></a>
 を使って、
 <code>uint64</code>へ直接変換できます。
 
-<a href="/pkg/math/big/#Rat"><code>Rat</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Rat"><code>Rat</code></a>
 は
-<a href="/pkg/math/big/#Rat.Float64"><code>Float64</code></a>
+<a href="http://tip.golang.org/pkg/math/big/#Rat.Float64"><code>Float64</code></a>
 と
-<a href="/pkg/math/big/#Rat.SetFloat64"><code>SetFloat64</code></a>.
+<a href="http://tip.golang.org/pkg/math/big/#Rat.SetFloat64"><code>SetFloat64</code></a>.
 を使って、<code>float64</code>と同じことができます。
 </li>
 
 <li>
-The <a href="/pkg/mime/multipart/"><code>mime/multipart</code></a> package
+The <a href="http://tip.golang.org/pkg/mime/multipart/"><code>mime/multipart</code></a> package
 has a new method for its
-<a href="/pkg/mime/multipart/#Writer"><code>Writer</code></a>,
-<a href="/pkg/mime/multipart/#Writer.SetBoundary"><code>SetBoundary</code></a>,
+<a href="http://tip.golang.org/pkg/mime/multipart/#Writer"><code>Writer</code></a>,
+<a href="http://tip.golang.org/pkg/mime/multipart/#Writer.SetBoundary"><code>SetBoundary</code></a>,
 to define the boundary separator used to package the output.
 
-<a href="/pkg/mime/multipart/"><code>mime/multipart</code></a> パッケージは
-<a href="/pkg/mime/multipart/#Writer"><code>Writer</code></a>,
+<a href="http://tip.golang.org/pkg/mime/multipart/"><code>mime/multipart</code></a> パッケージは
+<a href="http://tip.golang.org/pkg/mime/multipart/#Writer"><code>Writer</code></a>,
 に対する新しいメソッド
-<a href="/pkg/mime/multipart/#Writer.SetBoundary"><code>SetBoundary</code></a>
+<a href="http://tip.golang.org/pkg/mime/multipart/#Writer.SetBoundary"><code>SetBoundary</code></a>
 を追加しました。
 出力をパッケージ化するために使われる境界の区切り文字を定義します。
 </li>
 
 <li>
 The
-<a href="/pkg/net/"><code>net</code></a> package's
-<a href="/pkg/net/#ListenUnixgram"><code>ListenUnixgram</code></a>
+<a href="http://tip.golang.org/pkg/net/"><code>net</code></a> package's
+<a href="http://tip.golang.org/pkg/net/#ListenUnixgram"><code>ListenUnixgram</code></a>
 function has changed return types: it now returns a
-<a href="/pkg/net/#UnixConn"><code>UnixConn</code></a>
+<a href="http://tip.golang.org/pkg/net/#UnixConn"><code>UnixConn</code></a>
 rather than a
-<a href="/pkg/net/#UDPConn"><code>UDPConn</code></a>, which was
+<a href="http://tip.golang.org/pkg/net/#UDPConn"><code>UDPConn</code></a>, which was
 clearly a mistake in Go 1.0.
 Since this API change fixes a bug, it is permitted by the Go 1 compatibility rules.
 
-<a href="/pkg/net/"><code>net</code></a> パッケージの
-<a href="/pkg/net/#ListenUnixgram"><code>ListenUnixgram</code></a>
+<a href="http://tip.golang.org/pkg/net/"><code>net</code></a> パッケージの
+<a href="http://tip.golang.org/pkg/net/#ListenUnixgram"><code>ListenUnixgram</code></a>
 関数は型を返すように変更しました。
-<a href="/pkg/net/#UDPConn"><code>UDPConn</code></a>
+<a href="http://tip.golang.org/pkg/net/#UDPConn"><code>UDPConn</code></a>
 ではなく、
-<a href="/pkg/net/#UnixConn"><code>UnixConn</code></a>
+<a href="http://tip.golang.org/pkg/net/#UnixConn"><code>UnixConn</code></a>
 を返します。
 これはGo1.0では明らかに間違いでした。
 このAPIの修正はバグですので、
@@ -1309,254 +1309,254 @@ Go1互換性のルールによって許されています。
 </li>
 
 <li>
-The <a href="/pkg/net/"><code>net</code></a> package includes a new type,
-<a href="/pkg/net/#Dialer"><code>Dialer</code></a>, to supply options to
-<a href="/pkg/net/#Dialer.Dial"><code>Dial</code></a>.
+The <a href="http://tip.golang.org/pkg/net/"><code>net</code></a> package includes a new type,
+<a href="http://tip.golang.org/pkg/net/#Dialer"><code>Dialer</code></a>, to supply options to
+<a href="http://tip.golang.org/pkg/net/#Dialer.Dial"><code>Dial</code></a>.
 
-<a href="/pkg/net/"><code>net</code></a> パッケージに
+<a href="http://tip.golang.org/pkg/net/"><code>net</code></a> パッケージに
 新しい型
-<a href="/pkg/net/#Dialer"><code>Dialer</code></a>
+<a href="http://tip.golang.org/pkg/net/#Dialer"><code>Dialer</code></a>
 を追加しました。
-<a href="/pkg/net/#Dialer.Dial"><code>Dial</code></a>
+<a href="http://tip.golang.org/pkg/net/#Dialer.Dial"><code>Dial</code></a>
 するオプションを提供するためです。
 </li>
 
 <li>
-The <a href="/pkg/net/"><code>net</code></a> package adds support for
+The <a href="http://tip.golang.org/pkg/net/"><code>net</code></a> package adds support for
 link-local IPv6 addresses with zone qualifiers, such as <code>fe80::1%lo0</code>.
-The address structures <a href="/pkg/net/#IPAddr"><code>IPAddr</code></a>,
-<a href="/pkg/net/#UDPAddr"><code>UDPAddr</code></a>, and
-<a href="/pkg/net/#TCPAddr"><code>TCPAddr</code></a>
+The address structures <a href="http://tip.golang.org/pkg/net/#IPAddr"><code>IPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#UDPAddr"><code>UDPAddr</code></a>, and
+<a href="http://tip.golang.org/pkg/net/#TCPAddr"><code>TCPAddr</code></a>
 record the zone in a new field, and functions that expect string forms of these addresses, such as
-<a href="/pkg/net/#Dial"><code>Dial</code></a>,
-<a href="/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
-<a href="/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>, and
-<a href="/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#Dial"><code>Dial</code></a>,
+<a href="http://tip.golang.org/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>, and
+<a href="http://tip.golang.org/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>,
 now accept the zone-qualified form.
 
-<a href="/pkg/net/"><code>net</code></a> パッケージは
+<a href="http://tip.golang.org/pkg/net/"><code>net</code></a> パッケージは
 ゾーン修飾子を使用して<code>fe80::1%lo0</code>のような
 リンクローカルIPv6アドレスのサポートが追加されます。
 
-アドレスの構造<a href="/pkg/net/#IPAddr"><code>IPAddr</code></a>,
-<a href="/pkg/net/#UDPAddr"><code>UDPAddr</code></a>
-<a href="/pkg/net/#TCPAddr"><code>TCPAddr</code></a>
+アドレスの構造<a href="http://tip.golang.org/pkg/net/#IPAddr"><code>IPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#UDPAddr"><code>UDPAddr</code></a>
+<a href="http://tip.golang.org/pkg/net/#TCPAddr"><code>TCPAddr</code></a>
 が、新しいフィールドのzoneを記録します。
 functions that expect string forms of these addresses, such as
-<a href="/pkg/net/#Dial"><code>Dial</code></a>,
-<a href="/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
-<a href="/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>, and
-<a href="/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#Dial"><code>Dial</code></a>,
+<a href="http://tip.golang.org/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>, and
+<a href="http://tip.golang.org/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>,
 now accept the zone-qualified form.
 
 
 このような
-<a href="/pkg/net/#Dial"><code>Dial</code></a>,
-<a href="/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
-<a href="/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>,
-<a href="/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#Dial"><code>Dial</code></a>,
+<a href="http://tip.golang.org/pkg/net/#ResolveIPAddr"><code>ResolveIPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#ResolveUDPAddr"><code>ResolveUDPAddr</code></a>,
+<a href="http://tip.golang.org/pkg/net/#ResolveTCPAddr"><code>ResolveTCPAddr</code></a>,
 として、これらのアドレスの文字列形式を期待する関数は、今ではゾーン修飾形式を受け入れます。
 </li>
 
 <li>
-The <a href="/pkg/net/"><code>net</code></a> package adds
-<a href="/pkg/net/#LookupNS"><code>LookupNS</code></a> to its suite of resolving functions.
-<code>LookupNS</code> returns the <a href="/pkg/net/#NS">NS records</a> for a host name.
+The <a href="http://tip.golang.org/pkg/net/"><code>net</code></a> package adds
+<a href="http://tip.golang.org/pkg/net/#LookupNS"><code>LookupNS</code></a> to its suite of resolving functions.
+<code>LookupNS</code> returns the <a href="http://tip.golang.org/pkg/net/#NS">NS records</a> for a host name.
 
-The <a href="/pkg/net/"><code>net</code></a> パッケージは
-<a href="/pkg/net/#LookupNS"><code>LookupNS</code></a>
+The <a href="http://tip.golang.org/pkg/net/"><code>net</code></a> パッケージは
+<a href="http://tip.golang.org/pkg/net/#LookupNS"><code>LookupNS</code></a>
 を追加しました。
 <code>LookupNS</code>はホスト名に対する
-<a href="/pkg/net/#NS">NS records</a>を返します。
+<a href="http://tip.golang.org/pkg/net/#NS">NS records</a>を返します。
 
 
 </li>
 
 <li>
-The <a href="/pkg/net/"><code>net</code></a> package adds protocol-specific 
+The <a href="http://tip.golang.org/pkg/net/"><code>net</code></a> package adds protocol-specific 
 packet reading and writing methods to
-<a href="/pkg/net/#IPConn"><code>IPConn</code></a>
-(<a href="/pkg/net/#IPConn.ReadMsgIP"><code>ReadMsgIP</code></a>
-and <a href="/pkg/net/#IPConn.WriteMsgIP"><code>WriteMsgIP</code></a>) and 
-<a href="/pkg/net/#UDPConn"><code>UDPConn</code></a>
-(<a href="/pkg/net/#UDPConn.ReadMsgUDP"><code>ReadMsgUDP</code></a> and
-<a href="/pkg/net/#UDPConn.WriteMsgUDP"><code>WriteMsgUDP</code></a>).
-These are specialized versions of <a href="/pkg/net/#PacketConn"><code>PacketConn</code></a>'s
+<a href="http://tip.golang.org/pkg/net/#IPConn"><code>IPConn</code></a>
+(<a href="http://tip.golang.org/pkg/net/#IPConn.ReadMsgIP"><code>ReadMsgIP</code></a>
+and <a href="http://tip.golang.org/pkg/net/#IPConn.WriteMsgIP"><code>WriteMsgIP</code></a>) and 
+<a href="http://tip.golang.org/pkg/net/#UDPConn"><code>UDPConn</code></a>
+(<a href="http://tip.golang.org/pkg/net/#UDPConn.ReadMsgUDP"><code>ReadMsgUDP</code></a> and
+<a href="http://tip.golang.org/pkg/net/#UDPConn.WriteMsgUDP"><code>WriteMsgUDP</code></a>).
+These are specialized versions of <a href="http://tip.golang.org/pkg/net/#PacketConn"><code>PacketConn</code></a>'s
 <code>ReadFrom</code> and <code>WriteTo</code> methods that provide access to out-of-band data associated
 with the packets.
 
-<a href="/pkg/net/"><code>net</code></a>パッケージ
+<a href="http://tip.golang.org/pkg/net/"><code>net</code></a>パッケージ
 は読み書きできるメソッドを持ったプロトコル特有のパケットを追加しました。
-<a href="/pkg/net/#IPConn"><code>IPConn</code></a>
-(<a href="/pkg/net/#IPConn.ReadMsgIP"><code>ReadMsgIP</code></a>
-、 <a href="/pkg/net/#IPConn.WriteMsgIP"><code>WriteMsgIP</code></a>)
+<a href="http://tip.golang.org/pkg/net/#IPConn"><code>IPConn</code></a>
+(<a href="http://tip.golang.org/pkg/net/#IPConn.ReadMsgIP"><code>ReadMsgIP</code></a>
+、 <a href="http://tip.golang.org/pkg/net/#IPConn.WriteMsgIP"><code>WriteMsgIP</code></a>)
 と 
-<a href="/pkg/net/#UDPConn"><code>UDPConn</code></a>
-(<a href="/pkg/net/#UDPConn.ReadMsgUDP"><code>ReadMsgUDP</code></a> 、
-<a href="/pkg/net/#UDPConn.WriteMsgUDP"><code>WriteMsgUDP</code></a>)
+<a href="http://tip.golang.org/pkg/net/#UDPConn"><code>UDPConn</code></a>
+(<a href="http://tip.golang.org/pkg/net/#UDPConn.ReadMsgUDP"><code>ReadMsgUDP</code></a> 、
+<a href="http://tip.golang.org/pkg/net/#UDPConn.WriteMsgUDP"><code>WriteMsgUDP</code></a>)
 です。
 これらはパケットと関連する帯域外のデータへのアクセスを提供する
-<a href="/pkg/net/#PacketConn"><code>PacketConn</code></a>
+<a href="http://tip.golang.org/pkg/net/#PacketConn"><code>PacketConn</code></a>
 <code>ReadFrom</code> and <code>WriteTo</code> メソッドのバージョンを
 特殊化したものです。
  </li>
  
  <li>
-The <a href="/pkg/net/"><code>net</code></a> package adds methods to
-<a href="/pkg/net/#UnixConn"><code>UnixConn</code></a> to allow closing half of the connection 
-(<a href="/pkg/net/#UnixConn.CloseRead"><code>CloseRead</code></a> and
-<a href="/pkg/net/#UnixConn.CloseWrite"><code>CloseWrite</code></a>),
-matching the existing methods of <a href="/pkg/net/#TCPConn"><code>TCPConn</code></a>.
+The <a href="http://tip.golang.org/pkg/net/"><code>net</code></a> package adds methods to
+<a href="http://tip.golang.org/pkg/net/#UnixConn"><code>UnixConn</code></a> to allow closing half of the connection 
+(<a href="http://tip.golang.org/pkg/net/#UnixConn.CloseRead"><code>CloseRead</code></a> and
+<a href="http://tip.golang.org/pkg/net/#UnixConn.CloseWrite"><code>CloseWrite</code></a>),
+matching the existing methods of <a href="http://tip.golang.org/pkg/net/#TCPConn"><code>TCPConn</code></a>.
 
-<a href="/pkg/net/"><code>net</code></a> パッケージは 
-<a href="/pkg/net/#TCPConn"><code>TCPConn</code></a>の既存のメソッドに合わせて、
-<a href="/pkg/net/#UnixConn"><code>UnixConn</code></a> 
+<a href="http://tip.golang.org/pkg/net/"><code>net</code></a> パッケージは 
+<a href="http://tip.golang.org/pkg/net/#TCPConn"><code>TCPConn</code></a>の既存のメソッドに合わせて、
+<a href="http://tip.golang.org/pkg/net/#UnixConn"><code>UnixConn</code></a> 
 の接続の半分を閉じれるように、メソッド
-(<a href="/pkg/net/#UnixConn.CloseRead"><code>CloseRead</code></a> と
-<a href="/pkg/net/#UnixConn.CloseWrite"><code>CloseWrite</code></a>)
+(<a href="http://tip.golang.org/pkg/net/#UnixConn.CloseRead"><code>CloseRead</code></a> と
+<a href="http://tip.golang.org/pkg/net/#UnixConn.CloseWrite"><code>CloseWrite</code></a>)
 を追加しました。
 </li>
  
 <li>
-The <a href="/pkg/net/http/"><code>net/http</code></a> package includes several new additions.
-<a href="/pkg/net/http/#ParseTime"><code>ParseTime</code></a> parses a time string, trying
+The <a href="http://tip.golang.org/pkg/net/http/"><code>net/http</code></a> package includes several new additions.
+<a href="http://tip.golang.org/pkg/net/http/#ParseTime"><code>ParseTime</code></a> parses a time string, trying
 several common HTTP time formats.
-The <a href="/pkg/net/http/#Request.PostFormValue">PostFormValue</a> method of
-<a href="/pkg/net/http/#Request"><code>Request</code></a> is like
-<a href="/pkg/net/http/#Request.FormValue"><code>FormValue</code></a> but ignores URL parameters.
-The <a href="/pkg/net/http/#CloseNotifier"><code>CloseNotifier</code></a> interface provides a mechanism
+The <a href="http://tip.golang.org/pkg/net/http/#Request.PostFormValue">PostFormValue</a> method of
+<a href="http://tip.golang.org/pkg/net/http/#Request"><code>Request</code></a> is like
+<a href="http://tip.golang.org/pkg/net/http/#Request.FormValue"><code>FormValue</code></a> but ignores URL parameters.
+The <a href="http://tip.golang.org/pkg/net/http/#CloseNotifier"><code>CloseNotifier</code></a> interface provides a mechanism
 for a server handler to discover when a client has disconnected.
 The <code>ServeMux</code> type now has a
-<a href="/pkg/net/http/#ServeMux.Handler"><code>Handler</code></a> method to access a path's
+<a href="http://tip.golang.org/pkg/net/http/#ServeMux.Handler"><code>Handler</code></a> method to access a path's
 <code>Handler</code> without executing it.
 The <code>Transport</code> can now cancel an in-flight request with
-<a href="/pkg/net/http/#Transport.CancelRequest"><code>CancelRequest</code></a>.
+<a href="http://tip.golang.org/pkg/net/http/#Transport.CancelRequest"><code>CancelRequest</code></a>.
 Finally, the Transport is now more aggressive at closing TCP connections when
-a <a href="/pkg/net/http/#Response"><code>Response.Body</code></a> is closed before
+a <a href="http://tip.golang.org/pkg/net/http/#Response"><code>Response.Body</code></a> is closed before
 being fully consumed.
 
-<a href="/pkg/net/http/"><code>net/http</code></a> 
+<a href="http://tip.golang.org/pkg/net/http/"><code>net/http</code></a> 
 パッケージは、新しくいくつか追加しました。
-<a href="/pkg/net/http/#ParseTime"><code>ParseTime</code></a>
+<a href="http://tip.golang.org/pkg/net/http/#ParseTime"><code>ParseTime</code></a>
 は、いくつかの共通のHTTPタイムフォーマットにしようと、時間文字列をパースします。
-<a href="/pkg/net/http/#Request"><code>Request</code></a> の
-<a href="/pkg/net/http/#Request.PostFormValue">PostFormValue</a> メソッドは
-<a href="/pkg/net/http/#Request.FormValue"><code>FormValue</code></a>
+<a href="http://tip.golang.org/pkg/net/http/#Request"><code>Request</code></a> の
+<a href="http://tip.golang.org/pkg/net/http/#Request.PostFormValue">PostFormValue</a> メソッドは
+<a href="http://tip.golang.org/pkg/net/http/#Request.FormValue"><code>FormValue</code></a>
 に似ていますが、URLパラメータを無視します。
 
-<a href="/pkg/net/http/#CloseNotifier"><code>CloseNotifier</code></a>
+<a href="http://tip.golang.org/pkg/net/http/#CloseNotifier"><code>CloseNotifier</code></a>
 インターフェースは、クライアントが切断した時に検知するための
 サーバハンドラに対する仕組みを提供します。
 
 <code>ServeMux</code> 型はそれを実行せずにパスの
 <code>Handler</code>にアクセスするための、
-<a href="/pkg/net/http/#ServeMux.Handler"><code>Handler</code></a> メソッド
+<a href="http://tip.golang.org/pkg/net/http/#ServeMux.Handler"><code>Handler</code></a> メソッド
  を追加しました。
 
 <code>Transport</code> can now cancel an in-flight request with
-<a href="/pkg/net/http/#Transport.CancelRequest"><code>CancelRequest</code></a>
+<a href="http://tip.golang.org/pkg/net/http/#Transport.CancelRequest"><code>CancelRequest</code></a>
 でin-flightリクエストをキャンセルできるようになりました。
 
 最後に、
-<a href="/pkg/net/http/#Response"><code>Response.Body</code></a>
+<a href="http://tip.golang.org/pkg/net/http/#Response"><code>Response.Body</code></a>
 が完全に使い終わる前にを閉じられるとき、
 Transportは、TCP接続を閉じることにより積極的になりました。
 </li>
 
 <li>
-新しい<a href="/pkg/net/http/cookiejar/"><code>net/http/cookiejar</code></a> 
+新しい<a href="http://tip.golang.org/pkg/net/http/cookiejar/"><code>net/http/cookiejar</code></a> 
 パッケージは、HTTPクッキーを管理する基本的なもの提供します。
 </li>
 
 <li>
-The <a href="/pkg/net/mail/"><code>net/mail</code></a> package has two new functions,
-<a href="/pkg/net/mail/#ParseAddress"><code>ParseAddress</code></a> and
-<a href="/pkg/net/mail/#ParseAddressList"><code>ParseAddressList</code></a>,
+The <a href="http://tip.golang.org/pkg/net/mail/"><code>net/mail</code></a> package has two new functions,
+<a href="http://tip.golang.org/pkg/net/mail/#ParseAddress"><code>ParseAddress</code></a> and
+<a href="http://tip.golang.org/pkg/net/mail/#ParseAddressList"><code>ParseAddressList</code></a>,
 to parse RFC 5322-formatted mail addresses into
-<a href="/pkg/net/mail/#Address"><code>Address</code></a> structures.
+<a href="http://tip.golang.org/pkg/net/mail/#Address"><code>Address</code></a> structures.
 
-<a href="/pkg/net/mail/"><code>net/mail</code></a> 
+<a href="http://tip.golang.org/pkg/net/mail/"><code>net/mail</code></a> 
 パッケージは、
 RFC 5322形式のメールアドレスを解析し、
-<a href="/pkg/net/mail/#Address"><code>Address</code></a>
+<a href="http://tip.golang.org/pkg/net/mail/#Address"><code>Address</code></a>
 構造体へ格納する2つの関数
-<a href="/pkg/net/mail/#ParseAddress"><code>ParseAddress</code></a>と
-<a href="/pkg/net/mail/#ParseAddressList"><code>ParseAddressList</code></a>
+<a href="http://tip.golang.org/pkg/net/mail/#ParseAddress"><code>ParseAddress</code></a>と
+<a href="http://tip.golang.org/pkg/net/mail/#ParseAddressList"><code>ParseAddressList</code></a>
 を追加しました。
 </li>
 
 <li>
-The <a href="/pkg/net/smtp/"><code>net/smtp</code></a> package's
-<a href="/pkg/net/smtp/#Client"><code>Client</code></a> type has a new method,
-<a href="/pkg/net/smtp/#Client.Hello"><code>Hello</code></a>,
+The <a href="http://tip.golang.org/pkg/net/smtp/"><code>net/smtp</code></a> package's
+<a href="http://tip.golang.org/pkg/net/smtp/#Client"><code>Client</code></a> type has a new method,
+<a href="http://tip.golang.org/pkg/net/smtp/#Client.Hello"><code>Hello</code></a>,
 which transmits a <code>HELO</code> or <code>EHLO</code> message to the server.
 
-<a href="/pkg/net/smtp/"><code>net/smtp</code></a> パッケージの
-<a href="/pkg/net/smtp/#Client"><code>Client</code></a> 型は 
+<a href="http://tip.golang.org/pkg/net/smtp/"><code>net/smtp</code></a> パッケージの
+<a href="http://tip.golang.org/pkg/net/smtp/#Client"><code>Client</code></a> 型は 
 新しいメソッド
-<a href="/pkg/net/smtp/#Client.Hello"><code>Hello</code></a>を追加しました。
+<a href="http://tip.golang.org/pkg/net/smtp/#Client.Hello"><code>Hello</code></a>を追加しました。
 それは<code>HELO</code> または <code>EHLO</code> メッセージをサーバに送ります。
 </li>
 
 <li>
-The <a href="/pkg/net/textproto/"><code>net/textproto</code></a> パッケージは
+The <a href="http://tip.golang.org/pkg/net/textproto/"><code>net/textproto</code></a> パッケージは
 ２つの新しい関数
-<a href="/pkg/net/textproto/#TrimBytes"><code>TrimBytes</code></a> と
-<a href="/pkg/net/textproto/#TrimString"><code>TrimString</code></a>
+<a href="http://tip.golang.org/pkg/net/textproto/#TrimBytes"><code>TrimBytes</code></a> と
+<a href="http://tip.golang.org/pkg/net/textproto/#TrimString"><code>TrimString</code></a>
 を追加しました。
 これは、ASCIIだけ先頭と末尾のスペースのトリミングを行います。
 </li>
 
 <li>
-新しいメソッド<a href="/pkg/os/#FileMode.IsRegular"><code>os.FileMode.IsRegular</code></a> 
+新しいメソッド<a href="http://tip.golang.org/pkg/os/#FileMode.IsRegular"><code>os.FileMode.IsRegular</code></a> 
 は、ファイルがプレーンファイルかどうか確認することが簡単になります。
 </li>
 
 <li>
-The <a href="/pkg/os/signal/"><code>os/signal</code></a> パッケージは新しい関数
-<a href="/pkg/os/signal/#Stop"><code>Stop</code></a>
+The <a href="http://tip.golang.org/pkg/os/signal/"><code>os/signal</code></a> パッケージは新しい関数
+<a href="http://tip.golang.org/pkg/os/signal/#Stop"><code>Stop</code></a>
 を追加しました。
 これは、チャネルに信号を与えて続けているパッケージを止めます。
 </li>
 
 <li>
-The <a href="/pkg/regexp/"><code>regexp</code></a> package
+The <a href="http://tip.golang.org/pkg/regexp/"><code>regexp</code></a> package
 now supports Unix-original leftmost-longest matches through the
-<a href="/pkg/regexp/#Regexp.Longest"><code>Regexp.Longest</code></a>
+<a href="http://tip.golang.org/pkg/regexp/#Regexp.Longest"><code>Regexp.Longest</code></a>
 method, while
-<a href="/pkg/regexp/#Regexp.Split"><code>Regexp.Split</code></a> slices
+<a href="http://tip.golang.org/pkg/regexp/#Regexp.Split"><code>Regexp.Split</code></a> slices
 strings into pieces based on separators defined by the regular expression.
 
-<a href="/pkg/regexp/"><code>regexp</code></a> パッケージは
-<a href="/pkg/regexp/#Regexp.Longest"><code>Regexp.Longest</code></a>
+<a href="http://tip.golang.org/pkg/regexp/"><code>regexp</code></a> パッケージは
+<a href="http://tip.golang.org/pkg/regexp/#Regexp.Longest"><code>Regexp.Longest</code></a>
 メソッドを通じて、Unix系オリジナルの最左最長一致をサポートしています。
 
-同時に、<a href="/pkg/regexp/#Regexp.Split"><code>Regexp.Split</code></a>
+同時に、<a href="http://tip.golang.org/pkg/regexp/#Regexp.Split"><code>Regexp.Split</code></a>
 は正規表現で定義された区切り文字に基づいた部分に文字列をスライスします。
 </li>
 
 <li>
-The <a href="/pkg/runtime/debug/"><code>runtime/debug</code></a> package
+The <a href="http://tip.golang.org/pkg/runtime/debug/"><code>runtime/debug</code></a> package
 has three new functions regarding memory usage.
-The <a href="/pkg/runtime/debug/#FreeOSMemory"><code>FreeOSMemory</code></a>
+The <a href="http://tip.golang.org/pkg/runtime/debug/#FreeOSMemory"><code>FreeOSMemory</code></a>
 function triggers a run of the garbage collector and then attempts to return unused
 memory to the operating system;
-the <a href="/pkg/runtime/debug/#ReadGCStats"><code>ReadGCStats</code></a>
+the <a href="http://tip.golang.org/pkg/runtime/debug/#ReadGCStats"><code>ReadGCStats</code></a>
 function retrieves statistics about the collector; and
-<a href="/pkg/runtime/debug/#SetGCPercent"><code>SetGCPercent</code></a>
+<a href="http://tip.golang.org/pkg/runtime/debug/#SetGCPercent"><code>SetGCPercent</code></a>
 provides a programmatic way to control how often the collector runs,
 including disabling it altogether.
 
-<a href="/pkg/runtime/debug/"><code>runtime/debug</code></a> パッケージは
+<a href="http://tip.golang.org/pkg/runtime/debug/"><code>runtime/debug</code></a> パッケージは
 メモリの使用に関して、新しく３つの関数を追加しました。
-<a href="/pkg/runtime/debug/#FreeOSMemory"><code>FreeOSMemory</code></a>
+<a href="http://tip.golang.org/pkg/runtime/debug/#FreeOSMemory"><code>FreeOSMemory</code></a>
 関数は、ガベージコレクタの実行をトリガーしてから、
 オペレーティング·システムに使用されていないメモリを返そうとします。
 
-<a href="/pkg/runtime/debug/#ReadGCStats"><code>ReadGCStats</code></a>
+<a href="http://tip.golang.org/pkg/runtime/debug/#ReadGCStats"><code>ReadGCStats</code></a>
 関数は、ガベージコレクタに関する統計値を取得します。
 
-<a href="/pkg/runtime/debug/#SetGCPercent"><code>SetGCPercent</code></a>
+<a href="http://tip.golang.org/pkg/runtime/debug/#SetGCPercent"><code>SetGCPercent</code></a>
 provides a programmatic way to control how often the collector runs,
 including disabling it altogether.
 は、ガベージコレクタの実行頻度を制御するためのプログラム的な方法を提供します。
@@ -1565,54 +1565,54 @@ including disabling it altogether.
 </li>
 
 <li>
-The <a href="/pkg/sort/"><code>sort</code></a> package has a new function,
-<a href="/pkg/sort/#Reverse"><code>Reverse</code></a>.
+The <a href="http://tip.golang.org/pkg/sort/"><code>sort</code></a> package has a new function,
+<a href="http://tip.golang.org/pkg/sort/#Reverse"><code>Reverse</code></a>.
 Wrapping the argument of a call to 
-<a href="/pkg/sort/#Sort"><code>sort.Sort</code></a>
+<a href="http://tip.golang.org/pkg/sort/#Sort"><code>sort.Sort</code></a>
 with a call to <code>Reverse</code> causes the sort order to be reversed.
 
-<a href="/pkg/sort/"><code>sort</code></a> パッケージは新しい関数
-<a href="/pkg/sort/#Reverse"><code>Reverse</code></a>
+<a href="http://tip.golang.org/pkg/sort/"><code>sort</code></a> パッケージは新しい関数
+<a href="http://tip.golang.org/pkg/sort/#Reverse"><code>Reverse</code></a>
 を追加しました。
 Wrapping the argument of a call to 
-<a href="/pkg/sort/#Sort"><code>sort.Sort</code></a>
+<a href="http://tip.golang.org/pkg/sort/#Sort"><code>sort.Sort</code></a>
 with a call to <code>Reverse</code> causes the sort order to be reversed.
  <code>Reverse</code>を呼んで、それを
-<a href="/pkg/sort/#Sort"><code>sort.Sort</code></a>
+<a href="http://tip.golang.org/pkg/sort/#Sort"><code>sort.Sort</code></a>
 の引数にラップすることで、順番を逆順に並べ替えます。
 </li>
 
 <li>
-The <a href="/pkg/strings/"><code>strings</code></a> package has two new functions,
-<a href="/pkg/strings/#TrimPrefix"><code>TrimPrefix</code></a>
+The <a href="http://tip.golang.org/pkg/strings/"><code>strings</code></a> package has two new functions,
+<a href="http://tip.golang.org/pkg/strings/#TrimPrefix"><code>TrimPrefix</code></a>
 and
-<a href="/pkg/strings/#TrimSuffix"><code>TrimSuffix</code></a>
+<a href="http://tip.golang.org/pkg/strings/#TrimSuffix"><code>TrimSuffix</code></a>
 with self-evident properties, and the new method
-<a href="/pkg/strings/#Reader.WriteTo"><code>Reader.WriteTo</code></a> so the
-<a href="/pkg/strings/#Reader"><code>Reader</code></a>
+<a href="http://tip.golang.org/pkg/strings/#Reader.WriteTo"><code>Reader.WriteTo</code></a> so the
+<a href="http://tip.golang.org/pkg/strings/#Reader"><code>Reader</code></a>
 type now implements the
-<a href="/pkg/io/#WriterTo"><code>io.WriterTo</code></a> interface.
+<a href="http://tip.golang.org/pkg/io/#WriterTo"><code>io.WriterTo</code></a> interface.
 
 
-<a href="/pkg/strings/"><code>strings</code></a> パッケージは２つの関数
-<a href="/pkg/strings/#TrimPrefix"><code>TrimPrefix</code></a>
+<a href="http://tip.golang.org/pkg/strings/"><code>strings</code></a> パッケージは２つの関数
+<a href="http://tip.golang.org/pkg/strings/#TrimPrefix"><code>TrimPrefix</code></a>
 と
 self-evidentプロパティを持つ
-<a href="/pkg/strings/#TrimSuffix"><code>TrimSuffix</code></a>
+<a href="http://tip.golang.org/pkg/strings/#TrimSuffix"><code>TrimSuffix</code></a>
 を追加し、１つのメソッド
-<a href="/pkg/strings/#Reader.WriteTo"><code>Reader.WriteTo</code></a> 
+<a href="http://tip.golang.org/pkg/strings/#Reader.WriteTo"><code>Reader.WriteTo</code></a> 
 を追加しました。
-したがって、<a href="/pkg/strings/#Reader"><code>Reader</code></a>
+したがって、<a href="http://tip.golang.org/pkg/strings/#Reader"><code>Reader</code></a>
 型は
-<a href="/pkg/io/#WriterTo"><code>io.WriterTo</code></a> 
+<a href="http://tip.golang.org/pkg/io/#WriterTo"><code>io.WriterTo</code></a> 
 インターフェースを実装することになりました。
 
 </li>
 
 <li>
-The <a href="/pkg/syscall/"><code>syscall</code></a> package has received many updates to make it more inclusive of constants and system calls for each supported operating system.
+The <a href="http://tip.golang.org/pkg/syscall/"><code>syscall</code></a> package has received many updates to make it more inclusive of constants and system calls for each supported operating system.
 
-<a href="/pkg/syscall/"><code>syscall</code></a> 
+<a href="http://tip.golang.org/pkg/syscall/"><code>syscall</code></a> 
 パッケージは、
 サポートされた各OSに対して、定数やシステムコールを多く包括するために
 多くのアップデートをしました。
@@ -1620,108 +1620,108 @@ The <a href="/pkg/syscall/"><code>syscall</code></a> package has received many u
 </li>
 
 <li>
-The <a href="/pkg/testing/"><code>testing</code></a> package now automates the generation of allocation
+The <a href="http://tip.golang.org/pkg/testing/"><code>testing</code></a> package now automates the generation of allocation
 statistics in tests and benchmarks using the new
-<a href="/pkg/testing/#AllocsPerRun"><code>AllocsPerRun</code></a> function. And the
-<a href="/pkg/testing/#B.ReportAllocs"><code>ReportAllocs</code></a>
-method on <a href="/pkg/testing/#B"><code>testing.B</code></a> will enable printing of
+<a href="http://tip.golang.org/pkg/testing/#AllocsPerRun"><code>AllocsPerRun</code></a> function. And the
+<a href="http://tip.golang.org/pkg/testing/#B.ReportAllocs"><code>ReportAllocs</code></a>
+method on <a href="http://tip.golang.org/pkg/testing/#B"><code>testing.B</code></a> will enable printing of
 memory allocation statistics for the calling benchmark. It also introduces the
-<a href="/pkg/testing/#BenchmarkResult.AllocsPerOp"><code>AllocsPerOp</code></a> method of
-<a href="/pkg/testing/#BenchmarkResult"><code>BenchmarkResult</code></a>.
+<a href="http://tip.golang.org/pkg/testing/#BenchmarkResult.AllocsPerOp"><code>AllocsPerOp</code></a> method of
+<a href="http://tip.golang.org/pkg/testing/#BenchmarkResult"><code>BenchmarkResult</code></a>.
 There is also a new
-<a href="/pkg/testing/#Verbose"><code>Verbose</code></a> function to test the state of the <code>-v</code>
+<a href="http://tip.golang.org/pkg/testing/#Verbose"><code>Verbose</code></a> function to test the state of the <code>-v</code>
 command-line flag,
 and a new
-<a href="/pkg/testing/#B.Skip"><code>Skip</code></a> method of
-<a href="/pkg/testing/#B"><code>testing.B</code></a> and
-<a href="/pkg/testing/#T"><code>testing.T</code></a>
+<a href="http://tip.golang.org/pkg/testing/#B.Skip"><code>Skip</code></a> method of
+<a href="http://tip.golang.org/pkg/testing/#B"><code>testing.B</code></a> and
+<a href="http://tip.golang.org/pkg/testing/#T"><code>testing.T</code></a>
 to simplify skipping an inappropriate test.
 
 
-<a href="/pkg/testing/"><code>testing</code></a> 
+<a href="http://tip.golang.org/pkg/testing/"><code>testing</code></a> 
 パッケージは、新しい
-<a href="/pkg/testing/#AllocsPerRun"><code>AllocsPerRun</code></a>
+<a href="http://tip.golang.org/pkg/testing/#AllocsPerRun"><code>AllocsPerRun</code></a>
 関数を使って、テストやベンチマークでのメモリ割り当ての統計情報を自動生成します。
 
 そして、
-<a href="/pkg/testing/#B"><code>testing.B</code></a>のメソッド
-<a href="/pkg/testing/#B.ReportAllocs"><code>ReportAllocs</code></a>
+<a href="http://tip.golang.org/pkg/testing/#B"><code>testing.B</code></a>のメソッド
+<a href="http://tip.golang.org/pkg/testing/#B.ReportAllocs"><code>ReportAllocs</code></a>
 はベンチマークに対するメモリ割り当ての統計情報を表示することができます。
 
-<a href="/pkg/testing/#BenchmarkResult"><code>BenchmarkResult</code></a>
+<a href="http://tip.golang.org/pkg/testing/#BenchmarkResult"><code>BenchmarkResult</code></a>
 のメソッド
-<a href="/pkg/testing/#BenchmarkResult.AllocsPerOp"><code>AllocsPerOp</code></a>
+<a href="http://tip.golang.org/pkg/testing/#BenchmarkResult.AllocsPerOp"><code>AllocsPerOp</code></a>
 も導入しています
 
 コマンドラインのフラグ<code>-v</code>の状態をテストするための
-<a href="/pkg/testing/#Verbose"><code>Verbose</code></a> 
+<a href="http://tip.golang.org/pkg/testing/#Verbose"><code>Verbose</code></a> 
 関数、および
 
 不適切なテストを簡単にスキップするための、
-<a href="/pkg/testing/#B"><code>testing.B</code></a> 
+<a href="http://tip.golang.org/pkg/testing/#B"><code>testing.B</code></a> 
 と
-<a href="/pkg/testing/#T"><code>testing.T</code></a>
+<a href="http://tip.golang.org/pkg/testing/#T"><code>testing.T</code></a>
 の
-<a href="/pkg/testing/#B.Skip"><code>Skip</code></a>
+<a href="http://tip.golang.org/pkg/testing/#B.Skip"><code>Skip</code></a>
 メソッドも新しく追加しています。
 
 </li>
 
 <li>
-In the <a href="/pkg/text/template/"><code>text/template</code></a>
+In the <a href="http://tip.golang.org/pkg/text/template/"><code>text/template</code></a>
 and
-<a href="/pkg/html/template/"><code>html/template</code></a> packages,
+<a href="http://tip.golang.org/pkg/html/template/"><code>html/template</code></a> packages,
 templates can now use parentheses to group the elements of pipelines, simplifying the construction of complex pipelines.
 Also, as part of the new parser, the
-<a href="/pkg/text/template/parse/#Node"><code>Node</code></a> interface got two new methods to provide
+<a href="http://tip.golang.org/pkg/text/template/parse/#Node"><code>Node</code></a> interface got two new methods to provide
 better error reporting.
 Although this violates the Go 1 compatibility rules,
 no existing code should be affected because this interface is explicitly intended only to be used
 by the
-<a href="/pkg/text/template/"><code>text/template</code></a>
+<a href="http://tip.golang.org/pkg/text/template/"><code>text/template</code></a>
 and
-<a href="/pkg/html/template/"><code>html/template</code></a>
+<a href="http://tip.golang.org/pkg/html/template/"><code>html/template</code></a>
 packages and there are safeguards to guarantee that.
 
-<a href="/pkg/text/template/"><code>text/template</code></a>
+<a href="http://tip.golang.org/pkg/text/template/"><code>text/template</code></a>
 と
-<a href="/pkg/html/template/"><code>html/template</code></a> パッケージでは、
+<a href="http://tip.golang.org/pkg/html/template/"><code>html/template</code></a> パッケージでは、
 テンプレートは、パイプラインの要素をグループ化するための括弧が使えるようになりました。
 複雑なパイプラインの構造をシンプルにします。
 
 また、新しいパーサーの１つとして、
-<a href="/pkg/text/template/parse/#Node"><code>Node</code></a> 
+<a href="http://tip.golang.org/pkg/text/template/parse/#Node"><code>Node</code></a> 
 インターフェースに、ベターなエラーレポートをする２つのメソッドを追加しました。
 
 これは、Go1の互換性のルールに違反しますが、
 既存のコードには影響しないはずです。
 なぜなら、このインターフェースは
-<a href="/pkg/text/template/"><code>text/template</code></a>
+<a href="http://tip.golang.org/pkg/text/template/"><code>text/template</code></a>
 と
-<a href="/pkg/html/template/"><code>html/template</code></a>
+<a href="http://tip.golang.org/pkg/html/template/"><code>html/template</code></a>
 パッケージだけで使われるつもりであることが明らかで
 それを保証することが保護されるからです。
 
 </li>
 
 <li>
-The implementation of the <a href="/pkg/unicode/"><code>unicode</code></a> 
+The implementation of the <a href="http://tip.golang.org/pkg/unicode/"><code>unicode</code></a> 
 package has been updated to Unicode version 6.2.0.
 
- <a href="/pkg/unicode/"><code>unicode</code></a> 
+ <a href="http://tip.golang.org/pkg/unicode/"><code>unicode</code></a> 
 パッケージの実装は、Unicodeバージョン6.2.0にアップデートされました。
 has been updated to Unicode version 6.2.0.
 </li>
 
 <li>
-In the <a href="/pkg/unicode/utf8/"><code>unicode/utf8</code></a> package,
-the new function <a href="/pkg/unicode/utf8/#ValidRune"><code>ValidRune</code></a> 
+In the <a href="http://tip.golang.org/pkg/unicode/utf8/"><code>unicode/utf8</code></a> package,
+the new function <a href="http://tip.golang.org/pkg/unicode/utf8/#ValidRune"><code>ValidRune</code></a> 
 reports whether the rune is a valid Unicode code point.
 To be valid, a rune must be in range and not be a surrogate half.
 
-<a href="/pkg/unicode/utf8/"><code>unicode/utf8</code></a> パッケージでは、
+<a href="http://tip.golang.org/pkg/unicode/utf8/"><code>unicode/utf8</code></a> パッケージでは、
 runeが有効なUnicodeのコードポイントかどうかをレポートする
-<a href="/pkg/unicode/utf8/#ValidRune"><code>ValidRune</code></a> 関数を追加しました。
+<a href="http://tip.golang.org/pkg/unicode/utf8/#ValidRune"><code>ValidRune</code></a> 関数を追加しました。
 有効であるためには、runeはrange内にあって、サロゲートハーフではない必要があります。
 </li>
 </ul>
