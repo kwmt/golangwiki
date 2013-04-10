@@ -1715,7 +1715,13 @@ has been updated to Unicode version 6.2.0.
 
 <li>
 In the <a href="/pkg/unicode/utf8/"><code>unicode/utf8</code></a> package,
-the new function <a href="/pkg/unicode/utf8/#ValidRune"><code>ValidRune</code></a> reports whether the rune is a valid Unicode code point.
+the new function <a href="/pkg/unicode/utf8/#ValidRune"><code>ValidRune</code></a> 
+reports whether the rune is a valid Unicode code point.
 To be valid, a rune must be in range and not be a surrogate half.
+
+<a href="/pkg/unicode/utf8/"><code>unicode/utf8</code></a> パッケージでは、
+runeが有効なUnicodeのコードポイントかどうかをレポートする
+<a href="/pkg/unicode/utf8/#ValidRune"><code>ValidRune</code></a> 関数を追加しました。
+有効であるためには、runeはrange内にあって、サロゲートハーフではない必要があります。
 </li>
 </ul>
