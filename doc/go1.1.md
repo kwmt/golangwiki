@@ -1682,6 +1682,26 @@ by the
 and
 <a href="/pkg/html/template/"><code>html/template</code></a>
 packages and there are safeguards to guarantee that.
+
+<a href="/pkg/text/template/"><code>text/template</code></a>
+と
+<a href="/pkg/html/template/"><code>html/template</code></a> パッケージでは、
+テンプレートは、パイプラインの要素をグループ化するための括弧が使えるようになりました。
+複雑なパイプラインの構造をシンプルにします。
+
+また、新しいパーサーの１つとして、
+<a href="/pkg/text/template/parse/#Node"><code>Node</code></a> 
+インターフェースに、ベターなエラーレポートをする２つのメソッドを追加しました。
+
+これは、Go1の互換性のルールに違反しますが、
+既存のコードには影響しないはずです。
+なぜなら、このインターフェースは
+<a href="/pkg/text/template/"><code>text/template</code></a>
+と
+<a href="/pkg/html/template/"><code>html/template</code></a>
+パッケージだけで使われるつもりであることが明らかで
+それを保証することが保護されるからです。
+
 </li>
 
 <li>
