@@ -1611,6 +1611,12 @@ self-evidentプロパティを持つ
 
 <li>
 The <a href="/pkg/syscall/"><code>syscall</code></a> package has received many updates to make it more inclusive of constants and system calls for each supported operating system.
+
+<a href="/pkg/syscall/"><code>syscall</code></a> 
+パッケージは、
+サポートされた各OSに対して、定数やシステムコールを多く包括するために
+多くのアップデートをしました。
+
 </li>
 
 <li>
