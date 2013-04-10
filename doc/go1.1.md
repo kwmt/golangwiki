@@ -36,15 +36,15 @@ Go 1.1で実行するために変更が必要なコードが少しあります�
 <p>
 <a href="http://golang.org/doc/go1compat.html">Go 互換性のドキュメント </a>
 では、Go1で書かれたプログラムは、継続して動作することを約束しています。
-In the interest of firming up the specification, though, 
-明確にされたエラーケースについて詳細があります。
-新しい言語の特徴もあります。
+しかし、仕様を固めるために、いくつかのエラーケースを正常な状態にしていること
+についての詳細を説明します。
+新しい言語の特徴についても説明しています。
 </p>
 
 <h3 id="divzero">ゼロ除算</h3>
 
 <p>
-Go1では、ゼロでの割り算はランタイムパニックになっていました。
+Go 1では、ゼロでの割り算は実行時にパニックになっていました。
 </p>
 
 <pre>
@@ -54,14 +54,15 @@ func f(x int) int {
 </pre>
 
 <p>
-Go1.1では、ゼロでの割り算は正当なプログラムではありませんので、
-コンパイルエラーとなります。
+Go 1.1では、ゼロでの割り算は正当なプログラムではありませんので、
+コンパイル時にエラーとなります。
 </p>
 
 <h3 id="unicode_literals">Unicodeリテラルの代用</h3>
 
 <p>
-stringとruneリテラルの定義は、代用の半分をUnicodeの集合を除いて複製されてきました。
+The definition of string and rune literals has been refined to exclude surrogate halves 
+from the set of valid Unicode code points.
 詳細は、<a href="#unicode">Unicode</a>セクションを見て下さい。
 </p>
 
