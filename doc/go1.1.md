@@ -1636,6 +1636,35 @@ and a new
 <a href="/pkg/testing/#B"><code>testing.B</code></a> and
 <a href="/pkg/testing/#T"><code>testing.T</code></a>
 to simplify skipping an inappropriate test.
+
+
+<a href="/pkg/testing/"><code>testing</code></a> 
+パッケージは、新しい
+<a href="/pkg/testing/#AllocsPerRun"><code>AllocsPerRun</code></a>
+関数を使って、テストやベンチマークでのメモリ割り当ての統計情報を自動生成します。
+
+そして、
+<a href="/pkg/testing/#B"><code>testing.B</code></a>のメソッド
+<a href="/pkg/testing/#B.ReportAllocs"><code>ReportAllocs</code></a>
+はベンチマークに対するメモリ割り当ての統計情報を表示することができます。
+
+<a href="/pkg/testing/#BenchmarkResult"><code>BenchmarkResult</code></a>
+のメソッド
+<a href="/pkg/testing/#BenchmarkResult.AllocsPerOp"><code>AllocsPerOp</code></a>
+も導入しています
+
+コマンドラインのフラグ<code>-v</code>の状態をテストするための
+<a href="/pkg/testing/#Verbose"><code>Verbose</code></a> 
+関数、および
+
+不適切なテストを簡単にスキップするための、
+<a href="/pkg/testing/#B"><code>testing.B</code></a> 
+と
+<a href="/pkg/testing/#T"><code>testing.T</code></a>
+の
+<a href="/pkg/testing/#B.Skip"><code>Skip</code></a>
+メソッドも新しく追加しています。
+
 </li>
 
 <li>
