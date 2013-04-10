@@ -1705,7 +1705,12 @@ packages and there are safeguards to guarantee that.
 </li>
 
 <li>
-The implementation of the <a href="/pkg/unicode/"><code>unicode</code></a> package has been updated to Unicode version 6.2.0.
+The implementation of the <a href="/pkg/unicode/"><code>unicode</code></a> 
+package has been updated to Unicode version 6.2.0.
+
+ <a href="/pkg/unicode/"><code>unicode</code></a> 
+パッケージの実装は、Unicodeバージョン6.2.0にアップデートされました。
+has been updated to Unicode version 6.2.0.
 </li>
 
 <li>
