@@ -1546,6 +1546,22 @@ function retrieves statistics about the collector; and
 <a href="/pkg/runtime/debug/#SetGCPercent"><code>SetGCPercent</code></a>
 provides a programmatic way to control how often the collector runs,
 including disabling it altogether.
+
+<a href="/pkg/runtime/debug/"><code>runtime/debug</code></a> パッケージは
+メモリの使用に関して、新しく３つの関数を追加しました。
+<a href="/pkg/runtime/debug/#FreeOSMemory"><code>FreeOSMemory</code></a>
+関数は、ガベージコレクタの実行をトリガーしてから、
+オペレーティング·システムに使用されていないメモリを返そうとします。
+
+<a href="/pkg/runtime/debug/#ReadGCStats"><code>ReadGCStats</code></a>
+関数は、ガベージコレクタに関する統計値を取得します。
+
+<a href="/pkg/runtime/debug/#SetGCPercent"><code>SetGCPercent</code></a>
+provides a programmatic way to control how often the collector runs,
+including disabling it altogether.
+は、ガベージコレクタの実行頻度を制御するためのプログラム的な方法を提供します。
+ガベージコレクタを完全に無効にするということも含んでいます。
+
 </li>
 
 <li>
