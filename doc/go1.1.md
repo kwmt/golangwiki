@@ -68,11 +68,12 @@ from the set of valid Unicode code points.
 
 <h3 id="method_values">Method values</h3>
 <p>
-Go1.1は<a href="http://tip.golang.org/ref/spec#Method_values">method values</a>を実装しています。
+Go 1.1は<a href="https://github.com/kwmt/golangwiki/blob/master/ref/spec.md#Method_values">method values</a>を実装しています。
 それらは特定のレシーバの値に結び付けられる関数です。
-例えば、<a href="http://tip.golang.org/pkg/bufio/#Writer"><code>Writer</code></a>の値<code>w</code>が与えられ、
-式<code>w.Write</code>のmethod value は、常に<code>w</code>に対して書き込む関数です。
-それは<code>w</code>に関して閉じている関数リテラルと同じことです。
+例えば、<a href="http://tip.golang.org/pkg/bufio/#Writer"><code>Writer</code></a>
+の値<code>w</code>が与えられたとき、
+常に<code>w</code>に対して書き込む関数の<code>w.Write</code>はmethod value です。
+<code>w</code>に関して閉じている関数リテラルと同じことです。
 </p>
 <pre9>
 func (p []byte) (n int, err error) {
@@ -85,10 +86,12 @@ Method values are distinct from method expressions, which generate functions
 from methods of a given type; the method expression <code>(*bufio.Writer).Write</code>
 is equivalent to a function with an extra first argument, a receiver of type
 <code>(*bufio.Writer)</code>:
-Method valuesはmethod expressionsとは違います。
-与えられた型のメソッドから関数を作ります。
-method expression <code>(*bufio.Writer).Write</code>は
-第一引数、型<code>(*bufio.Writer)</code>のレシーバを持つ関数と同じです:
+</p>
+<p>
+method valueは、与えられた型のメソッドから関数を生成するmethod expressionとは違います。
+
+method expression <code>(*bufio.Writer).Write</code>は、
+型<code>(*bufio.Writer)</code>のレシーバの第一引数を持つ関数と同じです:
 </p>
 
 <pre>
