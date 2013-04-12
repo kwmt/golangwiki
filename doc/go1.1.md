@@ -1018,23 +1018,25 @@ Finally, the
 so it implements the 
 <a href="http://tip.golang.org/pkg/io/#WriterTo"><code>io.WriterTo</code></a> interface.
 
-The <a href="http://tip.golang.org/pkg/bytes/"><code>bytes</code></a> パッケージは２つの関数を追加しました。
-わかりきったプロパティを持つ
-<a href="http://tip.golang.org/pkg/bytes/#TrimPrefix"><code>TrimPrefix</code></a>
-と
-<a href="http://tip.golang.org/pkg/bytes/#TrimSuffix"><code>TrimSuffix</code></a>
-です。
+	<ul><li>
+	The <a href="http://tip.golang.org/pkg/bytes/"><code>bytes</code></a> パッケージは２つの関数を追加しました。
+	わかりきったプロパティを持つ
+	<a href="http://tip.golang.org/pkg/bytes/#TrimPrefix"><code>TrimPrefix</code></a>
+	と
+	<a href="http://tip.golang.org/pkg/bytes/#TrimSuffix"><code>TrimSuffix</code></a>
+	です。
 
-また、<a href="http://tip.golang.org/pkg/bytes/#Buffer"><code>Buffer</code></a> 型は
-新しいメソッド
-<a href="http://tip.golang.org/pkg/bytes/#Buffer.Grow"><code>Grow</code></a> 
-を追加しました。
-これはそのバッファ内のメモリの割り当てを拡張します。
-最後に、
-<a href="http://tip.golang.org/pkg/bytes/#Reader"><code>Reader</code></a> 型は
-<a href="http://tip.golang.org/pkg/strings/#Reader.WriteTo"><code>WriteTo</code></a> メソッドを追加しました。
-ですので、<a href="http://tip.golang.org/pkg/bytes/#Reader"><code>Reader</code></a> 型は
-<a href="http://tip.golang.org/pkg/io/#WriterTo"><code>io.WriterTo</code></a> インターフェースを実装しています。
+	また、<a href="http://tip.golang.org/pkg/bytes/#Buffer"><code>Buffer</code></a> 型は
+	新しいメソッド
+	<a href="http://tip.golang.org/pkg/bytes/#Buffer.Grow"><code>Grow</code></a> 
+	を追加しました。
+	これはそのバッファ内のメモリの割り当てを拡張します。
+	最後に、
+	<a href="http://tip.golang.org/pkg/bytes/#Reader"><code>Reader</code></a> 型は
+	<a href="http://tip.golang.org/pkg/strings/#Reader.WriteTo"><code>WriteTo</code></a> メソッドを追加しました。
+	ですので、<a href="http://tip.golang.org/pkg/bytes/#Reader"><code>Reader</code></a> 型は
+	<a href="http://tip.golang.org/pkg/io/#WriterTo"><code>io.WriterTo</code></a> インターフェースを実装しています。
+	</li></ul>
 
 </li>
 
