@@ -67,3 +67,10 @@ StripPrefixはリクエストURLのパスから、与えられたprefixを取り
 StripPrefixは、パスに対するリクエストをハンドルしますが、prefixで始まらない応答は404 not found エラーとなります。
 </p>
 <h2 id="EscapeString">
+
+<h3 id="NewRequest">func <a href="/src/pkg/net/http/request.go?s=12527:12599#L398">NewRequest</a></h3>
+<pre>func NewRequest(method, urlStr string, body io.Reader) (*Request, error)</pre>
+<p>
+NewRequest関数は、メソッド、URL、そしてオプションとしてbodyを与えることで、新しいRequestを返す関数です。
+</p>
+
