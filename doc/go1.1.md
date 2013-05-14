@@ -535,6 +535,41 @@ this sense, "<code>go run</code>" replaces "<code>go run *.go</code>".
 <code>go run</code>" は"<code>go run *.go</code>を置き換えています。
 </p>
 
+<h3 id="tags">Build constraints</h3>
+
+<p>
+The "<code>go1.1</code>" tag has been added to the list of default
+<a href="/pkg/go/build/#hdr-Build_Constraints">build constraints</a>.
+This permits packages to take advantage of the new features in Go 1.1 while
+remaining compatible with earlier versions of Go.
+</p>
+<p>
+"<code>go1.1</code>"タグは、デフォルトの<a href="/pkg/go/build/#hdr-Build_Constraints">ビルド時の制約</a>リストに追加されました。
+これは、Goの以前のバージョンとの互換性を維持しながら
+パッケージがGo1.1の新機能を活用することを可能にします。
+</p>
+
+<p>
+Go1.1以上のファイルをビルドするには、
+</p>
+<pre>
+// +build go1.1
+</pre>
+<p>
+これを追加します。
+</p>
+<p>
+Go1.0.xのファイルだけをビルドするには、
+</p>
+
+<pre>
+// +build !go1.1
+</pre>
+<p>
+逆の制約を使います。
+</p>
+
+
 <h3 id="platforms">追加プラットフォーム</h3>
 
 <p>
