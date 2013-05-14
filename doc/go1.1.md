@@ -538,12 +538,6 @@ this sense, "<code>go run</code>" replaces "<code>go run *.go</code>".
 <h3 id="tags">Build constraints</h3>
 
 <p>
-The "<code>go1.1</code>" tag has been added to the list of default
-<a href="/pkg/go/build/#hdr-Build_Constraints">build constraints</a>.
-This permits packages to take advantage of the new features in Go 1.1 while
-remaining compatible with earlier versions of Go.
-</p>
-<p>
 "<code>go1.1</code>"タグは、デフォルトの<a href="/pkg/go/build/#hdr-Build_Constraints">ビルド時の制約</a>リストに追加されました。
 これは、Goの以前のバージョンとの互換性を維持しながら
 パッケージがGo1.1の新機能を活用することを可能にします。
