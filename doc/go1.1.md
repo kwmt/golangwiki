@@ -305,6 +305,18 @@ treated as an encoding error and will yield the replacement rune,
 <a href="http://tip.golang.org/pkg/unicode/utf8/#RuneError"><code>utf8.RuneError</code></a>,
 U+FFFD.
 </p>
+<p>
+UTF-16での65535以上のコードポイントを表すことを可能にするために、
+Unicodeはサロゲートハーフを定義しています。
+それは、大きな値の集まりや、UTF-16においてのみ使われるコードポイントの領域です。
+サロゲート範囲でのコードポイントは他の目的にとっては、不正です。
+Go1.1では、コンパイラ、ライブラリ、ランタイムでこの制約がかかります。
+
+runeからUTF-8へ変換する時、エンコードエラーとして扱われ、
+<a href="http://tip.golang.org/pkg/unicode/utf8/#RuneError"><code>utf8.RuneError</code></a>
+U+FFFD(replacement character)を引き起こします。
+
+</p>
 
 <p>
 This program,
