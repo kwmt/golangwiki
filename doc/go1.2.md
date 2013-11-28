@@ -67,9 +67,7 @@ Such programs will need to be updated by hand.
 <h3 id="three_index">Three-index slices</h3>
 
 <p>
-Go 1.2 adds the ability to specify the capacity as well as the length when using a slicing operation
-on an existing array or slice.
-A slicing operation creates a new slice by describing a contiguous section of an already-created array or slice:
+Go1.2では、ある配列やスライスを扱うとき、容量だけななく長さも指定できるようにしました。
 </p>
 
 <pre>
@@ -78,32 +76,32 @@ slice := array[2:4]
 </pre>
 
 <p>
-The capacity of the slice is the maximum number of elements that the slice may hold, even after reslicing;
-it reflects the size of the underlying array.
-In this example, the capacity of the <code>slice</code> variable is 8.
+スライスの容量は、スライスが保持している、再スライスした後の要素の最大数です。
+もとの配列のサイズを反映します。
+この例では、<code>slice</code>変数の容量は8です。
 </p>
 
+
 <p>
-Go 1.2 adds new syntax to allow a slicing operation to specify the capacity as well as the length.
-A second
-colon introduces the capacity value, which must be less than or equal to the capacity of the
-source slice or array, adjusted for the origin. For instance,
+Go1.2では長さだけでなく容量を指定することができるスライス操作の新しい文法を追加しました。
+2番目のコロンは容量の値を指定します。その値は、もともとのスライスや配列の容量と等しいかそれ以下であるはずです。例えば、
 </p>
 
 <pre>
-slice = array[2:4:6]
+slice = array[2:4:7]
 </pre>
 
-<p>
-sets the slice to have the same length as in the earlier example but its capacity is now only 4 elements (6-2).
-It is impossible to use this new slice value to access the last two elements of the original array.
-</p>
 
 <p>
-In this three-index notation, a missing first index (<code>[:i:j]</code>) defaults to zero but the other
-two indices must always be specified explicitly.
-It is possible that future releases of Go may introduce default values for these indices.
+は、最初の例のように同じ長さを持つスライスですが、容量は5(7-2)だけになります。
+元の配列の3つ目の要素にアクセスするために、新しいスライスの値を使うことは出来ません。(TODO:要見直し)
+
 </p>
+
+
+<p>
+このthree-indexの記法では、最初のインデックスを書かなかれば(<code>[:i:j]</code>)０になりますが、他の２つのインデックスはいつもちゃんと書かなくてはいけません。
+Goの将来のリリースでは、それらのインデックスにデフォルト値を導入することになるかもしれません。
 
 <p>
 Further details are in the
