@@ -1,3 +1,6 @@
+https://code.google.com/p/go/source/browse/doc/go1.2.html 
+23fc3139589c
+
 <h2 id="introduction">Introduction to Go 1.2</h2>
 
 2013年4月に<a href="/doc/go1.1.html">Go version 1.1</a>をリリースして以来、リリーススケジュールが
