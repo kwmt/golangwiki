@@ -35,7 +35,7 @@ Go1.1で作ったほとんどのプログラムは、1.2へ移行したとして
 </p>
 <pre>
 type T struct {
-    X [1<<24]byte
+    X [1&lt;&lt;24]byte
     Field int32
 }
 
@@ -47,7 +47,7 @@ func main() {
 
 <p>
 <code>nil</code>ポインタ<code>x</code>は間違ったメモリにアクセスできます:
-<code>x.Field</code>はアドレス<code>1<<24</code>のメモリにアクセスできます。
+<code>x.Field</code>はアドレス<code>1&lt;&lt;24</code>のメモリにアクセスできます。
 このような安全でない振る舞いを防ぐために、Go1.2では、
 配列へのnilポインタ、nilインターフェースバリュー、nilスライスなどのnilポインタを通しての関節参照がpanicになったり、
 正しい安全な非nil値を返すことをコンパイラが保証します。
@@ -61,8 +61,6 @@ func main() {
 
 <p>
 <em>Updating</em>:
-Most code that depended on the old behavior is erroneous and will fail when run.
-Such programs will need to be updated by hand.
 古い仕様に依存するほとんどのコードはエラーとなり、実行すると失敗します。
 そのようなプログラムは、手動で更新する必要があります。
 </p>
@@ -130,12 +128,61 @@ This means that any loop that includes a (non-inlined) function call can
 be pre-empted, allowing other goroutines to run on the same thread.
 </p>
 
+<h3 id="thread_limit">Limit on the number of threads</h3>
+
+<p>
+Go 1.2 introduces a configurable limit (default 10,000) to the total number of threads
+a single program may have in its address space, to avoid resource starvation
+issues in some environments.
+Note that goroutines are multiplexed onto threads so this limit does not directly
+limit the number of goroutines, only the number that may be simultaneously blocked
+in a system call.
+In practice, the limit is hard to reach.
+</p>
+
+<p>
+The new <a href="/pkg/runtime/debug/#SetMaxThreads"><code>SetMaxThreads</code></a> function in the
+<a href="/pkg/runtime/debug/"><code>runtime/debug</code></a> package controls the thread count limit.
+</p>
+
+<p>
+<em>Updating</em>:
+Few functions will be affected by the limit, but if a program dies because it hits the
+limit, it could be modified to call <code>SetMaxThreads</code> to set a higher count.
+Even better would be to refactor the program to need fewer threads, reducing consumption
+of kernel resources.
+</p>
+
+<h3 id="stack_size">Stack size</h3>
+
+<p>
+In Go 1.2, the minimum size of the stack when a goroutine is created has been lifted from 4KB to 8KB.
+Many programs were suffering performance problems with the old size, which had a tendency
+to introduce expensive stack-segment switching in performance-critical sections.
+The new number was determined by empirical testing.
+</p>
+
+<p>
+At the other end, the new function <a href="/pkg/runtime/debug/#SetMaxStack"><code>SetMaxStack</code></a>
+in the <a href="/pkg/runtime/debug"><code>runtime/debug</code></a> package controls
+the <em>maximum</em> size of a single goroutine's stack.
+The default is 1GB on 64-bit systems and 250MB on 32-bit systems.
+Before Go 1.2, it was too easy for a runaway recursion to consume all the memory on a machine.
+</p>
+
+<p>
+<em>Updating</em>:
+The increased minimum stack size may cause programs with many goroutines to use
+more memory. There is no workaround, but plans for future releases
+include new stack management technology that should address the problem better.
+</p>
+
 <h3 id="cgo_and_cpp">Cgo and C++</h3>
 
 <p>
 The <a href="/cmd/cgo/"><code>cgo</code></a> command will now invoke the C++
-compiler to build any pieces of the linked-to library that are written in C++; the
-documentation has more detail.
+compiler to build any pieces of the linked-to library that are written in C++;
+<a href="/cmd/cgo/">the documentation</a> has more detail.
 </p>
 
 <h3 id="go_tools_godoc">Godoc and vet moved to the go.tools subrepository</h3>
@@ -168,6 +215,8 @@ include these binaries, so users of these distributions are unaffected.
 
 <p>
 When building from source, users must use "go get" to install godoc and vet.
+(The binaries will continue to be installed in their usual locations, not
+<code>$GOPATH/bin</code>.)
 </p>
 
 <pre>
@@ -256,7 +305,7 @@ The test is then compiled and run as usual, and basic coverage statistics are re
 
 <pre>
 $ go test -cover fmt
-ok  	fmt	0.060s	coverage: 91.4% of statements
+ok      fmt     0.060s  coverage: 91.4% of statements
 $
 </pre>
 
@@ -497,7 +546,7 @@ argument with one or more following arguments. The template in this example,
 </p>
 
 <pre>
-{{if eq .A 1 2 3 }} equal {{else}} not equal {{end}}
+{{"{{"}}if eq .A 1 2 3 {{"}}"}} equal {{"{{"}}else{{"}}"}} not equal {{"{{"}}end{{"}}"}}
 </pre>
 
 <p>
@@ -510,7 +559,7 @@ Instead of writing,
 </p>
 
 <pre>
-{{if eq .A 1}} X {{else}} {{if eq .A 2}} Y {{end}} {{end}} 
+{{"{{"}}if eq .A 1{{"}}"}} X {{"{{"}}else{{"}}"}} {{"{{"}}if eq .A 2{{"}}"}} Y {{"{{"}}end{{"}}"}} {{"{{"}}end{{"}}"}} 
 </pre>
 
 <p>
@@ -518,7 +567,7 @@ one can fold the second "if" into the "else" and have only one "end", like this:
 </p>
 
 <pre>
-{{if eq .A 1}} X {{else if eq .A 2}} Y {{end}}
+{{"{{"}}if eq .A 1{{"}}"}} X {{"{{"}}else if eq .A 2{{"}}"}} Y {{"{{"}}end{{"}}"}}
 </pre>
 
 <p>
@@ -571,8 +620,8 @@ The <a href="/pkg/bufio/"><code>bufio</code></a> package
 adds <a href="/pkg/bufio/#Reader.Reset"><code>Reset</code></a>
 methods to <a href="/pkg/bufio/#Reader"><code>Reader</code></a> and
 <a href="/pkg/bufio/#Writer"><code>Writer</code></a>.
-These methods allow the <a href="/pkg/Reader/"><code>Readers</code></a>
-and <a href="/pkg/Writer/"><code>Writers</code></a>
+These methods allow the <a href="/pkg/io/#Reader"><code>Readers</code></a>
+and <a href="/pkg/io/#Writer"><code>Writers</code></a>
 to be re-used on new input and output readers and writers, saving
 allocation overhead. 
 </li>
@@ -584,7 +633,7 @@ can now decompress concatenated archives.
 
 <li>
 The <a href="/pkg/compress/flate/"><code>compress/flate</code></a>
-package adds a <a href="/pkg/compress/flate/#Reset"><code>Reset</code></a> 
+package adds a <a href="/pkg/compress/flate/#Writer.Reset"><code>Reset</code></a> 
 method on the <a href="/pkg/compress/flate/#Writer"><code>Writer</code></a>,
 to make it possible to reduce allocation when, for instance, constructing an
 archive to hold multiple compressed files.
@@ -612,9 +661,9 @@ method to provide a more efficient way to update an item's position in the heap.
 
 <li>
 The <a href="/pkg/container/list/"><code>container/list</code></a> package
-adds the <a href="/pkg/container/list/#MoveBefore"><code>MoveBefore</code></a>
+adds the <a href="/pkg/container/list/#List.MoveBefore"><code>MoveBefore</code></a>
 and
-<a href="/pkg/container/list/#MoveAfter"><code>MoveAfter</code></a>
+<a href="/pkg/container/list/#List.MoveAfter"><code>MoveAfter</code></a>
 methods, which implement the obvious rearrangement.
 </li>
 
@@ -678,7 +727,8 @@ now treats channel and function fields of structures as if they were unexported,
 even if they are not. That is, it ignores them completely. Previously they would
 trigger an error, which could cause unexpected compatibility problems if an
 embedded structure added such a field.
-The package also now supports the generic encoding interfaces of the
+The package also now supports the generic <code>BinaryMarshaler</code> and
+<code>BinaryUnmarshaler</code> interfaces of the
 <a href="/pkg/encoding/"><code>encoding</code></a> package
 described above.
 </li>
@@ -727,8 +777,16 @@ flag set, which holds the flags from the command line.
 </li>
 
 <li>
+The <a href="/pkg/go/ast/"><code>go/ast</code></a> package's
+<a href="/pkg/go/ast/#SliceExpr"><code>SliceExpr</code></a> struct
+has a new boolean field, <code>Slice3</code>, which is set to true
+when representing a slice expression with three indices (two colons).
+The default is false, representing the usual two-index form.
+</li>
+
+<li>
 The <a href="/pkg/go/build/"><code>go/build</code></a> package adds
-the <a href="/pkg/go/build/#Package.AllTags"><code>AllTags</code></a> field
+the <code>AllTags</code> field
 to the <a href="/pkg/go/build/#Package"><code>Package</code></a> type,
 to make it easier to process build tags.
 </li>
@@ -817,6 +875,17 @@ and the client receives an empty body as required by the HTTP specification.
 </li>
 
 <li>
+The <a href="/pkg/os/exec/"><code>os/exec</code></a> package's 
+<a href="/pkg/os/exec/#Cmd.StdinPipe"><code>Cmd.StdinPipe</code></a> method 
+returns an <code>io.WriteCloser</code>, but has changed its concrete
+implementation from <code>*os.File</code> to an unexported type that embeds
+<code>*os.File</code>, and it is now safe to close the returned value.
+Before Go 1.2, there was an unavoidable race that this change fixes.
+Code that needs access to the methods of <code>*os.File</code> can use an
+interface type assertion, such as <code>wc.(interface{ Sync() error })</code>.
+</li>
+
+<li>
 The <a href="/pkg/runtime/"><code>runtime</code></a> package relaxes
 the constraints on finalizer functions in
 <a href="/pkg/runtime/#SetFinalizer"><code>SetFinalizer</code></a>: the
@@ -852,7 +921,8 @@ which swaps an <code>unsafe.Pointer</code>.
 </li>
 
 <li>
-syscall: implemented Sendfile for Darwin, added Syscall9 for Darwin/amd64 (CL 10980043).
+The <a href="/pkg/syscall/"><code>syscall</code></a> package now implements
+<a href="/pkg/syscall/#Sendfile"><code>Sendfile</code></a> for Darwin.
 </li>
 
 <li>
@@ -881,7 +951,7 @@ in agreement with that of other printing functions such as "printf".
 In the <a href="/pkg/time/"><code>time</code></a> package, the
 <a href="/pkg/time/#Parse"><code>Parse</code></a> function
 and
-<a href="/pkg/time/#Format"><code>Format</code></a>
+<a href="/pkg/time/#Time.Format"><code>Format</code></a>
 method
 now handle time zone offsets with seconds, such as in the historical
 date "1871-01-01T05:33:02+00:34:08".
