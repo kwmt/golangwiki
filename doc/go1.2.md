@@ -152,11 +152,21 @@ The new <a href="/pkg/runtime/debug/#SetMaxThreads"><code>SetMaxThreads</code></
 </p>
 
 <p>
+<a href="/pkg/runtime/debug/"><code>runtime/debug</code></a>パッケージに新しい<a href="/pkg/runtime/debug/#SetMaxThreads"><code>SetMaxThreads</code></a>関数は、スレッドの上限値をコントロールします。
+</p>
+
+
+
+<p>
 <em>Updating</em>:
 Few functions will be affected by the limit, but if a program dies because it hits the
 limit, it could be modified to call <code>SetMaxThreads</code> to set a higher count.
 Even better would be to refactor the program to need fewer threads, reducing consumption
 of kernel resources.
+</p>
+
+<p>
+ いくつかの関数は制限の影響を受けますが、その上限に達するからプログラムが終了するような場合、より高い上限値を設定するために<code>SetMaxThreads</code>を呼び出す修正ができます。
 </p>
 
 <h3 id="stack_size">Stack size</h3>
