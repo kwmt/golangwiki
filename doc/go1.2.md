@@ -217,6 +217,11 @@ compiler to build any pieces of the linked-to library that are written in C++;
 <a href="/cmd/cgo/">the documentation</a> has more detail.
 </p>
 
+<p>
+<a href="/cmd/cgo/"><code>cgo</code></a>のコマンドは、C++で書かれているライブラリにリンクされたいずれかの部分をビルドするためにC++コンパイラを起動します。
+<a href="/cmd/cgo/">the documentation</a> に詳細がありあます。
+</p>
+
 <h3 id="go_tools_godoc">Godoc and vet moved to the go.tools subrepository</h3>
 
 <p>
