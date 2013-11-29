@@ -120,13 +120,6 @@ Goの将来のリリースでは、それらのインデックスにデフォル
 
 
 <p>
-<span title="In prior releases, a goroutine that was looping forever could starve out other
-goroutines on the same thread, a serious problem when GOMAXPROCS
-provided only one user thread.
-In Go 1.2, this is partially addressed: The scheduler is invoked occasionally
-upon entry to a function.
-This means that any loop that includes a (non-inlined) function call can
-be pre-empted, allowing other goroutines to run on the same thread.">
  以前のリリースでは、永遠にループしているゴルーチンが、同じスレッド上の他のゴルーチンを餓死させてしまうことがありました。
 GOMAXPROCSが1つのユーザースレッドのみの場合は重要な問題です。
 Go1.2では、部分的に処理されます：スケジューラが関数に入るとき関数に入る際に時々起動されます。
@@ -144,6 +137,13 @@ Note that goroutines are multiplexed onto threads so this limit does not directl
 limit the number of goroutines, only the number that may be simultaneously blocked
 in a system call.
 In practice, the limit is hard to reach.
+</p>
+
+<p>
+Go1.2は、いくつかの環境でリソース枯渇する問題を避けるため、一つのプログラムがそのアドレス空間で持つスレッドの合計に上限(デフォルト 10,000)の設定を変更可能にしました。
+ゴルーチンはそれぞれのスレッド上で送信されるので、この上限は、直接的なゴルーチンの数の上限ではないことに注意して下さい。
+システムコールでブロックされるかもしれない数だけです。
+実際は、この上限に到達することは難しいです。
 </p>
 
 <p>
