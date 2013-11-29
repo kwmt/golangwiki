@@ -105,28 +105,34 @@ slice = array[2:4:7]
 Goの将来のリリースでは、それらのインデックスにデフォルト値を導入することになるかもしれません。
 
 <p>
-Further details are in the
+詳しくはこちら
 <a href="http://golang.org/s/go12slice">design document</a>.
 </p>
 
 <p>
 <em>Updating</em>:
-This is a backwards-compatible change that affects no existing programs.
+これは、既存のプログラムに影響しない下位互換性の変更です。
 </p>
 
 <h2 id="impl">Changes to the implementations and tools</h2>
 
 <h3 id="preemption">Pre-emption in the scheduler</h3>
 
+
 <p>
-In prior releases, a goroutine that was looping forever could starve out other
+<span title="In prior releases, a goroutine that was looping forever could starve out other
 goroutines on the same thread, a serious problem when GOMAXPROCS
 provided only one user thread.
 In Go 1.2, this is partially addressed: The scheduler is invoked occasionally
 upon entry to a function.
 This means that any loop that includes a (non-inlined) function call can
-be pre-empted, allowing other goroutines to run on the same thread.
+be pre-empted, allowing other goroutines to run on the same thread.">
+ 以前のリリースでは、永遠にループしているゴルーチンが、同じスレッド上の他のゴルーチンを餓死させてしまうことがありました。
+GOMAXPROCSが1つのユーザースレッドのみの場合は重要な問題です。
+Go1.2では、部分的に処理されます：スケジューラが関数に入るとき関数に入る際に時々起動されます。
+つまり、(組み込まれていない)関数を含むループが他のゴルーチンを同じスレッド上で実行することができるようになります。</span>
 </p>
+	
 
 <h3 id="thread_limit">Limit on the number of threads</h3>
 
