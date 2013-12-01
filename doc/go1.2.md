@@ -195,6 +195,8 @@ Before Go 1.2, it was too easy for a runaway recursion to consume all the memory
 
 <p>
 他方で、<a href="/pkg/runtime/debug"><code>runtime/debug</code></a> パッケージにある新しい関数<a href="/pkg/runtime/debug/#SetMaxStack"><code>SetMaxStack</code></a>関数は、１つのゴルーチンスタックの<em>最大</em>サイズをコントロールします。
+デフォルトは、64bitシステムでは1GB、32bitシステムでは250MBです。
+Go1.2以前は、マシンのすべてのメモリを消費しやすかった。
 </p>
 
 <p>
@@ -289,6 +291,11 @@ $ go get code.google.com/p/go.tools/cmd/vet
 We expect the future GCC 4.9 release to include gccgo with full
 support for Go 1.2.
 In the current (4.8.2) release of GCC, gccgo implements Go 1.1.2.
+</p>
+
+<p>
+私達は、将来のGCC4.9のリリースに、Go1.2のフルサポートがついたgccgoが入ることを期待しています。
+GCCの現在のリリース(4.8.2)では、gccgoはGo1.1.2を実装しています。
 </p>
 
 <h3 id="gc_changes">Changes to the gc compiler and linker</h3>
