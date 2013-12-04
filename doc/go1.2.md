@@ -389,6 +389,12 @@ that it can now compute and, with help from a new, separately installed
 </p>
 
 <p>
+<a href="/pkg/go/"><code>go test</code></a>の主な新しい特徴の一つとして、
+テストのカバレッジを計算でき、結果を表示することができるようになったということです。
+それは、"go tool cover"プログラムで、別にインストールする必要があります。
+</p>
+
+<p>
 The cover tool is part of the
 <a href="https://code.google.com/p/go/source/checkout?repo=tools"><code>go.tools</code></a>
 subrepository.
@@ -400,10 +406,25 @@ $ go get code.google.com/p/go.tools/cmd/cover
 </pre>
 
 <p>
+coverツールはサブリポジトリ<a href="https://code.google.com/p/go/source/checkout?repo=tools"><code>go.tools</code></a>にあります。
+それは、下記のコマンドを実行することでインストールすることが出来ます。
+</p>
+<pre>
+$ go get code.google.com/p/go.tools/cmd/cover
+</pre>
+
+<p>
 The cover tool does two things.
 First, when "go test" is given the <code>-cover</code> flag, it is run automatically 
 to rewrite the source for the package and insert instrumentation statements.
 The test is then compiled and run as usual, and basic coverage statistics are reported:
+</p>
+
+<p>
+coverツールは2つの事ができます。
+1つは、"go test"に <code>-cover</code>フラグを付けた時、
+パッケージのソースを書き換え、計測ステートメントを挿入することを自動で行います。
+そのテストはコンパイルされ、いつものとおりに実行し、基本的なカバレッジの測定結果がレポートされます:
 </p>
 
 <pre>
@@ -418,7 +439,16 @@ which the cover program, invoked with "go tool cover", can then analyze.
 </p>
 
 <p>
+2つ目は、もっと詳細にレポートしてくれます。"go test"に違うフラグを付けると、カバレッジプロファイルのフィアルを作成することができます。
+"go tool cover"でcoverプログラムが実行し解析します。
+</p>
+
+<p>
 Details on how to generate and analyze coverage statistics can be found by running the commands
+</p>
+
+<p>
+カバレッジの計測結果を生成の仕方や解析の仕方についての詳しいことは、次のコマンドで確認できます。
 </p>
 
 <pre>
