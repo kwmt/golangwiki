@@ -306,10 +306,20 @@ Most users will be unaffected by them.
 </p>
 
 <p>
+ Go1.2は、gcコンパイラの動きに関していくつかセマンティックな変更をしています。
+ ほとんどのユーザーは、それらに影響を受けないでしょう。
+</p>
+
+<p>
 The <a href="/cmd/cgo/"><code>cgo</code></a> command now
 works when C++ is included in the library being linked against.
 See the <a href="/cmd/cgo/"><code>cgo</code></a> documentation
 for details.
+</p>
+
+<p>
+C++がリンクされているライブラリに含まれているとき、<a href="/cmd/cgo/"><code>cgo</code></a>コマンドが動きます。
+詳細は<a href="/cmd/cgo/"><code>cgo</code></a>を参照下さい。
 </p>
 
 <p>
@@ -321,10 +331,22 @@ is now an error.
 </p>
 
 <p>
+プログラムに<code>package</code>句がなければ、gcコンパイラが元の詳細な痕跡を表示していました：ファイルが<code>main</code>パッケージにあるとした場合。
+昔にそれは消され、<code>package</code>句が無い場合は、いまはエラーになります。
+</p>
+
+
+<p>
 On the ARM, the toolchain supports "external linking", which
 is a step towards being able to build shared libraries with the gc
 tool chain and to provide dynamic linking support for environments
 in which that is necessary.
+</p>
+
+<p>
+ARMでは、Goツールは"外部リンク"をサポートしています。
+GCツールを使った共有ライブラリをビルドすることができ、
+動的リンクのサポートを提供できるようにする第一歩です。
 </p>
 
 <p>
@@ -335,12 +357,27 @@ It is now necessary to refer to them by their proper names.
 </p>
 
 <p>
+ARMのランタイムにある、<code>5a</code>を使って、
+直接<code>R9</code>と<code>R10</code>を使用して
+ランタイム内部の<code>m</code>（マシン）と<code>g</code>（ゴルーチン）変数を参照可能にするために使いました。
+適切な名前でそれらを参照することが必要となります。
+</p>
+
+<p>
 Also on the ARM, the <code>5l</code> linker (sic) now defines the
 <code>MOVBS</code> and <code>MOVHS</code> instructions
 as synonyms of <code>MOVB</code> and <code>MOVH</code>,
 to make clearer the separation between signed and unsigned
 sub-word moves; the unsigned versions already existed with a
 <code>U</code> suffix.
+</p>
+
+<p>
+<code>5l</code>リンカ(sic)は、<code>MOVBS</code>と<code>MOVHS</code>命令を
+<code>MOVB</code>と<code>MOVH</code>の同義語として定義します。
+siegnedとunsignedのサブワードmoveの区別を明確にするためです。
+unsignedについては、すでに<code>U</code>のサフィックスがついていました。
+
 </p>
 
 <h3 id="cover">Test coverage</h3>
