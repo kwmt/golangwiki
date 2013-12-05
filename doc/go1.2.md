@@ -490,9 +490,17 @@ $ go doc
 in a directory, the behavior is identical to running
 </p>
 
+<p>
+の動きは、
+</p>
+
 <pre>
 $ godoc .
 </pre>
+
+<p>
+と同じです。
+</p>
 
 <h3 id="gocmd">Changes to the go command</h3>
 
