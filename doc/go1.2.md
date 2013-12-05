@@ -511,6 +511,12 @@ of the tests run by the package, not just those of the package itself.
 By default, as before, dependencies of the tests are not downloaded.
 </p>
 
+<p>
+<a href="/cmd/go/"><code>go get</code></a>コマンドに、<code>-t</code>フラグが追加されました。
+それは、パッケージにより実行するテストの依存されるものダウンロードします。パッケージ自身の依存関係ではありません。
+デフォルトでは、以前のように、テストの依存されるものはダウンロードされません。
+</p>
+
 <h2 id="performance">Performance</h2>
 
 <p>
