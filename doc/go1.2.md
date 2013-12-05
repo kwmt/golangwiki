@@ -469,6 +469,16 @@ as part of the restructuring of godoc, encourage better options in future.
 </p>
 
 <p>
+"go doc"コマンドは削除されました。
+<a href="/cmd/go/"><code>go</code></a>コマンドでツールをラッピングしているだけで、
+<a href="/cmd/godoc/"><code>godoc</code></a>ツール自体が削除されたわけではないことに注意してください。
+All it did was show the documents for a package by package path,
+which godoc itself already does with more flexibility.
+したがって、文書化ツールの数を減らし、godocの再構築の一環として、
+将来的により良い選択を奨励するために削除されました。
+</p>
+
+<p>
 <em>Updating</em>: For those who still need the precise functionality of running
 </p>
 
