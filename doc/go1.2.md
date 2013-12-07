@@ -523,6 +523,10 @@ By default, as before, dependencies of the tests are not downloaded.
 There are a number of significant performance improvements in the standard library; here are a few of them.
 </p>
 
+<p>
+標準ライブラリのパフォーマンスの大幅な改善が多くあります。ここではそのうち少し紹介します。
+</p>
+
 <ul> 
 
 <li>
@@ -531,8 +535,16 @@ decompresses about 30% faster.
 </li>
 
 <li>
+<a href="/pkg/compress/bzip2/"><code>compress/bzip2</code></a>は約30%早く復元します。
+</li>
+
+<li>
 The <a href="/pkg/crypto/des/"><code>crypto/des</code></a> package
 is about five times faster.
+</li>
+
+<li>
+<a href="/pkg/crypto/des/"><code>crypto/des</code></a>パッケージは、約5倍早くなりました。
 </li>
 
 <li>
@@ -541,9 +553,17 @@ encodes about 30% faster.
 </li>
 
 <li>
+<a href="/pkg/encoding/json/"><code>encoding/json</code></a>パッケージは、約30%早くエンコードなりました。
+</li>
+
+<li>
 Networking performance on Windows and BSD systems is about 30% faster through the use
 of an integrated network poller in the runtime, similar to what was done for Linux and OS X
 in Go 1.1.
+</li>
+
+<li>
+Go1.1でLinuxとOS Xに対して行われたものと同様に、ランタイムにあるintegrated network pollerを使用して、WindowsとBSDのネットワークパフォーマンスは約30%早くなりました。
 </li>
 
 </ul>
