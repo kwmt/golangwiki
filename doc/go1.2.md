@@ -622,6 +622,10 @@ the standard library.
 </p>
 
 <p>
+新パッケージ<a href="/pkg/encoding/"><code>encoding</code></a>は、<a href="/pkg/encoding/xml/"><code>encoding/xml</code></a>,<a href="/pkg/encoding/json/"><code>encoding/json</code></a>,<a href="/pkg/encoding/binary/"><code>encoding/binary</code></a>のようなパッケージに対して、カスタムmarshalers and unmarshalersを構築するかもしれない標準encodingインターフェースのセットを定義しています。
+</p>
+
+<p>
 The new interfaces are called
 <a href="/pkg/encoding/#BinaryMarshaler"><code>BinaryMarshaler</code></a>,
 <a href="/pkg/encoding/#BinaryUnmarshaler"><code>BinaryUnmarshaler</code></a>,
@@ -630,6 +634,12 @@ and
 <a href="/pkg/encoding/#TextUnmarshaler"><code>TextUnmarshaler</code></a>.
 Full details are in the <a href="/pkg/encoding/">documentation</a> for the package
 and a separate <a href="http://golang.org/s/go12encoding">design document</a>.
+</p>
+
+<p>
+新しいインターフェースです。
+<a href="/pkg/encoding/#BinaryMarshaler"><code>BinaryMarshaler</code></a>,<a href="/pkg/encoding/#BinaryUnmarshaler"><code>BinaryUnmarshaler</code></a>,<a href="/pkg/encoding/#TextMarshaler"><code>TextMarshaler</code></a>,<a href="/pkg/encoding/#TextUnmarshaler"><code>TextUnmarshaler</code></a>
+詳細は<a href="/pkg/encoding/">documentation</a>と<a href="http://golang.org/s/go12encoding">design document</a>にあります。
 </p>
 
 <h3 id="fmt_indexed_arguments">The fmt package</h3>
