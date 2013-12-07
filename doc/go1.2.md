@@ -568,7 +568,7 @@ Go1.1でLinuxとOS Xに対して行われたものと同様に、ランタイム
 
 </ul>
 
-<h2 id="library">Changes to the standard library</h2>
+<h2 id="library">Changes to the standard library 標準ライブラリの変更点</h2>
 
 
 <h3 id="archive_tar_zip">The archive/tar and archive/zip packages</h3>
@@ -588,11 +588,24 @@ the method return only the base name (final path element).
 </p>
 
 <p>
+<a href="/pkg/archive/tar/"><code>archive/tar</code></a>と<a href="/pkg/archive/zip/"><code>archive/zip</code></a>パッケージは、既存のプログラムを破壊することがあり、セマンティックへの変更がありました。
+問題は、両方共、<a href="/pkg/os/#FileInfo"><code>os.FileInfo</code></a>インターフェースの実装を提供したことです。
+それは、それらのインターフェースの仕様に準拠していませんでした。
+特に、<code>Name</code>メソッドがエントリのフルパス名を返していましたが、インターフェースの仕様は、そのメソッドはパスのベースの名前（最後のパス要素）だけを返すことが必要です。
+</p>	
+
+<p>
 <em>Updating</em>: Since this behavior was newly implemented and
 a bit obscure, it is possible that no code depends on the broken behavior.
 If there are programs that do depend on it, they will need to be identified
 and fixed manually.
 </p>
+
+<p>
+<em>Updating</em>:この振る舞いは、新しく実装され、少し隠蔽されましたので、コードが壊れた振る舞いに依存しない可能性があります。
+もしそれに依存する問題があれば、確認し手動で修正する必要があります。
+
+</p>	
 
 <h3 id="encoding">The new encoding package</h3>
 
