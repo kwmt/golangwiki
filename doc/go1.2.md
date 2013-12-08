@@ -869,6 +869,20 @@ provides standard color palettes.
 </li>
 </ul>
 
+<p>
+2つ新しいパッケージを追加しました。
+</p>
+
+<ul>
+<li>
+<a href="/pkg/encoding/"><code>encoding</code></a> パッケージは<a href="#encoding">上述しました</a>。
+</li>
+<li>
+<a href="/pkg/image/color/palette/"><code>image/color/palette</code></a> パッケージは、標準カラーパレットを提供します。
+</li>
+</ul>
+
+
 <h3 id="minor_library_changes">Minor changes to the library</h3>
 
 <p>
