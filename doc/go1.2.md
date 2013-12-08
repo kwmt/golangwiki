@@ -659,7 +659,20 @@ processing will be <em>n</em>+1.
 </p>
 
 <p>
+<a href="/pkg/fmt/#Printf"><code>Printf</code></a>のような<a href="/pkg/fmt/"><code>fmt</code></a>パッケージのフォーマットを出力するものは、書式仕様におけるインデックス操作を使うことによって、データを任意の順番で出力できるようになりました。
+Wherever an argument is to be fetched from the argument list for formatting,
+either as the value to be formatted or as a width or specification integer,
+新しいオプショナルなインデックス記法<code>[</code><em>n</em><code>]</code>は、<em>n</em> 番目の引数をかわりに取ります。
+<em>n</em>の値は1始まりです。
+インデックス操作したあとの次の引数は<em>n</em>+1として取得されます。
+</p>
+
+<p>
 For example, the normal <code>Printf</code> call
+</p>
+
+<p>
+例えば、<code>Printf</code>は
 </p>
 
 <pre>
@@ -668,6 +681,10 @@ fmt.Sprintf("%c %c %c\n", 'a', 'b', 'c')
 
 <p>
 would create the string <code>"a b c"</code>, but with indexing operations like this,
+</p>
+
+<p>
+文字列<code>"a b c"</code>を作成しますが、次のようにインデックス操作をすると、
 </p>
 
 <pre>
@@ -681,8 +698,16 @@ and then the next fetch accesses the argument following that one, <code>'b'</cod
 </p>
 
 <p>
+結果は、<code>"c a b"</code>となります。<code>[3]</code>は3番目の引数にアクセスし、'c'を出力しています。<code>[1]</code>は最初の<code>'a'</code>、それから＋1した次の引数'b'にアクセスしています。(訳者注：<a hfre="http://play.golang.org/p/T2DaHNcOzq">http://play.golang.org/p/T2DaHNcOzq</a>)
+</p>
+
+<p>
 The motivation for this feature is programmable format statements to access
 the arguments in different order for localization, but it has other uses:
+</p>
+
+<p>
+この特徴における興味は、局所的に異なる順番で引数にアクセスするために、プログラム制御できるフォーマット文であることですが、次のように他の用途でも使えます。
 </p>
 
 <pre>
@@ -692,6 +717,10 @@ log.Printf("trace: value %v of type %[1]T\n", expensiveFunction(a.b[c]))
 <p>
 <em>Updating</em>: The change to the syntax of format specifications
 is strictly backwards compatible, so it affects no working programs.
+</p>
+
+<p>
+<em>Updating</em>:フォーマット仕様シンタックスの変更は、厳密に後方互換ですので、作業プログラムには影響ありません。
 </p>
 
 <h3 id="text_template">The text/template and html/template packages</h3>
