@@ -733,9 +733,18 @@ has a couple of changes in Go 1.2, both of which are also mirrored in the
 </p>
 
 <p>
+<a href="/pkg/text/template/"><code>text/template</code></a>パッケージはGo1.2で2つの変更があります。
+<a href="/pkg/html/template/"><code>html/template</code></a>も同様です。
+</p>
+
+<p>
 First, there are new default functions for comparing basic types.
 The functions are listed in this table, which shows their names and
 the associated familiar comparison operator.
+</p>
+
+<p>
+1つ目の変更点は、基本タイプを比較するために、新しくデフォルトの関数を追加しました。それらの関数は、下記テーブルに、名前と関連する比較演算子を示しています。
 </p>
 
 <table cellpadding="0" summary="Template comparison functions">
@@ -774,6 +783,17 @@ Finally, the <code>eq</code> function (only) allows comparison of the first
 argument with one or more following arguments. The template in this example,
 </p>
 
+<p>
+これらの関数は、対応するGoの演算子とはわずかに動きが異なります。
+1つは、basic types (<code>bool</code>, <code>int</code>,
+<code>float64</code>, <code>string</code>, など)だけ扱います。
+(Goプログラムは基本タイプの他に、配列や構造体も比較可能です。)
+
+2つ目に、値同士が同じ種類であれば比較できます。例えば、sigined integerの値と他のsigine integerの値を比較できます。(Goプログラムは<code>int8</code>と<code>int16</code>を比較することができません。)
+
+最後に、<code>eq</code>関数は、最初の引数と、それに続く1つか複数の引数と比較します。下記の例では、
+</p>
+
 <pre>
 {{"{{"}}if eq .A 1 2 3 {{"}}"}} equal {{"{{"}}else{{"}}"}} not equal {{"{{"}}end{{"}}"}}
 </pre>
@@ -783,8 +803,16 @@ reports "equal" if <code>.A</code> is equal to <em>any</em> of 1, 2, or 3.
 </p>
 
 <p>
+<code>.A</code> が1,2,3の<em>いずれか</em>と等しい場合、"equal"を出力します。
+</p>
+
+<p>
 The second change is that a small addition to the grammar makes "if else if" chains easier to write.
 Instead of writing,
+</p>
+
+<p>
+2つ目の変更点は、"if else if"の追加です。以前までは下記のように書く必要がありましたが、
 </p>
 
 <pre>
@@ -793,6 +821,10 @@ Instead of writing,
 
 <p>
 one can fold the second "if" into the "else" and have only one "end", like this:
+</p>
+
+<p>
+下記のように、"else"に"if"を入れることができるようになり、"end"が1つだけでよくなりました。
 </p>
 
 <pre>
@@ -804,11 +836,20 @@ The two forms are identical in effect; the difference is just in the syntax.
 </p>
 
 <p>
+2つの形式は結果的には同じで、書き方だけが違います。
+</p>
+
+<p>
 <em>Updating</em>: Neither the "else if" change nor the comparison functions
 affect existing programs. Those that
 already define functions called <code>eq</code> and so on through a function
 map are unaffected because the associated function map will override the new
 default function definitions.
+</p>
+
+<p>
+<em>Updating</em>: "else if"の変更も比較関数の変更もどちらも既存プログラムに影響を与えません。
+関数マップを使って<code>eq</code>と名づけた関数などを既に定義しているものは、関連する関数マップが新しいデフォルト関数定義を上書きするので、影響を受けません。
 </p>
 
 <h3 id="new_packages">New packages</h3>
