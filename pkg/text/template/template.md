@@ -1,3 +1,5 @@
+https://code.google.com/p/go/source/browse/src/pkg/text/template/doc.go?spec=svnd09eadc3303614bfce9d9b3938535c88af016da4&r=3ec3ff3de6548cbb6a9212c040ec23f63006a45c
+
 <h2>Overview</h2>
 <p>
 templateパッケージは、テキスト出力するデータ駆動型のテンプレートを実装しています。
