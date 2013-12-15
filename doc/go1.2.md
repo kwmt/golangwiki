@@ -140,22 +140,9 @@ limit the number of goroutines, only the number that may be simultaneously block
 in a system call.
 In practice, the limit is hard to reach.*
 
-<p>
-Go1.2は、いくつかの環境でリソース枯渇する問題を避けるため、一つのプログラムがそのアドレス空間で持つスレッドの合計に上限(デフォルト 10,000)の設定を変更可能にしました。
-ゴルーチンはそれぞれのスレッド上で送信されるので、この上限は、直接的なゴルーチンの数の上限ではないことに注意して下さい。
-システムコールでブロックされるかもしれない数だけです。
-実際は、この上限に到達することは難しいです。
-</p>
 
-<p>
-The new <a href="http://golang.org/pkg/runtime/debug/#SetMaxThreads"><code>SetMaxThreads</code></a> function in the
-<a href="http://golang.org/pkg/runtime/debug/"><code>runtime/debug</code></a> package controls the thread count limit.
-</p>
-
-<p>
-<a href="http://golang.org/pkg/runtime/debug/"><code>runtime/debug</code></a>パッケージに新しい<a href="http://golang.org/pkg/runtime/debug/#SetMaxThreads"><code>SetMaxThreads</code></a>関数は、スレッドの上限値をコントロールします。
-</p>
-
+*The new <a href="http://golang.org/pkg/runtime/debug/#SetMaxThreads"><code>SetMaxThreads</code></a> function in the
+<a href="http://golang.org/pkg/runtime/debug/"><code>runtime/debug</code></a> package controls the thread count limit.*
 
 
 <em>Updating</em>:
@@ -163,6 +150,19 @@ The new <a href="http://golang.org/pkg/runtime/debug/#SetMaxThreads"><code>SetMa
 limit, it could be modified to call <code>SetMaxThreads</code> to set a higher count.
 Even better would be to refactor the program to need fewer threads, reducing consumption
 of kernel resources.*
+
+<p>
+Go1.2は、いくつかの環境でリソース枯渇する問題を避けるため、一つのプログラムがそのアドレス空間で持つスレッドの合計に上限(デフォルト 10,000)の設定を変更可能にしました。
+ゴルーチンはそれぞれのスレッド上で送信されるので、この上限は、直接的なゴルーチンの数の上限ではないことに注意して下さい。
+システムコールでブロックされるかもしれない数だけです。
+実際は、この上限に到達することは難しいです。
+</p>
+
+
+<p>
+<a href="http://golang.org/pkg/runtime/debug/"><code>runtime/debug</code></a>パッケージに新しい<a href="http://golang.org/pkg/runtime/debug/#SetMaxThreads"><code>SetMaxThreads</code></a>関数は、スレッドの上限値をコントロールします。
+</p>
+
 
 <p>
 <em>Updating</em>:
