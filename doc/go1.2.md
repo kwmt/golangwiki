@@ -1,9 +1,10 @@
+<link rel="stylesheet" href="https://github.com/kwmt/golangwiki/blob/master/css/main.css"></link>
+
 https://code.google.com/p/go/source/browse/doc/go1.2.html 
 23fc3139589c
 
 https://code.google.com/p/go/source/browse/doc/go1.2.html?spec=svn5298d82f682fecf71a7570c6625b2d80880749ff&r=23fc3139589c0ba909c155153897159ca1972c20
 
-<link rel="stylesheet" type="text/css" href="../css/main.css">
 
 <h2 id="introduction">Introduction to Go 1.2</h2>
 
