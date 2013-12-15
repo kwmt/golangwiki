@@ -132,7 +132,6 @@ Go1.2では、部分的に処理されます：スケジューラが関数に入
 
 <h3 id="thread_limit">Limit on the number of threads</h3>
 
-<p>
 *Go 1.2 introduces a configurable limit (default 10,000) to the total number of threads
 a single program may have in its address space, to avoid resource starvation
 issues in some environments.
@@ -140,7 +139,6 @@ Note that goroutines are multiplexed onto threads so this limit does not directl
 limit the number of goroutines, only the number that may be simultaneously blocked
 in a system call.
 In practice, the limit is hard to reach.*
-</p>
 
 <p>
 Go1.2は、いくつかの環境でリソース枯渇する問題を避けるため、一つのプログラムがそのアドレス空間で持つスレッドの合計に上限(デフォルト 10,000)の設定を変更可能にしました。
