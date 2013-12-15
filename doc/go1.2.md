@@ -3,6 +3,8 @@ https://code.google.com/p/go/source/browse/doc/go1.2.html
 
 https://code.google.com/p/go/source/browse/doc/go1.2.html?spec=svn5298d82f682fecf71a7570c6625b2d80880749ff&r=23fc3139589c0ba909c155153897159ca1972c20
 
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+
 <h2 id="introduction">Introduction to Go 1.2</h2>
 
 2013年4月に<a href="http://golang.org/doc/go1.1.html">Go version 1.1</a>をリリースして以来、リリーススケジュールが
@@ -531,7 +533,7 @@ There are a number of significant performance improvements in the standard libra
 
 <ul> 
 
-<li>
+<li class="en">
 The <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>
 decompresses about 30% faster.
 </li>
