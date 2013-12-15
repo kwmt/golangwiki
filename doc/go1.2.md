@@ -158,25 +158,23 @@ The new <a href="http://golang.org/pkg/runtime/debug/#SetMaxThreads"><code>SetMa
 
 
 
-<p>
 <em>Updating</em>:
-Few functions will be affected by the limit, but if a program dies because it hits the
+*Few functions will be affected by the limit, but if a program dies because it hits the
 limit, it could be modified to call <code>SetMaxThreads</code> to set a higher count.
 Even better would be to refactor the program to need fewer threads, reducing consumption
-of kernel resources.
-</p>
+of kernel resources.*
 
 <p>
+<em>Updating</em>:
  いくつかの関数は制限の影響を受けますが、その上限に達するからプログラムが終了するような場合、より高い上限値を設定するために<code>SetMaxThreads</code>を呼び出す修正ができます。
 </p>
 
 <h3 id="stack_size">Stack size</h3>
 
-<p>
-In Go 1.2, the minimum size of the stack when a goroutine is created has been lifted from 4KB to 8KB.
+*In Go 1.2, the minimum size of the stack when a goroutine is created has been lifted from 4KB to 8KB.
 Many programs were suffering performance problems with the old size, which had a tendency
 to introduce expensive stack-segment switching in performance-critical sections.
-The new number was determined by empirical testing.
+The new number was determined by empirical testing.*
 </p>
 
 <p>
@@ -186,13 +184,11 @@ Go1.2では、ゴルーチンが作られるときのスタックの最小サイ
 この数値は、テスト実験によって決定されました。
 </p>
 
-<p>
-At the other end, the new function <a href="http://golang.org/pkg/runtime/debug/#SetMaxStack"><code>SetMaxStack</code></a>
+*At the other end, the new function <a href="http://golang.org/pkg/runtime/debug/#SetMaxStack"><code>SetMaxStack</code></a>
 in the <a href="http://golang.org/pkg/runtime/debug"><code>runtime/debug</code></a> package controls
 the <em>maximum</em> size of a single goroutine's stack.
 The default is 1GB on 64-bit systems and 250MB on 32-bit systems.
-Before Go 1.2, it was too easy for a runaway recursion to consume all the memory on a machine.
-</p>
+Before Go 1.2, it was too easy for a runaway recursion to consume all the memory on a machine.*
 
 <p>
 他方で、<a href="http://golang.org/pkg/runtime/debug"><code>runtime/debug</code></a> パッケージにある新しい関数<a href="http://golang.org/pkg/runtime/debug/#SetMaxStack"><code>SetMaxStack</code></a>関数は、１つのゴルーチンスタックの<em>最大</em>サイズをコントロールします。
@@ -200,12 +196,10 @@ Before Go 1.2, it was too easy for a runaway recursion to consume all the memory
 Go1.2以前は、マシンのすべてのメモリを消費しやすかった。
 </p>
 
-<p>
 <em>Updating</em>:
-The increased minimum stack size may cause programs with many goroutines to use
+*The increased minimum stack size may cause programs with many goroutines to use
 more memory. There is no workaround, but plans for future releases
-include new stack management technology that should address the problem better.
-</p>
+include new stack management technology that should address the problem better.*
 
 <p>
 増加した最小スタックサイズは、多くのメモリを使用するため、多くのゴルーチンでは問題を引き起こすかもしれません。
@@ -214,11 +208,9 @@ include new stack management technology that should address the problem better.
 
 <h3 id="cgo_and_cpp">Cgo and C++</h3>
 
-<p>
-The <a href="http://golang.org/cmd/cgo/"><code>cgo</code></a> command will now invoke the C++
+*The <a href="http://golang.org/cmd/cgo/"><code>cgo</code></a> command will now invoke the C++
 compiler to build any pieces of the linked-to library that are written in C++;
-<a href="http://golang.org/cmd/cgo/">the documentation</a> has more detail.
-</p>
+<a href="http://golang.org/cmd/cgo/">the documentation</a> has more detail.*
 
 <p>
 <a href="http://golang.org/cmd/cgo/"><code>cgo</code></a>のコマンドは、C++で書かれているライブラリにリンクされたいずれかの部分をビルドするためにC++コンパイラを起動します。
@@ -227,54 +219,45 @@ compiler to build any pieces of the linked-to library that are written in C++;
 
 <h3 id="go_tools_godoc">Godoc and vet moved to the go.tools subrepository Godocとvetコマンドがサブリポジトリgo.toolsに移動しました。</h3>
 
-<p>
-Both binaries are still included with the distribution, but the source code for the
+*Both binaries are still included with the distribution, but the source code for the
 godoc and vet commands has moved to the
-<a href="http://code.google.com/p/go.tools">go.tools</a> subrepository.
-</p>
+<a href="http://code.google.com/p/go.tools">go.tools</a> subrepository.*
 
 <p>
 両方のコマンドはまだディストリビューションにありますが、godocとvetコマンドのソースコードは、サブリポジトリ<a href="http://code.google.com/p/go.tools">go.tools</a>に移動しました。
 </p>
 
-<p>
-Also, the core of the godoc program has been split into a
+*Also, the core of the godoc program has been split into a
 <a href="https://code.google.com/p/go/source/browse/?repo=tools#hg%2Fgodoc">library</a>,
 while the command itself is in a separate
 <a href="https://code.google.com/p/go/source/browse/?repo=tools#hg%2Fcmd%2Fgodoc">directory</a>.
 The move allows the code to be updated easily and the separation into a library and command
-makes it easier to construct custom binaries for local sites and different deployment methods.
-</p>
+makes it easier to construct custom binaries for local sites and different deployment methods.*
 
 <p>
 また、godocプログラムのコアは、<a href="https://code.google.com/p/go/source/browse/?repo=tools#hg%2Fgodoc">ライブラリ</a>にあり、コマンド自体は、<a href="https://code.google.com/p/go/source/browse/?repo=tools#hg%2Fcmd%2Fgodoc">ディレクトリ</a>にわかれています。
 移動したのは、コードを簡単に更新できるようにし、ライブラリとコマンドに分けたのは、ローカルサイトや異なる開発方法に対して、カスタムコマンドを構築しやすくするためです。
 </p>
 
-<p>
 <em>Updating</em>:
-Since godoc and vet are not part of the library,
-no client Go code depends on the their source and no updating is required.
-</p>
+*Since godoc and vet are not part of the library,
+no client Go code depends on the their source and no updating is required.*
 
 <p>
 godocとvetはライブラリの一部ではありませんので、Goコードのクライアントはこれらのソースに依存しません、更新も必要ありません。
 </p>
 
-<p>
-The binary distributions available from <a href="http://golang.org">golang.org</a>
-include these binaries, so users of these distributions are unaffected.
-</p>
+*The binary distributions available from <a href="http://golang.org">golang.org</a>
+include these binaries, so users of these distributions are unaffected.*
+
 
 <p>
  <a href="http://golang.org">golang.org</a>から使用できるバイナリディストリビューションには、これらのバイナリがありますので、ユーザーは影響は受けません。
 </p>
 
-<p>
-When building from source, users must use "go get" to install godoc and vet.
+*When building from source, users must use "go get" to install godoc and vet.
 (The binaries will continue to be installed in their usual locations, not
-<code>$GOPATH/bin</code>.)
-</p>
+<code>$GOPATH/bin</code>.)*
 
 <p>
 ソースからビルドする場合、ユーザーは"go get"コマンドを使ってgodocとvetをインストールする必要があります。
@@ -288,11 +271,9 @@ $ go get code.google.com/p/go.tools/cmd/vet
 
 <h3 id="gccgo">Status of gccgo</h3>
 
-<p>
-We expect the future GCC 4.9 release to include gccgo with full
+*We expect the future GCC 4.9 release to include gccgo with full
 support for Go 1.2.
-In the current (4.8.2) release of GCC, gccgo implements Go 1.1.2.
-</p>
+In the current (4.8.2) release of GCC, gccgo implements Go 1.1.2.*
 
 <p>
 私達は、将来のGCC4.9のリリースに、Go1.2のフルサポートがついたgccgoが入ることを期待しています。
@@ -301,35 +282,32 @@ GCCの現在のリリース(4.8.2)では、gccgoはGo1.1.2を実装していま�
 
 <h3 id="gc_changes">Changes to the gc compiler and linker</h3>
 
-<p>
-Go 1.2 has several semantic changes to the workings of the gc compiler suite.
-Most users will be unaffected by them.
-</p>
+*Go 1.2 has several semantic changes to the workings of the gc compiler suite.
+Most users will be unaffected by them.*
+
 
 <p>
  Go1.2は、gcコンパイラの動きに関していくつかセマンティックな変更をしています。
  ほとんどのユーザーは、それらに影響を受けないでしょう。
 </p>
 
-<p>
-The <a href="http://golang.org/cmd/cgo/"><code>cgo</code></a> command now
+*The <a href="http://golang.org/cmd/cgo/"><code>cgo</code></a> command now
 works when C++ is included in the library being linked against.
 See the <a href="http://golang.org/cmd/cgo/"><code>cgo</code></a> documentation
-for details.
-</p>
+for details.*
+
 
 <p>
 C++がリンクされているライブラリに含まれているとき、<a href="http://golang.org/cmd/cgo/"><code>cgo</code></a>コマンドが動きます。
 詳細は<a href="http://golang.org/cmd/cgo/"><code>cgo</code></a>を参照下さい。
 </p>
 
-<p>
-The gc compiler displayed a vestigial detail of its origins when
+*The gc compiler displayed a vestigial detail of its origins when
 a program had no <code>package</code> clause: it assumed
 the file was in package <code>main</code>.
 The past has been erased, and a missing <code>package</code> clause
-is now an error.
-</p>
+is now an error.*
+
 
 <p>
 プログラムに<code>package</code>句がなければ、gcコンパイラが元の詳細な痕跡を表示していました：ファイルが<code>main</code>パッケージにあるとした場合。
@@ -337,12 +315,11 @@ is now an error.
 </p>
 
 
-<p>
-On the ARM, the toolchain supports "external linking", which
+*On the ARM, the toolchain supports "external linking", which
 is a step towards being able to build shared libraries with the gc
 tool chain and to provide dynamic linking support for environments
-in which that is necessary.
-</p>
+in which that is necessary.*
+
 
 <p>
 ARMでは、Goツールは"外部リンク"をサポートしています。
@@ -350,12 +327,11 @@ GCツールを使った共有ライブラリをビルドすることができ、
 動的リンクのサポートを提供できるようにする第一歩です。
 </p>
 
-<p>
-In the runtime for the ARM, with <code>5a</code>, it used to be possible to refer
+*In the runtime for the ARM, with <code>5a</code>, it used to be possible to refer
 to the runtime-internal <code>m</code> (machine) and <code>g</code>
 (goroutine) variables using <code>R9</code> and <code>R10</code> directly.
-It is now necessary to refer to them by their proper names.
-</p>
+It is now necessary to refer to them by their proper names.*
+
 
 <p>
 ARMのランタイムにある、<code>5a</code>を使って、
@@ -364,14 +340,12 @@ ARMのランタイムにある、<code>5a</code>を使って、
 適切な名前でそれらを参照することが必要となります。
 </p>
 
-<p>
-Also on the ARM, the <code>5l</code> linker (sic) now defines the
+*Also on the ARM, the <code>5l</code> linker (sic) now defines the
 <code>MOVBS</code> and <code>MOVHS</code> instructions
 as synonyms of <code>MOVB</code> and <code>MOVH</code>,
 to make clearer the separation between signed and unsigned
 sub-word moves; the unsigned versions already existed with a
-<code>U</code> suffix.
-</p>
+<code>U</code> suffix.*
 
 <p>
 <code>5l</code>リンカ(sic)は、<code>MOVBS</code>と<code>MOVHS</code>命令を
