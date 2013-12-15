@@ -202,6 +202,7 @@ Go1.2以前は、マシンのすべてのメモリを消費しやすかった。
 
 
 <p>
+<em>Updating</em>:
 増加した最小スタックサイズは、多くのメモリを使用するため、多くのゴルーチンでは問題を引き起こすかもしれません。
 回避策はありませんが、将来のリリースの計画には、問題に対処するべき新しいスタック管理技術が含まれます。
 </p>
@@ -223,9 +224,6 @@ compiler to build any pieces of the linked-to library that are written in C++;
 godoc and vet commands has moved to the
 <a href="http://code.google.com/p/go.tools">go.tools</a> subrepository.*
 
-<p>
-両方のコマンドはまだディストリビューションにありますが、godocとvetコマンドのソースコードは、サブリポジトリ<a href="http://code.google.com/p/go.tools">go.tools</a>に移動しました。
-</p>
 
 *Also, the core of the godoc program has been split into a
 <a href="https://code.google.com/p/go/source/browse/?repo=tools#hg%2Fgodoc">library</a>,
@@ -234,30 +232,40 @@ while the command itself is in a separate
 The move allows the code to be updated easily and the separation into a library and command
 makes it easier to construct custom binaries for local sites and different deployment methods.*
 
+<em>Updating</em>:
+*Since godoc and vet are not part of the library,
+no client Go code depends on the their source and no updating is required.*
+
+*The binary distributions available from <a href="http://golang.org">golang.org</a>
+include these binaries, so users of these distributions are unaffected.*
+
+*When building from source, users must use "go get" to install godoc and vet.
+(The binaries will continue to be installed in their usual locations, not
+<code>$GOPATH/bin</code>.)*
+
+<pre>
+$ go get code.google.com/p/go.tools/cmd/godoc
+$ go get code.google.com/p/go.tools/cmd/vet
+</pre>
+
+<p>
+両方のコマンドはまだディストリビューションにありますが、godocとvetコマンドのソースコードは、サブリポジトリ<a href="http://code.google.com/p/go.tools">go.tools</a>に移動しました。
+</p>
+
 <p>
 また、godocプログラムのコアは、<a href="https://code.google.com/p/go/source/browse/?repo=tools#hg%2Fgodoc">ライブラリ</a>にあり、コマンド自体は、<a href="https://code.google.com/p/go/source/browse/?repo=tools#hg%2Fcmd%2Fgodoc">ディレクトリ</a>にわかれています。
 移動したのは、コードを簡単に更新できるようにし、ライブラリとコマンドに分けたのは、ローカルサイトや異なる開発方法に対して、カスタムコマンドを構築しやすくするためです。
 </p>
 
-<em>Updating</em>:
-*Since godoc and vet are not part of the library,
-no client Go code depends on the their source and no updating is required.*
-
 <p>
+<em>Updating</em>:
 godocとvetはライブラリの一部ではありませんので、Goコードのクライアントはこれらのソースに依存しません、更新も必要ありません。
 </p>
-
-*The binary distributions available from <a href="http://golang.org">golang.org</a>
-include these binaries, so users of these distributions are unaffected.*
-
 
 <p>
  <a href="http://golang.org">golang.org</a>から使用できるバイナリディストリビューションには、これらのバイナリがありますので、ユーザーは影響は受けません。
 </p>
 
-*When building from source, users must use "go get" to install godoc and vet.
-(The binaries will continue to be installed in their usual locations, not
-<code>$GOPATH/bin</code>.)*
 
 <p>
 ソースからビルドする場合、ユーザーは"go get"コマンドを使ってgodocとvetをインストールする必要があります。
