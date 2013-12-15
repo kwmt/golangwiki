@@ -175,7 +175,17 @@ Go1.2は、いくつかの環境でリソース枯渇する問題を避けるた
 Many programs were suffering performance problems with the old size, which had a tendency
 to introduce expensive stack-segment switching in performance-critical sections.
 The new number was determined by empirical testing.*
-</p>
+
+*At the other end, the new function <a href="http://golang.org/pkg/runtime/debug/#SetMaxStack"><code>SetMaxStack</code></a>
+in the <a href="http://golang.org/pkg/runtime/debug"><code>runtime/debug</code></a> package controls
+the <em>maximum</em> size of a single goroutine's stack.
+The default is 1GB on 64-bit systems and 250MB on 32-bit systems.
+Before Go 1.2, it was too easy for a runaway recursion to consume all the memory on a machine.*
+
+<em>Updating</em>:
+*The increased minimum stack size may cause programs with many goroutines to use
+more memory. There is no workaround, but plans for future releases
+include new stack management technology that should address the problem better.*
 
 <p>
 Go1.2では、ゴルーチンが作られるときのスタックの最小サイズが、4KBから8KBに変更されました。
@@ -184,22 +194,12 @@ Go1.2では、ゴルーチンが作られるときのスタックの最小サイ
 この数値は、テスト実験によって決定されました。
 </p>
 
-*At the other end, the new function <a href="http://golang.org/pkg/runtime/debug/#SetMaxStack"><code>SetMaxStack</code></a>
-in the <a href="http://golang.org/pkg/runtime/debug"><code>runtime/debug</code></a> package controls
-the <em>maximum</em> size of a single goroutine's stack.
-The default is 1GB on 64-bit systems and 250MB on 32-bit systems.
-Before Go 1.2, it was too easy for a runaway recursion to consume all the memory on a machine.*
-
 <p>
 他方で、<a href="http://golang.org/pkg/runtime/debug"><code>runtime/debug</code></a> パッケージにある新しい関数<a href="http://golang.org/pkg/runtime/debug/#SetMaxStack"><code>SetMaxStack</code></a>関数は、１つのゴルーチンスタックの<em>最大</em>サイズをコントロールします。
 デフォルトは、64bitシステムでは1GB、32bitシステムでは250MBです。
 Go1.2以前は、マシンのすべてのメモリを消費しやすかった。
 </p>
 
-<em>Updating</em>:
-*The increased minimum stack size may cause programs with many goroutines to use
-more memory. There is no workaround, but plans for future releases
-include new stack management technology that should address the problem better.*
 
 <p>
 増加した最小スタックサイズは、多くのメモリを使用するため、多くのゴルーチンでは問題を引き起こすかもしれません。
