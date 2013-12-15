@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://github.com/kwmt/golangwiki/blob/master/css/main.css"></link>
-
 https://code.google.com/p/go/source/browse/doc/go1.2.html 
 23fc3139589c
 
@@ -135,13 +133,13 @@ Go1.2では、部分的に処理されます：スケジューラが関数に入
 <h3 id="thread_limit">Limit on the number of threads</h3>
 
 <p>
-Go 1.2 introduces a configurable limit (default 10,000) to the total number of threads
+*Go 1.2 introduces a configurable limit (default 10,000) to the total number of threads
 a single program may have in its address space, to avoid resource starvation
 issues in some environments.
 Note that goroutines are multiplexed onto threads so this limit does not directly
 limit the number of goroutines, only the number that may be simultaneously blocked
 in a system call.
-In practice, the limit is hard to reach.
+In practice, the limit is hard to reach.*
 </p>
 
 <p>
@@ -534,7 +532,7 @@ There are a number of significant performance improvements in the standard libra
 
 <ul> 
 
-<li class="en">
+<li>
 The <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>
 decompresses about 30% faster.
 </li>
