@@ -892,6 +892,11 @@ The following list summarizes a number of minor changes to the library, mostly a
 See the relevant package documentation for more information about each change.
 </p>
 
+<p>
+以下のリストは、ライブラリのマイナー変更の要約で、ほとんどが追加になります。
+各変更のより詳細な情報は、関連ドキュメントをご参照下さい。
+</p>
+
 <ul>
 
 <li>
@@ -899,6 +904,11 @@ The <a href="/pkg/archive/zip/"><code>archive/zip</code></a> package
 adds the
 <a href="/pkg/archive/zip/#File.DataOffset"><code>DataOffset</code></a> accessor
 to return the offset of a file's (possibly compressed) data within the archive.
+</li>
+
+<li>
+<a href="/pkg/archive/zip/"><code>archive/zip</code></a>パッケージに、<a href="/pkg/archive/zip/#File.DataOffset"><code>DataOffset</code></a>関数が追加されました。
+これはそのアーカイブ内のファイルの（圧縮されているかもしれない）データのオフセットを返します。
 </li>
 
 <li>
@@ -913,8 +923,18 @@ allocation overhead.
 </li>
 
 <li>
+<a href="/pkg/bufio/"><code>bufio</code></a>パッケージには、<a href="/pkg/bufio/#Reader"><code>Reader</code></a>と<a href="/pkg/bufio/#Writer"><code>Writer</code></a>に<a href="/pkg/bufio/#Reader.Reset"><code>Reset</code></a>メソッドが追加されました。
+このメソッドは、<a href="/pkg/io/#Reader"><code>Readers</code></a>
+と <a href="/pkg/io/#Writer"><code>Writers</code></a>新しいインプットやアウトプットのreadersやwritersを再利用でき、メモリ割付のオーバーヘッドをセーブすることができます。
+</li>
+
+<li>
 The <a href="/pkg/compress/bzip2/"><code>compress/bzip2</code></a>
 can now decompress concatenated archives.
+</li>
+
+<li>
+<a href="/pkg/compress/bzip2/"><code>compress/bzip2</code></a>は連結しているアーカイブを復元することができるようになりました。
 </li>
 
 <li>
@@ -926,10 +946,19 @@ archive to hold multiple compressed files.
 </li>
 
 <li>
+<a href="/pkg/compress/flate/"><code>compress/flate</code></a>パッケージには、<a href="/pkg/compress/flate/#Writer"><code>Writer</code></a>に<a href="/pkg/compress/flate/#Writer.Reset"><code>Reset</code></a>メソッドが追加されました。
+たとえば、複数の圧縮ファイルをホールドしておくためにアーカイブを作成するとき、アロケーションを減らすことが可能になります。
+</li>
+
+<li>
 The <a href="/pkg/compress/gzip/"><code>compress/gzip</code></a> package's
 <a href="/pkg/compress/gzip/#Writer"><code>Writer</code></a> type adds a
 <a href="/pkg/compress/gzip/#Writer.Reset"><code>Reset</code></a>
 so it may be reused.
+</li>
+
+<li>
+<a href="/pkg/compress/gzip/"><code>compress/gzip</code></a>パッケージの<a href="/pkg/compress/gzip/#Writer"><code>Writer</code></a>型に<a href="/pkg/compress/gzip/#Writer.Reset"><code>Reset</code></a>メソッドが追加されましたので、再利用されるかもしれません。
 </li>
 
 <li>
@@ -940,9 +969,17 @@ so it may be reused.
 </li>
 
 <li>
+<a href="/pkg/compress/zlib/"><code>compress/zlib</code></a>パッケージの<a href="/pkg/compress/zlib/#Writer"><code>Writer</code></a>型に<a href="/pkg/compress/zlib/#Writer.Reset"><code>Reset</code></a>メソッドが追加されましたので、再利用されるかもしれません。
+</li>
+
+<li>
 The <a href="/pkg/container/heap/"><code>container/heap</code></a> package
 adds a <a href="/pkg/container/heap/#Fix"><code>Fix</code></a>
 method to provide a more efficient way to update an item's position in the heap.
+</li>
+
+<li>
+<a href="/pkg/container/heap/"><code>container/heap</code></a>パッケージに<a href="/pkg/container/heap/#Fix"><code>Fix</code></a>メソッドが追加されました。heapのアイテム位置を更新するもっと効率的な手段を提供します。
 </li>
 
 <li>
@@ -954,9 +991,17 @@ methods, which implement the obvious rearrangement.
 </li>
 
 <li>
+<a href="/pkg/container/list/"><code>container/list</code></a>パッケーには、<a href="/pkg/container/list/#List.MoveBefore"><code>MoveBefore</code></a>メソッドと<a href="/pkg/container/list/#List.MoveAfter"><code>MoveAfter</code></a>メソッドが追加されました。これは明らかに再整理を実装しています。
+</li>
+
+<li>
 The <a href="/pkg/crypto/cipher/"><code>crypto/cipher</code></a> package
 adds the a new GCM mode (Galois Counter Mode), which is almost always
 used with AES encryption.
+</li>
+
+<li>
+<a href="/pkg/crypto/cipher/"><code>crypto/cipher</code></a>パッケージには、新しくGCM(Galois Counter Mode)を追加しました。それはほとんどの場合、AES暗号が使用されます。
 </li>
 
 <li>
@@ -967,9 +1012,18 @@ to simplify hashing without sacrificing performance.
 </li>
 
 <li>
+<a href="/pkg/crypto/md5/"><code>crypto/md5</code></a>パッケージには、新しく<a href="/pkg/crypto/md5/#Sum"><code>Sum</code></a>関数が追加されました。パフォーマンスが犠牲にならずに簡単にハッシュ化します。
+</li>
+
+<li>
 Similarly, the 
 <a href="/pkg/crypto/md5/"><code>crypto/sha1</code></a> package
 adds a new <a href="/pkg/crypto/sha1/#Sum"><code>Sum</code></a> function.
+</li>
+
+<li>
+同様に、<a href="/pkg/crypto/md5/"><code>crypto/sha1</code></a>パッケージにも<a href="/pkg/crypto/sha1/#Sum"><code>Sum</code></a>関数が追加されています。
+
 </li>
 
 <li>
@@ -980,9 +1034,17 @@ and <a href="/pkg/crypto/sha256/#Sum224"><code>Sum224</code></a> functions.
 </li>
 
 <li>
+また、<a href="/pkg/crypto/sha256/"><code>crypto/sha256</code></a>パッケージには、<a href="/pkg/crypto/sha256/#Sum256"><code>Sum256</code></a>関数と<a href="/pkg/crypto/sha256/#Sum224"><code>Sum224</code></a>関数が追加されました。
+</li>
+
+<li>
 Finally, the <a href="/pkg/crypto/sha512/"><code>crypto/sha512</code></a> package
 adds <a href="/pkg/crypto/sha512/#Sum512"><code>Sum512</code></a> and
 <a href="/pkg/crypto/sha512/#Sum384"><code>Sum384</code></a> functions.
+</li>
+
+<li>
+最後に、<a href="/pkg/crypto/sha512/"><code>crypto/sha512</code></a>パッケージに、<a href="/pkg/crypto/sha512/#Sum512"><code>Sum512</code></a>関数と <a href="/pkg/crypto/sha512/#Sum384"><code>Sum384</code></a>関数が追加されました。
 </li>
 
 <li>
@@ -991,8 +1053,16 @@ adds support for reading and writing arbitrary extensions.
 </li>
 
 <li>
+<a href="/pkg/crypto/x509/"><code>crypto/x509</code></a>パッケージは、任意の拡張を読み書きのサポートを追加しました。
+</li>
+
+<li>
 The <a href="/pkg/crypto/tls/"><code>crypto/tls</code></a> package adds
 support for TLS 1.1, 1.2 and AES-GCM.
+</li>
+
+<li>
+<a href="/pkg/crypto/tls/"><code>crypto/tls</code></a>パッケージには、TLS 1.1, 1.2 と AES-GCMのサポートを追加しました。
 </li>
 
 <li>
@@ -1003,8 +1073,16 @@ number of open connections to the database.
 </li>
 
 <li>
+<a href="/pkg/database/sql/"><code>database/sql</code></a>パッケージは、たくさんのデータベースとのオープン接続を制限するため、<a href="/pkg/database/sql/#DB"><code>DB</code></a>に<a href="/pkg/database/sql/#DB.SetMaxOpenConns"><code>SetMaxOpenConns</code></a>メソッドを追加しました。
+</li>
+
+<li>
 The <a href="/pkg/encoding/csv/"><code>encoding/csv</code></a> package
 now always allows trailing commas on fields.
+</li>
+
+<li>
+<a href="/pkg/encoding/csv/"><code>encoding/csv</code></a>パッケージは、フィールドの最後がカンマの場合エラーになっていたのが、最後はカンマでもよくなりました。
 </li>
 
 <li>
@@ -1020,6 +1098,12 @@ described above.
 </li>
 
 <li>
+<a href="/pkg/encoding/gob/"><code>encoding/gob</code></a>パッケージは、チャネルと構造体の関数フィールドを、たとえそれらが無くても、アンエクスポートされているかのように扱うようになりました。これは、完全にそれらを無視します。
+埋め込まれた構造体にそのようなフィールドを追加していた場合、予期せぬ互換性の問題を引き起こすことがあります。
+また、上述された<a href="/pkg/encoding/"><code>encoding</code></a>パッケージの<code>BinaryMarshaler</code> と<code>BinaryUnmarshaler</code>インターフェースをサポートします。
+</li>
+
+<li>
 The <a href="/pkg/encoding/json/"><code>encoding/json</code></a> package
 now will always escape ampersands as "\u0026" when printing strings.
 It will now accept but correct invalid UTF-8 in
@@ -1028,6 +1112,11 @@ It will now accept but correct invalid UTF-8 in
 Finally, it now supports the generic encoding interfaces of the
 <a href="/pkg/encoding/"><code>encoding</code></a> package
 described above.
+</li>
+
+<li>
+<a href="/pkg/encoding/json/"><code>encoding/json</code></a>パッケージは、文字列を出力するとき常にアンパサンドを"\u0026"としてエスケープします。
+それは受け入れますが、(インプットが以前に拒否された)<a href="/pkg/encoding/json/#Marshal"><code>Marshal</code></a>では無効なUTF-8を訂正します。結局、上述した<a href="/pkg/encoding/"><code>encoding</code></a>パッケージの一般的なエンコードインターフェースをサポートします。
 </li>
 
 <li>
@@ -1052,6 +1141,14 @@ to see how to use it.
 </li>
 
 <li>
+<a href="/pkg/encoding/xml/"><code>encoding/xml</code></a>パッケージは属性をmarshalされたポインタに格納することができます。
+また、新しい<a href="/pkg/encoding/xml/#Marshaler"><code>Marshaler</code></a>,
+<a href="/pkg/encoding/xml/#Unmarshaler"><code>Unmarshaler</code></a>,<a href="/pkg/encoding/xml/#MarshalerAttr"><code>MarshalerAttr</code></a> and
+<a href="/pkg/encoding/xml/#UnmarshalerAttr"><code>UnmarshalerAttr</code></a>を通して、上述した<a href="/pkg/encoding/"><code>encoding</code></a>パッケージの一般的なencodingインターフェースをサポートします。
+このパッケージは、カスタムエンコーダーによる使用に対して、<a href="/pkg/encoding/xml/#Encoder"><code>Encoder</code></a>型に<a href="/pkg/encoding/xml/#Encoder.Flush"><code>Flush</code></a>メソッドも追加しました。使い方は<a href="/pkg/encoding/xml/#Encoder.EncodeToken"><code>EncodeToken</code></a>のドキュメントを見て下さい。
+</li>
+
+<li>
 The <a href="/pkg/flag/"><code>flag</code></a> package now
 has a <a href="/pkg/flag/#Getter"><code>Getter</code></a> interface
 to allow the value of a flag to be retrieved. Due to the
@@ -1063,6 +1160,11 @@ flag set, which holds the flags from the command line.
 </li>
 
 <li>
+<a href="/pkg/flag/"><code>flag</code></a>パッケージは<a href="/pkg/flag/#Getter"><code>Getter</code></a>インターフェースを持ちます。これはflagの値を取得することができます。Go1の互換性ガイドラインにより、このメソッドを既存の<a href="/pkg/flag/#Value"><code>Value</code></a>に追加できませんが、すべての既存の標準flag型はそれを実装します。
+また、<a href="/pkg/flag/#CommandLine"><code>CommandLine</code></a>変数を公開しました。この変数はFlagSetをコマンドラインから保持します。
+</li>
+
+<li>
 The <a href="/pkg/go/ast/"><code>go/ast</code></a> package's
 <a href="/pkg/go/ast/#SliceExpr"><code>SliceExpr</code></a> struct
 has a new boolean field, <code>Slice3</code>, which is set to true
@@ -1071,10 +1173,19 @@ The default is false, representing the usual two-index form.
 </li>
 
 <li>
+<a href="/pkg/go/ast/"><code>go/ast</code></a>パッケージの<a href="/pkg/go/ast/#SliceExpr"><code>SliceExpr</code></a>構造体は、新しいbooleanフィールド<code>Slice3</code>を持ちます。これは、スリーインデックススライス(2つコロンがあるスライス)を表すとき、trueがセットされます。
+デフォルではfalseで、通常のツーインデックス形式を表します。
+</li>
+
+<li>
 The <a href="/pkg/go/build/"><code>go/build</code></a> package adds
 the <code>AllTags</code> field
 to the <a href="/pkg/go/build/#Package"><code>Package</code></a> type,
 to make it easier to process build tags.
+</li>
+
+<li>
+<a href="/pkg/go/build/"><code>go/build</code></a> パッケージは、<a href="/pkg/go/build/#Package"><code>Package</code></a>型に<code>AllTags</code>フィールドを追加しました。これはタグをビルドするプロセスを簡単にします。
 </li>
 
 <li>
@@ -1096,6 +1207,14 @@ There are no implementations of this interface in the library.
 </li>
 
 <li>
+<a href="/pkg/image/draw/"><code>image/draw</code></a>パッケージは、<a href="/pkg/image/draw/#Drawer"><code>Drawer</code></a>インターフェースを公開しました。これは標準の<a href="/pkg/image/draw/#Draw"><code>Draw</code></a>メソッドをラップしています。Porter-Duff操作がこのインターフェースで実装されました。
+明示的にそれを提供するというより、drawオペレータに動作をバインドしています。
+宛先としてパレットイメージが与えられ、<a href="/pkg/image/draw/#Drawer"><code>Drawer</code></a>インターフェースの新しい<a href="/pkg/image/draw/#FloydSteinberg"><code>FloydSteinberg</code></a>実装が、フロイド-スタインバーグ誤差拡散法をイメージを描くために使用します。
+そのような処理に対して安定にパレットを作るには、新しい<a href="/pkg/image/draw/#Quantizer"><code>Quantizer</code></a>インターフェースが、フルカラーイメージを与えたパレットを選ぶ量子アルゴリズムの実装を表します。ライブラリには、このインターフェースの実装はありません。
+</li>
+
+
+<li>
 The <a href="/pkg/image/gif/"><code>image/gif</code></a> package
 can now create GIF files using the new
 <a href="/pkg/image/gif/#Encode"><code>Encode</code></a>
@@ -1114,6 +1233,12 @@ if it is <code>nil</code>, Floyd-Steinberg error diffusion is used.
 </li>
 
 <li>
+<a href="/pkg/image/gif/"><code>image/gif</code></a>パッケージは、新しい<a href="/pkg/image/gif/#Encode"><code>Encode</code></a>関数と
+<a href="/pkg/image/gif/#EncodeAll"><code>EncodeAll</code></a>関数を使って、GIFファイルを作ることができるようになりました。それらの引数のOptionは、イメージのスペックを指定することができます。<a href="/pkg/image/draw/#Quantizer"><code>Quantizer</code></a>を使った場合、もし<code>nil</code>なら、生成されたGIFは、新しく<a href="/pkg/image/color/palette/"><code>image/color/palette</code></a> パッケージで定義された<a href="/pkg/image/color/palette/#Plan9"><code>Plan9</code></a>のカラーマップ(パレット)を使用します。アウトプットイメージを作成するのに<a href="/pkg/image/draw/#Drawer"><code>Drawer</code></a>を使った場合、もし<code>nil</code>なら、フロイド-スタインバーグ誤差拡散法が使われます。
+
+</li>
+
+<li>
 The <a href="/pkg/io/#Copy"><code>Copy</code></a> method of the
 <a href="/pkg/io/"><code>io</code></a> package now prioritizes its
 arguments differently.
@@ -1122,6 +1247,10 @@ and the other implements <a href="/pkg/io/#ReaderFrom"><code>ReaderFrom</code></
 <a href="/pkg/io/#Copy"><code>Copy</code></a> will now invoke
 <a href="/pkg/io/#WriterTo"><code>WriterTo</code></a> to do the work,
 so that less intermediate buffering is required in general.
+</li>
+
+<li>
+<a href="/pkg/io/"><code>io</code></a>パッケージの<a href="/pkg/io/#Copy"><code>Copy</code></a>メソッドは、2つの引数の優先順位を変更しました。1つの引数が<a href="/pkg/io/#WriterTo"><code>WriterTo</code></a>を実装し、もう1つの引数が<a href="/pkg/io/#ReaderFrom"><code>ReaderFrom</code></a>を実装している場合、<a href="/pkg/io/#Copy"><code>Copy</code></a>は<a href="/pkg/io/#WriterTo"><code>WriterTo</code></a>を呼びします。so that less intermediate buffering is required in general.
 </li>
 
 <li>
@@ -1134,10 +1263,18 @@ The new build tag <code>netgo</code> (off by default) allows the construction of
 </li>
 
 <li>
+<a href="/pkg/net/"><code>net</code></a>パッケージは、デフォルトではcgoを必要とします。なぜなら、ホストOSが一般にはネットワークコールセットアップを仲介するからです。いくつかのシステムでは、cgo無しでネットワークを使うことが可能で、動的リンクを避けるインスタンスに対して、そのようにすることが有用です。新しいビルドタグ<code>netgo</code>(デフォルトではオフ)は、可能なシステム上で純粋なGoで<code>net</code>パッケージの構築をすることができます。
+</li>
+
+<li>
 The <a href="/pkg/net/"><code>net</code></a> package adds a new field
 <code>DualStack</code> to the <a href="/pkg/net/#Dialer"><code>Dialer</code></a>
 struct for TCP connection setup using a dual IP stack as described in
 <a href="http://tools.ietf.org/html/rfc6555">RFC 6555</a>.
+</li>
+
+<li>
+<a href="/pkg/net/"><code>net</code></a>パッケージは、<a href="http://tools.ietf.org/html/rfc6555">RFC 6555</a>で説明されるように、デュアルIPスタックを使っているTCP接続セットアップに対して、<a href="/pkg/net/#Dialer"><code>Dialer</code></a>構造体に、新しいフィールド<code>DualStack</code>を追加しました。
 </li>
 
 <li>
@@ -1161,6 +1298,14 @@ and the client receives an empty body as required by the HTTP specification.
 </li>
 
 <li>
+<a href="/pkg/net/http/"><code>net/http</code></a>パッケージは、<a href="http://tools.ietf.org/html/rfc6265">RFC 6265</a>により、有効でないクッキーを送信しません。
+それは、エラーを記録するだけで、なにも送信しません。(訳者補足：<a href="http://bit.ly/1cJcMcY">メインの差分箇所</a> )
+<a href="/pkg/net/http/"><code>net/http</code></a>パッケージの<a href="/pkg/net/http/#ReadResponse"><code>ReadResponse</code></a>関数の<code>*Request</code> 引数を<code>nil</code>としてもよくなりました。(訳者補足：<a href="http://bit.ly/1cJdmHz">メインの差分箇所</a> ) その場合、GETリクエストを指定したことになります。
+最後に、HTTPサーバーは、ハンドラコードで特殊ケースを必要とせずに、HEADリクエストを明示的に取り扱います。(訳者補足：<a href="http://bit.ly/1cJf9wg">コミットログメッセージ</a>)
+HEADリクエストのサーブ中、<a href="/pkg/net/http/#Handler"><code>Handler</code></a>の<a href="/pkg/net/http/#ResponseWriter"><code>ResponseWriter</code></a>への書き込みは、<a href="/pkg/net/http/#Server"><code>Server</code></a>によって吸収され、クライアントは、HTTP仕様で要求されているように、空のメッセージボディを受け取ります。
+</li>
+
+<li>
 The <a href="/pkg/os/exec/"><code>os/exec</code></a> package's 
 <a href="/pkg/os/exec/#Cmd.StdinPipe"><code>Cmd.StdinPipe</code></a> method 
 returns an <code>io.WriteCloser</code>, but has changed its concrete
@@ -1172,11 +1317,20 @@ interface type assertion, such as <code>wc.(interface{ Sync() error })</code>.
 </li>
 
 <li>
+<a href="/pkg/os/exec/"><code>os/exec</code></a>パッケージの<a href="/pkg/os/exec/#Cmd.StdinPipe"><code>Cmd.StdinPipe</code></a>メソッドは、<code>io.WriteCloser</code>を返しますが、<code>*os.File</code>から、<code>*os.File</code>を埋め込んだ非公開型に変更し、安全にcloseできるようになりました。(訳者補足：<a href="http://bit.ly/1cJgVxt">メインの差分箇所</a> )  Go1.2以前は、避けることの出来ない現象がありました。
+<code>*os.File</code>のメソッド郡にアクセスを必要とするコードは、<code>wc.(interface{ Sync() error })</code>のように、interfaceの型アサーションを使うことができます。
+</li>
+
+<li>
 The <a href="/pkg/runtime/"><code>runtime</code></a> package relaxes
 the constraints on finalizer functions in
 <a href="/pkg/runtime/#SetFinalizer"><code>SetFinalizer</code></a>: the
 actual argument can now be any type that is assignable to the formal type of
 the function, as is the case for any normal function call in Go.
+</li>
+
+<li>
+<a href="/pkg/runtime/"><code>runtime</code></a> パッケージは、<a href="/pkg/runtime/#SetFinalizer"><code>SetFinalizer</code></a>で、finalizer関数の制約をゆるめました。実引数は、Goでの任意の通常の関数呼び出しの場合のように、関数の型に割り当て可能な任意の型になりました。
 </li>
 
 <li>
@@ -1186,9 +1340,17 @@ stable sorting. It is less efficient than the normal sort algorithm, however.
 </li>
 
 <li>
+<a href="/pkg/sort/"><code>sort</code></a>パッケージは新しく<a href="/pkg/sort/#Stable"><code>Stable</code></a>関数を追加しました。これは安定ソートを実装しています。しかし、これは通常のソートアルゴリズムよりもあまり効率的ではありません。
+</li>
+
+<li>
 The <a href="/pkg/strings/"><code>strings</code></a> package adds
 an <a href="/pkg/strings/#IndexByte"><code>IndexByte</code></a>
 function for consistency with the <a href="/pkg/bytes/"><code>bytes</code></a> package.
+</li>
+
+<li>
+<a href="/pkg/strings/"><code>strings</code></a>パッケージは、<a href="/pkg/bytes/"><code>bytes</code></a>との整合性の為、<a href="/pkg/strings/#IndexByte"><code>IndexByte</code></a>関数を追加しました。
 </li>
 
 <li>
@@ -1207,8 +1369,24 @@ which swaps an <code>unsafe.Pointer</code>.
 </li>
 
 <li>
+<a href="/pkg/sync/atomic/"><code>sync/atomic</code></a>パッケージは、新しいswap関数一式を追加しました。
+<a href="/pkg/sync/atomic/#SwapInt32"><code>SwapInt32</code></a>,
+<a href="/pkg/sync/atomic/#SwapInt64"><code>SwapInt64</code></a>,
+<a href="/pkg/sync/atomic/#SwapUint32"><code>SwapUint32</code></a>,
+<a href="/pkg/sync/atomic/#SwapUint64"><code>SwapUint64</code></a>,
+<a href="/pkg/sync/atomic/#SwapUintptr"><code>SwapUintptr</code></a>,
+<a href="/pkg/sync/atomic/#SwapPointer"><code>SwapPointer</code></a>(<code>unsafe.Pointer</code>をswapします)
+これらは、ポインタに格納された値と引数を交換し、古い値を返します。
+</li>
+
+<li>
 The <a href="/pkg/syscall/"><code>syscall</code></a> package now implements
 <a href="/pkg/syscall/#Sendfile"><code>Sendfile</code></a> for Darwin.
+</li>
+
+<li>
+<a href="/pkg/syscall/"><code>syscall</code></a>パッケージは、Darwinに<a href="/pkg/syscall/#Sendfile"><code>Sendfile</code></a>を実装しました。
+(訳者補足：<a href="http://bit.ly/1k2Hils">Revision</a>)
 </li>
 
 <li>
@@ -1227,8 +1405,19 @@ initialization and make the result more repeatable.
 </li>
 
 <li>
+<a href="/pkg/testing/"><code>testing</code></a>は、<a href="/pkg/testing/#TB"><code>TB</code></a>インターフェースを公開しました。それは、テストとベンチマーク間のコードを共有しやすくするために、<a href="/pkg/testing/#T"><code>T</code></a>型と<a href="/pkg/testing/#B"><code>B</code></a>型が持つ共通のメソッドを登録しています。
+<a href="/pkg/testing/#AllocsPerRun"><code>AllocsPerRun</code></a>関数は、戻り値を(まだ<code>float64</code>ですが)整数にしました。初期化により引き起こされるエラーを丸め、結果をより再利用可能させます。
+</li>
+
+<li>
 The <a href="/pkg/text/template/"><code>text/template</code></a> package
 now automatically dereferences pointer values when evaluating the arguments
+to "escape" functions such as "html", to bring the behavior of such functions
+in agreement with that of other printing functions such as "printf".
+</li>
+
+<li>
+<a href="/pkg/text/template/"><code>text/template</code></a>パッケージは、ポインターから参照先の値を取得します。when evaluating the arguments
 to "escape" functions such as "html", to bring the behavior of such functions
 in agreement with that of other printing functions such as "printf".
 </li>
@@ -1246,11 +1435,19 @@ must now follow the standard words such as "Jan" and "Mon".
 </li>
 
 <li>
+<a href="/pkg/time/"><code>time</code></a>パッケージでは、<a href="/pkg/time/#Parse"><code>Parse</code></a>関数と<a href="/pkg/time/#Time.Format"><code>Format</code></a>メソッドは、歴史的な日"1871-01-01T05:33:02+00:34:08"のような秒が入ったタイムゾーンのオフセットを扱えるようになりました。(訳者補足：<a href="http://bit.ly/1fv2bTe">Revision</a>) また、フォーマットのパターンマッチがすこし厳しくなりました。最初が小文字でない"Jan"や "Mon"のような標準的な単語を使わなければなりません。
+</li>
+
+<li>
 The <a href="/pkg/unicode/"><code>unicode</code></a> package
 adds <a href="/pkg/unicode/#In"><code>In</code></a>,
 a nicer-to-use but equivalent version of the original
 <a href="/pkg/unicode/#IsOneOf"><code>IsOneOf</code></a>,
 to see whether a character is a member of a Unicode category.
+</li>
+
+<li>
+<a href="/pkg/unicode/"><code>unicode</code></a>パッケージは、<a href="/pkg/unicode/#In"><code>In</code></a>を追加しました。使いやすくなりましたが、最初からの<a href="/pkg/unicode/#IsOneOf"><code>IsOneOf</code></a>と等しいのですが、キャラクタがUnicodeカテゴリのメンバかどうか確認することができます。
 </li>
 
 </ul>
