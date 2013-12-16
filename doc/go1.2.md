@@ -557,10 +557,7 @@ Go1.1でLinuxとOS Xに対して行われたものと同様に、ランタイム
 
 <h3 id="archive_tar_zip">The archive/tar and archive/zip packages</h3>
 
-<p>
-The
-<a href="http://golang.org/pkg/archive/tar/"><code>archive/tar</code></a>
-and
+*The<a href="http://golang.org/pkg/archive/tar/"><code>archive/tar</code></a>and
 <a href="http://golang.org/pkg/archive/zip/"><code>archive/zip</code></a>
 packages have had a change to their semantics that may break existing programs.
 The issue is that they both provided an implementation of the
@@ -568,8 +565,12 @@ The issue is that they both provided an implementation of the
 interface that was not compliant with the specification for that interface.
 In particular, their <code>Name</code> method returned the full
 path name of the entry, but the interface specification requires that
-the method return only the base name (final path element).
-</p>
+the method return only the base name (final path element).*
+
+*<em>Updating</em>: Since this behavior was newly implemented and
+a bit obscure, it is possible that no code depends on the broken behavior.
+If there are programs that do depend on it, they will need to be identified
+and fixed manually.*
 
 <p>
 <a href="http://golang.org/pkg/archive/tar/"><code>archive/tar</code></a>と<a href="http://golang.org/pkg/archive/zip/"><code>archive/zip</code></a>パッケージは、既存のプログラムを破壊することがあり、セマンティックへの変更がありました。
@@ -579,22 +580,13 @@ the method return only the base name (final path element).
 </p>	
 
 <p>
-<em>Updating</em>: Since this behavior was newly implemented and
-a bit obscure, it is possible that no code depends on the broken behavior.
-If there are programs that do depend on it, they will need to be identified
-and fixed manually.
-</p>
-
-<p>
 <em>Updating</em>:この振る舞いは、新しく実装され、少し隠蔽されましたので、コードが壊れた振る舞いに依存しない可能性があります。
 もしそれに依存する問題があれば、確認し手動で修正する必要があります。
-
 </p>	
 
 <h3 id="encoding">The new encoding package</h3>
 
-<p>
-There is a new package, <a href="http://golang.org/pkg/encoding/"><code>encoding</code></a>,
+*There is a new package, <a href="http://golang.org/pkg/encoding/"><code>encoding</code></a>,
 that defines a set of standard encoding interfaces that may be used to
 build custom marshalers and unmarshalers for packages such as
 <a href="http://golang.org/pkg/encoding/xml/"><code>encoding/xml</code></a>,
@@ -602,22 +594,19 @@ build custom marshalers and unmarshalers for packages such as
 and
 <a href="http://golang.org/pkg/encoding/binary/"><code>encoding/binary</code></a>.
 These new interfaces have been used to tidy up some implementations in
-the standard library.
-</p>
+the standard library.*
 
-<p>
-新パッケージ<a href="http://golang.org/pkg/encoding/"><code>encoding</code></a>は、<a href="http://golang.org/pkg/encoding/xml/"><code>encoding/xml</code></a>,<a href="http://golang.org/pkg/encoding/json/"><code>encoding/json</code></a>,<a href="http://golang.org/pkg/encoding/binary/"><code>encoding/binary</code></a>のようなパッケージに対して、カスタムmarshalers and unmarshalersを構築するかもしれない標準encodingインターフェースのセットを定義しています。
-</p>
-
-<p>
-The new interfaces are called
+*The new interfaces are called
 <a href="http://golang.org/pkg/encoding/#BinaryMarshaler"><code>BinaryMarshaler</code></a>,
 <a href="http://golang.org/pkg/encoding/#BinaryUnmarshaler"><code>BinaryUnmarshaler</code></a>,
 <a href="http://golang.org/pkg/encoding/#TextMarshaler"><code>TextMarshaler</code></a>,
 and
 <a href="http://golang.org/pkg/encoding/#TextUnmarshaler"><code>TextUnmarshaler</code></a>.
 Full details are in the <a href="http://golang.org/pkg/encoding/">documentation</a> for the package
-and a separate <a href="http://golang.org/s/go12encoding">design document</a>.
+and a separate <a href="http://golang.org/s/go12encoding">design document</a>.*
+
+<p>
+新パッケージ<a href="http://golang.org/pkg/encoding/"><code>encoding</code></a>は、<a href="http://golang.org/pkg/encoding/xml/"><code>encoding/xml</code></a>,<a href="http://golang.org/pkg/encoding/json/"><code>encoding/json</code></a>,<a href="http://golang.org/pkg/encoding/binary/"><code>encoding/binary</code></a>のようなパッケージに対して、カスタムmarshalers and unmarshalersを構築するかもしれない標準encodingインターフェースのセットを定義しています。
 </p>
 
 <p>
@@ -628,8 +617,7 @@ and a separate <a href="http://golang.org/s/go12encoding">design document</a>.
 
 <h3 id="fmt_indexed_arguments">The fmt package</h3>
 
-<p>
-The <a href="http://golang.org/pkg/fmt/"><code>fmt</code></a> package's formatted print
+*The <a href="http://golang.org/pkg/fmt/"><code>fmt</code></a> package's formatted print
 routines such as <a href="http://golang.org/pkg/fmt/#Printf"><code>Printf</code></a>
 now allow the data items to be printed to be accessed in arbitrary order
 by using an indexing operation in the formatting specifications.
@@ -639,8 +627,35 @@ a new optional indexing notation <code>[</code><em>n</em><code>]</code>
 fetches argument <em>n</em> instead.
 The value of <em>n</em> is 1-indexed.
 After such an indexing operating, the next argument to be fetched by normal
-processing will be <em>n</em>+1.
-</p>
+processing will be <em>n</em>+1.*
+
+
+*For example, the normal <code>Printf</code> call*
+
+<pre>
+fmt.Sprintf("%c %c %c\n", 'a', 'b', 'c')
+</pre>
+
+*would create the string <code>"a b c"</code>, but with indexing operations like this,*
+
+<pre>
+fmt.Sprintf("%[3]c %[1]c %c\n", 'a', 'b', 'c')
+</pre>
+
+*the result is "<code>"c a b"</code>. The <code>[3]</code> index accesses the third formatting
+argument, which is <code>'c'</code>, <code>[1]</code> accesses the first, <code>'a'</code>,
+and then the next fetch accesses the argument following that one, <code>'b'</code>.*
+
+*The motivation for this feature is programmable format statements to access
+the arguments in different order for localization, but it has other uses:*
+
+
+<pre>
+log.Printf("trace: value %v of type %[1]T\n", expensiveFunction(a.b[c]))
+</pre>
+
+*<em>Updating</em>: The change to the syntax of format specifications
+is strictly backwards compatible, so it affects no working programs.*
 
 <p>
 <a href="http://golang.org/pkg/fmt/#Printf"><code>Printf</code></a>のような<a href="http://golang.org/pkg/fmt/"><code>fmt</code></a>パッケージのフォーマットを出力するものは、書式仕様におけるインデックス操作を使うことによって、データを任意の順番で出力できるようになりました。
@@ -652,20 +667,12 @@ either as the value to be formatted or as a width or specification integer,
 </p>
 
 <p>
-For example, the normal <code>Printf</code> call
-</p>
-
-<p>
 例えば、<code>Printf</code>は
 </p>
 
 <pre>
 fmt.Sprintf("%c %c %c\n", 'a', 'b', 'c')
 </pre>
-
-<p>
-would create the string <code>"a b c"</code>, but with indexing operations like this,
-</p>
 
 <p>
 文字列<code>"a b c"</code>を作成しますが、次のようにインデックス操作をすると、
@@ -676,18 +683,7 @@ fmt.Sprintf("%[3]c %[1]c %c\n", 'a', 'b', 'c')
 </pre>
 
 <p>
-the result is "<code>"c a b"</code>. The <code>[3]</code> index accesses the third formatting
-argument, which is <code>'c'</code>, <code>[1]</code> accesses the first, <code>'a'</code>,
-and then the next fetch accesses the argument following that one, <code>'b'</code>.
-</p>
-
-<p>
 結果は、<code>"c a b"</code>となります。<code>[3]</code>は3番目の引数にアクセスし、'c'を出力しています。<code>[1]</code>は最初の<code>'a'</code>、それから＋1した次の引数'b'にアクセスしています。(訳者注：<a hfre="http://play.golang.org/p/T2DaHNcOzq">http://play.golang.org/p/T2DaHNcOzq</a>)
-</p>
-
-<p>
-The motivation for this feature is programmable format statements to access
-the arguments in different order for localization, but it has other uses:
 </p>
 
 <p>
@@ -699,32 +695,86 @@ log.Printf("trace: value %v of type %[1]T\n", expensiveFunction(a.b[c]))
 </pre>
 
 <p>
-<em>Updating</em>: The change to the syntax of format specifications
-is strictly backwards compatible, so it affects no working programs.
-</p>
-
-<p>
 <em>Updating</em>:フォーマット仕様シンタックスの変更は、厳密に後方互換ですので、作業プログラムには影響ありません。
 </p>
 
 <h3 id="text_template">The text/template and html/template packages</h3>
 
-<p>
-The
+*The
 <a href="http://golang.org/pkg/text/template/"><code>text/template</code></a> package
 has a couple of changes in Go 1.2, both of which are also mirrored in the
-<a href="http://golang.org/pkg/html/template/"><code>html/template</code></a> package.
-</p>
+<a href="http://golang.org/pkg/html/template/"><code>html/template</code></a> package.*
+
+*First, there are new default functions for comparing basic types.
+The functions are listed in this table, which shows their names and
+the associated familiar comparison operator.*
+
+<table cellpadding="0" summary="Template comparison functions">
+<tr>
+<th width="100">Name</th> <th width="50">Operator</th>
+</tr>
+<tr>
+<td><code>eq</code></td> <td><code>==</code></td>
+</tr>
+<tr>
+<td><code>ne</code></td> <td><code>!=</code></td>
+</tr>
+<tr>
+<td><code>lt</code></td> <td><code>&lt;</code></td>
+</tr>
+<tr>
+<td><code>le</code></td> <td><code>&lt;=</code></td>
+</tr>
+<tr>
+<td><code>gt</code></td> <td><code>&gt;</code></td>
+</tr>
+<tr>
+<td><code>ge</code></td> <td><code>&gt;=</code></td>
+</tr>
+</table>
+
+*These functions behave slightly differently from the corresponding Go operators.
+First, they operate only on basic types (<code>bool</code>, <code>int</code>,
+<code>float64</code>, <code>string</code>, etc.).
+(Go allows comparison of arrays and structs as well, under some circumstances.)
+Second, values can be compared as long as they are the same sort of value:
+any signed integer value can be compared to any other signed integer value for example. (Go
+does not permit comparing an <code>int8</code> and an <code>int16</code>).
+Finally, the <code>eq</code> function (only) allows comparison of the first
+argument with one or more following arguments. The template in this example,*
+
+<pre>
+{{"{{"}}if eq .A 1 2 3 {{"}}"}} equal {{"{{"}}else{{"}}"}} not equal {{"{{"}}end{{"}}"}}
+</pre>
+
+
+*reports "equal" if <code>.A</code> is equal to <em>any</em> of 1, 2, or 3.*
+
+*The second change is that a small addition to the grammar makes "if else if" chains easier to write.
+Instead of writing,*
+
+<pre>
+{{"{{"}}if eq .A 1{{"}}"}} X {{"{{"}}else{{"}}"}} {{"{{"}}if eq .A 2{{"}}"}} Y {{"{{"}}end{{"}}"}} {{"{{"}}end{{"}}"}} 
+</pre>
+
+*one can fold the second "if" into the "else" and have only one "end", like this:*
+
+<pre>
+{{"{{"}}if eq .A 1{{"}}"}} X {{"{{"}}else{{"}}"}} {{"{{"}}if eq .A 2{{"}}"}} Y {{"{{"}}end{{"}}"}} {{"{{"}}end{{"}}"}} 
+</pre>
+
+*The two forms are identical in effect; the difference is just in the syntax.*
+
+*<em>Updating</em>: Neither the "else if" change nor the comparison functions
+affect existing programs. Those that
+already define functions called <code>eq</code> and so on through a function
+map are unaffected because the associated function map will override the new
+default function definitions.*
+
 
 <p>
 <a href="http://golang.org/pkg/text/template/"><code>text/template</code></a>パッケージはGo1.2で2つの変更があります。
 <a href="http://golang.org/pkg/html/template/"><code>html/template</code></a>も同様です。
-</p>
-
-<p>
-First, there are new default functions for comparing basic types.
-The functions are listed in this table, which shows their names and
-the associated familiar comparison operator.
 </p>
 
 <p>
@@ -733,39 +783,27 @@ the associated familiar comparison operator.
 
 <table cellpadding="0" summary="Template comparison functions">
 <tr>
-<th width="50"></th><th width="100">Name</th> <th width="50">Operator</th>
+<th width="100">Name</th> <th width="50">Operator</th>
 </tr>
 <tr>
-<td></td><td><code>eq</code></td> <td><code>==</code></td>
+<td><code>eq</code></td> <td><code>==</code></td>
 </tr>
 <tr>
-<td></td><td><code>ne</code></td> <td><code>!=</code></td>
+<td><code>ne</code></td> <td><code>!=</code></td>
 </tr>
 <tr>
-<td></td><td><code>lt</code></td> <td><code>&lt;</code></td>
+<td><code>lt</code></td> <td><code>&lt;</code></td>
 </tr>
 <tr>
-<td></td><td><code>le</code></td> <td><code>&lt;=</code></td>
+<td><code>le</code></td> <td><code>&lt;=</code></td>
 </tr>
 <tr>
-<td></td><td><code>gt</code></td> <td><code>&gt;</code></td>
+<td><code>gt</code></td> <td><code>&gt;</code></td>
 </tr>
 <tr>
-<td></td><td><code>ge</code></td> <td><code>&gt;=</code></td>
+<td><code>ge</code></td> <td><code>&gt;=</code></td>
 </tr>
 </table>
-
-<p>
-These functions behave slightly differently from the corresponding Go operators.
-First, they operate only on basic types (<code>bool</code>, <code>int</code>,
-<code>float64</code>, <code>string</code>, etc.).
-(Go allows comparison of arrays and structs as well, under some circumstances.)
-Second, values can be compared as long as they are the same sort of value:
-any signed integer value can be compared to any other signed integer value for example. (Go
-does not permit comparing an <code>int8</code> and an <code>int16</code>).
-Finally, the <code>eq</code> function (only) allows comparison of the first
-argument with one or more following arguments. The template in this example,
-</p>
 
 <p>
 これらの関数は、対応するGoの演算子とはわずかに動きが異なります。
@@ -783,16 +821,7 @@ argument with one or more following arguments. The template in this example,
 </pre>
 
 <p>
-reports "equal" if <code>.A</code> is equal to <em>any</em> of 1, 2, or 3.
-</p>
-
-<p>
 <code>.A</code> が1,2,3の<em>いずれか</em>と等しい場合、"equal"を出力します。
-</p>
-
-<p>
-The second change is that a small addition to the grammar makes "if else if" chains easier to write.
-Instead of writing,
 </p>
 
 <p>
@@ -803,9 +832,6 @@ Instead of writing,
 {{"{{"}}if eq .A 1{{"}}"}} X {{"{{"}}else{{"}}"}} {{"{{"}}if eq .A 2{{"}}"}} Y {{"{{"}}end{{"}}"}} {{"{{"}}end{{"}}"}} 
 </pre>
 
-<p>
-one can fold the second "if" into the "else" and have only one "end", like this:
-</p>
 
 <p>
 下記のように、"else"に"if"を入れることができるようになり、"end"が1つだけでよくなりました。
@@ -815,20 +841,9 @@ one can fold the second "if" into the "else" and have only one "end", like this:
 {{"{{"}}if eq .A 1{{"}}"}} X {{"{{"}}else if eq .A 2{{"}}"}} Y {{"{{"}}end{{"}}"}}
 </pre>
 
-<p>
-The two forms are identical in effect; the difference is just in the syntax.
-</p>
 
 <p>
 2つの形式は結果的には同じで、書き方だけが違います。
-</p>
-
-<p>
-<em>Updating</em>: Neither the "else if" change nor the comparison functions
-affect existing programs. Those that
-already define functions called <code>eq</code> and so on through a function
-map are unaffected because the associated function map will override the new
-default function definitions.
 </p>
 
 <p>
@@ -838,18 +853,16 @@ default function definitions.
 
 <h3 id="new_packages">New packages</h3>
 
-<p>
-There are two new packages.
-</p>
+*There are two new packages.*
 
 <ul>
 <li>
-The <a href="http://golang.org/pkg/encoding/"><code>encoding</code></a> package is
-<a href="#encoding">described above</a>.
+*The <a href="http://golang.org/pkg/encoding/"><code>encoding</code></a> package is
+<a href="#encoding">described above</a>.*
 </li>
 <li>
-The <a href="http://golang.org/pkg/image/color/palette/"><code>image/color/palette</code></a> package
-provides standard color palettes.
+*The <a href="http://golang.org/pkg/image/color/palette/"><code>image/color/palette</code></a> package
+provides standard color palettes.*
 </li>
 </ul>
 
@@ -869,10 +882,8 @@ provides standard color palettes.
 
 <h3 id="minor_library_changes">Minor changes to the library</h3>
 
-<p>
-The following list summarizes a number of minor changes to the library, mostly additions.
-See the relevant package documentation for more information about each change.
-</p>
+*The following list summarizes a number of minor changes to the library, mostly additions.
+See the relevant package documentation for more information about each change.*
 
 <p>
 以下のリストは、ライブラリのマイナー変更の要約で、ほとんどが追加になります。
@@ -882,16 +893,14 @@ See the relevant package documentation for more information about each change.
 <ul>
 
 <li>
-The <a href="http://golang.org/pkg/archive/zip/"><code>archive/zip</code></a> package
+*The <a href="http://golang.org/pkg/archive/zip/"><code>archive/zip</code></a> package
 adds the
 <a href="http://golang.org/pkg/archive/zip/#File.DataOffset"><code>DataOffset</code></a> accessor
-to return the offset of a file's (possibly compressed) data within the archive.
+to return the offset of a file's (possibly compressed) data within the archive.*
 </li>
 
-<li>
 <a href="http://golang.org/pkg/archive/zip/"><code>archive/zip</code></a>パッケージに、<a href="http://golang.org/pkg/archive/zip/#File.DataOffset"><code>DataOffset</code></a>関数が追加されました。
 これはそのアーカイブ内のファイルの（圧縮されているかもしれない）データのオフセットを返します。
-</li>
 
 <li>
 The <a href="http://golang.org/pkg/bufio/"><code>bufio</code></a> package
@@ -1433,3 +1442,5 @@ to see whether a character is a member of a Unicode category.
 </li>
 
 </ul>
+
+
