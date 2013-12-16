@@ -508,20 +508,28 @@ By default, as before, dependencies of the tests are not downloaded.*
 *There are a number of significant performance improvements in the standard library; here are a few of them.*
 
 
-* *The <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>
+<ul>
+<li>
+*The <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>
 decompresses about 30% faster.*
+</li>
 
-
-* *The <a href="http://golang.org/pkg/crypto/des/"><code>crypto/des</code></a> package
+<li>
+*The <a href="http://golang.org/pkg/crypto/des/"><code>crypto/des</code></a> package
 is about five times faster.*
+</li>
 
-* *The <a href="http://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> package
+<li>
+*The <a href="http://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> package
 encodes about 30% faster.*
+</li>
 
-* *Networking performance on Windows and BSD systems is about 30% faster through the use
+<li>
+*Networking performance on Windows and BSD systems is about 30% faster through the use
 of an integrated network poller in the runtime, similar to what was done for Linux and OS X
 in Go 1.1.*
-
+</li>
+</ul>
 
 <p>
 標準ライブラリのパフォーマンスの大幅な改善が多くあります。ここではそのうち少し紹介します。
