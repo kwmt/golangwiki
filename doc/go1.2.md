@@ -293,22 +293,10 @@ GCCの現在のリリース(4.8.2)では、gccgoはGo1.1.2を実装していま�
 *Go 1.2 has several semantic changes to the workings of the gc compiler suite.
 Most users will be unaffected by them.*
 
-
-<p>
- Go1.2は、gcコンパイラの動きに関していくつかセマンティックな変更をしています。
- ほとんどのユーザーは、それらに影響を受けないでしょう。
-</p>
-
 *The <a href="http://golang.org/cmd/cgo/"><code>cgo</code></a> command now
 works when C++ is included in the library being linked against.
 See the <a href="http://golang.org/cmd/cgo/"><code>cgo</code></a> documentation
 for details.*
-
-
-<p>
-C++がリンクされているライブラリに含まれているとき、<a href="http://golang.org/cmd/cgo/"><code>cgo</code></a>コマンドが動きます。
-詳細は<a href="http://golang.org/cmd/cgo/"><code>cgo</code></a>を参照下さい。
-</p>
 
 *The gc compiler displayed a vestigial detail of its origins when
 a program had no <code>package</code> clause: it assumed
@@ -316,37 +304,15 @@ the file was in package <code>main</code>.
 The past has been erased, and a missing <code>package</code> clause
 is now an error.*
 
-
-<p>
-プログラムに<code>package</code>句がなければ、gcコンパイラが元の詳細な痕跡を表示していました：ファイルが<code>main</code>パッケージにあるとした場合。
-昔にそれは消され、<code>package</code>句が無い場合は、いまはエラーになります。
-</p>
-
-
 *On the ARM, the toolchain supports "external linking", which
 is a step towards being able to build shared libraries with the gc
 tool chain and to provide dynamic linking support for environments
 in which that is necessary.*
 
-
-<p>
-ARMでは、Goツールは"外部リンク"をサポートしています。
-GCツールを使った共有ライブラリをビルドすることができ、
-動的リンクのサポートを提供できるようにする第一歩です。
-</p>
-
 *In the runtime for the ARM, with <code>5a</code>, it used to be possible to refer
 to the runtime-internal <code>m</code> (machine) and <code>g</code>
 (goroutine) variables using <code>R9</code> and <code>R10</code> directly.
 It is now necessary to refer to them by their proper names.*
-
-
-<p>
-ARMのランタイムにある、<code>5a</code>を使って、
-直接<code>R9</code>と<code>R10</code>を使用して
-ランタイム内部の<code>m</code>（マシン）と<code>g</code>（ゴルーチン）変数を参照可能にするために使いました。
-適切な名前でそれらを参照することが必要となります。
-</p>
 
 *Also on the ARM, the <code>5l</code> linker (sic) now defines the
 <code>MOVBS</code> and <code>MOVHS</code> instructions
@@ -356,32 +322,83 @@ sub-word moves; the unsigned versions already existed with a
 <code>U</code> suffix.*
 
 <p>
+ Go1.2は、gcコンパイラの動きに関していくつかセマンティックな変更をしています。
+ ほとんどのユーザーは、それらに影響を受けないでしょう。
+</p>
+
+<p>
+C++がリンクされているライブラリに含まれているとき、<a href="http://golang.org/cmd/cgo/"><code>cgo</code></a>コマンドが動きます。
+詳細は<a href="http://golang.org/cmd/cgo/"><code>cgo</code></a>を参照下さい。
+</p>
+
+<p>
+プログラムに<code>package</code>句がなければ、gcコンパイラが元の詳細な痕跡を表示していました：ファイルが<code>main</code>パッケージにあるとした場合。
+昔にそれは消され、<code>package</code>句が無い場合は、いまはエラーになります。
+</p>
+
+<p>
+ARMでは、Goツールは"外部リンク"をサポートしています。
+GCツールを使った共有ライブラリをビルドすることができ、
+動的リンクのサポートを提供できるようにする第一歩です。
+</p>
+
+<p>
+ARMのランタイムにある、<code>5a</code>を使って、
+直接<code>R9</code>と<code>R10</code>を使用して
+ランタイム内部の<code>m</code>（マシン）と<code>g</code>（ゴルーチン）変数を参照可能にするために使いました。
+適切な名前でそれらを参照することが必要となります。
+</p>
+
+<p>
 <code>5l</code>リンカ(sic)は、<code>MOVBS</code>と<code>MOVHS</code>命令を
 <code>MOVB</code>と<code>MOVH</code>の同義語として定義します。
 siegnedとunsignedのサブワードmoveの区別を明確にするためです。
 unsignedについては、すでに<code>U</code>のサフィックスがついていました。
-
 </p>
 
 <h3 id="cover">Test coverage</h3>
 
-<p>
-One major new feature of <a href="http://golang.org/pkg/go/"><code>go test</code></a> is
+*One major new feature of <a href="http://golang.org/pkg/go/"><code>go test</code></a> is
 that it can now compute and, with help from a new, separately installed
-"go tool cover" program, display test coverage results.
-</p>
+"go tool cover" program, display test coverage results.*
+
+
+*The cover tool is part of the
+<a href="https://code.google.com/p/go/source/checkout?repo=tools"><code>go.tools</code></a>
+subrepository.
+It can be installed by running*
+
+
+<pre>
+$ go get code.google.com/p/go.tools/cmd/cover
+</pre>
+
+*The cover tool does two things.
+First, when "go test" is given the <code>-cover</code> flag, it is run automatically 
+to rewrite the source for the package and insert instrumentation statements.
+The test is then compiled and run as usual, and basic coverage statistics are reported:*
+
+<pre>
+$ go test -cover fmt
+ok      fmt     0.060s  coverage: 91.4% of statements
+$
+</pre>
+
+*Second, for more detailed reports, different flags to "go test" can create a coverage profile file,
+which the cover program, invoked with "go tool cover", can then analyze.*
+
+*Details on how to generate and analyze coverage statistics can be found by running the commands*
+
+<pre>
+$ go help testflag
+$ go tool cover -help
+</pre>
+
 
 <p>
 <a href="http://golang.org/pkg/go/"><code>go test</code></a>の主な新しい特徴の一つとして、
 テストのカバレッジを計算でき、結果を表示することができるようになったということです。
 それは、"go tool cover"プログラムで、別にインストールする必要があります。
-</p>
-
-<p>
-The cover tool is part of the
-<a href="https://code.google.com/p/go/source/checkout?repo=tools"><code>go.tools</code></a>
-subrepository.
-It can be installed by running
 </p>
 
 <pre>
@@ -391,16 +408,6 @@ $ go get code.google.com/p/go.tools/cmd/cover
 <p>
 coverツールはサブリポジトリ<a href="https://code.google.com/p/go/source/checkout?repo=tools"><code>go.tools</code></a>にあります。
 それは、下記のコマンドを実行することでインストールすることが出来ます。
-</p>
-<pre>
-$ go get code.google.com/p/go.tools/cmd/cover
-</pre>
-
-<p>
-The cover tool does two things.
-First, when "go test" is given the <code>-cover</code> flag, it is run automatically 
-to rewrite the source for the package and insert instrumentation statements.
-The test is then compiled and run as usual, and basic coverage statistics are reported:
 </p>
 
 <p>
@@ -417,17 +424,8 @@ $
 </pre>
 
 <p>
-Second, for more detailed reports, different flags to "go test" can create a coverage profile file,
-which the cover program, invoked with "go tool cover", can then analyze.
-</p>
-
-<p>
 2つ目は、もっと詳細にレポートしてくれます。"go test"に違うフラグを付けると、カバレッジプロファイルのフィアルを作成することができます。
 "go tool cover"でcoverプログラムが実行し解析します。
-</p>
-
-<p>
-Details on how to generate and analyze coverage statistics can be found by running the commands
 </p>
 
 <p>
@@ -441,25 +439,14 @@ $ go tool cover -help
 
 <h3 id="go_doc">The go doc command is deleted</h3>
 
-<p>
-The "go doc" command is deleted.
+
+*The "go doc" command is deleted.
 Note that the <a href="http://golang.org/cmd/godoc/"><code>godoc</code></a> tool itself is not deleted,
 just the wrapping of it by the <a href="http://golang.org/cmd/go/"><code>go</code></a> command.
 All it did was show the documents for a package by package path,
 which godoc itself already does with more flexibility.
 It has therefore been deleted to reduce the number of documentation tools and,
-as part of the restructuring of godoc, encourage better options in future.
-</p>
-
-<p>
-"go doc"コマンドは削除されました。
-<a href="http://golang.org/cmd/go/"><code>go</code></a>コマンドでツールをラッピングしているだけで、
-<a href="http://golang.org/cmd/godoc/"><code>godoc</code></a>ツール自体が削除されたわけではないことに注意してください。
-All it did was show the documents for a package by package path,
-which godoc itself already does with more flexibility.
-したがって、文書化ツールの数を減らし、godocの再構築の一環として、
-将来的により良い選択を奨励するために削除されました。
-</p>
+as part of the restructuring of godoc, encourage better options in future.*
 
 <p>
 <em>Updating</em>: For those who still need the precise functionality of running
@@ -472,6 +459,24 @@ $ go doc
 <p>
 in a directory, the behavior is identical to running
 </p>
+
+<pre>
+$ godoc .
+</pre>
+
+<p>
+"go doc"コマンドは削除されました。
+<a href="http://golang.org/cmd/go/"><code>go</code></a>コマンドでツールをラッピングしているだけで、
+<a href="http://golang.org/cmd/godoc/"><code>godoc</code></a>ツール自体が削除されたわけではないことに注意してください。
+All it did was show the documents for a package by package path,
+which godoc itself already does with more flexibility.
+したがって、文書化ツールの数を減らし、godocの再構築の一環として、
+将来的により良い選択を奨励するために削除されました。
+</p>
+
+<pre>
+$ go doc
+</pre>
 
 <p>
 の動きは、
@@ -487,12 +492,10 @@ $ godoc .
 
 <h3 id="gocmd">Changes to the go command</h3>
 
-<p>
-The <a href="http://golang.org/cmd/go/"><code>go get</code></a> command
+*The <a href="http://golang.org/cmd/go/"><code>go get</code></a> command
 now has a <code>-t</code> flag that causes it to download the dependencies
 of the tests run by the package, not just those of the package itself.
-By default, as before, dependencies of the tests are not downloaded.
-</p>
+By default, as before, dependencies of the tests are not downloaded.*
 
 <p>
 <a href="http://golang.org/cmd/go/"><code>go get</code></a>コマンドに、<code>-t</code>フラグが追加されました。
@@ -502,28 +505,30 @@ By default, as before, dependencies of the tests are not downloaded.
 
 <h2 id="performance">Performance</h2>
 
-<p>
-There are a number of significant performance improvements in the standard library; here are a few of them.
-</p>
+*There are a number of significant performance improvements in the standard library; here are a few of them.*
+
+
+* *The <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>
+decompresses about 30% faster.*
+
+
+* *The <a href="http://golang.org/pkg/crypto/des/"><code>crypto/des</code></a> package
+is about five times faster.*
+
+* *The <a href="http://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> package
+encodes about 30% faster.*
+
+* *Networking performance on Windows and BSD systems is about 30% faster through the use
+of an integrated network poller in the runtime, similar to what was done for Linux and OS X
+in Go 1.1.*
+
 
 <p>
 標準ライブラリのパフォーマンスの大幅な改善が多くあります。ここではそのうち少し紹介します。
 </p>
-
 <ul> 
-
-<li>
-The <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>
-decompresses about 30% faster.
-</li>
-
 <li>
 <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>は約30%早く復元します。
-</li>
-
-<li>
-The <a href="http://golang.org/pkg/crypto/des/"><code>crypto/des</code></a> package
-is about five times faster.
 </li>
 
 <li>
@@ -531,24 +536,12 @@ is about five times faster.
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> package
-encodes about 30% faster.
-</li>
-
-<li>
 <a href="http://golang.org/pkg/encoding/json/"><code>encoding/json</code></a>パッケージは、約30%早くエンコードなりました。
-</li>
-
-<li>
-Networking performance on Windows and BSD systems is about 30% faster through the use
-of an integrated network poller in the runtime, similar to what was done for Linux and OS X
-in Go 1.1.
 </li>
 
 <li>
 Go1.1でLinuxとOS Xに対して行われたものと同様に、ランタイムにあるintegrated network pollerを使用して、WindowsとBSDのネットワークパフォーマンスは約30%早くなりました。
 </li>
-
 </ul>
 
 <h2 id="library">Changes to the standard library 標準ライブラリの変更点</h2>
