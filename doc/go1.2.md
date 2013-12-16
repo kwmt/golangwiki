@@ -901,7 +901,6 @@ to return the offset of a file's (possibly compressed) data within the archive.<
 <br>
 <a href="http://golang.org/pkg/archive/zip/"><code>archive/zip</code></a>パッケージに、<a href="http://golang.org/pkg/archive/zip/#File.DataOffset"><code>DataOffset</code></a>関数が追加されました。
 これはそのアーカイブ内のファイルの（圧縮されているかもしれない）データのオフセットを返します。
-
 </li>
 
 <li>
@@ -913,171 +912,174 @@ These methods allow the <a href="http://golang.org/pkg/io/#Reader"><code>Readers
 and <a href="http://golang.org/pkg/io/#Writer"><code>Writers</code></a>
 to be re-used on new input and output readers and writers, saving
 allocation overhead. </i>
-</li>
+
+<br>
 
 <a href="http://golang.org/pkg/bufio/"><code>bufio</code></a>パッケージには、<a href="http://golang.org/pkg/bufio/#Reader"><code>Reader</code></a>と<a href="http://golang.org/pkg/bufio/#Writer"><code>Writer</code></a>に<a href="http://golang.org/pkg/bufio/#Reader.Reset"><code>Reset</code></a>メソッドが追加されました。
 このメソッドは、<a href="http://golang.org/pkg/io/#Reader"><code>Readers</code></a>
 と <a href="http://golang.org/pkg/io/#Writer"><code>Writers</code></a>新しいインプットやアウトプットのreadersやwritersを再利用でき、メモリ割付のオーバーヘッドをセーブすることができます。
-
-<li>
-The <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>
-can now decompress concatenated archives.
 </li>
 
+
 <li>
+<i>The <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>
+can now decompress concatenated archives.</i>
+
+<br>
+
 <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>は連結しているアーカイブを復元することができるようになりました。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/compress/flate/"><code>compress/flate</code></a>
+<i>The <a href="http://golang.org/pkg/compress/flate/"><code>compress/flate</code></a>
 package adds a <a href="http://golang.org/pkg/compress/flate/#Writer.Reset"><code>Reset</code></a> 
 method on the <a href="http://golang.org/pkg/compress/flate/#Writer"><code>Writer</code></a>,
 to make it possible to reduce allocation when, for instance, constructing an
-archive to hold multiple compressed files.
-</li>
+archive to hold multiple compressed files.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/compress/flate/"><code>compress/flate</code></a>パッケージには、<a href="http://golang.org/pkg/compress/flate/#Writer"><code>Writer</code></a>に<a href="http://golang.org/pkg/compress/flate/#Writer.Reset"><code>Reset</code></a>メソッドが追加されました。
 たとえば、複数の圧縮ファイルをホールドしておくためにアーカイブを作成するとき、アロケーションを減らすことが可能になります。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/compress/gzip/"><code>compress/gzip</code></a> package's
+<i>The <a href="http://golang.org/pkg/compress/gzip/"><code>compress/gzip</code></a> package's
 <a href="http://golang.org/pkg/compress/gzip/#Writer"><code>Writer</code></a> type adds a
 <a href="http://golang.org/pkg/compress/gzip/#Writer.Reset"><code>Reset</code></a>
-so it may be reused.
-</li>
+so it may be reused.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/compress/gzip/"><code>compress/gzip</code></a>パッケージの<a href="http://golang.org/pkg/compress/gzip/#Writer"><code>Writer</code></a>型に<a href="http://golang.org/pkg/compress/gzip/#Writer.Reset"><code>Reset</code></a>メソッドが追加されましたので、再利用されるかもしれません。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/compress/zlib/"><code>compress/zlib</code></a> package's
+<i>The <a href="http://golang.org/pkg/compress/zlib/"><code>compress/zlib</code></a> package's
 <a href="http://golang.org/pkg/compress/zlib/#Writer"><code>Writer</code></a> type adds a
 <a href="http://golang.org/pkg/compress/zlib/#Writer.Reset"><code>Reset</code></a>
-so it may be reused.
-</li>
+so it may be reused.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/compress/zlib/"><code>compress/zlib</code></a>パッケージの<a href="http://golang.org/pkg/compress/zlib/#Writer"><code>Writer</code></a>型に<a href="http://golang.org/pkg/compress/zlib/#Writer.Reset"><code>Reset</code></a>メソッドが追加されましたので、再利用されるかもしれません。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/container/heap/"><code>container/heap</code></a> package
+<i>The <a href="http://golang.org/pkg/container/heap/"><code>container/heap</code></a> package
 adds a <a href="http://golang.org/pkg/container/heap/#Fix"><code>Fix</code></a>
-method to provide a more efficient way to update an item's position in the heap.
-</li>
+method to provide a more efficient way to update an item's position in the heap.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/container/heap/"><code>container/heap</code></a>パッケージに<a href="http://golang.org/pkg/container/heap/#Fix"><code>Fix</code></a>メソッドが追加されました。heapのアイテム位置を更新するもっと効率的な手段を提供します。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/container/list/"><code>container/list</code></a> package
+<i>The <a href="http://golang.org/pkg/container/list/"><code>container/list</code></a> package
 adds the <a href="http://golang.org/pkg/container/list/#List.MoveBefore"><code>MoveBefore</code></a>
 and
 <a href="http://golang.org/pkg/container/list/#List.MoveAfter"><code>MoveAfter</code></a>
-methods, which implement the obvious rearrangement.
-</li>
+methods, which implement the obvious rearrangement.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/container/list/"><code>container/list</code></a>パッケーには、<a href="http://golang.org/pkg/container/list/#List.MoveBefore"><code>MoveBefore</code></a>メソッドと<a href="http://golang.org/pkg/container/list/#List.MoveAfter"><code>MoveAfter</code></a>メソッドが追加されました。これは明らかに再整理を実装しています。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/crypto/cipher/"><code>crypto/cipher</code></a> package
+<i>The <a href="http://golang.org/pkg/crypto/cipher/"><code>crypto/cipher</code></a> package
 adds the a new GCM mode (Galois Counter Mode), which is almost always
-used with AES encryption.
-</li>
+used with AES encryption.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/crypto/cipher/"><code>crypto/cipher</code></a>パッケージには、新しくGCM(Galois Counter Mode)を追加しました。それはほとんどの場合、AES暗号が使用されます。
 </li>
 
 <li>
-The 
+<i>The 
 <a href="http://golang.org/pkg/crypto/md5/"><code>crypto/md5</code></a> package
 adds a new <a href="http://golang.org/pkg/crypto/md5/#Sum"><code>Sum</code></a> function
-to simplify hashing without sacrificing performance.
-</li>
+to simplify hashing without sacrificing performance.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/crypto/md5/"><code>crypto/md5</code></a>パッケージには、新しく<a href="http://golang.org/pkg/crypto/md5/#Sum"><code>Sum</code></a>関数が追加されました。パフォーマンスが犠牲にならずに簡単にハッシュ化します。
 </li>
 
 <li>
-Similarly, the 
+<i>Similarly, the 
 <a href="http://golang.org/pkg/crypto/md5/"><code>crypto/sha1</code></a> package
-adds a new <a href="http://golang.org/pkg/crypto/sha1/#Sum"><code>Sum</code></a> function.
-</li>
+adds a new <a href="http://golang.org/pkg/crypto/sha1/#Sum"><code>Sum</code></a> function.</i>
 
-<li>
+<br>
+
 同様に、<a href="http://golang.org/pkg/crypto/md5/"><code>crypto/sha1</code></a>パッケージにも<a href="http://golang.org/pkg/crypto/sha1/#Sum"><code>Sum</code></a>関数が追加されています。
-
 </li>
 
 <li>
-Also, the
+<i>Also, the
 <a href="http://golang.org/pkg/crypto/sha256/"><code>crypto/sha256</code></a> package
 adds <a href="http://golang.org/pkg/crypto/sha256/#Sum256"><code>Sum256</code></a>
-and <a href="http://golang.org/pkg/crypto/sha256/#Sum224"><code>Sum224</code></a> functions.
-</li>
+and <a href="http://golang.org/pkg/crypto/sha256/#Sum224"><code>Sum224</code></a> functions.</i>
 
-<li>
+<br>
+
 また、<a href="http://golang.org/pkg/crypto/sha256/"><code>crypto/sha256</code></a>パッケージには、<a href="http://golang.org/pkg/crypto/sha256/#Sum256"><code>Sum256</code></a>関数と<a href="http://golang.org/pkg/crypto/sha256/#Sum224"><code>Sum224</code></a>関数が追加されました。
 </li>
 
 <li>
-Finally, the <a href="http://golang.org/pkg/crypto/sha512/"><code>crypto/sha512</code></a> package
+<i>Finally, the <a href="http://golang.org/pkg/crypto/sha512/"><code>crypto/sha512</code></a> package
 adds <a href="http://golang.org/pkg/crypto/sha512/#Sum512"><code>Sum512</code></a> and
-<a href="http://golang.org/pkg/crypto/sha512/#Sum384"><code>Sum384</code></a> functions.
-</li>
+<a href="http://golang.org/pkg/crypto/sha512/#Sum384"><code>Sum384</code></a> functions.</i>
 
-<li>
+<br>
+
 最後に、<a href="http://golang.org/pkg/crypto/sha512/"><code>crypto/sha512</code></a>パッケージに、<a href="http://golang.org/pkg/crypto/sha512/#Sum512"><code>Sum512</code></a>関数と <a href="http://golang.org/pkg/crypto/sha512/#Sum384"><code>Sum384</code></a>関数が追加されました。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/crypto/x509/"><code>crypto/x509</code></a> package
-adds support for reading and writing arbitrary extensions.
-</li>
+<i>The <a href="http://golang.org/pkg/crypto/x509/"><code>crypto/x509</code></a> package
+adds support for reading and writing arbitrary extensions.</i>
 
-<li>
+
+<br>
+
 <a href="http://golang.org/pkg/crypto/x509/"><code>crypto/x509</code></a>パッケージは、任意の拡張を読み書きのサポートを追加しました。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/crypto/tls/"><code>crypto/tls</code></a> package adds
-support for TLS 1.1, 1.2 and AES-GCM.
-</li>
+<i>The <a href="http://golang.org/pkg/crypto/tls/"><code>crypto/tls</code></a> package adds
+support for TLS 1.1, 1.2 and AES-GCM.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/crypto/tls/"><code>crypto/tls</code></a>パッケージには、TLS 1.1, 1.2 と AES-GCMのサポートを追加しました。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/database/sql/"><code>database/sql</code></a> package adds a
+<i>The <a href="http://golang.org/pkg/database/sql/"><code>database/sql</code></a> package adds a
 <a href="http://golang.org/pkg/database/sql/#DB.SetMaxOpenConns"><code>SetMaxOpenConns</code></a>
 method on <a href="http://golang.org/pkg/database/sql/#DB"><code>DB</code></a> to limit the
-number of open connections to the database.
-</li>
+number of open connections to the database.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/database/sql/"><code>database/sql</code></a>パッケージは、たくさんのデータベースとのオープン接続を制限するため、<a href="http://golang.org/pkg/database/sql/#DB"><code>DB</code></a>に<a href="http://golang.org/pkg/database/sql/#DB.SetMaxOpenConns"><code>SetMaxOpenConns</code></a>メソッドを追加しました。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/encoding/csv/"><code>encoding/csv</code></a> package
-now always allows trailing commas on fields.
-</li>
+<i>The <a href="http://golang.org/pkg/encoding/csv/"><code>encoding/csv</code></a> package
+now always allows trailing commas on fields.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/encoding/csv/"><code>encoding/csv</code></a>パッケージは、フィールドの最後がカンマの場合エラーになっていたのが、最後はカンマでもよくなりました。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/encoding/gob/"><code>encoding/gob</code></a> package
+<i>The <a href="http://golang.org/pkg/encoding/gob/"><code>encoding/gob</code></a> package
 now treats channel and function fields of structures as if they were unexported,
 even if they are not. That is, it ignores them completely. Previously they would
 trigger an error, which could cause unexpected compatibility problems if an
@@ -1085,33 +1087,33 @@ embedded structure added such a field.
 The package also now supports the generic <code>BinaryMarshaler</code> and
 <code>BinaryUnmarshaler</code> interfaces of the
 <a href="http://golang.org/pkg/encoding/"><code>encoding</code></a> package
-described above.
-</li>
+described above.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/encoding/gob/"><code>encoding/gob</code></a>パッケージは、チャネルと構造体の関数フィールドを、たとえそれらが無くても、アンエクスポートされているかのように扱うようになりました。これは、完全にそれらを無視します。
 埋め込まれた構造体にそのようなフィールドを追加していた場合、予期せぬ互換性の問題を引き起こすことがあります。
 また、上述された<a href="http://golang.org/pkg/encoding/"><code>encoding</code></a>パッケージの<code>BinaryMarshaler</code> と<code>BinaryUnmarshaler</code>インターフェースをサポートします。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> package
+<i>The <a href="http://golang.org/pkg/encoding/json/"><code>encoding/json</code></a> package
 now will always escape ampersands as "\u0026" when printing strings.
 It will now accept but correct invalid UTF-8 in
 <a href="http://golang.org/pkg/encoding/json/#Marshal"><code>Marshal</code></a>
 (such input was previously rejected).
 Finally, it now supports the generic encoding interfaces of the
 <a href="http://golang.org/pkg/encoding/"><code>encoding</code></a> package
-described above.
-</li>
+described above.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/encoding/json/"><code>encoding/json</code></a>パッケージは、文字列を出力するとき常にアンパサンドを"\u0026"としてエスケープします。
 それは受け入れますが、(インプットが以前に拒否された)<a href="http://golang.org/pkg/encoding/json/#Marshal"><code>Marshal</code></a>では無効なUTF-8を訂正します。結局、上述した<a href="http://golang.org/pkg/encoding/"><code>encoding</code></a>パッケージの一般的なエンコードインターフェースをサポートします。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/encoding/xml/"><code>encoding/xml</code></a> package
+<i>The <a href="http://golang.org/pkg/encoding/xml/"><code>encoding/xml</code></a> package
 now allows attributes stored in pointers to be marshaled.
 It also supports the generic encoding interfaces of the
 <a href="http://golang.org/pkg/encoding/"><code>encoding</code></a> package
@@ -1128,10 +1130,10 @@ to the
 <a href="http://golang.org/pkg/encoding/xml/#Encoder"><code>Encoder</code></a>
 type for use by custom encoders. See the documentation for
 <a href="http://golang.org/pkg/encoding/xml/#Encoder.EncodeToken"><code>EncodeToken</code></a>
-to see how to use it.
-</li>
+to see how to use it.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/encoding/xml/"><code>encoding/xml</code></a>パッケージは属性をmarshalされたポインタに格納することができます。
 また、新しい<a href="http://golang.org/pkg/encoding/xml/#Marshaler"><code>Marshaler</code></a>,
 <a href="http://golang.org/pkg/encoding/xml/#Unmarshaler"><code>Unmarshaler</code></a>,<a href="http://golang.org/pkg/encoding/xml/#MarshalerAttr"><code>MarshalerAttr</code></a> and
@@ -1140,47 +1142,47 @@ to see how to use it.
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/flag/"><code>flag</code></a> package now
+<i>The <a href="http://golang.org/pkg/flag/"><code>flag</code></a> package now
 has a <a href="http://golang.org/pkg/flag/#Getter"><code>Getter</code></a> interface
 to allow the value of a flag to be retrieved. Due to the
 Go 1 compatibility guidelines, this method cannot be added to the existing
 <a href="http://golang.org/pkg/flag/#Value"><code>Value</code></a>
 interface, but all the existing standard flag types implement it.
 The package also now exports the <a href="http://golang.org/pkg/flag/#CommandLine"><code>CommandLine</code></a>
-flag set, which holds the flags from the command line.
-</li>
+flag set, which holds the flags from the command line.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/flag/"><code>flag</code></a>パッケージは<a href="http://golang.org/pkg/flag/#Getter"><code>Getter</code></a>インターフェースを持ちます。これはflagの値を取得することができます。Go1の互換性ガイドラインにより、このメソッドを既存の<a href="http://golang.org/pkg/flag/#Value"><code>Value</code></a>に追加できませんが、すべての既存の標準flag型はそれを実装します。
 また、<a href="http://golang.org/pkg/flag/#CommandLine"><code>CommandLine</code></a>変数を公開しました。この変数はFlagSetをコマンドラインから保持します。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/go/ast/"><code>go/ast</code></a> package's
+<i>The <a href="http://golang.org/pkg/go/ast/"><code>go/ast</code></a> package's
 <a href="http://golang.org/pkg/go/ast/#SliceExpr"><code>SliceExpr</code></a> struct
 has a new boolean field, <code>Slice3</code>, which is set to true
 when representing a slice expression with three indices (two colons).
-The default is false, representing the usual two-index form.
-</li>
+The default is false, representing the usual two-index form.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/go/ast/"><code>go/ast</code></a>パッケージの<a href="http://golang.org/pkg/go/ast/#SliceExpr"><code>SliceExpr</code></a>構造体は、新しいbooleanフィールド<code>Slice3</code>を持ちます。これは、スリーインデックススライス(2つコロンがあるスライス)を表すとき、trueがセットされます。
 デフォルではfalseで、通常のツーインデックス形式を表します。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/go/build/"><code>go/build</code></a> package adds
+<i>The <a href="http://golang.org/pkg/go/build/"><code>go/build</code></a> package adds
 the <code>AllTags</code> field
 to the <a href="http://golang.org/pkg/go/build/#Package"><code>Package</code></a> type,
-to make it easier to process build tags.
-</li>
+to make it easier to process build tags.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/go/build/"><code>go/build</code></a> パッケージは、<a href="http://golang.org/pkg/go/build/#Package"><code>Package</code></a>型に<code>AllTags</code>フィールドを追加しました。これはタグをビルドするプロセスを簡単にします。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/image/draw/"><code>image/draw</code></a> package now
+<i>The <a href="http://golang.org/pkg/image/draw/"><code>image/draw</code></a> package now
 exports an interface, <a href="http://golang.org/pkg/image/draw/#Drawer"><code>Drawer</code></a>,
 that wraps the standard <a href="http://golang.org/pkg/image/draw/#Draw"><code>Draw</code></a> method.
 The Porter-Duff operators now implement this interface, in effect binding an operation to
@@ -1194,10 +1196,10 @@ To create palettes suitable for such processing, the new
 <a href="http://golang.org/pkg/image/draw/#Quantizer"><code>Quantizer</code></a> interface
 represents implementations of quantization algorithms that choose a palette
 given a full-color image.
-There are no implementations of this interface in the library.
-</li>
+There are no implementations of this interface in the library.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/image/draw/"><code>image/draw</code></a>パッケージは、<a href="http://golang.org/pkg/image/draw/#Drawer"><code>Drawer</code></a>インターフェースを公開しました。これは標準の<a href="http://golang.org/pkg/image/draw/#Draw"><code>Draw</code></a>メソッドをラップしています。Porter-Duff操作がこのインターフェースで実装されました。
 明示的にそれを提供するというより、drawオペレータに動作をバインドしています。
 宛先としてパレットイメージが与えられ、<a href="http://golang.org/pkg/image/draw/#Drawer"><code>Drawer</code></a>インターフェースの新しい<a href="http://golang.org/pkg/image/draw/#FloydSteinberg"><code>FloydSteinberg</code></a>実装が、フロイド-スタインバーグ誤差拡散法をイメージを描くために使用します。
@@ -1206,7 +1208,7 @@ There are no implementations of this interface in the library.
 
 
 <li>
-The <a href="http://golang.org/pkg/image/gif/"><code>image/gif</code></a> package
+<i>The <a href="http://golang.org/pkg/image/gif/"><code>image/gif</code></a> package
 can now create GIF files using the new
 <a href="http://golang.org/pkg/image/gif/#Encode"><code>Encode</code></a>
 and <a href="http://golang.org/pkg/image/gif/#EncodeAll"><code>EncodeAll</code></a>
@@ -1220,56 +1222,55 @@ color map (palette) defined in the new
 The options also specify a
 <a href="http://golang.org/pkg/image/draw/#Drawer"><code>Drawer</code></a>
 to use to create the output image;
-if it is <code>nil</code>, Floyd-Steinberg error diffusion is used.
-</li>
+if it is <code>nil</code>, Floyd-Steinberg error diffusion is used.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/image/gif/"><code>image/gif</code></a>パッケージは、新しい<a href="http://golang.org/pkg/image/gif/#Encode"><code>Encode</code></a>関数と
 <a href="http://golang.org/pkg/image/gif/#EncodeAll"><code>EncodeAll</code></a>関数を使って、GIFファイルを作ることができるようになりました。それらの引数のOptionは、イメージのスペックを指定することができます。<a href="http://golang.org/pkg/image/draw/#Quantizer"><code>Quantizer</code></a>を使った場合、もし<code>nil</code>なら、生成されたGIFは、新しく<a href="http://golang.org/pkg/image/color/palette/"><code>image/color/palette</code></a> パッケージで定義された<a href="http://golang.org/pkg/image/color/palette/#Plan9"><code>Plan9</code></a>のカラーマップ(パレット)を使用します。アウトプットイメージを作成するのに<a href="http://golang.org/pkg/image/draw/#Drawer"><code>Drawer</code></a>を使った場合、もし<code>nil</code>なら、フロイド-スタインバーグ誤差拡散法が使われます。
-
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/io/#Copy"><code>Copy</code></a> method of the
+<i>The <a href="http://golang.org/pkg/io/#Copy"><code>Copy</code></a> method of the
 <a href="http://golang.org/pkg/io/"><code>io</code></a> package now prioritizes its
 arguments differently.
 If one argument implements <a href="http://golang.org/pkg/io/#WriterTo"><code>WriterTo</code></a>
 and the other implements <a href="http://golang.org/pkg/io/#ReaderFrom"><code>ReaderFrom</code></a>,
 <a href="http://golang.org/pkg/io/#Copy"><code>Copy</code></a> will now invoke
 <a href="http://golang.org/pkg/io/#WriterTo"><code>WriterTo</code></a> to do the work,
-so that less intermediate buffering is required in general.
-</li>
+so that less intermediate buffering is required in general.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/io/"><code>io</code></a>パッケージの<a href="http://golang.org/pkg/io/#Copy"><code>Copy</code></a>メソッドは、2つの引数の優先順位を変更しました。1つの引数が<a href="http://golang.org/pkg/io/#WriterTo"><code>WriterTo</code></a>を実装し、もう1つの引数が<a href="http://golang.org/pkg/io/#ReaderFrom"><code>ReaderFrom</code></a>を実装している場合、<a href="http://golang.org/pkg/io/#Copy"><code>Copy</code></a>は<a href="http://golang.org/pkg/io/#WriterTo"><code>WriterTo</code></a>を呼びします。so that less intermediate buffering is required in general.
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/net/"><code>net</code></a> package requires cgo by default
+<i>The <a href="http://golang.org/pkg/net/"><code>net</code></a> package requires cgo by default
 because the host operating system must in general mediate network call setup.
 On some systems, though, it is possible to use the network without cgo, and useful
 to do so, for instance to avoid dynamic linking.
 The new build tag <code>netgo</code> (off by default) allows the construction of a
-<code>net</code> package in pure Go on those systems where it is possible.
-</li>
+<code>net</code> package in pure Go on those systems where it is possible.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/net/"><code>net</code></a>パッケージは、デフォルトではcgoを必要とします。なぜなら、ホストOSが一般にはネットワークコールセットアップを仲介するからです。いくつかのシステムでは、cgo無しでネットワークを使うことが可能で、動的リンクを避けるインスタンスに対して、そのようにすることが有用です。新しいビルドタグ<code>netgo</code>(デフォルトではオフ)は、可能なシステム上で純粋なGoで<code>net</code>パッケージの構築をすることができます。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/net/"><code>net</code></a> package adds a new field
+<i>The <a href="http://golang.org/pkg/net/"><code>net</code></a> package adds a new field
 <code>DualStack</code> to the <a href="http://golang.org/pkg/net/#Dialer"><code>Dialer</code></a>
 struct for TCP connection setup using a dual IP stack as described in
-<a href="http://tools.ietf.org/html/rfc6555">RFC 6555</a>.
-</li>
+<a href="http://tools.ietf.org/html/rfc6555">RFC 6555</a>.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/net/"><code>net</code></a>パッケージは、<a href="http://tools.ietf.org/html/rfc6555">RFC 6555</a>で説明されるように、デュアルIPスタックを使っているTCP接続セットアップに対して、<a href="http://golang.org/pkg/net/#Dialer"><code>Dialer</code></a>構造体に、新しいフィールド<code>DualStack</code>を追加しました。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/net/http/"><code>net/http</code></a> package will no longer
+<i>The <a href="http://golang.org/pkg/net/http/"><code>net/http</code></a> package will no longer
 transmit cookies that are incorrect according to
 <a href="http://tools.ietf.org/html/rfc6265">RFC 6265</a>.
 It just logs an error and sends nothing.
@@ -1285,10 +1286,10 @@ While serving a HEAD request, writes to a
 <a href="http://golang.org/pkg/net/http/#ResponseWriter"><code>ResponseWriter</code></a>
 are absorbed by the
 <a href="http://golang.org/pkg/net/http/#Server"><code>Server</code></a>
-and the client receives an empty body as required by the HTTP specification.
-</li>
+and the client receives an empty body as required by the HTTP specification.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/net/http/"><code>net/http</code></a>パッケージは、<a href="http://tools.ietf.org/html/rfc6265">RFC 6265</a>により、有効でないクッキーを送信しません。
 それは、エラーを記録するだけで、なにも送信しません。(訳者補足：<a href="http://bit.ly/1cJcMcY">メインの差分箇所</a> )
 <a href="http://golang.org/pkg/net/http/"><code>net/http</code></a>パッケージの<a href="http://golang.org/pkg/net/http/#ReadResponse"><code>ReadResponse</code></a>関数の<code>*Request</code> 引数を<code>nil</code>としてもよくなりました。(訳者補足：<a href="http://bit.ly/1cJdmHz">メインの差分箇所</a> ) その場合、GETリクエストを指定したことになります。
@@ -1297,55 +1298,55 @@ HEADリクエストのサーブ中、<a href="http://golang.org/pkg/net/http/#Ha
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/os/exec/"><code>os/exec</code></a> package's 
+<i>The <a href="http://golang.org/pkg/os/exec/"><code>os/exec</code></a> package's 
 <a href="http://golang.org/pkg/os/exec/#Cmd.StdinPipe"><code>Cmd.StdinPipe</code></a> method 
 returns an <code>io.WriteCloser</code>, but has changed its concrete
 implementation from <code>*os.File</code> to an unexported type that embeds
 <code>*os.File</code>, and it is now safe to close the returned value.
 Before Go 1.2, there was an unavoidable race that this change fixes.
 Code that needs access to the methods of <code>*os.File</code> can use an
-interface type assertion, such as <code>wc.(interface{ Sync() error })</code>.
-</li>
+interface type assertion, such as <code>wc.(interface{ Sync() error })</code>.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/os/exec/"><code>os/exec</code></a>パッケージの<a href="http://golang.org/pkg/os/exec/#Cmd.StdinPipe"><code>Cmd.StdinPipe</code></a>メソッドは、<code>io.WriteCloser</code>を返しますが、<code>*os.File</code>から、<code>*os.File</code>を埋め込んだ非公開型に変更し、安全にcloseできるようになりました。(訳者補足：<a href="http://bit.ly/1cJgVxt">メインの差分箇所</a> )  Go1.2以前は、避けることの出来ない現象がありました。
 <code>*os.File</code>のメソッド郡にアクセスを必要とするコードは、<code>wc.(interface{ Sync() error })</code>のように、interfaceの型アサーションを使うことができます。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/runtime/"><code>runtime</code></a> package relaxes
+<i>The <a href="http://golang.org/pkg/runtime/"><code>runtime</code></a> package relaxes
 the constraints on finalizer functions in
 <a href="http://golang.org/pkg/runtime/#SetFinalizer"><code>SetFinalizer</code></a>: the
 actual argument can now be any type that is assignable to the formal type of
-the function, as is the case for any normal function call in Go.
-</li>
+the function, as is the case for any normal function call in Go.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/runtime/"><code>runtime</code></a> パッケージは、<a href="http://golang.org/pkg/runtime/#SetFinalizer"><code>SetFinalizer</code></a>で、finalizer関数の制約をゆるめました。実引数は、Goでの任意の通常の関数呼び出しの場合のように、関数の型に割り当て可能な任意の型になりました。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/sort/"><code>sort</code></a> package has a new
+<i>The <a href="http://golang.org/pkg/sort/"><code>sort</code></a> package has a new
 <a href="http://golang.org/pkg/sort/#Stable"><code>Stable</code></a> function that implements
-stable sorting. It is less efficient than the normal sort algorithm, however.
-</li>
+stable sorting. It is less efficient than the normal sort algorithm, however.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/sort/"><code>sort</code></a>パッケージは新しく<a href="http://golang.org/pkg/sort/#Stable"><code>Stable</code></a>関数を追加しました。これは安定ソートを実装しています。しかし、これは通常のソートアルゴリズムよりもあまり効率的ではありません。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/strings/"><code>strings</code></a> package adds
+<i>The <a href="http://golang.org/pkg/strings/"><code>strings</code></a> package adds
 an <a href="http://golang.org/pkg/strings/#IndexByte"><code>IndexByte</code></a>
-function for consistency with the <a href="http://golang.org/pkg/bytes/"><code>bytes</code></a> package.
-</li>
+function for consistency with the <a href="http://golang.org/pkg/bytes/"><code>bytes</code></a> package.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/strings/"><code>strings</code></a>パッケージは、<a href="http://golang.org/pkg/bytes/"><code>bytes</code></a>との整合性の為、<a href="http://golang.org/pkg/strings/#IndexByte"><code>IndexByte</code></a>関数を追加しました。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/sync/atomic/"><code>sync/atomic</code></a> package
+<i>The <a href="http://golang.org/pkg/sync/atomic/"><code>sync/atomic</code></a> package
 adds a new set of swap functions that atomically exchange the argument with the
 value stored in the pointer, returning the old value.
 The functions are
@@ -1356,10 +1357,10 @@ The functions are
 <a href="http://golang.org/pkg/sync/atomic/#SwapUintptr"><code>SwapUintptr</code></a>,
 and
 <a href="http://golang.org/pkg/sync/atomic/#SwapPointer"><code>SwapPointer</code></a>,
-which swaps an <code>unsafe.Pointer</code>.
-</li>
+which swaps an <code>unsafe.Pointer</code>.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/sync/atomic/"><code>sync/atomic</code></a>パッケージは、新しいswap関数一式を追加しました。
 <a href="http://golang.org/pkg/sync/atomic/#SwapInt32"><code>SwapInt32</code></a>,
 <a href="http://golang.org/pkg/sync/atomic/#SwapInt64"><code>SwapInt64</code></a>,
@@ -1371,17 +1372,17 @@ which swaps an <code>unsafe.Pointer</code>.
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/syscall/"><code>syscall</code></a> package now implements
-<a href="http://golang.org/pkg/syscall/#Sendfile"><code>Sendfile</code></a> for Darwin.
-</li>
+<i>The <a href="http://golang.org/pkg/syscall/"><code>syscall</code></a> package now implements
+<a href="http://golang.org/pkg/syscall/#Sendfile"><code>Sendfile</code></a> for Darwin.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/syscall/"><code>syscall</code></a>パッケージは、Darwinに<a href="http://golang.org/pkg/syscall/#Sendfile"><code>Sendfile</code></a>を実装しました。
 (訳者補足：<a href="http://bit.ly/1k2Hils">Revision</a>)
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/testing/"><code>testing</code></a> package
+<i>The <a href="http://golang.org/pkg/testing/"><code>testing</code></a> package
 now exports the <a href="http://golang.org/pkg/testing/#TB"><code>TB</code></a> interface.
 It records the methods in common with the
 <a href="http://golang.org/pkg/testing/#T"><code>T</code></a>
@@ -1392,29 +1393,29 @@ Also, the
 <a href="http://golang.org/pkg/testing/#AllocsPerRun"><code>AllocsPerRun</code></a>
 function now quantizes the return value to an integer (although it
 still has type <code>float64</code>), to round off any error caused by
-initialization and make the result more repeatable. 
-</li>
+initialization and make the result more repeatable. </i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/testing/"><code>testing</code></a>は、<a href="http://golang.org/pkg/testing/#TB"><code>TB</code></a>インターフェースを公開しました。それは、テストとベンチマーク間のコードを共有しやすくするために、<a href="http://golang.org/pkg/testing/#T"><code>T</code></a>型と<a href="http://golang.org/pkg/testing/#B"><code>B</code></a>型が持つ共通のメソッドを登録しています。
 <a href="http://golang.org/pkg/testing/#AllocsPerRun"><code>AllocsPerRun</code></a>関数は、戻り値を(まだ<code>float64</code>ですが)整数にしました。初期化により引き起こされるエラーを丸め、結果をより再利用可能させます。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/text/template/"><code>text/template</code></a> package
+<i>The <a href="http://golang.org/pkg/text/template/"><code>text/template</code></a> package
 now automatically dereferences pointer values when evaluating the arguments
 to "escape" functions such as "html", to bring the behavior of such functions
-in agreement with that of other printing functions such as "printf".
-</li>
+in agreement with that of other printing functions such as "printf".</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/text/template/"><code>text/template</code></a>パッケージは、ポインターから参照先の値を取得します。when evaluating the arguments
 to "escape" functions such as "html", to bring the behavior of such functions
 in agreement with that of other printing functions such as "printf".
 </li>
 
 <li>
-In the <a href="http://golang.org/pkg/time/"><code>time</code></a> package, the
+<i>In the <a href="http://golang.org/pkg/time/"><code>time</code></a> package, the
 <a href="http://golang.org/pkg/time/#Parse"><code>Parse</code></a> function
 and
 <a href="http://golang.org/pkg/time/#Time.Format"><code>Format</code></a>
@@ -1422,22 +1423,22 @@ method
 now handle time zone offsets with seconds, such as in the historical
 date "1871-01-01T05:33:02+00:34:08".
 Also, pattern matching in the formats for those routines is stricter: a non-lowercase letter
-must now follow the standard words such as "Jan" and "Mon".
-</li>
+must now follow the standard words such as "Jan" and "Mon".</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/time/"><code>time</code></a>パッケージでは、<a href="http://golang.org/pkg/time/#Parse"><code>Parse</code></a>関数と<a href="http://golang.org/pkg/time/#Time.Format"><code>Format</code></a>メソッドは、歴史的な日"1871-01-01T05:33:02+00:34:08"のような秒が入ったタイムゾーンのオフセットを扱えるようになりました。(訳者補足：<a href="http://bit.ly/1fv2bTe">Revision</a>) また、フォーマットのパターンマッチがすこし厳しくなりました。最初が小文字でない"Jan"や "Mon"のような標準的な単語を使わなければなりません。
 </li>
 
 <li>
-The <a href="http://golang.org/pkg/unicode/"><code>unicode</code></a> package
+<i>The <a href="http://golang.org/pkg/unicode/"><code>unicode</code></a> package
 adds <a href="http://golang.org/pkg/unicode/#In"><code>In</code></a>,
 a nicer-to-use but equivalent version of the original
 <a href="http://golang.org/pkg/unicode/#IsOneOf"><code>IsOneOf</code></a>,
-to see whether a character is a member of a Unicode category.
-</li>
+to see whether a character is a member of a Unicode category.</i>
 
-<li>
+<br>
+
 <a href="http://golang.org/pkg/unicode/"><code>unicode</code></a>パッケージは、<a href="http://golang.org/pkg/unicode/#In"><code>In</code></a>を追加しました。使いやすくなりましたが、最初からの<a href="http://golang.org/pkg/unicode/#IsOneOf"><code>IsOneOf</code></a>と等しいのですが、キャラクタがUnicodeカテゴリのメンバかどうか確認することができます。
 </li>
 
