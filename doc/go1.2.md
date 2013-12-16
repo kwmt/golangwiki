@@ -897,11 +897,12 @@ See the relevant package documentation for more information about each change.*
 adds the
 <a href="http://golang.org/pkg/archive/zip/#File.DataOffset"><code>DataOffset</code></a> accessor
 to return the offset of a file's (possibly compressed) data within the archive.</i>
-</li>
 
-<br>
+
 <a href="http://golang.org/pkg/archive/zip/"><code>archive/zip</code></a>パッケージに、<a href="http://golang.org/pkg/archive/zip/#File.DataOffset"><code>DataOffset</code></a>関数が追加されました。
 これはそのアーカイブ内のファイルの（圧縮されているかもしれない）データのオフセットを返します。
+
+</li>
 
 <li>
 <i>The <a href="http://golang.org/pkg/bufio/"><code>bufio</code></a> package
