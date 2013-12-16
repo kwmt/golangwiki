@@ -857,12 +857,12 @@ default function definitions.*
 
 <ul>
 <li>
-*The <a href="http://golang.org/pkg/encoding/"><code>encoding</code></a> package is
-<a href="#encoding">described above</a>.*
+<i>The <a href="http://golang.org/pkg/encoding/"><code>encoding</code></a> package is
+<a href="#encoding">described above</a>.</i>
 </li>
 <li>
-*The <a href="http://golang.org/pkg/image/color/palette/"><code>image/color/palette</code></a> package
-provides standard color palettes.*
+<i>The <a href="http://golang.org/pkg/image/color/palette/"><code>image/color/palette</code></a> package
+provides standard color palettes.</i>
 </li>
 </ul>
 
@@ -903,21 +903,19 @@ to return the offset of a file's (possibly compressed) data within the archive.<
 これはそのアーカイブ内のファイルの（圧縮されているかもしれない）データのオフセットを返します。
 
 <li>
-The <a href="http://golang.org/pkg/bufio/"><code>bufio</code></a> package
+<i>The <a href="http://golang.org/pkg/bufio/"><code>bufio</code></a> package
 adds <a href="http://golang.org/pkg/bufio/#Reader.Reset"><code>Reset</code></a>
 methods to <a href="http://golang.org/pkg/bufio/#Reader"><code>Reader</code></a> and
 <a href="http://golang.org/pkg/bufio/#Writer"><code>Writer</code></a>.
 These methods allow the <a href="http://golang.org/pkg/io/#Reader"><code>Readers</code></a>
 and <a href="http://golang.org/pkg/io/#Writer"><code>Writers</code></a>
 to be re-used on new input and output readers and writers, saving
-allocation overhead. 
+allocation overhead. </i>
 </li>
 
-<li>
 <a href="http://golang.org/pkg/bufio/"><code>bufio</code></a>パッケージには、<a href="http://golang.org/pkg/bufio/#Reader"><code>Reader</code></a>と<a href="http://golang.org/pkg/bufio/#Writer"><code>Writer</code></a>に<a href="http://golang.org/pkg/bufio/#Reader.Reset"><code>Reset</code></a>メソッドが追加されました。
 このメソッドは、<a href="http://golang.org/pkg/io/#Reader"><code>Readers</code></a>
 と <a href="http://golang.org/pkg/io/#Writer"><code>Writers</code></a>新しいインプットやアウトプットのreadersやwritersを再利用でき、メモリ割付のオーバーヘッドをセーブすることができます。
-</li>
 
 <li>
 The <a href="http://golang.org/pkg/compress/bzip2/"><code>compress/bzip2</code></a>
