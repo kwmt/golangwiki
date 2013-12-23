@@ -3,6 +3,23 @@ Revision:[23fc3139589c](https://code.google.com/p/go/source/browse/doc/go1.2.htm
 
 <h2 id="introduction">Introduction to Go 1.2</h2>
 
+
+*Since the release of <a href="http://golang.org/doc/go1.1.html">Go version 1.1</a> in April, 2013,
+the release schedule has been shortened to make the release process more efficient.
+This release, Go version 1.2 or Go 1.2 for short, arrives roughly six months after 1.1,
+while 1.1 took over a year to appear after 1.0.
+Because of the shorter time scale, 1.2 is a smaller delta than the step from 1.0 to 1.1,
+but it still has some significant developments, including
+a better scheduler and one new language feature.
+Of course, Go 1.2 keeps the <a href="http://golang.org/doc/go1compat.html">promise
+of compatibility</a>.
+The overwhelming majority of programs built with Go 1.1 (or 1.0 for that matter)
+will run without any changes whatsoever when moved to 1.2,
+although the introduction of one restriction
+to a corner of the language may expose already-incorrect code
+(see the discussion of the <a href="#use-of-nil">use of nil</a>).*
+
+
 2013年4月に<a href="http://golang.org/doc/go1.1.html">Go version 1.1</a>をリリースして以来、リリーススケジュールが
 リリースのプロセスをより効率的にするために、短くされていました。
 このリリースGo バージョン1.2 （短縮表記すると、Go1.2）では、だいたい1.1以降6ヶ月になります。
@@ -15,19 +32,57 @@ of compatibility</a>を守っています。
 
 Go1.1で作ったほとんどのプログラムは、1.2へ移行したとしても変更なしで実行するでしょう。
 コーナーケース（めったに発生しなやっかいなケース）に1つの制限の導入は、すでに誤ったコードを公開するかもしれませんが。
-(<a href="#use_of_nil">use of nil</a>を参照)
+(<a href="#use-of-nil">use of nil</a>を参照)
 
 
 
 
 
 <h2 id="language">Changes to the language</h2>
+
+*In the interest of firming up the specification, one corner case has been clarified,
+with consequences for programs.
+There is also one new language feature.*
+
 <p>
 仕様を安定させるために、プログラムに対して重大な一つのコーナーケースが明らかになりました。
 これは、一つの新しい言語の特徴です。
 </p>
 
 <h3 id="use_of_nil">Use of nil</h3>
+
+*The language now specifies that, for safety reasons,
+certain uses of nil pointers are guaranteed to trigger a run-time panic.
+For instance, in Go 1.0, given code like*
+
+<pre>
+type T struct {
+    X [1&lt;&lt;24]byte
+    Field int32
+}
+
+func main() {
+    var x *T
+    ...
+}
+</pre>
+
+
+*the <code>nil</code> pointer <code>x</code> could be used to access memory incorrectly:
+the expression <code>x.Field</code> could access memory at address <code>1<<24</code>.
+To prevent such unsafe behavior, in Go 1.2 the compilers now guarantee that any indirection through
+a nil pointer, such as illustrated here but also in nil pointers to arrays, nil interface values,
+nil slices, and so on, will either panic or return a correct, safe non-nil value.
+In short, any expression that explicitly or implicitly requires evaluation of a nil address is an error.
+The implementation may inject extra tests into the compiled program to enforce this behavior.*
+
+*Further details are in the
+<a href="http://golang.org/s/go12nil">design document</a>.*
+
+*<em>Updating</em>:
+Most code that depended on the old behavior is erroneous and will fail when run.
+Such programs will need to be updated by hand.*
+
 
 <p>
 現在、安全上の理由から、nilポインタの特定の用途がランタイムパニックを誘発することが保証されている、ことを規定しています。
@@ -66,6 +121,45 @@ func main() {
 </p>
 
 <h3 id="three_index">Three-index slices</h3>
+
+
+*Go 1.2 adds the ability to specify the capacity as well as the length when using a slicing operation
+on an existing array or slice.
+A slicing operation creates a new slice by describing a contiguous section of an already-created array or slice:*
+
+<pre>
+var array [10]int
+slice := array[2:4]
+</pre>
+
+
+*The capacity of the slice is the maximum number of elements that the slice may hold, even after reslicing;
+it reflects the size of the underlying array.
+In this example, the capacity of the <code>slice</code> variable is 8.*
+
+
+*Go 1.2 adds new syntax to allow a slicing operation to specify the capacity as well as the length.
+A second
+colon introduces the capacity value, which must be less than or equal to the capacity of the
+source slice or array, adjusted for the origin. For instance,*
+
+<pre>
+slice = array[2:4:7]
+</pre>
+
+*sets the slice to have the same length as in the earlier example but its capacity is now only 5 elements (7-2).
+It is impossible to use this new slice value to access the last three elements of the original array.*
+
+*In this three-index notation, a missing first index (<code>[:i:j]</code>) defaults to zero but the other
+two indices must always be specified explicitly.
+It is possible that future releases of Go may introduce default values for these indices.*
+
+*Further details are in the
+<a href="http://golang.org/s/go12slice">design document</a>.*
+
+*<em>Updating</em>:
+This is a backwards-compatible change that affects no existing programs.*
+
 
 <p>
 Go1.2では、ある配列やスライスを扱うとき、容量だけななく長さも指定できるようにしました。
@@ -118,6 +212,13 @@ Goの将来のリリースでは、それらのインデックスにデフォル
 
 <h3 id="preemption">Pre-emption in the scheduler</h3>
 
+*In prior releases, a goroutine that was looping forever could starve out other
+goroutines on the same thread, a serious problem when GOMAXPROCS
+provided only one user thread.
+In Go 1.2, this is partially addressed: The scheduler is invoked occasionally
+upon entry to a function.
+This means that any loop that includes a (non-inlined) function call can
+be pre-empted, allowing other goroutines to run on the same thread.*
 
 <p>
  以前のリリースでは、永遠にループしているゴルーチンが、同じスレッド上の他のゴルーチンを餓死させてしまうことがありました。
