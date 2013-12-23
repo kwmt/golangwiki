@@ -956,7 +956,7 @@ default function definitions.*
 <ul>
 <li>
 <i>The <a href="http://golang.org/pkg/encoding/"><code>encoding</code></a> package is
-<a href="#encoding">described above</a>.</i>
+<a href="#the-new-encoding-package">described above</a>.</i>
 </li>
 <li>
 <i>The <a href="http://golang.org/pkg/image/color/palette/"><code>image/color/palette</code></a> package
@@ -970,7 +970,7 @@ provides standard color palettes.</i>
 
 <ul>
 <li>
-<a href="http://golang.org/pkg/encoding/"><code>encoding</code></a> パッケージは<a href="#encoding">上述しました</a>。
+<a href="http://golang.org/pkg/encoding/"><code>encoding</code></a> パッケージは<a href="#the-new-encoding-package">上述しました</a>。
 </li>
 <li>
 <a href="http://golang.org/pkg/image/color/palette/"><code>image/color/palette</code></a> パッケージは、標準カラーパレットを提供します。
