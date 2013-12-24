@@ -162,7 +162,7 @@ This is a backwards-compatible change that affects no existing programs.*
 
 
 <p>
-Go1.2では、ある配列やスライスを扱うとき、容量だけななく長さも指定できるようにしました。
+Go1.2では、ある配列やスライスを扱うとき、長さだけでなく容量も指定できるようにしました。
 </p>
 
 <pre>
@@ -760,7 +760,7 @@ is strictly backwards compatible, so it affects no working programs.*
 Wherever an argument is to be fetched from the argument list for formatting,
 either as the value to be formatted or as a width or specification integer,
 新しいオプショナルなインデックス記法<code>[</code><em>n</em><code>]</code>は、<em>n</em> 番目の引数をかわりに取ります。
-<em>n</em>の値は1始まりです。
+<em>n</em>の値は1から始まります。
 インデックス操作したあとの次の引数は<em>n</em>+1として取得されます。
 </p>
 
