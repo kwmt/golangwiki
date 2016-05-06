@@ -755,7 +755,7 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Handl
     クロージャはリクエストパスから<code>title</code>を取り出し、
     <code>TitleValidator</code>の正規表現で、妥当性を確認します。
     <code>title</code>が無効の場合、エラーが<code>http.NotFound</code>関数を使って
-    <code>ResponseWriter<code>に書き込まれます。
+    <code>ResponseWriter</code>に書き込まれます。
     <code>title</code>が有効の場合、<code>ResponseWriter</code>,<code>Request</code>,
     <code>title</code>を引数として、内包されたハンドラ関数<code>fn</code>をコールします。
 </p>
